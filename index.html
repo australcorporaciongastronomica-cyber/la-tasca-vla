@@ -41,6 +41,10 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    /* =========================
+       PORTADA
+    ========================== */
+
     .hero {
       min-height: 100vh;
       position: relative;
@@ -49,14 +53,12 @@
       align-items: center;
       text-align: center;
       padding: 40px 22px;
-
       background:
         linear-gradient(
-          rgba(0,0,0,.34),
+          rgba(0,0,0,.38),
           rgba(0,0,0,.78)
         ),
         url('TASCA HORI.png');
-
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -80,56 +82,65 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      max-width: 950px;
+      max-width: 1100px;
     }
 
-    .tasca-logo {
-      width: min(430px, 86vw);
-      max-height: 250px;
-      object-fit: contain;
-      display: block;
-      margin: 0 auto 18px;
-      mix-blend-mode: screen;
-
-      filter:
-        brightness(1.25)
-        contrast(1.15)
-        drop-shadow(0 8px 24px rgba(0,0,0,.55));
+    .hero-logos {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      max-width: 760px;
+      margin: 0 auto 34px;
+      align-items: center;
     }
 
-    .santori-hero-logo {
-      width: min(190px, 45vw);
-      max-height: 120px;
+    .hero-logo-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 150px;
+      padding: 18px 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(8, 8, 8, 0.22);
+      backdrop-filter: blur(2px);
+    }
+
+    .hero-logo {
+      width: 100%;
+      max-width: 290px;
+      height: 100px;
       object-fit: contain;
       display: block;
-      margin: 0 auto 28px;
-      mix-blend-mode: screen;
-      filter: brightness(1.08);
     }
 
     .hero-subtitle {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(29px, 4.6vw, 44px);
+      font-size: clamp(30px, 4.6vw, 46px);
       font-weight: 400;
       color: #f0e8dc;
       margin-bottom: 18px;
+      letter-spacing: .5px;
     }
 
     .hero-location {
       color: #d8c198;
       font-size: 14px;
-      letter-spacing: 2.2px;
+      letter-spacing: 2px;
       text-transform: uppercase;
       line-height: 1.8;
     }
 
     .hero-scroll {
-      margin-top: 44px;
+      margin-top: 42px;
       color: rgba(255,255,255,.82);
       font-size: 12px;
       letter-spacing: 3px;
       text-transform: uppercase;
     }
+
+    /* =========================
+       GENERALES
+    ========================== */
 
     .label {
       color: #b89a64;
@@ -143,11 +154,6 @@
     .info,
     .contact {
       text-align: center;
-    }
-
-    .intro {
-      padding: 100px 24px 75px;
-      background: linear-gradient(180deg, #0d0d0d, #11100f);
     }
 
     .intro h2,
@@ -169,6 +175,19 @@
       line-height: 1.9;
     }
 
+    /* =========================
+       INTRO
+    ========================== */
+
+    .intro {
+      padding: 100px 24px 75px;
+      background: linear-gradient(180deg, #0d0d0d, #11100f);
+    }
+
+    /* =========================
+       PROPUESTAS
+    ========================== */
+
     .menus-section {
       padding: 25px 22px 110px;
       background: #11100f;
@@ -183,7 +202,7 @@
     }
 
     .card {
-      min-height: 610px;
+      min-height: 560px;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -202,6 +221,17 @@
       border-color: #8c754d;
     }
 
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      top: -130px;
+      right: -100px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(181,148,89,.11), transparent 70%);
+    }
+
     .card-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(54px, 6vw, 74px);
@@ -218,20 +248,16 @@
     }
 
     .card-description {
-      max-width: 410px;
+      max-width: 420px;
       color: #b6afa6;
       font-size: 16px;
       line-height: 1.9;
       margin-bottom: 36px;
     }
 
-    .santori-logo {
-      width: min(300px, 80%);
-      max-height: 200px;
-      object-fit: contain;
-      margin-bottom: 24px;
-      mix-blend-mode: screen;
-    }
+    /* =========================
+       BOTONES
+    ========================== */
 
     .buttons {
       display: flex;
@@ -269,6 +295,10 @@
       font-weight: 600;
     }
 
+    /* =========================
+       UBICACION Y HORARIOS
+    ========================== */
+
     .info {
       padding: 105px 22px;
       background: linear-gradient(180deg, #0d0d0d, #080808);
@@ -276,7 +306,7 @@
 
     .info-box {
       margin: 38px auto 0;
-      max-width: 820px;
+      max-width: 860px;
       border: 1px solid #25221e;
       background: #11100f;
       padding: 40px 28px;
@@ -299,9 +329,9 @@
 
     .schedule-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      max-width: 700px;
+      max-width: 760px;
       margin: auto;
     }
 
@@ -330,11 +360,19 @@
       margin-top: 32px;
     }
 
+    /* =========================
+       CONTACTO
+    ========================== */
+
     .contact {
       padding: 105px 22px;
       background: #070707;
       border-top: 1px solid #201e1b;
     }
+
+    /* =========================
+       FOOTER
+    ========================== */
 
     footer {
       padding: 32px 20px;
@@ -347,18 +385,25 @@
       text-transform: uppercase;
     }
 
+    /* =========================
+       MOBILE
+    ========================== */
+
+    @media (max-width: 900px) {
+      .hero-logos {
+        grid-template-columns: 1fr;
+        max-width: 360px;
+      }
+
+      .hero-logo-box {
+        min-height: 130px;
+      }
+    }
+
     @media (max-width: 820px) {
       .hero {
         min-height: 92vh;
         background-position: center;
-      }
-
-      .tasca-logo {
-        width: min(390px, 90vw);
-      }
-
-      .santori-hero-logo {
-        width: min(170px, 52vw);
       }
 
       .hero-subtitle {
@@ -375,7 +420,7 @@
       }
 
       .card {
-        min-height: 510px;
+        min-height: 500px;
         padding: 50px 24px;
       }
 
@@ -404,20 +449,29 @@
 
 <body>
 
+  <!-- PORTADA -->
   <section class="hero">
     <div class="hero-content">
 
-      <img
-        src="LA TASCA LOGO.jpeg"
-        alt="La Tasca"
-        class="tasca-logo"
-      >
+      <div class="hero-logos">
 
-      <img
-        src="SANTORI LOGO OK.png"
-        alt="Santori"
-        class="santori-hero-logo"
-      >
+        <div class="hero-logo-box">
+          <img
+            src="LATASCAOH.PNG"
+            alt="La Tasca"
+            class="hero-logo"
+          >
+        </div>
+
+        <div class="hero-logo-box">
+          <img
+            src="SONTORILOGOH.PNG"
+            alt="Santori"
+            class="hero-logo"
+          >
+        </div>
+
+      </div>
 
       <div class="hero-subtitle">
         Gastronomía y encuentros en la Patagonia
@@ -434,7 +488,7 @@
     </div>
   </section>
 
-
+  <!-- PRESENTACION -->
   <section class="intro">
 
     <div class="label">
@@ -453,7 +507,7 @@
 
   </section>
 
-
+  <!-- PROPUESTAS -->
   <section class="menus-section">
 
     <div class="menus">
@@ -504,18 +558,15 @@
 
       </article>
 
-
       <article class="card">
-
-        <img
-          src="SANTORI LOGO OK.png"
-          alt="Santori Angostura"
-          class="santori-logo"
-        >
 
         <div class="card-subtitle">
           Sushi · Cocina Japonesa
         </div>
+
+        <h3 class="card-title">
+          Santori
+        </h3>
 
         <p class="card-description">
           Producto, técnica y presentación en una propuesta
@@ -556,7 +607,7 @@
 
   </section>
 
-
+  <!-- UBICACION Y HORARIOS -->
   <section class="info">
 
     <div class="label">
@@ -585,7 +636,7 @@
       <div class="schedule-grid">
 
         <div class="schedule-card">
-          <strong>Lunes</strong>
+          <strong>Lunes y Miércoles</strong>
           <span>00:00 a 16:00</span>
           <span>20:00 a 23:59</span>
         </div>
@@ -593,12 +644,6 @@
         <div class="schedule-card">
           <strong>Martes</strong>
           <span>12:00 a 16:00</span>
-          <span>20:00 a 23:59</span>
-        </div>
-
-        <div class="schedule-card">
-          <strong>Miércoles</strong>
-          <span>00:00 a 16:00</span>
           <span>20:00 a 23:59</span>
         </div>
 
@@ -626,7 +671,7 @@
 
   </section>
 
-
+  <!-- CONTACTO -->
   <section class="contact">
 
     <div class="label">
@@ -644,7 +689,6 @@
     </p>
 
   </section>
-
 
   <footer>
     La Tasca · Santori · Villa La Angostura
