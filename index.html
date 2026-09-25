@@ -3,11 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>La Tasca & Santori | Villa La Angostura</title>
 
@@ -17,12 +13,7 @@
   >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap"
@@ -46,18 +37,15 @@
       --container: 1180px;
     }
 
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-
     html {
       scroll-behavior: smooth;
     }
-
 
     body {
       background: var(--bg);
@@ -66,29 +54,21 @@
       overflow-x: hidden;
     }
 
-
     a {
       color: inherit;
       text-decoration: none;
       -webkit-tap-highlight-color: transparent;
     }
 
-
     img {
       display: block;
       max-width: 100%;
     }
 
-
     .container {
-      width: min(
-        var(--container),
-        calc(100% - 32px)
-      );
-
+      width: min(var(--container), calc(100% - 32px));
       margin: 0 auto;
     }
-
 
     .section-label {
       color: var(--gold);
@@ -98,7 +78,6 @@
       margin-bottom: 16px;
     }
 
-
     .section-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(46px, 6vw, 78px);
@@ -106,7 +85,6 @@
       line-height: 1;
       margin-bottom: 20px;
     }
-
 
     .section-text {
       max-width: 760px;
@@ -116,12 +94,9 @@
       line-height: 1.9;
     }
 
-
-
     /* =========================
        PORTADA
     ========================= */
-
 
     .hero {
       min-height: 100vh;
@@ -132,16 +107,13 @@
       justify-content: center;
 
       text-align: center;
-
       padding: 48px 20px;
 
       background:
-
         linear-gradient(
           rgba(0,0,0,.28),
           rgba(0,0,0,.78)
         ),
-
         url('TASCA HORI.png')
         center / cover
         no-repeat;
@@ -149,10 +121,8 @@
       overflow: hidden;
     }
 
-
     .hero::after {
       content: "";
-
       position: absolute;
       inset: 0;
 
@@ -167,7 +137,6 @@
       pointer-events: none;
     }
 
-
     .hero-content {
       position: relative;
       z-index: 2;
@@ -175,21 +144,15 @@
       max-width: 1040px;
     }
 
-
     .hero-logos {
       display: flex;
       align-items: center;
       justify-content: center;
-
       gap: 44px;
-
       max-width: 760px;
-
       margin: 0 auto 38px;
-
       flex-wrap: wrap;
     }
-
 
     .hero-logo-wrap {
       width: 310px;
@@ -202,11 +165,9 @@
       padding: 10px;
     }
 
-
     .hero-logo {
       width: 100%;
       height: 100%;
-
       object-fit: contain;
 
       filter:
@@ -215,64 +176,45 @@
         );
     }
 
-
     .hero-subtitle {
       font-family: 'Cormorant Garamond', serif;
-
       font-size: clamp(32px, 4vw, 52px);
-
       font-weight: 500;
-
       color: var(--white);
-
       margin-bottom: 18px;
 
       text-shadow:
         0 4px 18px rgba(0,0,0,.78);
     }
 
-
     .hero-location {
       color: rgba(255,255,255,.92);
-
       text-transform: uppercase;
-
       letter-spacing: 2px;
-
       font-size: 14px;
-
       line-height: 1.8;
 
       text-shadow:
         0 3px 12px rgba(0,0,0,.85);
     }
 
-
     .hero-scroll {
       margin-top: 36px;
-
       font-size: 12px;
-
       letter-spacing: 3px;
-
       text-transform: uppercase;
-
       color: rgba(255,255,255,.88);
 
       text-shadow:
         0 3px 12px rgba(0,0,0,.85);
     }
 
-
-
     /* =========================
        INTRO
     ========================= */
 
-
     .intro {
       padding: 96px 0 78px;
-
       text-align: center;
 
       background:
@@ -283,75 +225,53 @@
         );
     }
 
-
-
     /* =========================
        TASCA / SANTORI
     ========================= */
 
-
     .brands {
       padding: 28px 0 34px;
-
       background: #11100f;
     }
 
-
     .brand-grid {
       display: grid;
-
-      grid-template-columns:
-        repeat(2, 1fr);
-
+      grid-template-columns: repeat(2, 1fr);
       gap: 28px;
     }
 
-
     .brand-card {
       position: relative;
-
       min-height: 610px;
 
       border-radius: var(--radius);
-
       overflow: hidden;
 
       border: 1px solid var(--line);
-
       box-shadow: var(--shadow);
 
       display: flex;
-
       align-items: flex-end;
 
       isolation: isolate;
-
       background: #0e0d0c;
     }
 
-
     .brand-card::before {
       content: "";
-
       position: absolute;
-
       inset: 0;
 
       background-size: cover;
-
       background-position: center;
 
       z-index: -3;
-
       transform: scale(1.02);
     }
 
-
     .brand-card::after {
       content: "";
-
       position: absolute;
-
       inset: 0;
 
       background:
@@ -366,38 +286,28 @@
       z-index: -2;
     }
 
-
     .brand-card.tasca::before {
       background-image:
         url('tasca-vino-comida-horizontal.jpg');
     }
-
 
     .brand-card.santori::before {
       background-image:
         url('santori-neon-horizontal.jpg');
     }
 
-
     .brand-content {
       width: 100%;
-
       padding: 38px 32px 34px;
     }
-
-
-    /* TEXTO SOBRE LAS FOTOS: TODO BLANCO */
-
 
     .brand-kicker {
       color: rgba(255,255,255,.93);
 
       font-size: 12px;
-
       font-weight: 600;
 
       letter-spacing: 3.2px;
-
       text-transform: uppercase;
 
       margin-bottom: 14px;
@@ -406,12 +316,10 @@
         0 3px 12px rgba(0,0,0,.95);
     }
 
-
     .brand-title {
       font-family: 'Cormorant Garamond', serif;
 
       font-size: clamp(52px, 5vw, 74px);
-
       font-weight: 500;
 
       color: #ffffff;
@@ -422,7 +330,6 @@
         0 5px 22px rgba(0,0,0,.88);
     }
 
-
     .brand-subtitle {
       color: rgba(255,255,255,.90);
 
@@ -431,7 +338,6 @@
       letter-spacing: 3px;
 
       font-size: 12px;
-
       font-weight: 500;
 
       margin-bottom: 18px;
@@ -439,7 +345,6 @@
       text-shadow:
         0 3px 12px rgba(0,0,0,.95);
     }
-
 
     .brand-description {
       max-width: 520px;
@@ -456,21 +361,15 @@
         0 3px 14px rgba(0,0,0,.90);
     }
 
-
-
     /* =========================
        BOTONES
     ========================= */
 
-
     .actions {
       display: flex;
-
       flex-wrap: wrap;
-
       gap: 12px;
     }
-
 
     .icon-btn {
       display: inline-flex;
@@ -495,11 +394,9 @@
       color: #ffffff;
 
       font-size: 12px;
-
       font-weight: 600;
 
       letter-spacing: 1.5px;
-
       text-transform: uppercase;
 
       backdrop-filter: blur(10px);
@@ -507,21 +404,16 @@
       box-shadow:
         0 7px 22px rgba(0,0,0,.25);
 
-      transition:
-        .25s ease;
+      transition: .25s ease;
     }
-
 
     .icon-btn:hover {
       background: #ffffff;
-
       border-color: #ffffff;
-
       color: #111111;
 
       transform: translateY(-2px);
     }
-
 
     .icon-btn svg {
       width: 19px;
@@ -532,19 +424,14 @@
       flex: 0 0 auto;
     }
 
-
-
     /* =========================
        GALERIA
     ========================= */
 
-
     .gallery {
       padding: 36px 0 92px;
-
       background: #11100f;
     }
-
 
     .gallery-grid {
       display: grid;
@@ -555,14 +442,11 @@
       gap: 22px;
     }
 
-
     .gallery-card {
       position: relative;
-
       min-height: 360px;
 
       border-radius: var(--radius-small);
-
       overflow: hidden;
 
       border: 1px solid var(--line);
@@ -572,16 +456,13 @@
       background: #0e0d0c;
     }
 
-
     .gallery-card::before {
       content: "";
 
       position: absolute;
-
       inset: 0;
 
       background-size: cover;
-
       background-position: center;
 
       transform: scale(1.03);
@@ -589,12 +470,10 @@
       z-index: 0;
     }
 
-
     .gallery-card::after {
       content: "";
 
       position: absolute;
-
       inset: 0;
 
       background:
@@ -608,24 +487,20 @@
       z-index: 1;
     }
 
-
     .gallery-card.tasca-plato::before {
       background-image:
         url('tasca-plato-horizontal.jpg');
     }
-
 
     .gallery-card.tasca-interior::before {
       background-image:
         url('tasca-interior-horizontal.jpg');
     }
 
-
     .gallery-card.santori-tabla::before {
       background-image:
         url('santori-tabla-horizontal.jpg');
     }
-
 
     .gallery-content {
       position: absolute;
@@ -639,7 +514,6 @@
       padding: 24px 22px;
     }
 
-
     .gallery-tag {
       color: #ffffff;
 
@@ -648,7 +522,6 @@
       letter-spacing: 3px;
 
       font-size: 11px;
-
       font-weight: 600;
 
       margin-bottom: 8px;
@@ -656,7 +529,6 @@
       text-shadow:
         0 3px 12px rgba(0,0,0,.95);
     }
-
 
     .gallery-title {
       font-family: 'Cormorant Garamond', serif;
@@ -673,7 +545,6 @@
         0 4px 16px rgba(0,0,0,.90);
     }
 
-
     .gallery-text {
       color: rgba(255,255,255,.92);
 
@@ -685,12 +556,145 @@
         0 3px 10px rgba(0,0,0,.90);
     }
 
+    /* =========================
+       TRIPADVISOR
+    ========================= */
 
+    .tripadvisor {
+      padding: 100px 0;
+
+      text-align: center;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(201,169,107,.08),
+          transparent 45%
+        ),
+        #090909;
+    }
+
+    .trip-card {
+      position: relative;
+
+      width: min(760px, 100%);
+
+      margin: 38px auto 0;
+
+      padding: 46px 26px 42px;
+
+      border-radius: 26px;
+
+      border:
+        1px solid rgba(201,169,107,.28);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(24,23,21,.95),
+          rgba(11,11,10,.98)
+        );
+
+      box-shadow:
+        0 25px 70px rgba(0,0,0,.45);
+
+      overflow: hidden;
+    }
+
+    .trip-card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 280px;
+      height: 280px;
+
+      border-radius: 50%;
+
+      top: -180px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(201,169,107,.18),
+          transparent 70%
+        );
+
+      pointer-events: none;
+    }
+
+    .trip-small {
+      color: rgba(255,255,255,.72);
+
+      text-transform: uppercase;
+
+      letter-spacing: 3px;
+
+      font-size: 11px;
+
+      margin-bottom: 12px;
+    }
+
+    .trip-title {
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: clamp(38px, 5vw, 58px);
+
+      font-weight: 500;
+
+      color: #ffffff;
+
+      margin-bottom: 12px;
+    }
+
+    .trip-text {
+      max-width: 580px;
+
+      margin: 0 auto 28px;
+
+      color: rgba(255,255,255,.82);
+
+      font-size: 15px;
+
+      line-height: 1.8;
+    }
+
+    .trip-widget {
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      min-height: 130px;
+
+      margin-top: 20px;
+    }
+
+    .trip-widget ul {
+      list-style: none !important;
+
+      margin: 0 !important;
+
+      padding: 0 !important;
+    }
+
+    .trip-widget li {
+      list-style: none !important;
+    }
+
+    .trip-widget img {
+      margin: 0 auto !important;
+      max-width: 100%;
+      height: auto;
+    }
 
     /* =========================
        UBICACION
     ========================= */
-
 
     .visit {
       padding: 100px 0;
@@ -704,7 +708,6 @@
           #090909
         );
     }
-
 
     .visit-box {
       margin: 40px auto 0;
@@ -727,7 +730,6 @@
       box-shadow: var(--shadow);
     }
 
-
     .visit-address {
       color: #f5efe7;
 
@@ -738,7 +740,6 @@
       margin-bottom: 30px;
     }
 
-
     .schedule-label {
       color: #ffffff;
 
@@ -747,12 +748,10 @@
       letter-spacing: 3px;
 
       font-size: 12px;
-
       font-weight: 600;
 
       margin-bottom: 18px;
     }
-
 
     .schedule-card {
       width: min(460px, 100%);
@@ -769,21 +768,18 @@
         1px solid rgba(255,255,255,.12);
     }
 
-
     .schedule-card strong {
       display: block;
 
       font-family: 'Cormorant Garamond', serif;
 
       font-size: 34px;
-
       font-weight: 500;
 
       margin-bottom: 10px;
 
       color: #ffffff;
     }
-
 
     .schedule-card span {
       display: block;
@@ -795,17 +791,13 @@
       line-height: 1.9;
     }
 
-
     .map-wrap {
       margin-top: 26px;
     }
 
-
-
     /* =========================
        CERRO BAYO
     ========================= */
-
 
     .scenic {
       position: relative;
@@ -830,13 +822,10 @@
         no-repeat;
     }
 
-
     .scenic-content {
       width: 100%;
-
       padding: 70px 0 54px;
     }
-
 
     .scenic-inner {
       width: min(
@@ -849,14 +838,12 @@
       text-align: center;
     }
 
-
     .scenic .section-label {
       color: #ffffff;
 
       text-shadow:
         0 3px 12px rgba(0,0,0,.90);
     }
-
 
     .scenic-title {
       font-family: 'Cormorant Garamond', serif;
@@ -873,7 +860,6 @@
         0 5px 20px rgba(0,0,0,.88);
     }
 
-
     .scenic-text {
       max-width: 720px;
 
@@ -889,12 +875,9 @@
         0 3px 12px rgba(0,0,0,.88);
     }
 
-
-
     /* =========================
        CONTACTO
     ========================= */
-
 
     .contact {
       padding: 86px 0 94px;
@@ -906,7 +889,6 @@
       border-top:
         1px solid rgba(255,255,255,.04);
     }
-
 
     .contact-links {
       margin-top: 30px;
@@ -920,12 +902,9 @@
       flex-wrap: wrap;
     }
 
-
-
     /* =========================
        FOOTER
     ========================= */
-
 
     footer {
       padding: 24px 16px 34px;
@@ -943,12 +922,9 @@
       background: #050505;
     }
 
-
-
     /* =========================
        TABLET
     ========================= */
-
 
     @media (max-width: 980px) {
 
@@ -956,16 +932,13 @@
         grid-template-columns: 1fr;
       }
 
-
       .gallery-grid {
         grid-template-columns: 1fr;
       }
 
-
       .brand-card {
         min-height: 560px;
       }
-
 
       .gallery-card {
         min-height: 360px;
@@ -973,12 +946,9 @@
 
     }
 
-
-
     /* =========================
        CELULAR
     ========================= */
-
 
     @media (max-width: 760px) {
 
@@ -986,11 +956,9 @@
         min-height: 92vh;
       }
 
-
       .hero-logos {
         gap: 18px;
       }
-
 
       .hero-logo-wrap {
         width: 44%;
@@ -998,52 +966,46 @@
         height: 90px;
       }
 
-
       .hero-location {
         font-size: 13px;
         letter-spacing: 1.4px;
       }
 
-
       .brand-card {
         min-height: 520px;
       }
-
 
       .brand-content {
         padding: 30px 20px 24px;
       }
 
-
       .brand-description {
         font-size: 15px;
       }
-
 
       .actions {
         width: 100%;
       }
 
-
       .icon-btn {
         width: 100%;
       }
 
+      .trip-card {
+        padding: 38px 18px 34px;
+      }
 
       .visit-box {
         padding: 34px 18px;
       }
 
-
       .visit-address {
         font-size: 17px;
       }
 
-
       .schedule-card strong {
         font-size: 30px;
       }
-
 
       .scenic {
         min-height: 430px;
@@ -1052,6 +1014,7 @@
     }
 
   </style>
+
 </head>
 
 
@@ -1060,14 +1023,11 @@
 
   <!-- PORTADA -->
 
-
   <section class="hero">
 
     <div class="hero-content">
 
-
       <div class="hero-logos">
-
 
         <div class="hero-logo-wrap">
 
@@ -1089,7 +1049,6 @@
           >
 
         </div>
-
 
       </div>
 
@@ -1114,7 +1073,6 @@
 
       </div>
 
-
     </div>
 
   </section>
@@ -1123,11 +1081,9 @@
 
   <!-- INTRO -->
 
-
   <section class="intro">
 
     <div class="container">
-
 
       <div class="section-label">
 
@@ -1152,32 +1108,26 @@
 
       </p>
 
-
     </div>
 
   </section>
 
 
 
-  <!-- TASCA / SANTORI -->
-
+  <!-- LA TASCA / SANTORI -->
 
   <section class="brands">
 
     <div class="container">
-
 
       <div class="brand-grid">
 
 
         <!-- LA TASCA -->
 
-
         <article class="brand-card tasca">
 
-
           <div class="brand-content">
-
 
             <div class="brand-kicker">
 
@@ -1218,16 +1168,9 @@
                 class="icon-btn"
               >
 
-                <svg viewBox="0 0 24 24">
-
-                  <path d="M6 4.75A2.75 2.75 0 0 1 8.75 2h8.5A2.75 2.75 0 0 1 20 4.75v14.5A2.75 2.75 0 0 1 17.25 22h-8.5A2.75 2.75 0 0 1 6 19.25V4.75zm2.25-1A1.75 1.75 0 0 0 6.5 5.5v13A1.75 1.75 0 0 0 8.25 20.25h7.5a1.75 1.75 0 0 0 1.75-1.75v-13a1.75 1.75 0 0 0-1.75-1.75h-7.5zM9 7h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 9 7zm0 3.75h6a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1 0-1.5zm0 3.75h4a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1 0-1.5z"/>
-
-                </svg>
-
-                Carta
+                📖 Carta
 
               </a>
-
 
 
               <a
@@ -1236,16 +1179,9 @@
                 class="icon-btn"
               >
 
-                <svg viewBox="0 0 24 24">
-
-                  <path d="M20.52 3.48A11.8 11.8 0 0 0 12.06 0C5.56 0 .26 5.3.26 11.8c0 2.08.54 4.1 1.56 5.88L0 24l6.5-1.7a11.8 11.8 0 0 0 5.56 1.42h.01c6.5 0 11.79-5.3 11.79-11.8 0-3.15-1.23-6.11-3.34-8.44z"/>
-
-                </svg>
-
-                WhatsApp
+                ☎ WhatsApp
 
               </a>
-
 
 
               <a
@@ -1254,22 +1190,14 @@
                 class="icon-btn"
               >
 
-                <svg viewBox="0 0 24 24">
-
-                  <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5a4.25 4.25 0 0 0 4.25 4.25h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5a4.25 4.25 0 0 0-4.25-4.25h-8.5zm8.88 1.62a1.13 1.13 0 1 1 0 2.26 1.13 1.13 0 0 1 0-2.26zM12 6.5A5.5 5.5 0 1 1 6.5 12 5.5 5.5 0 0 1 12 6.5zm0 1.5A4 4 0 1 0 16 12a4 4 0 0 0-4-4z"/>
-
-                </svg>
-
-                Instagram
+                ◎ Instagram
 
               </a>
 
 
             </div>
 
-
           </div>
-
 
         </article>
 
@@ -1277,12 +1205,9 @@
 
         <!-- SANTORI -->
 
-
         <article class="brand-card santori">
 
-
           <div class="brand-content">
-
 
             <div class="brand-kicker">
 
@@ -1324,16 +1249,9 @@
                 class="icon-btn"
               >
 
-                <svg viewBox="0 0 24 24">
-
-                  <path d="M6 4.75A2.75 2.75 0 0 1 8.75 2h8.5A2.75 2.75 0 0 1 20 4.75v14.5A2.75 2.75 0 0 1 17.25 22h-8.5A2.75 2.75 0 0 1 6 19.25V4.75zm2.25-1A1.75 1.75 0 0 0 6.5 5.5v13A1.75 1.75 0 0 0 8.25 20.25h7.5a1.75 1.75 0 0 0 1.75-1.75v-13a1.75 1.75 0 0 0-1.75-1.75h-7.5zM9 7h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 9 7zm0 3.75h6a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1 0-1.5zm0 3.75h4a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1 0-1.5z"/>
-
-                </svg>
-
-                Carta
+                📖 Carta
 
               </a>
-
 
 
               <a
@@ -1342,16 +1260,9 @@
                 class="icon-btn"
               >
 
-                <svg viewBox="0 0 24 24">
-
-                  <path d="M20.52 3.48A11.8 11.8 0 0 0 12.06 0C5.56 0 .26 5.3.26 11.8c0 2.08.54 4.1 1.56 5.88L0 24l6.5-1.7a11.8 11.8 0 0 0 5.56 1.42h.01c6.5 0 11.79-5.3 11.79-11.8 0-3.15-1.23-6.11-3.34-8.44z"/>
-
-                </svg>
-
-                WhatsApp
+                ☎ WhatsApp
 
               </a>
-
 
 
               <a
@@ -1360,31 +1271,21 @@
                 class="icon-btn"
               >
 
-                <svg viewBox="0 0 24 24">
-
-                  <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5a4.25 4.25 0 0 0 4.25 4.25h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5a4.25 4.25 0 0 0-4.25-4.25h-8.5zm8.88 1.62a1.13 1.13 0 1 1 0 2.26 1.13 1.13 0 0 1 0-2.26zM12 6.5A5.5 5.5 0 1 1 6.5 12 5.5 5.5 0 0 1 12 6.5zm0 1.5A4 4 0 1 0 16 12a4 4 0 0 0-4-4z"/>
-
-                </svg>
-
-                Instagram
+                ◎ Instagram
 
               </a>
 
 
             </div>
 
-
           </div>
-
 
         </article>
 
 
       </div>
 
-
     </div>
-
 
   </section>
 
@@ -1392,11 +1293,9 @@
 
   <!-- GALERIA -->
 
-
   <section class="gallery">
 
     <div class="container">
-
 
       <div class="gallery-grid">
 
@@ -1406,24 +1305,17 @@
           <div class="gallery-content">
 
             <div class="gallery-tag">
-
               La Tasca
-
             </div>
 
-
             <h3 class="gallery-title">
-
               Sabores patagónicos
-
             </h3>
 
-
             <p class="gallery-text">
-
-              Producto, sabor e identidad patagónica en una propuesta
-              pensada para disfrutar Villa La Angostura desde la mesa.
-
+              Producto, sabor e identidad patagónica
+              en una propuesta pensada para disfrutar
+              Villa La Angostura desde la mesa.
             </p>
 
           </div>
@@ -1437,24 +1329,16 @@
           <div class="gallery-content">
 
             <div class="gallery-tag">
-
               La Tasca
-
             </div>
 
-
             <h3 class="gallery-title">
-
               Salón & paisaje
-
             </h3>
 
-
             <p class="gallery-text">
-
               Madera, nieve y el espíritu
               de Villa La Angostura.
-
             </p>
 
           </div>
@@ -1468,24 +1352,16 @@
           <div class="gallery-content">
 
             <div class="gallery-tag">
-
               Santori
-
             </div>
 
-
             <h3 class="gallery-title">
-
               Sushi Nikkei
-
             </h3>
 
-
             <p class="gallery-text">
-
               Producto, técnica,
               detalle y presentación.
-
             </p>
 
           </div>
@@ -1495,9 +1371,102 @@
 
       </div>
 
-
     </div>
 
+  </section>
+
+
+
+  <!-- TRIPADVISOR -->
+
+  <section class="tripadvisor">
+
+    <div class="container">
+
+      <div class="section-label">
+        Reconocimiento
+      </div>
+
+      <h2 class="section-title">
+        La experiencia también se comparte
+      </h2>
+
+      <p class="section-text">
+        El reconocimiento de quienes nos visitan
+        forma parte de la historia de La Tasca.
+      </p>
+
+
+      <div class="trip-card">
+
+        <div class="trip-small">
+          Tripadvisor
+        </div>
+
+        <h3 class="trip-title">
+          Travelers’ Choice 2026
+        </h3>
+
+        <p class="trip-text">
+          Un reconocimiento que celebra
+          las experiencias y opiniones
+          compartidas por nuestros visitantes.
+        </p>
+
+
+        <div class="trip-widget">
+
+
+          <div
+            id="TA_certificateOfExcellence508"
+            class="TA_certificateOfExcellence"
+          >
+
+            <ul
+              id="Nr6YlvB"
+              class="TA_links LMUDtACO"
+            >
+
+              <li
+                id="PLuYPNcnV"
+                class="DOIy3UKctH"
+              >
+
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://www.tripadvisor.com.ar/Restaurant_Review-g312844-d4762076-Reviews-La_Tasca-Villa_La_Angostura_Province_of_Neuquen_Patagonia.html"
+                >
+
+                  <img
+                    src="https://static.tacdn.com/img2/travelers_choice/widgets/tchotel_2026_L.png"
+                    alt="Tripadvisor Travelers' Choice 2026"
+                    class="widCOEImg"
+                    id="CDSWIDCOELOGO"
+                  >
+
+                </a>
+
+              </li>
+
+            </ul>
+
+          </div>
+
+
+          <script
+            async
+            src="https://www.jscache.com/wejs?wtype=certificateOfExcellence&amp;uniq=508&amp;locationId=4762076&amp;lang=es_AR&amp;year=2026&amp;display_version=2"
+            data-loadtrk
+            onload="this.loadtrk=true">
+          </script>
+
+
+        </div>
+
+      </div>
+
+    </div>
 
   </section>
 
@@ -1505,11 +1474,9 @@
 
   <!-- VISITANOS -->
 
-
   <section class="visit">
 
     <div class="container">
-
 
       <div class="section-label">
 
@@ -1534,7 +1501,6 @@
 
 
       <div class="visit-box">
-
 
         <div class="visit-address">
 
@@ -1580,12 +1546,10 @@
 
           </span>
 
-
         </div>
 
 
         <div class="map-wrap">
-
 
           <a
             href="https://www.google.com/maps/search/?api=1&query=Av.+Arrayanes+6155,+Villa+La+Angostura,+Neuquén,+Argentina"
@@ -1597,22 +1561,18 @@
 
           </a>
 
-
         </div>
 
 
       </div>
 
-
     </div>
-
 
   </section>
 
 
 
   <!-- CERRO BAYO -->
-
 
   <section class="scenic">
 
@@ -1644,12 +1604,9 @@
 
         </p>
 
-
       </div>
 
-
     </div>
-
 
   </section>
 
@@ -1657,11 +1614,9 @@
 
   <!-- CONTACTO -->
 
-
   <section class="contact">
 
     <div class="container">
-
 
       <div class="section-label">
 
@@ -1690,7 +1645,6 @@
 
       <div class="contact-links">
 
-
         <a
           href="https://wa.me/5492944788994"
           target="_blank"
@@ -1712,12 +1666,9 @@
 
         </a>
 
-
       </div>
 
-
     </div>
-
 
   </section>
 
