@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>La Tasca & Santori | Villa La Angostura</title>
+
+  <meta name="description" content="La Tasca & Santori — Gastronomía, sushi y experiencias en Villa La Angostura.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #0b0b0b;
+      color: #f4efe6;
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      background:
+        linear-gradient(rgba(0,0,0,.58), rgba(0,0,0,.82)),
+        url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1800&q=85')
+        center/cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #c6aa72;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(60px, 11vw, 115px);
+      font-weight: 500;
+      line-height: .9;
+      letter-spacing: -2px;
+    }
+
+    .subtitle {
+      margin-top: 22px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 4vw, 34px);
+      font-weight: 400;
+      color: #ded5c7;
+    }
+
+    .location {
+      margin-top: 12px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: .75;
+    }
+
+    .scroll {
+      margin-top: 55px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c6aa72;
+    }
+
+    .brands {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      min-height: 85vh;
+    }
+
+    .brand {
+      min-height: 600px;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      overflow: hidden;
+      padding: 50px;
+      text-decoration: none;
+      color: #fff;
+      transition: .4s ease;
+    }
+
+    .brand::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform .8s ease;
+      z-index: 0;
+    }
+
+    .brand::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,.92),
+        rgba(0,0,0,.2)
+      );
+      z-index: 1;
+    }
+
+    .brand:hover::before {
+      transform: scale(1.05);
+    }
+
+    .tasca::before {
+      background-image:
+        url('https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1400&q=85');
+    }
+
+    .santori::before {
+      background-image:
+        url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1400&q=85');
+    }
+
+    .brand-content {
+      position: relative;
+      z-index: 2;
+      max-width: 450px;
+    }
+
+    .brand-label {
+      color: #c6aa72;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-size: 11px;
+      margin-bottom: 12px;
+    }
+
+    .brand h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: clamp(50px, 6vw, 78px);
+      margin-bottom: 12px;
+    }
+
+    .brand p {
+      line-height: 1.7;
+      font-size: 14px;
+      color: #ddd5c9;
+      max-width: 360px;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 28px;
+      border-bottom: 1px solid #c6aa72;
+      padding-bottom: 7px;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .contact {
+      padding: 90px 20px;
+      text-align: center;
+      background: #10100f;
+    }
+
+    .contact h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(42px, 7vw, 70px);
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      color: #bdb6aa;
+      line-height: 1.8;
+      font-size: 14px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .actions {
+      margin-top: 38px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .action {
+      border: 1px solid #8f7a53;
+      color: #f4efe6;
+      padding: 15px 25px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 11px;
+      transition: .3s;
+    }
+
+    .action:hover {
+      background: #c6aa72;
+      color: #111;
+    }
+
+    footer {
+      border-top: 1px solid #272522;
+      background: #0b0b0b;
+      text-align: center;
+      padding: 28px 20px;
+      color: #777269;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 800px) {
+      .brands {
+        grid-template-columns: 1fr;
+      }
+
+      .brand {
+        min-height: 560px;
+        padding: 35px 25px;
+      }
+
+      .hero {
+        min-height: 92vh;
+      }
+
+      .actions {
+        flex-direction: column;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-content">
+
+      <div class="eyebrow">Gastronomía · Patagonia</div>
+
+      <h1>La Tasca</h1>
+
+      <div class="subtitle">
+        Cocina, encuentros y sabores en el corazón de Villa La Angostura
+      </div>
+
+      <div class="location">
+        Villa La Angostura · Patagonia Argentina
+      </div>
+
+      <div class="scroll">
+        Descubrí nuestra propuesta ↓
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="brands">
+
+    <a href="#" class="brand tasca">
+      <div class="brand-content">
+
+        <div class="brand-label">
+          Cocina · Vinos · Patagonia
+        </div>
+
+        <h2>La Tasca</h2>
+
+        <p>
+          Una propuesta gastronómica pensada para disfrutar sabores,
+          encuentros y momentos especiales en Villa La Angostura.
+        </p>
+
+        <span class="button">Ver carta</span>
+
+      </div>
+    </a>
+
+
+    <a href="#" class="brand santori">
+      <div class="brand-content">
+
+        <div class="brand-label">
+          Sushi · Cocina Japonesa
+        </div>
+
+        <h2>Santori</h2>
+
+        <p>
+          Una experiencia de sushi y cocina japonesa donde producto,
+          técnica y presentación se encuentran.
+        </p>
+
+        <span class="button">Ver carta</span>
+
+      </div>
+    </a>
+
+  </section>
+
+
+  <section class="contact">
+
+    <div class="eyebrow">
+      La Tasca · Villa La Angostura
+    </div>
+
+    <h3>Reservas & Take Away</h3>
+
+    <p>
+      Consultanos por reservas, disponibilidad,
+      pedidos Take Away, eventos y propuestas especiales.
+    </p>
+
+    <div class="actions">
+
+      <a href="#" class="action">
+        Reservar por WhatsApp
+      </a>
+
+      <a href="#" class="action">
+        Instagram
+      </a>
+
+      <a href="#" class="action">
+        Cómo llegar
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <footer>
+    La Tasca · Santori · Villa La Angostura
+  </footer>
+
+</body>
+</html>
