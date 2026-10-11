@@ -1349,6 +1349,21 @@
     }
     @media(prefers-reduced-motion:reduce) { .mother-menu__reserve {transition:none;} }
 
+  
+    /* NUEVO: acceso inmediato a cartas completas + banner de temporada */
+    .hero-menu-access{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;max-width:730px;margin:28px auto 6px}
+    .hero-menu-access__link{display:flex;justify-content:center;align-items:center;gap:10px;padding:18px 22px;min-height:60px;flex:1 1 240px;max-width:350px;background:linear-gradient(125deg,#e6cea0,#c9a96b);color:#14120e;border:1px solid #ecdbb6;border-radius:8px;font-size:12px;font-weight:700;letter-spacing:1.3px;box-shadow:0 10px 35px rgba(0,0,0,.3);transition:transform .2s}
+    .hero-menu-access__link:hover{transform:translateY(-2px)}
+    .event-banner{padding:70px 0;background:linear-gradient(125deg,#181411,#0b0b0a);border-top:1px solid #6e5331;border-bottom:1px solid #6e5331}
+    .event-banner__layout{display:flex;align-items:center;justify-content:space-between;gap:40px}
+    .event-banner h2{font:500 clamp(44px,5.2vw,73px)/1.04 'Cormorant Garamond',Georgia,serif;margin:0 0 12px;color:#fff6e8}
+    .event-banner h2 em{font-weight:400;color:#dec18a}
+    .event-banner p{color:#d5c8b4;line-height:1.8;max-width:700px}
+    .event-banner__button{display:flex;align-items:center;justify-content:center;min-height:65px;max-width:330px;padding:18px 23px;text-align:center;gap:9px;color:#16110c;background:#e1c28c;font-size:12px;font-weight:700;letter-spacing:1.2px;line-height:1.6;flex-shrink:0;border-radius:6px}
+    .event-banner__button:hover{background:#f4d8a6}
+    @media(max-width:760px){.hero-menu-access{display:grid;gap:11px;margin:22px auto 4px}.hero-menu-access__link{width:100%;max-width:100%;font-size:12px;padding:15px;min-height:56px}.event-banner{padding:56px 0}.event-banner__layout{flex-direction:column;align-items:stretch;gap:24px}.event-banner__button{max-width:100%}}
+    .hero-menu-access__link:focus-visible,.event-banner__button:focus-visible{outline:3px solid white;outline-offset:3px}
+
   </style>
 
 </head>
@@ -1403,6 +1418,11 @@
       </div>
 
 
+      <nav class="hero-menu-access" aria-label="Acceso directo a las cartas completas">
+        <a href="cartas.html?restaurante=tasca" class="hero-menu-access__link">VER CARTA LA TASCA <span aria-hidden="true">↗</span></a>
+        <a href="cartas.html?restaurante=santori" class="hero-menu-access__link">VER CARTA SANTORI <span aria-hidden="true">↗</span></a>
+      </nav>
+
       <div class="hero-scroll">
 
         Descubrí nuestras propuestas ↓
@@ -1410,7 +1430,7 @@
       </div>
 
 
-      <a class="hero-event-link" href="#dia-de-la-madre">Día de la Madre · Ver los dos menús ↓</a>
+      <a class="hero-event-link" href="dia-de-la-madre.html">Día de la Madre · Ver los menús especiales ↗</a>
 
     </div>
 
@@ -1418,52 +1438,17 @@
 
 
 
-  <!-- DÍA DE LA MADRE: EDICIÓN ESPECIAL / MENÚS COMPLETOS -->
-  <section class="mother-event" id="dia-de-la-madre" aria-labelledby="motherTitle">
-    <div class="mother-event__inner">
-      <div class="mother-event__intro">
-        <p class="mother-event__eyebrow">La Tasca · Santori · Domingo 18 de octubre</p>
-        <h2 class="mother-event__title" id="motherTitle">Día de <em>la Madre</em></h2>
-        <p class="mother-event__subtitle">Dos menús especiales. Una celebración para compartir.</p>
-        <p class="mother-event__copy">Descubrí nuestras propuestas de tres pasos, preparadas especialmente para homenajear a mamá. Elegí tu experiencia y reservá tu mesa.</p>
-        <div class="mother-event__details">
-          <p class="mother-event__detail"><strong>$80.000 por persona</strong> · Agua mineral o gaseosa incluida</p>
-          <p class="mother-event__detail"><strong>Almuerzo y cena</strong> · En ambos restaurantes</p>
-          <p class="mother-event__detail"><strong>La Tasca: música en vivo</strong> · 13:30 a 14:30 hs</p>
-        </div>
-      </div>
-
-      <div class="mother-menus" aria-label="Menús especiales para el Día de la Madre">
-        <article class="mother-menu" aria-labelledby="motherTascaTitle">
-          <div class="mother-menu__top">
-            <h3 class="mother-menu__brand" id="motherTascaTitle">La Tasca</h3>
-            <span class="mother-menu__tag">Cocina patagónica</span>
-          </div>
-          <a class="mother-menu__image-link" href="menu-dia-madre-la-tasca.png" target="_blank" rel="noopener" aria-label="Abrir el menú completo de La Tasca en una pestaña nueva para ampliar">
-            <img src="menu-dia-madre-la-tasca.png" alt="Menú especial Día de la Madre en La Tasca: cortesía, entradas, principales, postres y precio por persona" loading="lazy" decoding="async" width="1055" height="1491">
-          </a>
-          <p class="mother-menu__hint">Tocá la imagen para ver el menú completo y ampliarlo ↗</p>
-          <a class="mother-menu__reserve" href="https://wa.me/5492944788994?text=Hola%2C%20quisiera%20reservar%20el%20men%C3%BA%20especial%20del%20D%C3%ADa%20de%20la%20Madre%20en%20La%20Tasca.%20%C2%BFMe%20indican%20disponibilidad%20y%20c%C3%B3mo%20realizar%20la%20se%C3%B1a%20del%2050%25%3F" target="_blank" rel="noopener noreferrer">Reservar menú La Tasca ↗</a>
-          <p class="mother-menu__bottom">Música en vivo de 13:30 a 14:30 hs, durante el almuerzo.</p>
-        </article>
-
-        <article class="mother-menu" aria-labelledby="motherSantoriTitle">
-          <div class="mother-menu__top">
-            <h3 class="mother-menu__brand" id="motherSantoriTitle">Santori</h3>
-            <span class="mother-menu__tag">Sushi Nikkei</span>
-          </div>
-          <a class="mother-menu__image-link" href="menu-dia-madre-santori.png" target="_blank" rel="noopener" aria-label="Abrir el menú completo de Santori en una pestaña nueva para ampliar">
-            <img src="menu-dia-madre-santori.png" alt="Menú especial Día de la Madre en Santori: entradas, principales, postres, agua o gaseosa y precio por persona, sin vino incluido" loading="lazy" decoding="async" width="1122" height="1402">
-          </a>
-          <p class="mother-menu__hint">Tocá la imagen para ver el menú completo y ampliarlo ↗</p>
-          <a class="mother-menu__reserve" href="https://wa.me/5492944555129?text=Hola%2C%20quisiera%20reservar%20el%20men%C3%BA%20especial%20del%20D%C3%ADa%20de%20la%20Madre%20en%20Santori.%20%C2%BFMe%20indican%20disponibilidad%20y%20c%C3%B3mo%20realizar%20la%20se%C3%B1a%20del%2050%25%3F" target="_blank" rel="noopener noreferrer">Reservar menú Santori ↗</a>
-          <p class="mother-menu__bottom">Una selección especial de nuestra cocina Nikkei, disponible en almuerzo y cena.</p>
-        </article>
-      </div>
-
-      <p class="mother-event__policy">Para confirmar el <strong>menú especial</strong>, solicitamos una <strong>seña del 50% ($40.000 por persona)</strong>, descontable del total. <strong>También estará disponible nuestra carta habitual.</strong> Las reservas están sujetas a disponibilidad.</p>
+  <!-- ANUNCIO DÍA DE LA MADRE: página independiente -->
+<section class="event-banner" id="dia-de-la-madre" aria-label="Especial Día de la Madre">
+  <div class="container event-banner__layout">
+    <div>
+      <div class="section-label">Domingo 18 de octubre · La Tasca &amp; Santori</div>
+      <h2>Una celebración <em>para mamá</em></h2>
+      <p>Dos experiencias gastronómicas de tres pasos para disfrutar en familia. En La Tasca, música en vivo de 13:30 a 14:30 hs.</p>
     </div>
-  </section>
+    <a href="dia-de-la-madre.html" class="event-banner__button">CONOCÉ LOS DOS MENÚS ESPECIALES <span aria-hidden="true">↗</span></a>
+  </div>
+</section>
 
   <!-- INTRO -->
 
@@ -1548,7 +1533,7 @@
             <div class="actions">
 
               <a
-                href="MENU LA TASCA (1).pdf"
+                href="cartas.html?restaurante=tasca"
                 target="_blank"
                 rel="noopener"
                 class="action-btn btn-menu"
@@ -1652,7 +1637,7 @@
             <div class="actions">
 
               <a
-                href="MENU SANTORI.pdf"
+                href="cartas.html?restaurante=santori"
                 target="_blank"
                 rel="noopener"
                 class="action-btn btn-menu"
