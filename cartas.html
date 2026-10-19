@@ -1,78 +1,317 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0b0b0a">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-<title>Cartas completas | La Tasca &amp; Santori</title>
-<style>
-:root{--gold:#c9a96b;--goldsoft:#e1c995;--text:#f3eee5;--muted:#bdb3a6;--line:rgba(201,169,107,.35)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#090909;color:var(--text);font:14px 'Montserrat',sans-serif}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}img{max-width:100%;display:block}header{border-bottom:1px solid var(--line);background:#0e0d0c}.topbar{width:min(1220px,calc(100% - 34px));margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 0}.brandword{font:500 31px 'Cormorant Garamond',Georgia,serif;color:var(--goldsoft)}.back{color:var(--muted);font-size:12px}.back:hover{color:white}h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500}.kicker{letter-spacing:3px;text-transform:uppercase;color:var(--goldsoft);font-size:11px}.heading{text-align:center;padding:40px 18px 24px}.heading h1{font-size:clamp(54px,7vw,92px);margin:12px 0 8px;line-height:1}.heading p{color:#c9bdab;line-height:1.75;max-width:660px;margin:0 auto}footer{text-align:center;color:#928472;padding:30px 14px 46px;border-top:1px solid var(--line);font-size:11px;letter-spacing:1px}
-.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;min-height:52px;padding:13px 22px;background:var(--goldsoft);color:#15120c;border:1px solid var(--goldsoft);border-radius:6px;font-size:12px;letter-spacing:1px;font-weight:700;text-align:center}.btn:hover{background:#ffe7b9}.btn--ghost{background:transparent;color:var(--goldsoft)}.btn--ghost:hover{color:#111;background:var(--goldsoft)}.btn:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid white;outline-offset:3px}
-@media(max-width:600px){.brandword{font-size:25px}.heading{padding-top:30px}.heading h1{font-size:60px}}
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10100e">
+  <meta name="description" content="Leé las cartas de La Tasca y Santori como un libro. Santori se encuentra arriba, en la cabaña; La Tasca, en planta baja. Villa La Angostura.">
+  <title>Nuestras cartas | La Tasca &amp; Santori</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--gold:#d8b983;--gold-light:#f0dfbe;--ink:#0c0e0e;--muted:#b4a99a;--border:rgba(216,185,131,.28)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:radial-gradient(ellipse at 50% -10%,#29221a 0%,#121211 40%,#0c0d0d 100%);color:#f9f3e8;font:14px/1.6 'Montserrat',Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit;cursor:pointer}
+    button:disabled{cursor:not-allowed;opacity:.38}
+    button:focus-visible,a:focus-visible{outline:3px solid var(--gold-light);outline-offset:4px}
+    .topbar{max-width:1450px;margin:auto;padding:18px clamp(16px,3vw,42px);display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid var(--border)}
+    .brand{font:500 clamp(23px,3vw,34px)/1 'Cormorant Garamond',Georgia,serif;color:var(--gold-light)}
+    .topbar .back{color:#d7cebd;font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase}
+    .topbar .back:hover{color:white}
+    .intro{max-width:1350px;margin:0 auto;text-align:center;padding:35px 24px 25px}
+    .eyebrow{display:block;color:var(--gold);font-size:10px;text-transform:uppercase;letter-spacing:3px;font-weight:700}
+    .intro h1{font:500 clamp(46px,6vw,76px)/.98 'Cormorant Garamond',Georgia,serif;margin:11px 0}
+    .intro p{max-width:740px;margin:0 auto;color:#d9cebd;font-size:13px;line-height:1.9}
+    .floorbar{display:flex;justify-content:center;align-items:center;gap:10px 28px;flex-wrap:wrap;margin:22px auto 0;padding:12px 18px;border:1px solid var(--border);border-radius:999px;width:fit-content;max-width:100%;background:rgba(255,255,255,.035)}
+    .floorbar span{font-size:11px;color:#f1e7d7}
+    .floorbar strong{color:var(--gold-light)}
+    .floorbar .floor-sep{width:1px;height:17px;background:var(--border)}
+    .layout{width:min(1450px,calc(100% - 32px));margin:0 auto 72px;display:grid;grid-template-columns:250px minmax(0,1fr);gap:22px;align-items:start}
+    .choose{border:1px solid var(--border);border-radius:16px;background:linear-gradient(145deg,#1d1a16,#121313);padding:22px;position:sticky;top:15px;box-shadow:0 18px 40px rgba(0,0,0,.15)}
+    .choose h2{font:500 34px/1 'Cormorant Garamond',Georgia,serif;margin:2px 0 20px;color:var(--gold-light)}
+    .location-choice{width:100%;display:flex;align-items:center;gap:12px;text-align:left;padding:17px 14px;margin:0 0 12px;background:#181816;color:#efe7da;border:1px solid rgba(255,255,255,.17);border-radius:10px;transition:background .2s,border-color .2s,transform .2s}
+    .location-choice:hover{transform:translateY(-2px);border-color:var(--gold)}
+    .location-choice[aria-pressed="true"]{background:linear-gradient(135deg,#e8ce9d,#b99257);color:#1b160f;border-color:#e8ce9d;box-shadow:0 8px 22px #0004}
+    .location-choice__arrow{display:grid;place-items:center;width:32px;height:32px;flex:none;border:1px solid currentColor;border-radius:50%;font-size:19px;font-weight:700}
+    .location-choice__copy{display:flex;flex-direction:column;gap:4px}
+    .location-choice__name{font-weight:700;font-size:13px;letter-spacing:1px}
+    .location-choice__level{font-size:10px;letter-spacing:.4px}
+    .choose-tip{font-size:11px;color:#c5b6a1;line-height:1.9;margin:17px 0}
+    .button-link{display:flex;align-items:center;justify-content:center;text-align:center;min-height:51px;gap:8px;padding:12px 15px;border-radius:8px;border:1px solid var(--gold);color:#18140f;background:var(--gold);font-weight:700;font-size:11px;letter-spacing:.9px;text-transform:uppercase}
+    .button-link:hover{background:var(--gold-light)}
+    .reader{min-width:0;overflow:hidden;border:1px solid var(--border);border-radius:17px;background:#151411;box-shadow:0 28px 60px rgba(0,0,0,.38)}
+    .reader-head{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;padding:17px 22px;border-bottom:1px solid var(--border)}
+    .reader-identity{display:flex;flex-direction:column;gap:2px}
+    .reader-title{font:500 clamp(28px,3vw,38px)/1.05 'Cormorant Garamond',Georgia,serif;color:var(--gold-light)}
+    .reader-location{font-size:10px;color:#d6c9b6;letter-spacing:1.35px;text-transform:uppercase}
+    .reader-tools{display:flex;align-items:center;flex-wrap:wrap;gap:7px}
+    .tool{min-height:39px;background:transparent;color:#f1e5d3;border:1px solid rgba(229,210,175,.4);border-radius:7px;font-size:10px;font-weight:700;padding:9px 12px;letter-spacing:.6px}
+    .tool:hover{background:#403320}
+    .tool[aria-pressed="true"]{background:var(--gold);color:#1c1811;border-color:var(--gold)}
+    .tool-link{color:var(--gold-light)}
+    .book-stage{min-height:440px;height:min(76dvh,790px);padding:24px 22px;background:radial-gradient(ellipse at top,#3c3024,#211d18 48%,#151311 100%);display:flex;justify-content:center;align-items:center;overflow:hidden;position:relative}
+    .book-stage:before{content:"";position:absolute;bottom:17px;left:20%;right:20%;height:18px;border-radius:50%;filter:blur(15px);background:#000a;pointer-events:none}
+    .book{max-width:100%;max-height:100%;display:flex;align-items:stretch;justify-content:center;position:relative;filter:drop-shadow(0 12px 18px #0008)}
+    .book:before{content:"";position:absolute;z-index:2;top:1%;bottom:1%;left:50%;width:12px;transform:translateX(-50%);pointer-events:none;background:linear-gradient(90deg,transparent,#0004 43%,#fff4 55%,transparent);opacity:.8}
+    .book.single:before{display:none}
+    .leaf{flex:none;display:flex;align-items:center;justify-content:center;min-width:0;overflow:hidden;background:#fffdf8;position:relative;border:1px solid #ddd0b8}
+    .leaf.left{box-shadow:inset -12px 0 14px -15px #0008;border-radius:7px 0 0 7px}
+    .leaf.right{box-shadow:inset 12px 0 14px -15px #0008;border-radius:0 7px 7px 0}
+    .book.single .leaf{border-radius:7px}
+    .leaf canvas{display:block;max-width:100%;height:auto}
+    .book-cover{height:100%;width:100%;min-height:250px;background:linear-gradient(140deg,#1b1c19,#332719 65%,#161715);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px;color:#f5ead8}
+    .book-cover:before{content:"✦";font-size:29px;color:#d8b983;margin-bottom:18px}
+    .book-cover .cover-name{font:500 clamp(29px,4vw,53px)/1 'Cormorant Garamond',serif;color:var(--gold-light)}
+    .book-cover .cover-line{width:50px;height:1px;background:#bda275;margin:22px 0}
+    .book-cover p{font-size:11px;line-height:2;letter-spacing:1px;color:#dacbb5;text-transform:uppercase}
+    .book.turning{animation:pageTurn .29s ease-out both;transform-origin:50% 50%}
+    @keyframes pageTurn{from{opacity:.5;transform:perspective(1100px) rotateY(-5deg) translateX(9px)}to{opacity:1;transform:perspective(1100px) rotateY(0) translateX(0)}}
+    .load-message{position:absolute;inset:0;z-index:5;display:grid;place-content:center;text-align:center;gap:13px;padding:20px;color:#eee0c6;background:#211d18;font-size:13px}
+    .load-message[hidden]{display:none}
+    .load-message .spinner{width:30px;height:30px;border:2px solid #846e4a;border-top-color:#f9e3b8;border-radius:50%;animation:spin 1s linear infinite;margin:auto}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .error{max-width:510px;margin:auto;line-height:1.9}
+    .error a{text-decoration:underline;color:#fff4c8}
+    .book-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 18px;background:#111110;border-top:1px solid var(--border)}
+    .navbutton{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:49px;padding:12px 19px;background:linear-gradient(115deg,#e6c995,#c9a466);color:#1e170d;border:0;border-radius:8px;font-weight:700;letter-spacing:.65px;font-size:12px}
+    .navbutton:hover:not(:disabled){background:var(--gold-light)}
+    .counter{color:#f2e5ce;font-size:12px;text-align:center;line-height:1.6}
+    .counter small{display:block;color:#afa28f;font-size:10px;letter-spacing:.6px}
+    .mobile-reserve{display:none}
+    .footnote{max-width:1300px;margin:0 auto;padding:0 20px 36px;text-align:center;color:#8f8474;font-size:11px}
+    .reader:fullscreen{display:flex;flex-direction:column;width:100vw;height:100dvh;border:0;border-radius:0;background:#111}
+    .reader:fullscreen .book-stage{flex:1;height:auto;min-height:0}
+    .reader:fullscreen .reader-head,.reader:fullscreen .book-footer{flex:none}
+    @media(max-width:1100px){.layout{grid-template-columns:215px minmax(0,1fr);gap:15px}.choose{padding:17px}.book-stage{padding:18px}}
+    @media(max-width:900px){
+      .intro{padding:30px 17px 21px}.intro h1{font-size:55px}
+      .floorbar{border-radius:14px;gap:6px 14px}.floorbar span{font-size:10px}
+      .layout{display:block;width:calc(100% - 22px);margin-bottom:38px}
+      .choose{position:static;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding:12px;margin-bottom:12px}
+      .choose h2,.choose-tip,.choose .button-link{display:none}
+      .location-choice{margin:0;padding:12px 10px;gap:8px}.location-choice__arrow{width:27px;height:27px;font-size:15px}
+      .location-choice__name{font-size:12px}.location-choice__level{font-size:9px}
+      .reader-head{padding:13px 12px}.reader-title{font-size:30px}.reader-location{font-size:9px}
+      .reader-tools{width:100%;justify-content:space-between}
+      .tool{flex:1;padding:9px 5px;font-size:10px}.wide-only{display:none}
+      .book-stage{height:auto;min-height:350px;padding:13px 9px;overflow:visible}
+      .book{max-height:none}.book:before{display:none}
+      .book-footer{padding:12px 9px;gap:8px}
+      .navbutton{font-size:11px;padding:11px 12px;min-height:48px}
+      .counter{font-size:11px}
+      .mobile-reserve{display:flex;min-height:50px;margin:0 12px 14px}
+      .reader:fullscreen .book-stage{height:auto;overflow:auto}
+    }
+    @media(max-width:430px){.floorbar .floor-sep{display:none}.floorbar{align-items:center;flex-direction:column}.reader-head{gap:10px}.reader-tools .tool{font-size:9px}}
+    @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">La Tasca <span style="color:#9f8a6e">&amp;</span> Santori</a>
+    <a class="back" href="index.html">← Volver al inicio</a>
+  </header>
+  <section class="intro" aria-label="Presentación de las cartas">
+    <span class="eyebrow">Villa La Angostura · Dos restaurantes · Un mismo lugar</span>
+    <h1>Elegí tu experiencia.</h1>
+    <p>Recorré nuestra carta como un libro: pasá las páginas con las flechas o deslizá el dedo. Dos espacios diferentes en el mismo edificio.</p>
+    <div class="floorbar" aria-label="Dónde se encuentra cada restaurante">
+      <span>↑ <strong>Santori</strong> · Arriba, en la cabaña</span>
+      <span class="floor-sep" aria-hidden="true"></span>
+      <span>↓ <strong>La Tasca</strong> · Planta baja</span>
+    </div>
+  </section>
 
-.viewer-layout{width:min(1220px,calc(100% - 28px));margin:0 auto 65px;display:grid;grid-template-columns:250px 1fr;gap:22px;align-items:start}.sidebar{position:sticky;top:18px;border:1px solid var(--line);background:#12110f;padding:24px 19px;border-radius:12px}.sidebar-title{font:500 33px 'Cormorant Garamond',serif;color:var(--goldsoft);margin-bottom:14px}.pick{display:block;text-align:left;width:100%;border:1px solid rgba(255,255,255,.12);color:#e8dac2;background:#1d1914;padding:18px 13px;border-radius:7px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:10px}.pick[aria-selected="true"]{background:#d4b47a;color:#16120c;border-color:#d4b47a}.small-note{font-size:12px;color:var(--muted);line-height:1.8;margin:18px 0}.side-reserve{width:100%;padding:12px;white-space:normal;line-height:1.5}.reader{min-width:0;border:1px solid var(--line);background:#12110f;border-radius:12px;overflow:hidden}.reader-top{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:19px 23px;border-bottom:1px solid var(--line)}.reader-title{font:500 32px 'Cormorant Garamond',serif;color:#f1d39d}.reader-control{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.reader-control button{border:1px solid #5b5145;background:#201d19;color:#f1e7da;padding:9px 13px;border-radius:6px;font-size:13px;min-height:41px}.reader-control button:hover{background:#3a2e20}.reader-control button:disabled{opacity:.35;cursor:default}.reader-control button:disabled:hover{background:#201d19}.page-indicator{font-size:12px;color:#d8c5a5;min-width:76px;text-align:center}.page-stage{width:100%;min-height:440px;max-height:calc(100vh - 70px);overflow:auto;display:flex;align-items:flex-start;justify-content:safe center;padding:28px 18px;background:radial-gradient(circle at top,#27211a,#15120f 65%)}.page-canvas{background:#fff;box-shadow:0 13px 35px #0009;display:block;max-width:none}.status{color:var(--goldsoft);text-align:center;padding:35px 15px;line-height:1.8}.reader-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 22px;background:#0f0e0c;border-top:1px solid var(--line)}.read-hint{color:var(--muted);font-size:12px;line-height:1.6}.navbt{background:#d6ba85;border:0;color:#16120c;border-radius:6px;padding:14px 18px;font-weight:700;font-size:12px}.navbt:disabled{opacity:.33}.bottom-reserve{display:none}.errorBox{max-width:520px;margin:20px auto;padding:20px;color:#fff;background:#352014;border:1px solid var(--gold);border-radius:8px;line-height:1.8}
-/* En escritorio ajustamos TODA la hoja al área visible; solo el zoom permite desplazarse. */
-@media(min-width:861px){
-  .hint-mobile{display:none}
-  .heading{padding:24px 18px 19px}
-  .heading h1{font-size:clamp(44px,5vw,62px);margin:7px 0 7px}
-  .page-stage{height:clamp(370px,63dvh,850px);max-height:none;min-height:0;align-items:safe center;padding:16px 18px}
-  .reader-top{padding:13px 20px}
-  .reader-bottom{padding:12px 18px}
-}
-@media(max-width:860px){.hint-desktop{display:none}.viewer-layout{display:block}.sidebar{position:static;display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:15px;padding:14px}.sidebar-title{font-size:24px;margin:0 15px 0 0}.pick{width:auto;flex:1 1 120px;margin:0;text-align:center}.small-note{display:none}.side-reserve{display:none}.bottom-reserve{display:inline-flex;flex:1}.page-stage{min-height:400px;max-height:73vh;padding:16px 8px}.reader-top{padding:14px;flex-wrap:wrap}.reader-title{font-size:28px}.reader-control{width:100%;justify-content:space-between}.reader-bottom{flex-wrap:wrap;padding:14px;gap:10px}.read-hint{width:100%;text-align:center}.bottom-reserve{min-width:100%}}
-</style></head><body>
-<header><nav class="topbar"><a class="brandword" href="index.html">La Tasca <span style="color:#958067">&amp;</span> Santori</a><a href="index.html" class="back">← VOLVER AL INICIO</a></nav></header>
-<div class="heading"><div class="kicker">Villa La Angostura · Gastronomía</div><h1>Explorá nuestras cartas</h1><p>Pasá las hojas, ampliá los platos y descubrí cada propuesta sin descargar archivos ni iniciar sesión.</p></div>
-<main class="viewer-layout">
- <aside class="sidebar" aria-label="Elegir restaurante"><div class="sidebar-title">Elegí tu carta</div><button type="button" class="pick" data-restaurant="tasca" aria-selected="true">LA TASCA</button><button type="button" class="pick" data-restaurant="santori" aria-selected="false">SANTORI</button><p class="small-note">Carta completa, hoja por hoja. Podés pasar con los botones, las flechas del teclado o deslizar el dedo.</p><a id="sideReserve" class="btn side-reserve" href="https://wa.me/5492944788994" target="_blank" rel="noopener">CONSULTAS Y RESERVAS ↗</a></aside>
- <section class="reader" aria-label="Lector de la carta completa">
-  <div class="reader-top"><div class="reader-title" id="readerTitle">Carta La Tasca</div><div class="reader-control"><button id="zoomOut" title="Alejar" aria-label="Alejar">−</button><button id="zoomIn" title="Ampliar" aria-label="Ampliar">+</button><button id="fitPage" title="Ver la hoja completa" aria-label="Ajustar hoja completa">AJUSTAR</button><span class="page-indicator" id="pageCount">Hoja 1 de —</span></div></div>
-  <div class="page-stage" id="stage"><div class="status" id="loadingStatus" role="status">Preparando la carta…</div><canvas class="page-canvas" id="pdfCanvas" aria-label="Hoja del menú" hidden></canvas></div>
-  <div class="reader-bottom"><button class="navbt" id="previous" aria-label="Hoja anterior">← ANTERIOR</button><span class="read-hint"><span class="hint-desktop">Hoja completa a la vista · Ampliá con +</span><span class="hint-mobile">Deslizá para pasar de hoja</span></span><button class="navbt" id="next" aria-label="Hoja siguiente">SIGUIENTE →</button><a id="bottomReserve" class="btn bottom-reserve" href="https://wa.me/5492944788994" target="_blank" rel="noopener">RESERVAR ↗</a></div>
- </section>
-</main>
-<footer>LA TASCA · SANTORI · VILLA LA ANGOSTURA</footer>
-<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
-<script>
-(function(){
- 'use strict';
- const data={tasca:{name:'La Tasca',pdf:'MENU%20LA%20TASCA%20%281%29.pdf',whatsapp:'https://wa.me/5492944788994?text='+encodeURIComponent('Hola, quisiera consultar una reserva en La Tasca.')},santori:{name:'Santori',pdf:'MENU%20SANTORI.pdf',whatsapp:'https://wa.me/5492944555129?text='+encodeURIComponent('Hola, quisiera consultar una reserva en Santori.')}};
- const canvas=document.getElementById('pdfCanvas'),stage=document.getElementById('stage'),status=document.getElementById('loadingStatus');
- const count=document.getElementById('pageCount'),prev=document.getElementById('previous'),next=document.getElementById('next');
- let restaurant='tasca',pdf=null,page=1,zoom=1,serial=0,renderTask=null;
- const ctx=canvas.getContext('2d',{alpha:false});
- function buttons(){ prev.disabled=!pdf||page<=1;next.disabled=!pdf||page>=pdf.numPages; count.textContent='Hoja '+page+' de '+(pdf?pdf.numPages:'—');}
- function showError(){status.hidden=false;canvas.hidden=true;status.innerHTML='No pudimos abrir la vista de páginas en este momento.<div class="errorBox">Revisá tu conexión e intentá actualizar la página. También podés <a style="text-decoration:underline" id="fallback" href="#" target="_blank" rel="noopener">abrir la carta original</a>.</div>';document.getElementById('fallback').href=data[restaurant].pdf;}
- async function render(){if(!pdf)return;const current=++serial;status.hidden=false;status.textContent='Cargando hoja '+page+'…';canvas.hidden=true;buttons();
-   try{if(renderTask){try{renderTask.cancel();await renderTask.promise}catch(e){}renderTask=null}
-     const p=await pdf.getPage(page);if(current!==serial)return;
-     const base=p.getViewport({scale:1});
-     const desktop=window.matchMedia('(min-width: 861px)').matches;
-     const availableWidth=Math.max(100,stage.clientWidth-(desktop?36:32));
-     const availableHeight=Math.max(120,stage.clientHeight-32);
-     // Escritorio: la hoja completa entra tanto en ancho como en alto.
-     // Celular: conservar el comportamiento actual de ancho, deslizamiento y zoom.
-     const fitScale=desktop ? Math.min(availableWidth/base.width,availableHeight/base.height) : Math.min(availableWidth,830)/base.width;
-     const scale=fitScale*zoom;
-     const width=base.width*scale;
-     const pixel=Math.min(window.devicePixelRatio||1,2);
-     const v=p.getViewport({scale:scale*pixel});canvas.width=Math.floor(v.width);canvas.height=Math.floor(v.height);canvas.style.width=width+'px';canvas.style.height=(v.height/pixel)+'px';
-     renderTask=p.render({canvasContext:ctx,viewport:v});await renderTask.promise;
-     if(current!==serial)return;status.hidden=true;canvas.hidden=false;stage.scrollTop=0;stage.scrollLeft=0;buttons();
-   }catch(e){if(current!==serial)return;if(e.name!=='RenderingCancelledException')showError();}}
- async function select(name){if(!data[name])name='tasca';restaurant=name;page=1;zoom=1;pdf=null;serial++;canvas.hidden=true;status.hidden=false;status.textContent='Abriendo carta completa de '+data[name].name+'…';document.getElementById('readerTitle').textContent='Carta '+data[name].name;document.getElementById('sideReserve').href=data[name].whatsapp;document.getElementById('bottomReserve').href=data[name].whatsapp;document.querySelectorAll('.pick').forEach(b=>b.setAttribute('aria-selected',b.dataset.restaurant===name?'true':'false'));history.replaceState(null,'','?restaurante='+name);buttons();
-   try{if(!window.pdfjsLib)throw Error('Lector no disponible');pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';const loaded=await pdfjsLib.getDocument({url:data[name].pdf}).promise;if(restaurant!==name)return;pdf=loaded;render()}catch(e){if(restaurant===name)showError()}}
- document.querySelectorAll('.pick').forEach(b=>b.addEventListener('click',()=>select(b.dataset.restaurant)));
- prev.addEventListener('click',()=>{if(pdf&&page>1){page--;render()}});
- next.addEventListener('click',()=>{if(pdf&&page<pdf.numPages){page++;render()}});
- document.getElementById('zoomIn').addEventListener('click',()=>{zoom=Math.min(2.25,Math.round((zoom+0.25)*100)/100);render()});
- document.getElementById('zoomOut').addEventListener('click',()=>{zoom=Math.max(0.75,Math.round((zoom-0.25)*100)/100);render()});
- document.getElementById('fitPage').addEventListener('click',()=>{zoom=1;render()});
- let lastStageWidth=stage.clientWidth,lastStageHeight=stage.clientHeight;
- const observer=new ResizeObserver(()=>{const w=stage.clientWidth,h=stage.clientHeight;if(Math.abs(w-lastStageWidth)>2||Math.abs(h-lastStageHeight)>2){lastStageWidth=w;lastStageHeight=h;if(pdf)render()}});observer.observe(stage);
- document.addEventListener('keydown',e=>{if(e.target.tagName==='BUTTON'||e.target.tagName==='INPUT')return;if(e.key==='ArrowRight'&&!next.disabled)next.click();if(e.key==='ArrowLeft'&&!prev.disabled)prev.click()});
- let sx=0,sy=0;stage.addEventListener('touchstart',e=>{if(e.touches.length===1){sx=e.touches[0].clientX;sy=e.touches[0].clientY}},{passive:true});stage.addEventListener('touchend',e=>{if(e.changedTouches.length!==1||zoom>1.1)return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>65&&Math.abs(dx)>Math.abs(dy)*1.4){if(dx<0&&!next.disabled)next.click();if(dx>0&&!prev.disabled)prev.click()}},{passive:true});
- select(new URLSearchParams(location.search).get('restaurante')||'tasca');
-})();
-</script></body></html>
+  <main class="layout">
+    <aside class="choose" aria-label="Seleccionar restaurante">
+      <h2>¿Dónde vas a comer?</h2>
+      <button type="button" class="location-choice" data-restaurant="tasca" aria-pressed="true">
+        <span class="location-choice__arrow" aria-hidden="true">↓</span>
+        <span class="location-choice__copy"><span class="location-choice__name">LA TASCA</span><span class="location-choice__level">Planta baja · PB</span></span>
+      </button>
+      <button type="button" class="location-choice" data-restaurant="santori" aria-pressed="false">
+        <span class="location-choice__arrow" aria-hidden="true">↑</span>
+        <span class="location-choice__copy"><span class="location-choice__name">SANTORI</span><span class="location-choice__level">Arriba · En la cabaña</span></span>
+      </button>
+      <p class="choose-tip">La Tasca está abajo, en planta baja. Para encontrar Santori, subí a la cabaña. Ambas propuestas comparten dirección.</p>
+      <a class="button-link" id="sidebarReserve" href="https://wa.me/5492944788994" target="_blank" rel="noopener">Consultar reserva ↗</a>
+    </aside>
+
+    <section class="reader" id="reader" aria-label="Carta digital tipo libro">
+      <div class="reader-head">
+        <div class="reader-identity">
+          <span class="reader-title" id="readerTitle">La Tasca</span>
+          <span class="reader-location" id="readerLocation">Planta baja · PB</span>
+        </div>
+        <div class="reader-tools">
+          <button class="tool wide-only" id="bookMode" type="button" aria-pressed="true" title="Mostrar el libro abierto">Libro abierto</button>
+          <button class="tool wide-only" id="singleMode" type="button" aria-pressed="false" title="Mostrar una página grande">Una página</button>
+          <button class="tool" id="fullscreen" type="button" aria-label="Ver carta en pantalla completa">⛶ Pantalla completa</button>
+          <a class="tool tool-link" id="originalPdf" href="MENU%20LA%20TASCA%20%281%29.pdf" target="_blank" rel="noopener">Ver PDF ↗</a>
+        </div>
+      </div>
+      <div class="book-stage" id="stage">
+        <div class="book" id="book" aria-label="Páginas de la carta"></div>
+        <div class="load-message" id="status" role="status" aria-live="polite">
+          <span class="spinner" aria-hidden="true"></span><span id="statusText">Abriendo la carta…</span>
+        </div>
+      </div>
+      <div class="book-footer">
+        <button class="navbutton" id="previous" type="button" disabled>← Anterior</button>
+        <div class="counter" id="pageCount" aria-live="polite">Preparando páginas…<small>Deslizá para pasar</small></div>
+        <button class="navbutton" id="next" type="button" disabled>Siguiente →</button>
+      </div>
+      <a class="button-link mobile-reserve" id="mobileReserve" href="https://wa.me/5492944788994" target="_blank" rel="noopener">Consultar reserva ↗</a>
+    </section>
+  </main>
+  <p class="footnote">La Tasca · planta baja &nbsp; | &nbsp; Santori · arriba, en la cabaña &nbsp; · &nbsp; Av. Arrayanes 6155, Villa La Angostura</p>
+  <noscript><p style="text-align:center;padding:20px">Para leer la carta sin JavaScript: <a href="MENU%20LA%20TASCA%20%281%29.pdf">Carta La Tasca</a> · <a href="MENU%20SANTORI.pdf">Carta Santori</a>.</p></noscript>
+  <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
+  <script>
+  (function(){
+    'use strict';
+    const restaurants={
+      tasca:{name:'La Tasca',place:'Planta baja · PB',pdf:'MENU%20LA%20TASCA%20%281%29.pdf',whatsapp:'https://wa.me/5492944788994?text='+encodeURIComponent('Hola, quisiera consultar una reserva en La Tasca, planta baja.')},
+      santori:{name:'Santori',place:'Arriba · En la cabaña',pdf:'MENU%20SANTORI.pdf',whatsapp:'https://wa.me/5492944555129?text='+encodeURIComponent('Hola, quisiera consultar una reserva en Santori, arriba en la cabaña.')}
+    };
+    const $=id=>document.getElementById(id);
+    const stage=$('stage'),reader=$('reader'),book=$('book'),status=$('status'),statusText=$('statusText');
+    const prev=$('previous'),next=$('next'),count=$('pageCount'),bookMode=$('bookMode'),singleMode=$('singleMode');
+    const wide=window.matchMedia('(min-width:901px)');
+    let selected='tasca',pdf=null,pageNumber=1,mode='book',loadToken=0,renderToken=0,touchStart=null,resizeTimer=0;
+    function isOpenBook(){return wide.matches&&mode==='book'}
+    function spreadStart(){return isOpenBook()&&pageNumber>1?Math.floor(pageNumber/2)*2:pageNumber}
+    function loading(message){status.hidden=false;statusText.textContent=message;status.querySelector('.spinner').hidden=false}
+    function error(message){
+      status.hidden=false;status.querySelector('.spinner').hidden=true;
+      statusText.textContent='';
+      const box=document.createElement('div');box.className='error';box.textContent=message+' ';
+      const link=document.createElement('a');link.href=restaurants[selected].pdf;link.target='_blank';link.rel='noopener';link.textContent='Abrir el PDF original ↗';
+      box.appendChild(link);statusText.appendChild(box);
+      book.replaceChildren();
+    }
+    function updateNavigation(){
+      const first=spreadStart();
+      const total=pdf?pdf.numPages:0;
+      prev.disabled=!pdf||first<=1;
+      next.disabled=!pdf||(isOpenBook()?first+1>=total:first>=total);
+      if(!pdf){count.innerHTML='Preparando carta…<small>Deslizá para pasar de página</small>';return}
+      const label=isOpenBook()?(first===1?'Portada · Página 1 de '+total:'Páginas '+first+(first+1<=total?'–'+(first+1):'')+' de '+total):'Página '+pageNumber+' de '+total;
+      count.textContent=label;
+      const hint=document.createElement('small');hint.textContent=wide.matches?'Usá las flechas para pasar':'Deslizá a izquierda o derecha';
+      count.appendChild(hint);
+    }
+    function cover(width,height){
+      const leaf=document.createElement('div');leaf.className='leaf left';leaf.style.width=width+'px';leaf.style.height=height+'px';
+      const content=document.createElement('div');content.className='book-cover';
+      const name=document.createElement('div');name.className='cover-name';name.textContent=restaurants[selected].name;
+      const rule=document.createElement('div');rule.className='cover-line';
+      const where=document.createElement('p');where.textContent=restaurants[selected].place+' · Villa La Angostura';
+      content.append(name,rule,where);leaf.appendChild(content);return leaf;
+    }
+    async function render(){
+      if(!pdf)return;
+      const token=++renderToken;
+      const open=isOpenBook();
+      const first=spreadStart();
+      const sequence=open?(first===1?[0,1]:[first,first+1]):[pageNumber];
+      updateNavigation();loading('Preparando '+(open?'las páginas':'la página')+'…');
+      try{
+        const available=sequence.filter(n=>n>0&&n<=pdf.numPages);
+        const pages=await Promise.all(available.map(n=>pdf.getPage(n)));
+        if(token!==renderToken)return;
+        const base=pages[0].getViewport({scale:1});
+        const maxW=Math.max(200,stage.clientWidth-(open?58:25));
+        const eachWidth=open?(maxW-10)/2:maxW;
+        const maxH=Math.max(310,stage.clientHeight-42);
+        const scale=wide.matches?Math.min(eachWidth/base.width,maxH/base.height):eachWidth/base.width;
+        const sheetW=Math.max(1,Math.round(base.width*scale));
+        const sheetH=Math.max(1,Math.round(base.height*scale));
+        const ratio=Math.min(window.devicePixelRatio||1,2);
+        const fragments=[];
+        for(let i=0;i<sequence.length;i++){
+          const n=sequence[i],leaf=document.createElement('div');
+          leaf.className='leaf '+(open?(i===0?'left':'right'):'single');
+          leaf.style.width=sheetW+'px';leaf.style.height=sheetH+'px';
+          if(n===0){fragments.push(cover(sheetW,sheetH));continue}
+          if(n>pdf.numPages){fragments.push(cover(sheetW,sheetH));continue}
+          const p=pages[available.indexOf(n)];
+          const canvas=document.createElement('canvas');canvas.setAttribute('aria-label','Página '+n+' de '+pdf.numPages);
+          const vp=p.getViewport({scale:scale*ratio});
+          canvas.width=Math.ceil(vp.width);canvas.height=Math.ceil(vp.height);canvas.style.width=sheetW+'px';canvas.style.height=sheetH+'px';
+          const context=canvas.getContext('2d',{alpha:false});
+          await p.render({canvasContext:context,viewport:vp}).promise;
+          if(token!==renderToken)return;
+          leaf.appendChild(canvas);fragments.push(leaf);
+        }
+        if(token!==renderToken)return;
+        book.className='book'+(open?'':' single');
+        book.replaceChildren(...fragments);
+        book.classList.remove('turning');void book.offsetWidth;book.classList.add('turning');
+        status.hidden=true;
+        updateNavigation();
+      }catch(e){if(token!==renderToken)return;console.error('No se pudo mostrar la carta',e);error('No pudimos mostrar la carta en este momento.')}
+    }
+    async function selectRestaurant(key){
+      if(!restaurants[key])key='tasca';
+      const token=++loadToken;selected=key;pdf=null;pageNumber=1;renderToken++;
+      const d=restaurants[key];
+      $('readerTitle').textContent=d.name;$('readerLocation').textContent=d.place;
+      $('sidebarReserve').href=d.whatsapp;$('mobileReserve').href=d.whatsapp;$('originalPdf').href=d.pdf;
+      document.querySelectorAll('[data-restaurant]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.restaurant===key)));
+      history.replaceState(null,'','?restaurante='+key);
+      book.replaceChildren();updateNavigation();loading('Abriendo la carta de '+d.name+'…');
+      try{
+        if(!window.pdfjsLib)throw new Error('Librería PDF no disponible');
+        window.pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+        const opened=await window.pdfjsLib.getDocument({url:d.pdf}).promise;
+        if(token!==loadToken)return;
+        pdf=opened;render();
+      }catch(e){if(token!==loadToken)return;console.error('No se pudo abrir PDF',e);error('La vista tipo libro no está disponible.')}
+    }
+    function move(direction){
+      if(!pdf)return;
+      if(isOpenBook()){
+        const first=spreadStart();
+        if(direction>0&&first+1<pdf.numPages)pageNumber=first===1?2:first+2;
+        if(direction<0&&first>1)pageNumber=first===2?1:first-2;
+      }else{pageNumber=Math.max(1,Math.min(pdf.numPages,pageNumber+direction))}
+      render();
+    }
+    function setMode(m){
+      mode=m;
+      bookMode.setAttribute('aria-pressed',String(m==='book'));
+      singleMode.setAttribute('aria-pressed',String(m==='single'));
+      render();
+    }
+    document.querySelectorAll('[data-restaurant]').forEach(btn=>btn.addEventListener('click',()=>selectRestaurant(btn.dataset.restaurant)));
+    prev.addEventListener('click',()=>move(-1));next.addEventListener('click',()=>move(1));
+    bookMode.addEventListener('click',()=>setMode('book'));singleMode.addEventListener('click',()=>setMode('single'));
+    $('fullscreen').addEventListener('click',()=>{
+      if(document.fullscreenElement){document.exitFullscreen().catch(()=>{});}
+      else if(reader.requestFullscreen){reader.requestFullscreen().catch(()=>window.open(restaurants[selected].pdf,'_blank','noopener'));}
+      else window.open(restaurants[selected].pdf,'_blank','noopener');
+    });
+    document.addEventListener('fullscreenchange',()=>{$('fullscreen').textContent=document.fullscreenElement?'✕ Salir de pantalla completa':'⛶ Pantalla completa';setTimeout(render,120)});
+    document.addEventListener('keydown',e=>{
+      if(e.altKey||e.ctrlKey||e.metaKey||/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName))return;
+      if(e.key==='ArrowLeft'&&!prev.disabled){e.preventDefault();move(-1)}
+      if(e.key==='ArrowRight'&&!next.disabled){e.preventDefault();move(1)}
+    });
+    stage.addEventListener('touchstart',e=>{if(e.touches.length===1)touchStart={x:e.touches[0].clientX,y:e.touches[0].clientY}},{passive:true});
+    stage.addEventListener('touchend',e=>{
+      if(!touchStart||e.changedTouches.length!==1)return;
+      const dx=e.changedTouches[0].clientX-touchStart.x,dy=e.changedTouches[0].clientY-touchStart.y;
+      if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.25)move(dx<0?1:-1);
+      touchStart=null;
+    },{passive:true});
+    window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(pdf)render()},160)});
+    selectRestaurant(new URLSearchParams(location.search).get('restaurante')||'tasca');
+  })();
+  </script>
+</body>
+</html>
