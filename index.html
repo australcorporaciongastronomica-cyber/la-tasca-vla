@@ -1268,6 +1268,51 @@
     @media(max-width:760px){.hero-menu-access{display:grid;gap:11px;margin:22px auto 4px}.hero-menu-access__link{width:100%;max-width:100%;font-size:12px;padding:15px;min-height:56px}}
     .hero-menu-access__link:focus-visible{outline:3px solid white;outline-offset:3px}
 
+
+    /* ORIENTACIÓN: DOS RESTAURANTES, DOS NIVELES */
+    .hero-floor-sign{display:flex;align-items:center;justify-content:center;gap:11px 22px;flex-wrap:wrap;margin:21px auto 0;max-width:810px}
+    .hero-floor-sign a{display:inline-flex;align-items:center;gap:9px;color:#fff5e4;text-transform:uppercase;font-size:10px;letter-spacing:1px;font-weight:700;border-radius:99px;border:1px solid rgba(236,210,164,.64);padding:12px 18px;background:rgba(9,8,8,.74);backdrop-filter:blur(8px);transition:background .2s ease}
+    .hero-floor-sign a:hover{background:rgba(201,169,107,.28)}
+    .hero-floor-sign .floor-arrow{display:grid;place-items:center;width:22px;height:22px;background:#d9b77b;color:#1a140f;border-radius:50%;font-size:15px;line-height:1}
+    .floor-guide{background:linear-gradient(180deg,#10100f,#1c1915 50%,#0c0d0d);padding:clamp(65px,9vw,108px) 0;border-top:1px solid rgba(201,169,107,.28);border-bottom:1px solid rgba(201,169,107,.28);color:#f8f0e4}
+    .floor-guide__intro{text-align:center;max-width:840px;margin:0 auto 38px}
+    .floor-guide__intro .section-label{color:#d7b87f}
+    .floor-guide__intro h2{font:500 clamp(48px,6vw,80px)/1.05 'Cormorant Garamond',serif;margin:12px auto 15px}
+    .floor-guide__intro p{font-size:14px;color:#cfc3b1;line-height:1.9;max-width:680px;margin:auto}
+    .floor-guide__stack{max-width:950px;margin:auto;display:flex;flex-direction:column;gap:0;overflow:hidden;border:1px solid rgba(218,187,138,.47);box-shadow:0 26px 60px #0006}
+    .floor-guide__place{position:relative;isolation:isolate;display:grid;grid-template-columns:140px minmax(0,1fr) auto;align-items:center;gap:25px;min-height:220px;padding:32px 40px;background:#161412}
+    .floor-guide__place:before{content:"";position:absolute;inset:0;z-index:-2;opacity:.23;background-position:center;background-size:cover;background-repeat:no-repeat}
+    .floor-guide__place:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(95deg,#100e0eef 14%,#161411dd 65%,#17141095)}
+    .floor-guide__place--up:before{background-image:url('santori-neon-horizontal.jpg')}
+    .floor-guide__place--down:before{background-image:url('tasca-interior-horizontal.jpg')}
+    .floor-guide__number{display:flex;align-items:center;justify-content:center;flex-direction:column;border-right:1px solid rgba(218,187,138,.36);min-height:110px;color:#e9c68a}
+    .floor-guide__number b{font:500 65px/1 'Cormorant Garamond',Georgia,serif}
+    .floor-guide__number small{font-size:10px;letter-spacing:1.5px;font-weight:700}
+    .floor-guide__where{font-size:10px;letter-spacing:2.5px;color:#eed3a4;font-weight:700;text-transform:uppercase}
+    .floor-guide__place h3{font:500 clamp(40px,5vw,62px)/1 'Cormorant Garamond',serif;margin:9px 0 8px;color:#fff9ef}
+    .floor-guide__place p{color:#d8cbbb;font-size:13px;line-height:1.7;margin:0}
+    .floor-guide__link{min-width:150px;text-align:center;display:inline-flex;align-items:center;justify-content:center;border:1px solid #e2c48d;background:#d9b77b;color:#20160c;padding:16px 17px;font-size:11px;font-weight:700;letter-spacing:.8px;transition:background .2s}
+    .floor-guide__link:hover{background:#f4dcaf}
+    .floor-guide__landing{display:flex;align-items:center;justify-content:center;gap:16px;padding:12px;color:#e2c698;background:#2a2219;border-top:1px solid rgba(215,183,129,.28);border-bottom:1px solid rgba(215,183,129,.28);font-size:10px;text-transform:uppercase;letter-spacing:2px;font-weight:700}
+    .floor-guide__landing:before,.floor-guide__landing:after{content:"";height:1px;flex:1;background:rgba(215,183,129,.28)}
+    @media(max-width:820px){
+      .floor-guide__place{grid-template-columns:100px 1fr;padding:26px 22px;gap:17px}
+      .floor-guide__number{min-height:100px}.floor-guide__number b{font-size:56px}
+      .floor-guide__link{grid-column:2;justify-self:start;min-width:130px;padding:13px}
+    }
+    @media(max-width:560px){
+      .hero-floor-sign{gap:8px;margin-top:15px}
+      .hero-floor-sign a{width:100%;max-width:350px;justify-content:center;font-size:10px;padding:10px}
+      .hero-scroll{margin-top:18px}
+      .floor-guide__intro{margin-bottom:26px}.floor-guide__intro h2{font-size:53px}.floor-guide__intro p{font-size:13px}
+      .floor-guide__place{grid-template-columns:66px 1fr;gap:12px;min-height:220px;padding:23px 15px}
+      .floor-guide__number{min-height:88px}.floor-guide__number b{font-size:47px}.floor-guide__number small{font-size:9px}
+      .floor-guide__where{font-size:9px;letter-spacing:1.5px}
+      .floor-guide__place h3{font-size:46px}.floor-guide__place p{font-size:11px}
+      .floor-guide__link{grid-column:2}
+      .floor-guide__landing{font-size:9px;letter-spacing:1px}
+    }
+
   </style>
 
 </head>
@@ -1327,6 +1372,11 @@
         <a href="cartas.html?restaurante=santori" class="hero-menu-access__link">VER CARTA SANTORI <span aria-hidden="true">↗</span></a>
       </nav>
 
+      <div class="hero-floor-sign" aria-label="Dónde se encuentra cada restaurante">
+        <a href="#en-que-piso"><span class="floor-arrow" aria-hidden="true">↑</span> Santori · Arriba, en la cabaña</a>
+        <a href="#en-que-piso"><span class="floor-arrow" aria-hidden="true">↓</span> La Tasca · Planta baja</a>
+      </div>
+
       <div class="hero-scroll">
 
         Descubrí nuestras propuestas ↓
@@ -1340,6 +1390,39 @@
 
   </section>
 
+
+
+  <!-- MISMA DIRECCIÓN: ORIENTACIÓN DE LOS DOS RESTAURANTES -->
+  <section class="floor-guide" id="en-que-piso" aria-labelledby="floor-guide-title">
+    <div class="container">
+      <div class="floor-guide__intro">
+        <div class="section-label">Un mismo lugar · Dos experiencias</div>
+        <h2 id="floor-guide-title">¿Dónde está cada uno?</h2>
+        <p>Nos encontrás en la misma dirección. <strong>Santori está arriba, en la cabaña.</strong> <strong>La Tasca está abajo, en planta baja.</strong> Elegí el restaurante que buscás y descubrí su carta.</p>
+      </div>
+      <div class="floor-guide__stack" aria-label="Santori arriba y La Tasca en planta baja">
+        <article class="floor-guide__place floor-guide__place--up">
+          <div class="floor-guide__number" aria-hidden="true"><b>↑</b><small>ARRIBA</small></div>
+          <div>
+            <div class="floor-guide__where">En la cabaña · Nivel superior</div>
+            <h3>Santori</h3>
+            <p>Sushi Nikkei. Para disfrutar de Santori, subí a la cabaña.</p>
+          </div>
+          <a class="floor-guide__link" href="cartas.html?restaurante=santori">VER CARTA ↗</a>
+        </article>
+        <div class="floor-guide__landing">MISMO EDIFICIO · AV. ARRAYANES 6155</div>
+        <article class="floor-guide__place floor-guide__place--down">
+          <div class="floor-guide__number" aria-hidden="true"><b>↓</b><small>ABAJO</small></div>
+          <div>
+            <div class="floor-guide__where">PB · Planta baja</div>
+            <h3>La Tasca</h3>
+            <p>Cocina, vinos y Patagonia. La Tasca te recibe en planta baja.</p>
+          </div>
+          <a class="floor-guide__link" href="cartas.html?restaurante=tasca">VER CARTA ↗</a>
+        </article>
+      </div>
+    </div>
+  </section>
 
 
   <!-- INTRO -->
@@ -1408,7 +1491,7 @@
 
             <div class="brand-subtitle">
 
-              Villa La Angostura
+              Planta baja · Villa La Angostura
 
             </div>
 
@@ -1511,7 +1594,7 @@
 
             <div class="brand-subtitle">
 
-              Villa La Angostura
+              Arriba, en la cabaña · Villa La Angostura
 
             </div>
 
@@ -1803,8 +1886,10 @@
 
       <p class="section-text">
 
-        La Tasca y Santori comparten
-        ubicación y horarios de atención.
+        La Tasca y Santori comparten dirección.
+        <strong>La Tasca está en planta baja</strong> y
+        <strong>Santori, arriba en la cabaña.</strong>
+        Consultanos por WhatsApp para tu reserva.
 
       </p>
 
