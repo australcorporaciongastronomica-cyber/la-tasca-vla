@@ -86,6 +86,8 @@
     .reader:fullscreen{display:flex;flex-direction:column;width:100vw;height:100dvh;border:0;border-radius:0;background:#111}
     .reader:fullscreen .book-stage{flex:1;height:auto;min-height:0}
     .reader:fullscreen .reader-head,.reader:fullscreen .book-footer{flex:none}
+    .order-link{margin-top:12px;background:#1a6239;border-color:#2aaf68;color:#f3fff5}
+    .order-link:hover{background:#2c9a58;color:#fff}
     @media(max-width:1100px){.layout{grid-template-columns:215px minmax(0,1fr);gap:15px}.choose{padding:17px}.book-stage{padding:18px}}
     @media(max-width:900px){
       .intro{padding:30px 17px 21px}.intro h1{font-size:55px}
@@ -139,6 +141,7 @@
       </button>
       <p class="choose-tip">La Tasca está abajo, en planta baja. Para encontrar Santori, subí a la cabaña. Ambas propuestas comparten dirección.</p>
       <a class="button-link" id="sidebarReserve" href="https://wa.me/5492944788994" target="_blank" rel="noopener">Consultar reserva ↗</a>
+      <a class="button-link order-link" id="sidebarOrder" href="pedidos.html?restaurante=tasca">🛍 Armar pedido Take Away ↗</a>
     </aside>
 
     <section class="reader" id="reader" aria-label="Carta digital tipo libro">
@@ -166,6 +169,7 @@
         <button class="navbutton" id="next" type="button" disabled>Siguiente →</button>
       </div>
       <a class="button-link mobile-reserve" id="mobileReserve" href="https://wa.me/5492944788994" target="_blank" rel="noopener">Consultar reserva ↗</a>
+      <a class="button-link mobile-reserve order-link" id="mobileOrder" href="pedidos.html?restaurante=tasca">🛍 Armar pedido Take Away ↗</a>
     </section>
   </main>
   <p class="footnote">La Tasca · planta baja &nbsp; | &nbsp; Santori · arriba, en la cabaña &nbsp; · &nbsp; Av. Arrayanes 6155, Villa La Angostura</p>
@@ -262,6 +266,7 @@
       const d=restaurants[key];
       $('readerTitle').textContent=d.name;$('readerLocation').textContent=d.place;
       $('sidebarReserve').href=d.whatsapp;$('mobileReserve').href=d.whatsapp;$('originalPdf').href=d.pdf;
+      $('sidebarOrder').href='pedidos.html?restaurante='+key;$('mobileOrder').href='pedidos.html?restaurante='+key;
       document.querySelectorAll('[data-restaurant]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.restaurant===key)));
       history.replaceState(null,'','?restaurante='+key);
       book.replaceChildren();updateNavigation();loading('Abriendo la carta de '+d.name+'…');
