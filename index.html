@@ -1313,6 +1313,15 @@
       .floor-guide__landing{font-size:9px;letter-spacing:1px}
     }
 
+
+    /* ACCESOS TAKE AWAY, SIN MODIFICAR RESERVAS */
+    .hero-order-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:14px auto 4px;max-width:735px}
+    .hero-order-links a{min-width:220px;flex:1;max-width:350px;display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid #8ebc92;background:rgba(9,30,17,.84);color:#e6f8e9;min-height:50px;border-radius:9px;padding:12px;font-size:11px;font-weight:700;letter-spacing:.8px;transition:background .2s}
+    .hero-order-links a:hover{background:#1d6a39}
+    .action-btn.btn-order{grid-column:1/-1;border-color:rgba(115,203,132,.6);background:linear-gradient(90deg,rgba(45,145,83,.3),rgba(6,23,11,.8));}
+    .action-btn.btn-order:hover{background:rgba(48,147,85,.4)}
+    .btn-order .btn-icon{background:rgba(49,183,95,.26);color:#b3ffc6}
+    @media(max-width:760px){.hero-order-links{margin:11px auto 3px;gap:8px}.hero-order-links a{width:100%;max-width:100%;min-height:48px}}
   </style>
 
 </head>
@@ -1370,6 +1379,11 @@
       <nav class="hero-menu-access" aria-label="Acceso directo a las cartas completas">
         <a href="cartas.html?restaurante=tasca" class="hero-menu-access__link">VER CARTA LA TASCA <span aria-hidden="true">↗</span></a>
         <a href="cartas.html?restaurante=santori" class="hero-menu-access__link">VER CARTA SANTORI <span aria-hidden="true">↗</span></a>
+      </nav>
+
+      <nav class="hero-order-links" aria-label="Armar un pedido Take Away">
+        <a href="pedidos.html?restaurante=tasca">🛍 Armar pedido La Tasca ↗</a>
+        <a href="pedidos.html?restaurante=santori">🛍 Armar pedido Santori ↗</a>
       </nav>
 
       <div class="hero-floor-sign" aria-label="Dónde se encuentra cada restaurante">
@@ -1525,6 +1539,11 @@
                   <span class="btn-meta">Menú completo de La Tasca</span>
                 </span>
               </a>
+              <a href="pedidos.html?restaurante=tasca" class="action-btn btn-order" aria-label="Armar pedido Take Away de La Tasca">
+                <span class="btn-icon" aria-hidden="true">🛍</span>
+                <span class="btn-copy"><span class="btn-label">Armar pedido Take Away</span><span class="btn-meta">Elegí tus platos y envialos por WhatsApp</span></span>
+              </a>
+
 
               <a
                 href="https://wa.me/5492944788994"
@@ -1629,6 +1648,11 @@
                   <span class="btn-meta">Menú completo de Santori</span>
                 </span>
               </a>
+              <a href="pedidos.html?restaurante=santori" class="action-btn btn-order" aria-label="Armar pedido Take Away de Santori">
+                <span class="btn-icon" aria-hidden="true">🛍</span>
+                <span class="btn-copy"><span class="btn-label">Armar pedido Take Away</span><span class="btn-meta">Elegí tus platos y envialos por WhatsApp</span></span>
+              </a>
+
 
               <a
                 href="https://wa.me/5492944555129"
