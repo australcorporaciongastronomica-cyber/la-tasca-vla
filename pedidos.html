@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10100f">
+  <meta name="description" content="Armá tu pedido Take Away de La Tasca o Santori y enviá el detalle al WhatsApp de cada restaurante.">
+  <title>Armá tu pedido | La Tasca &amp; Santori</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--gold:#dfbd81;--cream:#f8eee0;--muted:#c1b4a1;--line:rgba(222,189,129,.28);--panel:#1c1a17}
+    *{box-sizing:border-box}
+    body{margin:0;background:radial-gradient(ellipse at 70% -20%,#30271d,#101111 62%);color:var(--cream);font:13px/1.65 'Montserrat',Arial,sans-serif}
+    button,input,textarea{font:inherit}
+    button{cursor:pointer}
+    a{text-decoration:none;color:inherit}
+    button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #ffe4b6;outline-offset:3px}
+    .topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:19px max(18px,calc((100% - 1420px)/2));border-bottom:1px solid var(--line)}
+    .brand{font:500 clamp(24px,3vw,35px)/1 'Cormorant Garamond',Georgia,serif;color:var(--gold)}
+    .back{font-size:11px;letter-spacing:1px;color:#dfd2bc}
+    .header{padding:43px 20px 35px;text-align:center;max-width:1000px;margin:auto}
+    .eyebrow{font-size:10px;letter-spacing:3px;color:var(--gold);font-weight:700;text-transform:uppercase}
+    h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500}
+    h1{font-size:clamp(48px,7vw,84px);line-height:.98;margin:12px 0 15px}
+    .header>p{color:#d0c4b4;font-size:13px;max-width:730px;margin:0 auto;line-height:1.9}
+    .brand-tabs{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin:28px auto 0;max-width:780px}
+    .brand-tab{background:transparent;border:1px solid rgba(223,189,129,.55);color:#f7eddb;padding:17px 13px;border-radius:12px;text-align:center;display:flex;flex-direction:column;gap:2px}
+    .brand-tab strong{font-size:15px;letter-spacing:1.1px}
+    .brand-tab small{font-size:10px}
+    .brand-tab[aria-pressed="true"]{background:linear-gradient(115deg,#edd7a8,#c9a56d);color:#1e180f;border-color:#d9b57f}
+    .location-hint{color:#d9c2a3;font-size:12px;margin-top:16px}
+    .layout{width:min(1420px,calc(100% - 30px));margin:0 auto 80px;display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:23px;align-items:start}
+    .catalog,.basket{min-width:0;background:linear-gradient(135deg,#1e1b17,#161615);border:1px solid var(--line);border-radius:16px}
+    .catalog{padding:26px}
+    .catalog-head{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:18px}
+    .catalog-head h2{font-size:39px;line-height:1;margin:0;color:#f1dfbe}
+    .pdf-link{font-size:10px;font-weight:700;letter-spacing:1px;color:#f1d3a1;border:1px solid #80633d;border-radius:8px;padding:10px 13px}
+    .note{background:#2c241c;border:1px solid rgba(222,189,129,.25);border-radius:9px;padding:13px 15px;color:#e6d2b4;font-size:11px;margin:16px 0 20px;line-height:1.8}
+    .filter{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 19px}
+    .search{display:block;min-width:180px;flex:1 1 220px;min-height:45px;border:1px solid #6e5b43;background:#11110f;border-radius:8px;padding:12px 15px;color:#fff}
+    .categories{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
+    .category{background:#28231d;color:#e4d5c0;border:1px solid #65533b;border-radius:25px;padding:8px 13px;font-size:10px;font-weight:700}
+    .category[aria-pressed="true"]{background:#e0c28c;color:#21180f}
+    .product-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .product{background:#22201b;border:1px solid rgba(220,188,130,.19);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:12px;min-height:163px}
+    .product h3{font:500 27px/1.09 'Cormorant Garamond',Georgia,serif;color:#fff5e7;margin:2px 0 0}
+    .product .cat{font-size:9px;text-transform:uppercase;letter-spacing:1.25px;color:#d6b789;font-weight:700}
+    .product p{color:#bdb2a0;font-size:11px;margin:0;line-height:1.65;flex:1}
+    .product-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:auto}
+    .price-note{font-size:10px;color:#d1b487}
+    .stepper{display:flex;align-items:center;gap:11px;min-width:111px;justify-content:flex-end}
+    .qty{color:#fff;font-size:13px;font-weight:700;min-width:15px;text-align:center}
+    .stepper button{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--gold);background:#17130e;color:#ffe4b7;font-size:20px;font-weight:700;line-height:1}
+    .stepper button:hover{background:#50402b}
+    .basket{position:sticky;top:14px;padding:21px 20px 22px;box-shadow:0 20px 55px #0005}
+    .basket h2{font-size:40px;line-height:1;margin:0 0 5px;color:var(--gold)}
+    .basket-sub{font-size:11px;color:#d3c5ae;margin:0 0 15px}
+    .basket-list{max-height:265px;overflow-y:auto;padding:3px 0}
+    .empty{font-size:12px;color:#b8a68c;text-align:center;padding:30px 9px;border:1px dashed #776044;border-radius:8px}
+    .basket-item{display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px solid rgba(219,188,129,.15);padding:11px 0}
+    .basket-item-title{font-size:12px;font-weight:700;line-height:1.5}
+    .basket-item small{color:#b9a992;font-size:10px}
+    .basket-item .stepper{min-width:auto;gap:7px}
+    .basket-item .stepper button{width:28px;height:28px;font-size:17px}
+    .sum{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);margin-top:12px;padding-top:13px;font-size:12px}
+    .sum b{color:#f3d59e;font-size:21px}
+    label{display:block;font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#ead5b1;margin:15px 0 6px}
+    input[type="text"],textarea{display:block;width:100%;border:1px solid #786145;background:#12120f;color:#fff;border-radius:8px;padding:12px;min-height:44px}
+    textarea{min-height:78px;resize:vertical}
+    .send{border:0;border-radius:9px;width:100%;min-height:58px;background:#2baa68;color:#08120d;font-weight:800;letter-spacing:.7px;font-size:12px;padding:12px 10px;margin-top:19px}
+    .send:hover{background:#5ae898}
+    .send:disabled{opacity:.45;cursor:not-allowed}
+    .help{color:#bfb19b;font-size:10px;line-height:1.8;margin:11px 0 0}
+    .validation{min-height:20px;font-size:11px;color:#f0d3a1;margin-top:8px}
+    .sticky-mobile{display:none}
+    .footer{color:#a69a88;text-align:center;font-size:11px;padding:15px 16px 40px}
+    @media(max-width:1100px){.layout{grid-template-columns:minmax(0,1fr) 320px;gap:13px}.catalog{padding:18px}.basket{padding:17px}.product-grid{gap:9px}}
+    @media(max-width:830px){.layout{display:block}.basket{position:static;margin-top:14px}.header{padding:29px 15px}.header h1{font-size:56px}.catalog-head h2{font-size:34px}.sticky-mobile{display:block;position:fixed;z-index:20;right:13px;bottom:13px;box-shadow:0 7px 20px #000b;border:2px solid #f3d8a5;background:#e4c78f;border-radius:40px;font-weight:800;font-size:12px;padding:13px 19px;color:#1b130b}}
+    @media(max-width:530px){.layout{width:calc(100% - 18px)}.catalog{padding:14px}.product-grid{grid-template-columns:1fr}.product{min-height:0}.topbar{padding:15px}.back{font-size:10px}.brand-tab{padding:13px 7px}.brand-tab strong{font-size:13px}.header h1{font-size:49px}.search{width:100%}}
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="index.html">La Tasca <span style="color:#947c59">&amp;</span> Santori</a>
+  <a class="back" href="index.html">← VOLVER AL INICIO</a>
+</header>
+<section class="header">
+  <span class="eyebrow">Villa La Angostura · Pedidos Take Away</span>
+  <h1>Armá tu pedido.</h1>
+  <p>Elegí platos, indicá las cantidades y enviá el detalle al WhatsApp del restaurante. Nos comunicaremos para confirmar disponibilidad, importe y horario de retiro.</p>
+  <div class="brand-tabs" aria-label="Elegir restaurante">
+    <button type="button" class="brand-tab" data-brand="tasca" aria-pressed="true"><strong>↓ LA TASCA</strong><small>Planta baja · PB</small></button>
+    <button type="button" class="brand-tab" data-brand="santori" aria-pressed="false"><strong>↑ SANTORI</strong><small>Arriba · En la cabaña</small></button>
+  </div>
+  <p class="location-hint" id="placeLabel">La Tasca te recibe en planta baja.</p>
+</section>
+<main class="layout">
+  <section class="catalog" aria-label="Platos disponibles para solicitar">
+    <div class="catalog-head">
+      <h2 id="catalogTitle">Elegí tus platos</h2>
+      <a class="pdf-link" id="viewBook" href="cartas.html?restaurante=tasca">Ver carta tipo libro ↗</a>
+    </div>
+    <p class="note">**Catálogo orientativo:** los platos se identificaron en cartas de referencia de La Tasca y Santori. La selección, disponibilidad y precios deben confirmarse por WhatsApp. <strong>No se realiza ningún cobro ni pedido automático.</strong></p>
+    <div class="filter"><input id="search" class="search" type="search" placeholder="Buscar platos, rolls, entradas…" aria-label="Buscar platos"></div>
+    <div id="categories" class="categories" aria-label="Filtrar por categoría"></div>
+    <div id="products" class="product-grid"></div>
+  </section>
+  <aside class="basket" id="basket" aria-label="Resumen del pedido">
+    <h2>Tu pedido</h2>
+    <p class="basket-sub" id="basketPlace">La Tasca · Planta baja · Take Away</p>
+    <div id="basketItems" class="basket-list" aria-live="polite"></div>
+    <div class="sum"><span>Unidades seleccionadas</span><b id="qtyTotal">0</b></div>
+    <label for="customerName">Tu nombre *</label>
+    <input type="text" id="customerName" maxlength="70" autocomplete="name" placeholder="Nombre para el pedido">
+    <label for="pickup">Horario de retiro deseado</label>
+    <input type="text" id="pickup" maxlength="80" placeholder="Ej.: 21:00 / A coordinar">
+    <label for="notes">Observaciones del pedido</label>
+    <textarea id="notes" maxlength="900" placeholder="Ej.: sin picante, indicaciones de preparación, alergias (confirmar con el local)"></textarea>
+    <a class="send" id="send" href="#" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;text-align:center">Enviar pedido por WhatsApp ↗</a>
+    <p class="validation" id="validation" role="status" aria-live="polite"></p>
+    <p class="help">Se abrirá WhatsApp con tu mensaje completo. <strong>Revisá y tocá enviar dentro de WhatsApp.</strong> El restaurante debe confirmar precio final, disponibilidad y hora de retiro. Si tenés alergias, consultá expresamente antes de confirmar.</p>
+  </aside>
+</main>
+<button class="sticky-mobile" id="openBasket" type="button">Ver pedido · <span id="mobileQuantity">0</span></button>
+<footer class="footer">La Tasca · Planta baja &nbsp; | &nbsp; Santori · Arriba, en la cabaña &nbsp; · &nbsp; Av. Arrayanes 6155</footer>
+<script>
+(function(){
+'use strict';
+const catalog={
+ tasca:{
+  name:'La Tasca',place:'Planta baja · PB',number:'5492944788994',menu:'cartas.html?restaurante=tasca',
+  products:[
+   ['Entradas','Sopa del día','Consultar variedad'],
+   ['Entradas','Langostinos con alioli',''],
+   ['Entradas','Langostinos al ajillo',''],
+   ['Entradas','Papas al horno','Bravas o alioli'],
+   ['Entradas','Chipirones con alioli',''],
+   ['Entradas','Tostón de trucha curada',''],
+   ['Entradas','Provoleta al orégano',''],
+   ['Entradas','Provoleta La Tasca','Cherry y aceitunas negras'],
+   ['Entradas','Rabas grilladas con alioli',''],
+   ['Entradas','Mix de mariscos con alioli',''],
+   ['Entradas','Tortilla de papa',''],
+   ['Ensaladas','Ensalada patagónica','Trucha gravlax, verdes y semillas'],
+   ['Ensaladas','Ensalada César con pollo',''],
+   ['Ensaladas','Ensalada César con langostinos',''],
+   ['Ensaladas','Ensalada La Tasca','Rúcula, peras, queso azul y nueces'],
+   ['Pescados y mariscos','Filet de trucha',''],
+   ['Pescados y mariscos','Salmón rosado con aceite de coco',''],
+   ['Pescados y mariscos','Arroz con mariscos',''],
+   ['Pescados y mariscos','Tapeo degustación para 1','Consultar presentación'],
+   ['Pescados y mariscos','Tapeo degustación para 2','Consultar presentación'],
+   ['Carnes','Lomo',''],
+   ['Carnes','Ojo de bife',''],
+   ['Carnes','Cordero La Tasca a 120°','Desmenuzado, con papines'],
+   ['Risottos','Risotto de hongos',''],
+   ['Risottos','Risotto de lomo',''],
+   ['Risottos','Risotto de trucha',''],
+   ['Risottos','Risotto de langostinos',''],
+   ['Risottos','Risotto de pollo',''],
+   ['Risottos','Risotto de vegetales',''],
+   ['Risottos','Risotto de frutos de mar',''],
+   ['Pastas','Sorrentinos de jamón y queso','Salsa a confirmar'],
+   ['Pastas','Sorrentinos de verdura','Salsa a confirmar'],
+   ['Pastas','Sorrentinos de trucha','Salsa a confirmar'],
+   ['Pastas','Sorrentinos de cordero','Salsa a confirmar'],
+   ['Pastas','Sorrentinos de ciervo','Salsa a confirmar'],
+   ['Pastas','Spaghetti','Salsa a confirmar'],
+   ['Pastas','Spaghetti con crema de verdeo y langostinos',''],
+   ['Pastas','Tallarines con frutos de mar',''],
+   ['Pastas','Ñoquis','Salsa a confirmar'],
+   ['Guarniciones','Arroz blanco',''],
+   ['Guarniciones','Puré de papas',''],
+   ['Guarniciones','Papas al horno',''],
+   ['Guarniciones','Papines',''],
+   ['Guarniciones','Vegetales grillados',''],
+   ['Infantil','Menú infantil de pollo con puré','Consultar disponibilidad y guarnición'],
+   ['Infantil','Menú infantil de spaghetti fileto / rosa','Consultar disponibilidad']
+  ]
+ },
+ santori:{
+  name:'Santori',place:'Arriba · En la cabaña',number:'5492944555129',menu:'cartas.html?restaurante=santori',
+  products:[
+   ['Entradas','Vieiras','Con manteca oriental y parmesano'],
+   ['Entradas','Mariscos al fuego','Calamar, langostinos y pulpo'],
+   ['Ceviches','Ceviche clásico','Lenguado y leche de tigre'],
+   ['Ceviches','Ceviche Nikkei','Salmón, palta, salsa Nikkei'],
+   ['Ceviches','Ceviche mixto','Pulpo, langostinos y lenguado'],
+   ['Rolls · 10 piezas','Philadelphia','Salmón, queso Philadelphia y palta'],
+   ['Rolls · 10 piezas','Langostinos','Langostino, queso Philadelphia y palta'],
+   ['Rolls · 10 piezas','Furai de langostinos','Langostino, queso Philadelphia y palta'],
+   ['Rolls · 10 piezas','Furai de salmón','Salmón, queso Philadelphia y palta'],
+   ['Rolls · 10 piezas','Veggie','Palta, vegetales y emulsión de almendras'],
+   ['Rolls · 10 piezas','Acevichado','Langostino, palta y salsa acevichada'],
+   ['Rolls · 10 piezas','Dos salmones','Tartar de salmón y salsa Nikkei'],
+   ['Rolls · 10 piezas','Tropical','Langostino, mango y maracuyá'],
+   ['Rolls · 10 piezas','Avocado','Langostino, Philadelphia y palta'],
+   ['Rolls · 10 piezas','Parma','Langostino, pesca blanca, vieiras y parmesano'],
+   ['Combinados','Combinado 30 piezas','A elección del sushiman'],
+   ['Combinados','Combinado premium 35 piezas','Rolls, sashimis y nigiris'],
+   ['Combinados','Combinado premium 45 piezas','Rolls, nigiris, tiraditos y sashimis'],
+   ['Combinados','Combinado 50 piezas','A elección del sushiman'],
+   ['Sashimis · 4 piezas','Sashimi de langostinos',''],
+   ['Sashimis · 4 piezas','Sashimi de salmón',''],
+   ['Sashimis · 4 piezas','Sashimi de atún rojo',''],
+   ['Sashimis · 4 piezas','Sashimi de pulpo español',''],
+   ['Nigiris · 2 piezas','Nigiri veggie',''],
+   ['Nigiris · 2 piezas','Nigiri parma','Lenguado y parmesano'],
+   ['Nigiris · 2 piezas','Nigiri argento','Lomo y manteca oriental'],
+   ['Nigiris · 2 piezas','Nigiri de langostino',''],
+   ['Nigiris · 2 piezas','Nigiri de salmón',''],
+   ['Nigiris · 2 piezas','Nigiri gunkan','Salmón y huevo de codorniz'],
+   ['Nigiris · 2 piezas','Nigiri de atún rojo',''],
+   ['Nigiris · 2 piezas','Nigiri de pulpo español','']
+  ]
+ }
+};
+let brand='tasca',category='Todos',query='',carts={tasca:{},santori:{}};
+const $=x=>document.getElementById(x);
+const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+const rows=()=>catalog[brand].products.map((p,i)=>({id:i,category:p[0],name:p[1],desc:p[2]}));
+const qty=(id)=>carts[brand][id]||0;
+const chosen=()=>rows().filter(p=>qty(p.id)>0);
+function renderCategories(){
+ const kinds=['Todos',...new Set(rows().map(x=>x.category))];
+ $('categories').innerHTML=kinds.map(v=>'<button type="button" class="category" data-category="'+escapeHTML(v)+'" aria-pressed="'+(v===category)+'">'+escapeHTML(v)+'</button>').join('');
+}
+function renderProducts(){
+ const matches=rows().filter(p=>(category==='Todos'||p.category===category)&&normalize(p.name+' '+p.desc+' '+p.category).includes(normalize(query)));
+ $('products').innerHTML=matches.length?matches.map(p=>'<article class="product"><div><span class="cat">'+escapeHTML(p.category)+'</span><h3>'+escapeHTML(p.name)+'</h3></div><p>'+escapeHTML(p.desc||'Plato a consultar con el restaurante')+'</p><div class="product-bottom"><span class="price-note">Importe a confirmar</span><div class="stepper"><button type="button" data-step="-1" data-id="'+p.id+'" aria-label="Quitar '+escapeHTML(p.name)+'">−</button><span class="qty">'+qty(p.id)+'</span><button type="button" data-step="1" data-id="'+p.id+'" aria-label="Agregar '+escapeHTML(p.name)+'">+</button></div></div></article>').join(''):'<p style="color:#c7af89">No encontramos platos con ese término. Podés indicar tu consulta en las observaciones.</p>';
+}
+function renderBasket(){
+ const list=chosen(),total=list.reduce((sum,p)=>sum+qty(p.id),0);
+ $('basketItems').innerHTML=list.length?list.map(p=>'<div class="basket-item"><div><div class="basket-item-title">'+escapeHTML(p.name)+'</div><small>'+escapeHTML(p.category)+'</small></div><div class="stepper"><button type="button" data-step="-1" data-id="'+p.id+'" aria-label="Quitar">−</button><span class="qty">'+qty(p.id)+'</span><button type="button" data-step="1" data-id="'+p.id+'" aria-label="Agregar">+</button></div></div>').join(''):'<div class="empty">Tu carrito está vacío. Agregá tus platos favoritos con el botón +</div>';
+ $('qtyTotal').textContent=total;
+ $('mobileQuantity').textContent=total;
+ $('basketPlace').textContent=catalog[brand].name+' · '+catalog[brand].place+' · Take Away';
+ const button=$('send');
+ button.setAttribute('aria-disabled',String(total===0));
+ button.style.opacity=total?'1':'.55';
+ refreshWhatsApp();
+}
+function refreshWhatsApp(){
+ const name=$('customerName').value.trim(),time=$('pickup').value.trim(),notes=$('notes').value.trim();
+ const items=chosen(),data=catalog[brand];
+ if(!items.length||!name){$('send').href='#';return}
+ const lines=[
+  '🛍️ SOLICITUD DE PEDIDO TAKE AWAY — '+data.name.toUpperCase(),
+  '📍 '+data.place+' · Av. Arrayanes 6155, Villa La Angostura',
+  '👤 Nombre: '+name,
+  '🕒 Retiro deseado: '+(time||'A coordinar'),
+  '',
+  '🧾 DETALLE:'
+ ];
+ items.forEach(p=>lines.push('• '+qty(p.id)+' × '+p.name+' ('+p.category+')'));
+ lines.push('','📦 Total de unidades: '+items.reduce((a,p)=>a+qty(p.id),0));
+ if(notes)lines.push('','📝 Observaciones: '+notes);
+ lines.push('','Por favor, confirmen disponibilidad, precio final y horario de retiro. Gracias.');
+ $('send').href='https://wa.me/'+data.number+'?text='+encodeURIComponent(lines.join('\n'));
+}
+function changeBrand(next){
+ if(!catalog[next])next='tasca';
+ brand=next;category='Todos';query='';$('search').value='';
+ const data=catalog[brand];
+ document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.brand===brand)));
+ $('catalogTitle').textContent='Elegí tus platos · '+data.name;
+ $('viewBook').href=data.menu;
+ $('placeLabel').textContent=data.name==='La Tasca'?'La Tasca está abajo, en planta baja.':'Santori está arriba, en la cabaña.';
+ $('send').textContent='Enviar a WhatsApp '+data.name+' ↗';
+ $('validation').textContent='';
+ history.replaceState(null,'','?restaurante='+brand);
+ renderCategories();renderProducts();renderBasket();
+}
+function increment(id,step){
+ if(!Number.isInteger(id)||id<0||id>=catalog[brand].products.length)return;
+ carts[brand][id]=Math.max(0,Math.min(50,qty(id)+step));
+ $('validation').textContent='';
+ renderProducts();renderBasket();
+}
+document.querySelectorAll('[data-brand]').forEach(b=>b.addEventListener('click',()=>changeBrand(b.dataset.brand)));
+$('products').addEventListener('click',e=>{const btn=e.target.closest('button[data-step]');if(btn)increment(Number(btn.dataset.id),Number(btn.dataset.step))});
+$('basketItems').addEventListener('click',e=>{const btn=e.target.closest('button[data-step]');if(btn)increment(Number(btn.dataset.id),Number(btn.dataset.step))});
+$('categories').addEventListener('click',e=>{const btn=e.target.closest('button[data-category]');if(btn){category=btn.dataset.category;renderCategories();renderProducts();}});
+$('search').addEventListener('input',e=>{query=e.target.value;renderProducts()});
+['customerName','pickup','notes'].forEach(id=>$(id).addEventListener('input',()=>{$('validation').textContent='';refreshWhatsApp()}));
+$('send').addEventListener('click',e=>{
+ if(!chosen().length){e.preventDefault();$('validation').textContent='Primero elegí al menos un plato.';return}
+ if(!$('customerName').value.trim()){e.preventDefault();$('validation').textContent='Escribí tu nombre para preparar el pedido.';$('customerName').focus();return}
+ refreshWhatsApp();
+});
+$('openBasket').addEventListener('click',()=>$('basket').scrollIntoView({behavior:'smooth',block:'start'}));
+changeBrand(new URLSearchParams(location.search).get('restaurante')||'tasca');
+})();
+</script>
+</body>
+</html>
