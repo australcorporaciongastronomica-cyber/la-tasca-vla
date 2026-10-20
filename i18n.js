@@ -1,4 +1,4 @@
-/* Bilingual navigation for La Tasca & Santori. Original menu PDFs are preserved. */
+/* Trilingual navigation for La Tasca & Santori. Original menu PDFs are preserved. */
 (function () {
   "use strict";
   const PAIRS = [
@@ -258,26 +258,180 @@
   ];
 
   const dictionary = new Map(PAIRS.map(([es,en])=>[normalize(es),en]));
+  const DICTIONARY_PT = new Map([
+// Navegação, localização, galeria e opiniões
+    ["ARMAR PEDIDO TAKE AWAY ↗","FAZER PEDIDO PARA RETIRADA ↗"],
+    ["ARMAR PEDIDO TAKE AWAY · LA TASCA + SANTORI ↗","FAZER PEDIDO PARA RETIRADA · LA TASCA + SANTORI ↗"],
+    ["La calidez de nuestros espacios","O aconchego dos nossos ambientes"],
+    ["Descubrí el salón de La Tasca y la atmósfera de Santori: madera, luz cálida y sabores de la Patagonia.","Conheça o salão do La Tasca e a atmosfera do Santori: madeira, luz acolhedora e sabores da Patagônia."],
+    ["Un salón para quedarse","Um salão para aproveitar sem pressa"],
+    ["La calidez de la madera y el espíritu de Villa La Angostura.","O aconchego da madeira e o espírito de Villa La Angostura."],
+    ["Un ambiente diferente","Um ambiente diferente"],
+    ["La experiencia Nikkei, arriba en la cabaña.","A experiência Nikkei, no andar de cima, na cabana."],
+    ["Nuestra cocina, en cada detalle.","Nossa cozinha em cada detalhe."],
+    ["Vinos y encuentros","Vinhos e encontros"],
+    ["Una mesa para compartir.","Uma mesa para compartilhar."],
+    ["Sabor y presentación.","Sabor e apresentação."],
+    ["Más fotografías de nuestros espacios:","Mais fotos dos nossos ambientes:"],
+    ["Más fotografías en Instagram","Mais fotos no Instagram"],
+    ["Opiniones resumidas · Google Maps y Tripadvisor · Junio–septiembre 2026","Resumos de avaliações · Google Maps e Tripadvisor · Junho a setembro de 2026"],
+    ["La experiencia, contada por quienes nos visitan","A experiência contada por quem nos visita"],
+    ["Sabores que se recuerdan, momentos para compartir y personas que nos eligen. Conocé algunas experiencias de nuestros visitantes.","Sabores inesquecíveis, momentos para compartilhar e pessoas que nos escolhem. Conheça algumas experiências dos nossos visitantes."],
+    ["Resúmenes de opiniones, no citas textuales. Relevamiento del 15/06 al 15/09/2026. Las reseñas de Google Maps fueron consultadas mediante un índice público; las de Tripadvisor, en la plataforma. Solo se muestran estrellas individuales documentadas.","Resumos de avaliações, não citações literais. Período: 15/06 a 15/09/2026. As avaliações do Google Maps foram consultadas por meio de um índice público; as do Tripadvisor, na própria plataforma. Exibimos estrelas individuais somente quando documentadas."],
+    ["Opinión de un visitante","Avaliação de um visitante"],
+    ["Controles de opiniones","Controles das avaliações"],
+    ["Seleccionar opinión","Selecionar avaliação"],
+    ["Opinión anterior","Avaliação anterior"],
+    ["Siguiente opinión","Próxima avaliação"],
+    ["VER MÁS OPINIONES ↗","VER MAIS AVALIAÇÕES ↗"],
+    ["5 de 5 estrellas","5 de 5 estrelas"],
+    ["Un reconocimiento a nuestra experiencia","Um reconhecimento à nossa experiência"],
+    ["Reconocimiento","Reconhecimento"],
+    ["La experiencia también se comparte","A experiência também merece ser compartilhada"],
+    ["El reconocimiento de quienes nos visitan forma parte de la historia de La Tasca.","O reconhecimento dos nossos visitantes faz parte da história do La Tasca."],
+    ["Un reconocimiento que celebra las experiencias y opiniones compartidas por nuestros visitantes.","Um reconhecimento que celebra as experiências e opiniões compartilhadas pelos nossos visitantes."],
+    ["Acceso directo a las cartas completas","Acesso direto aos cardápios completos"],
+    ["Carrito único Take Away para La Tasca y Santori","Carrinho único para pedidos do La Tasca e do Santori"],
+    ["Dónde se encuentra cada restaurante","Onde fica cada restaurante"],
+    ["Santori arriba y La Tasca en planta baja","Santori no andar de cima e La Tasca no térreo"],
+    ["Ver carta de La Tasca","Ver cardápio do La Tasca"],
+    ["Ver carta de Santori","Ver cardápio do Santori"],
+    ["Armar pedido Take Away de La Tasca","Fazer pedido para retirada no La Tasca"],
+    ["Armar pedido Take Away de Santori","Fazer pedido para retirada no Santori"],
+    ["Contactar La Tasca por WhatsApp","Falar com o La Tasca pelo WhatsApp"],
+    ["Contactar Santori por WhatsApp","Falar com o Santori pelo WhatsApp"],
+    ["Ver Instagram de La Tasca","Ver Instagram do La Tasca"],
+    ["Ver Instagram de Santori","Ver Instagram do Santori"],
+    ["Cómo llegar a La Tasca y Santori","Como chegar ao La Tasca e ao Santori"],
+    ["Reservas y pedidos de La Tasca por WhatsApp","Reservas e pedidos do La Tasca pelo WhatsApp"],
+    ["Reservas y pedidos de Santori por WhatsApp","Reservas e pedidos do Santori pelo WhatsApp"],
+    ["Presentación de las cartas","Apresentação dos cardápios"],
+    ["Seleccionar restaurante","Selecionar restaurante"],
+    ["Carta digital tipo libro","Cardápio digital em formato de livro"],
+    ["Mostrar el libro abierto","Mostrar livro aberto"],
+    ["Mostrar una página grande","Mostrar uma página ampliada"],
+    ["Ver carta en pantalla completa","Ver cardápio em tela cheia"],
+    ["Páginas de la carta","Páginas do cardápio"],
+    ["Platos disponibles para solicitar","Pratos disponíveis para pedir"],
+    ["Ver cartas completas de La Tasca y Santori","Ver cardápios completos do La Tasca e do Santori"],
+    ["Resumen del pedido","Resumo do pedido"],
+    ["Tu pedido está vacío. Agregá platos de La Tasca, Santori o ambos.","Seu carrinho está vazio. Adicione pratos do La Tasca, do Santori ou dos dois."],
+    ["Preparando las páginas…","Preparando as páginas…"],
+    ["Preparando la página…","Preparando a página…"],
+    ["La vista tipo libro no está disponible.","A visualização em formato de livro não está disponível."],
+    ["La vista tipo libro no está disponible. Abrir el PDF original ↗","A visualização em formato de livro não está disponível. Abrir PDF original ↗"],
+    ["Página","Página"],["Hoja","Folha"],
+    ["← Volver al inicio","← Voltar ao início"],
+    ["← VOLVER AL INICIO","← VOLTAR AO INÍCIO"],
+    ["VER CARTAS COMPLETAS ↗","VER CARDÁPIOS COMPLETOS ↗"],
+    ["Ver carta","Ver cardápio"],["Ver carta completa","Ver cardápio completo"],
+    ["Ver carta tipo libro ↗","Ver cardápio digital ↗"],["Ver PDF ↗","Ver PDF ↗"],
+    ["VER CARTA ↗","VER CARDÁPIO ↗"],
+    ["VER CARTA LA TASCA","VER CARDÁPIO LA TASCA"],
+    ["VER CARTA SANTORI","VER CARDÁPIO SANTORI"],
+    ["Armar pedido Take Away","Fazer pedido para retirada"],
+    ["🛍 Armar pedido Take Away ↗","Fazer pedido para retirada ↗"],
+    ["Elegí tus platos y envialos por WhatsApp","Escolha seus pratos e envie pelo WhatsApp"],
+    ["Reservas y pedidos","Reservas e pedidos"],
+    ["Reservas y pedidos por WhatsApp","Reservas e pedidos pelo WhatsApp"],
+    ["Reservas · Take Away","Reservas · Para retirada"],
+    ["Consultas y reservas ↗","Dúvidas e reservas ↗"],
+    ["Consultar reserva ↗","Consultar reserva ↗"],
+    ["Reservar ↗","Reservar ↗"],
+    ["Contactanos","Fale conosco"],["Visitanos","Visite-nos"],
+    ["Cómo llegar","Como chegar"],["Ubicación · Horarios","Localização · Horários"],
+    ["Horarios","Horários"],["Todos los días","Todos os dias"],
+    ["Planta baja","Térreo"],["Planta baja · PB","Térreo"],
+    ["PB · Planta baja","Térreo"],
+    ["Arriba · En la cabaña","Em cima · Na cabana"],
+    ["Arriba, en la cabaña","Em cima, na cabana"],
+    ["· Arriba, en la cabaña","· Em cima, na cabana"],
+    ["· Planta baja","· Térreo"],
+    ["La Tasca · Planta baja","La Tasca · Térreo"],
+    ["Santori · Arriba, en la cabaña","Santori · Em cima, na cabana"],
+    ["Planta baja · Villa La Angostura","Térreo · Villa La Angostura"],
+    ["Arriba, en la cabaña · Villa La Angostura","Em cima, na cabana · Villa La Angostura"],
+    ["La Tasca · planta baja | Santori · arriba, en la cabaña · Av. Arrayanes 6155, Villa La Angostura","La Tasca · térreo | Santori · em cima, na cabana · Av. Arrayanes 6155, Villa La Angostura"],
+    ["La Tasca · Planta baja | Santori · Arriba, en la cabaña · Av. Arrayanes 6155","La Tasca · térreo | Santori · em cima, na cabana · Av. Arrayanes 6155"],
+    ["Todos los pedidos se retiran en La Tasca.","Todos os pedidos são retirados no La Tasca."],
+    ["Retiro de todos los pedidos: La Tasca.","Retirada de todos os pedidos: La Tasca."],
+    ["Gastronomía y encuentros en la Patagonia","Gastronomia e encontros na Patagônia"],
+    ["Descubrí nuestras propuestas ↓","Descubra nossas experiências ↓"],
+    ["Un mismo lugar · Dos experiencias","Um lugar · Duas experiências"],
+    ["¿Dónde está cada uno?","Onde fica cada um?"],
+    ["Nos encontrás en la misma dirección.","Estamos no mesmo endereço."],
+    ["Santori está arriba, en la cabaña.","O Santori fica em cima, na cabana."],
+    ["La Tasca está abajo, en planta baja.","O La Tasca fica embaixo, no térreo."],
+    ["Elegí el restaurante que buscás y descubrí su carta.","Escolha o restaurante e descubra seu cardápio."],
+    ["ARRIBA","EM CIMA"],["ABAJO","EMBAIXO"],
+    ["En la cabaña · Nivel superior","Na cabana · Andar superior"],
+    ["Sushi Nikkei. Para disfrutar de Santori, subí a la cabaña.","Sushi Nikkei. Para conhecer o Santori, suba até a cabana."],
+    ["MISMO EDIFICIO · AV. ARRAYANES 6155","MESMO PRÉDIO · AV. ARRAYANES 6155"],
+    ["Cocina, vinos y Patagonia. La Tasca te recibe en planta baja.","Cozinha, vinhos e Patagônia. O La Tasca recebe você no térreo."],
+    ["Dos experiencias","Duas experiências"],
+    ["Cocina, producto y experiencia gastronómica en Villa La Angostura. Descubrí nuestras cartas y contactanos directamente para reservas, pedidos y consultas.","Cozinha, ingredientes e uma experiência gastronômica em Villa La Angostura. Explore nossos cardápios e fale conosco para reservas, pedidos e informações."],
+    ["Cocina · Vinos · Patagonia","Cozinha · Vinhos · Patagônia"],
+    ["Una propuesta gastronómica para disfrutar, compartir y descubrir sabores en un entorno cálido, con identidad patagónica y una vista única.","Uma experiência gastronômica para saborear, compartilhar e descobrir sabores em um ambiente acolhedor, com identidade patagônica e uma vista única."],
+    ["Menú completo de La Tasca","Cardápio completo do La Tasca"],
+    ["Menú completo de Santori","Cardápio completo do Santori"],
+    ["Sushi Nikkei en una propuesta donde producto, técnica y presentación se encuentran para ofrecer una experiencia fresca, atractiva y con identidad.","Sushi Nikkei em uma experiência que reúne ingredientes, técnica e apresentação, com frescor e personalidade."],
+    ["Seguinos en @latascavla","Siga-nos em @latascavla"],
+    ["Seguinos en @santoriangostura","Siga-nos em @santoriangostura"],
+    ["Sabores patagónicos","Sabores da Patagônia"],
+    ["Producto, sabor e identidad patagónica en una propuesta pensada para disfrutar Villa La Angostura desde la mesa.","Ingredientes, sabor e identidade patagônica em uma experiência para apreciar Villa La Angostura à mesa."],
+    ["Salón & paisaje","Salão e paisagem"],
+    ["Madera, nieve y el espíritu de Villa La Angostura.","Madeira, neve e o espírito de Villa La Angostura."],
+    ["Producto, técnica, detalle y presentación.","Ingredientes, técnica, detalhes e apresentação."],
+    ["La Tasca y Santori comparten dirección.","La Tasca e Santori compartilham o mesmo endereço."],
+    ["La Tasca está en planta baja","O La Tasca fica no térreo"],
+    ["y","e"],["Santori, arriba en la cabaña.","O Santori fica em cima, na cabana."],
+    ["Consultanos por WhatsApp para tu reserva.","Entre em contato pelo WhatsApp para fazer sua reserva."],
+    ["Montaña, nieve y gastronomía","Montanha, neve e gastronomia"],
+    ["Entre paisaje, producto y encuentros, La Tasca y Santori proponen una experiencia para disfrutar Villa La Angostura desde la mesa.","Em meio à paisagem, aos sabores e aos encontros, La Tasca e Santori oferecem uma experiência para aproveitar Villa La Angostura à mesa."],
+    ["Elegí La Tasca o Santori y escribinos directamente para reservas, disponibilidad, pedidos y consultas.","Escolha La Tasca ou Santori e fale diretamente conosco sobre reservas, disponibilidade, pedidos e dúvidas."],
+    ["Villa La Angostura · Dos restaurantes · Un mismo lugar","Villa La Angostura · Dois restaurantes · Um mesmo lugar"],
+    ["Elegí tu experiencia.","Escolha sua experiência."],
+    ["Recorré nuestra carta como un libro: pasá las páginas con las flechas o deslizá el dedo. Dos espacios diferentes en el mismo edificio.","Explore nosso cardápio como um livro: vire as páginas com as setas ou deslize o dedo. Dois ambientes diferentes no mesmo prédio."],
+    ["¿Dónde vas a comer?","Onde você vai comer?"],
+    ["La Tasca está abajo, en planta baja. Para encontrar Santori, subí a la cabaña. Ambas propuestas comparten dirección.","O La Tasca fica embaixo, no térreo. Para encontrar o Santori, suba até a cabana. Os dois ficam no mesmo endereço."],
+    ["Libro abierto","Livro aberto"],["Una página","Uma página"],
+    ["⛶ Pantalla completa","⛶ Tela cheia"],
+    ["✕ Salir de pantalla completa","✕ Sair da tela cheia"],
+    ["Abriendo la carta…","Abrindo o cardápio…"],
+    ["← Anterior","← Anterior"],["Siguiente →","Próxima →"],
+    ["Preparando páginas…","Preparando páginas…"],
+    ["Deslizá para pasar","Deslize para virar"],
+    ["Deslizá para pasar de página","Deslize para virar a página"],
+    ["Para leer la carta sin JavaScript:","Para ler o cardápio sem JavaScript:"],
+    ["Carta La Tasca","Cardápio La Tasca"],["Carta Santori","Cardápio Santori"],
+    ["Villa La Angostura · Gastronomía","Villa La Angostura · Gastronomia"],
+    ["Preparando carta…","Preparando cardápio…"],
+    ["Abrir el PDF original ↗","Abrir PDF original ↗"],
+    ["No pudimos mostrar la carta en este momento.","Não foi possível mostrar o cardápio agora."],
+  ].map(([es,pt])=>[normalize(es),pt]));
+
   function normalize(value){return String(value).replace(/\u00a0/g," ").replace(/\s+/g," ").trim()}
-  function translate(value) {
-    const text=normalize(value);
-    if (dictionary.has(text)) return dictionary.get(text);
-    let m=text.match(/^(\d+) resultados? en ambas cartas\.$/);
-    if(m)return m[1]+" result"+(Number(m[1])===1?"":"s")+" across both menus.";
-    m=text.match(/^Página (\d+) de (\d+)$/);
-    if(m)return "Page "+m[1]+" of "+m[2];
-    m=text.match(/^Páginas (\d+)[–-](\d+) de (\d+)$/);
-    if(m)return "Pages "+m[1]+"–"+m[2]+" of "+m[3];
-    m=text.match(/^Portada · Página 1 de (\d+)$/);
-    if(m)return "Cover · Page 1 of "+m[1];
-    m=text.match(/^Abriendo la carta de (.+)…$/);
-    if(m)return "Opening "+m[1]+" menu…";
-    m=text.match(/^Preparando (las páginas|la página)…$/);
-    if(m)return "Preparing "+(m[1]==="las páginas"?"pages":"page")+"…";
-    m=text.match(/^(.+) · (Planta baja · PB|Arriba · En la cabaña)$/);
-    if(m)return m[1]+" · "+(dictionary.get(normalize(m[2]))||m[2]);
+  function translateFor(value,language) {
+    const input=normalize(value);
+    const dict=language==="pt"?DICTIONARY_PT:dictionary;
+    if(dict.has(input))return dict.get(input);
+    let m=input.match(/^(\d+) resultados? en ambas cartas\.$/);
+    if(m)return language==="pt"?m[1]+" resultado"+(Number(m[1])===1?"":"s")+" nos dois cardápios.":m[1]+" result"+(Number(m[1])===1?"":"s")+" across both menus.";
+    m=input.match(/^Página (\d+) de (\d+)$/);
+    if(m)return (language==="pt"?"Página ":"Page ")+m[1]+(language==="pt"?" de ":" of ")+m[2];
+    m=input.match(/^Páginas (\d+)[–-](\d+) de (\d+)$/);
+    if(m)return (language==="pt"?"Páginas ":"Pages ")+m[1]+"–"+m[2]+(language==="pt"?" de ":" of ")+m[3];
+    m=input.match(/^Portada · Página 1 de (\d+)$/);
+    if(m)return language==="pt"?"Capa · Página 1 de "+m[1]:"Cover · Page 1 of "+m[1];
+    m=input.match(/^Abriendo la carta de (.+)…$/);
+    if(m)return language==="pt"?"Abrindo o cardápio de "+m[1]+"…":"Opening "+m[1]+" menu…";
+    m=input.match(/^Preparando (las páginas|la página)…$/);
+    if(m)return language==="pt"?"Preparando "+(m[1]==="las páginas"?"as páginas":"a página")+"…":"Preparing "+(m[1]==="las páginas"?"pages":"page")+"…";
+    m=input.match(/^(.+) · (Planta baja · PB|Arriba · En la cabaña)$/);
+    if(m)return m[1]+" · "+(dict.get(normalize(m[2]))||m[2]);
     return null;
   }
+  function translate(value){return translateFor(value,locale);}
   const originals=new WeakMap();
   const attrOriginals=new WeakMap();
   const exclusions="script,style,noscript,[data-no-translate]";
@@ -296,7 +450,7 @@
     if(!translated)return;
     const raw=state.raw;
     const left=(raw.match(/^\s*/)||[""])[0],right=(raw.match(/\s*$/)||[""])[0];
-    const next=locale==="en"?(left+translated+right):raw;
+    const next=locale!=="es"?(left+translated+right):raw;
     if(node.nodeValue!==next)node.nodeValue=next;
     state.last=next;
   }
@@ -310,17 +464,17 @@
       const currentState=originalsForElement[name];
       if(!currentState||current!==currentState.last)originalsForElement[name]={raw:current,last:current};
       const item=originalsForElement[name];
-      const next=locale==="en"?(translate(item.raw)||item.raw):item.raw;
+      const next=locale!=="es"?(translate(item.raw)||item.raw):item.raw;
       if(current!==next)element.setAttribute(name,next);
       item.last=next;
     }
   }
   function applyTranslations(){
-    document.documentElement.lang=locale;
+    document.documentElement.lang=locale==="pt"?"pt-BR":locale;
     document.querySelectorAll("[data-lang-button]").forEach(btn=>{
       const selected=String(btn.dataset.langButton===locale);
       if(btn.getAttribute("aria-pressed")!==selected)btn.setAttribute("aria-pressed",selected);
-      const title=btn.dataset.langButton==="es"?"Español":"English";
+      const title={es:"Español",en:"English",pt:"Português (Brasil)"}[btn.dataset.langButton];
       if(btn.getAttribute("title")!==title)btn.setAttribute("title",title);
     });
     const root=document.body;
@@ -330,17 +484,19 @@
     while((node=walker.nextNode()))updateTextNode(node);
     root.querySelectorAll("[placeholder],[aria-label],[title]").forEach(updateAttributes);
     const originalTitle="La Tasca & Santori | Villa La Angostura";
-    if(locale==="en"&&document.title.includes("Armá tu pedido"))document.title="Build your order | La Tasca & Santori";
-    if(locale==="en"&&document.title.includes("Nuestras cartas"))document.title="Our menus | La Tasca & Santori";
-    if(locale==="es"&&document.title==="Build your order | La Tasca & Santori")document.title="Armá tu pedido | La Tasca & Santori";
-    if(locale==="es"&&document.title==="Our menus | La Tasca & Santori")document.title="Nuestras cartas | La Tasca & Santori";
+    const title=document.title;
+    if(title.includes("Armá tu pedido")||title.includes("Build your order")||title.includes("Faça seu pedido")){
+      document.title=locale==="pt"?"Faça seu pedido | La Tasca & Santori":locale==="en"?"Build your order | La Tasca & Santori":"Armá tu pedido | La Tasca & Santori";
+    }else if(title.includes("Nuestras cartas")||title.includes("Our menus")||title.includes("Nossos cardápios")){
+      document.title=locale==="pt"?"Nossos cardápios | La Tasca & Santori":locale==="en"?"Our menus | La Tasca & Santori":"Nuestras cartas | La Tasca & Santori";
+    }
   }
   function updateLocale(next){
-    if(!["es","en"].includes(next))return;
+    if(!["es","en","pt"].includes(next))return;
     locale=next;
     try{localStorage.setItem(storageKey,next)}catch(_){}
     const url=new URL(location.href);
-    if(next==="en")url.searchParams.set("lang","en");
+    if(next!=="es")url.searchParams.set("lang",next);
     else url.searchParams.delete("lang");
     history.replaceState(history.state,"",url.pathname+url.search+url.hash);
     applyTranslations();
@@ -350,25 +506,25 @@
     const style=document.createElement("style");
     style.textContent=[
       ".site-language{display:inline-flex;gap:3px;align-items:center;justify-content:center;padding:4px;border:1px solid rgba(222,190,132,.65);border-radius:99px;background:rgba(14,14,13,.89);box-shadow:0 8px 20px #0007;isolation:isolate;z-index:30}",
-      ".site-language button{cursor:pointer;min-width:44px;min-height:34px;padding:7px 10px;border:0;border-radius:99px;background:transparent;color:#edd6b1;font-size:12px;font-weight:700;letter-spacing:1px;font-family:Montserrat,Arial,sans-serif}",
+      ".site-language button{cursor:pointer;min-width:39px;min-height:34px;padding:7px 7px;border:0;border-radius:99px;background:transparent;color:#edd6b1;font-size:12px;font-weight:700;letter-spacing:1px;font-family:Montserrat,Arial,sans-serif}",
       ".site-language button[aria-pressed=true]{background:#e4c58e;color:#18130c}",
       ".site-language button:focus-visible{outline:3px solid #fff;outline-offset:3px}",
-      ".hero .site-language{position:absolute;top:20px;right:22px}",
+      ".hero .site-language{position:absolute;top:15px;right:14px}",
       ".topbar .site-language{flex:none}",
-      "@media(max-width:660px){.topbar{flex-wrap:wrap}.topbar .site-language{margin-left:auto}.topbar .back{font-size:10px}.hero .site-language{top:13px;right:14px}.site-language button{min-width:41px;min-height:32px}}"
+      "@media(max-width:660px){.topbar{flex-wrap:wrap}.topbar .site-language{margin-left:auto}.topbar .back{font-size:10px}.hero .site-language{top:13px;right:14px}.site-language button{min-width:33px;min-height:32px;padding:6px 5px}}"
     ].join("\n");
     document.head.appendChild(style);
     const div=document.createElement("div");
     div.className="site-language";
     div.setAttribute("role","group");
     div.setAttribute("aria-label","Idioma / Language");
-    for(const option of [{value:"es",label:"ES"},{value:"en",label:"EN"}]){
+    for(const option of [{value:"es",label:"ES"},{value:"en",label:"EN"},{value:"pt",label:"PT"}]){
       const btn=document.createElement("button");
       btn.type="button";
       btn.textContent=option.label;
       btn.dataset.langButton=option.value;
       btn.setAttribute("aria-pressed",String(option.value===locale));
-      btn.setAttribute("aria-label",option.value==="es"?"Español":"English");
+      btn.setAttribute("aria-label",{es:"Español",en:"English",pt:"Português (Brasil)"}[option.value]);
       btn.addEventListener("click",()=>updateLocale(option.value));
       div.appendChild(btn);
     }
@@ -378,16 +534,17 @@
   }
   function applySavedLocale(){
     const param=new URLSearchParams(location.search).get("lang");
-    if(param==="en"||param==="es")return param;
-    try{const saved=localStorage.getItem(storageKey);if(saved==="en"||saved==="es")return saved}catch(_){}
+    if(["en","es","pt"].includes(param))return param;
+    try{const saved=localStorage.getItem(storageKey);if(["en","es","pt"].includes(saved))return saved}catch(_){}
     return "es";
   }
   locale=applySavedLocale();
   try{localStorage.setItem(storageKey,locale)}catch(_){}
   window.siteI18n={
     language:()=>locale,
-    toEnglish:value=>translate(value)||value,
-    translateText:value=>locale==="en"?(translate(value)||value):value,
+    toEnglish:value=>translateFor(value,"en")||value,
+    toPortuguese:value=>translateFor(value,"pt")||value,
+    translateText:value=>locale==="es"?value:(translate(value)||value),
     refresh:applyTranslations
   };
   function init(){
