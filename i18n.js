@@ -233,7 +233,9 @@
     }
     const translated=translate(state.raw);
     if(!translated)return;
-    const next=locale==="en"?state.raw.replace(normalize(state.raw),translated):state.raw;
+    const raw=state.raw;
+    const left=(raw.match(/^\s*/)||[""])[0],right=(raw.match(/\s*$/)||[""])[0];
+    const next=locale==="en"?(left+translated+right):raw;
     if(node.nodeValue!==next)node.nodeValue=next;
     state.last=next;
   }
@@ -255,8 +257,10 @@
   function applyTranslations(){
     document.documentElement.lang=locale;
     document.querySelectorAll("[data-lang-button]").forEach(btn=>{
-      btn.setAttribute("aria-pressed",String(btn.dataset.langButton===locale));
-      btn.setAttribute("title",btn.dataset.langButton==="es"?"Español":"English");
+      const selected=String(btn.dataset.langButton===locale);
+      if(btn.getAttribute("aria-pressed")!==selected)btn.setAttribute("aria-pressed",selected);
+      const title=btn.dataset.langButton==="es"?"Español":"English";
+      if(btn.getAttribute("title")!==title)btn.setAttribute("title",title);
     });
     const root=document.body;
     if(!root)return;
