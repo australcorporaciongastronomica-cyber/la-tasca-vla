@@ -24,7 +24,7 @@
  const source=$("guest-review-source"),date=$("guest-review-date"),stars=$("guest-review-stars"),link=$("guest-review-link"),dots=$("guest-review-dots"),progress=$("guest-review-progress");
  const back=$("guest-review-back"),next=$("guest-review-next");
  const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
- const BUTTON_LABEL={es:"Ver fuente de la reseña",en:"View review source"};
+ const BUTTON_LABEL={es:"Ver más opiniones",en:"View more reviews"};
  const DOT_LABEL={es:"Ver opinión",en:"Show review"};
  let index=0;
  let pending=0;
@@ -44,7 +44,7 @@
    stars.setAttribute("aria-label",english()?item.stars+" out of 5 stars":item.stars+" de 5 estrellas");
   }
   link.href=item.url;
-  link.textContent=english()?"VIEW REVIEW SOURCE ↗":"VER FUENTE DE LA RESEÑA ↗";
+  link.textContent=english()?"MORE REVIEWS ↗":"VER MÁS OPINIONES ↗";
   link.setAttribute("aria-label",BUTTON_LABEL[locale()]+": "+item.platform);
   progress.textContent=(index+1)+" / "+reviews.length;
   [...dots.children].forEach((dot,i)=>{
