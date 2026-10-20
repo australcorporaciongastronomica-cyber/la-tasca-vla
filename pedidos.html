@@ -89,6 +89,31 @@
     @media(max-width:1100px){.layout{grid-template-columns:minmax(0,1fr) 320px;gap:13px}.catalog{padding:18px}.basket{padding:17px}.product-grid{gap:9px}}
     @media(max-width:830px){.layout{display:block}.basket{position:static;margin-top:14px;max-height:none;overflow:visible}.header{padding:29px 15px}.header h1{font-size:56px}.catalog-head h2{font-size:34px}.sticky-mobile{display:block;position:fixed;z-index:20;right:13px;bottom:13px;box-shadow:0 7px 20px #000b;border:2px solid #f3d8a5;background:#e4c78f;border-radius:40px;font-weight:800;font-size:12px;padding:13px 19px;color:#1b130b}}
     @media(max-width:530px){.layout{width:calc(100% - 18px)}.catalog{padding:14px}.product-grid{grid-template-columns:1fr}.product{min-height:0}.topbar{padding:15px}.back{font-size:10px}.brand-tab{padding:13px 7px}.brand-tab strong{font-size:13px}.header h1{font-size:49px}.search{width:100%}}
+
+    /* BUSCADOR GLOBAL Y JERARQUIA MOBILE */
+    .location-hint strong{color:var(--gold)}
+    .catalog-subtitle{margin:4px 0 0;color:#c9b89f;font-size:11px}
+    .catalog-head h2{font-size:clamp(28px,3vw,37px);line-height:1.08}
+    .pdf-link{display:inline-flex;align-items:center;justify-content:center;min-height:45px;padding:10px 15px;background:#3c3020;color:#f7dfb1;border:1px solid var(--gold);font-size:11px;border-radius:8px;white-space:nowrap}
+    .pdf-link:hover{background:#6b4d2d}
+    .filter{display:grid;grid-template-columns:minmax(0,1fr) minmax(170px,260px);gap:10px;align-items:center}
+    .category-select{width:100%;min-height:45px;border:1px solid #6e5b43;background:#171510;border-radius:8px;color:#f7ecd8;padding:10px 14px;font:inherit}
+    .category-select option{background:#171510;color:#fff}
+    .search-help{font-size:11px;color:#d8bd91;margin:-7px 0 16px}
+    .brand-tag{display:inline-block;border-radius:99px;padding:4px 10px;color:#f6dfb9;background:#3c3022;border:1px solid #8d6e43;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+    .brand-tag.santori{background:#1c3129;color:#c5efdb;border-color:#5b9978}
+    .product .cat{display:block;margin-top:10px}
+    .checkout-jump{font-size:12px;letter-spacing:0}
+    @media(max-width:650px){
+      .header{padding:24px 14px 18px}.header h1{font-size:45px}
+      .header>p{font-size:12px}.location-hint{margin-top:11px;font-size:11px}
+      .filter{grid-template-columns:1fr}
+      .catalog-head{align-items:start;gap:9px}
+      .catalog-head h2{font-size:32px}
+      .pdf-link{min-height:42px;padding:9px 12px}
+      .checkout-jump{font-size:12px;min-height:48px}
+      .note{padding:11px 13px;margin:12px 0 15px}
+    }
   </style>
 </head>
 <body>
@@ -99,23 +124,22 @@
 <section class="header">
   <span class="eyebrow">Villa La Angostura · Pedidos Take Away</span>
   <h1>Armá tu pedido.</h1>
-  <p>Elegí platos de La Tasca y de Santori en <strong>un solo carrito</strong>. Enviá el pedido completo al WhatsApp de Santori. <strong>El retiro siempre es en La Tasca</strong>, incluso si pedís sushi.</p>
-  <div class="brand-tabs" aria-label="Elegir restaurante">
-    <button type="button" class="brand-tab" data-brand="tasca" aria-pressed="true"><strong>↓ LA TASCA</strong><small>Planta baja · PB</small></button>
-    <button type="button" class="brand-tab" data-brand="santori" aria-pressed="false"><strong>↑ SANTORI</strong><small>Arriba · En la cabaña</small></button>
-  </div>
-  <p class="location-hint" id="placeLabel">Sumá platos de ambos restaurantes sin perder tu selección.</p>
+  <p>Encontrá platos de los dos restaurantes con un solo buscador y agregalos a tu pedido.</p>
+  <p class="location-hint">Buscá <strong>La Tasca + Santori</strong> juntos. Retiro siempre en La Tasca · Pedidos por WhatsApp de Santori.</p>
 </section>
 <main class="layout">
   <section class="catalog" aria-label="Platos disponibles para solicitar">
     <div class="catalog-head">
-      <h2 id="catalogTitle">Elegí tus platos</h2>
-      <a class="pdf-link" id="viewBook" href="cartas.html?restaurante=tasca">Ver carta tipo libro ↗</a>
+      <div><h2 id="catalogTitle">Elegí tus platos</h2><p class="catalog-subtitle">La Tasca + Santori · Catálogo unificado</p></div>
+      <a class="pdf-link" href="cartas.html">Ver carta completa ↗</a>
     </div>
-    <p class="note"><strong>Catálogo orientativo:</strong> los platos se identificaron en cartas de referencia de La Tasca y Santori. La selección, disponibilidad y precios deben confirmarse por WhatsApp. <strong>No se realiza ningún cobro ni pedido automático.</strong></p>
-    <div class="filter"><input id="search" class="search" type="search" placeholder="Buscar platos, rolls, entradas…" aria-label="Buscar platos"></div>
-    <button class="checkout-jump" id="goCheckout" type="button">Continuar y completar pedido · <span id="jumpQuantity">0</span> unidades ↓</button>
-    <div id="categories" class="categories" aria-label="Filtrar por categoría"></div>
+    <p class="note">Platos y precios sujetos a confirmación por WhatsApp. Sin cobros online.</p>
+    <div class="filter">
+      <input id="search" class="search" type="search" placeholder="Buscar en ambos restaurantes (ej.: acevichado)" aria-label="Buscar platos de La Tasca y Santori">
+      <select id="categoryFilter" class="category-select" aria-label="Filtrar por categoría"></select>
+    </div>
+    <p id="searchHelp" class="search-help">Buscá en ambas cartas. Cada plato indica su restaurante.</p>
+    <button class="checkout-jump" id="goCheckout" type="button">Ver mi pedido (<span id="jumpQuantity">0</span>) ↓</button>
     <div id="products" class="product-grid"></div>
   </section>
   <aside class="basket" id="basket" aria-label="Resumen del pedido">
@@ -233,13 +257,14 @@ const catalog={
   ]
  }
 };
-let brand='tasca',category='Todos',query='',carts={tasca:{},santori:{}};
+let category='Todos',query='',carts={tasca:{},santori:{}};
 const WHATSAPP_TAKEAWAY='5492944555129';
 const $=x=>document.getElementById(x);
 const escapeHTML=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const normalize=v=>v.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
 const brands=['tasca','santori'];
-const rows=(key=brand)=>catalog[key].products.map((p,i)=>({brand:key,id:i,category:p[0],name:p[1],desc:p[2]}));
+const rows=key=>catalog[key].products.map((p,i)=>({brand:key,id:i,category:p[0],name:p[1],desc:p[2]}));
+const allRows=()=>brands.flatMap(key=>rows(key));
 const qty=(key,id)=>carts[key][id]||0;
 const chosen=key=>rows(key).filter(p=>qty(key,p.id)>0);
 const allChosen=()=>brands.flatMap(key=>chosen(key));
@@ -247,12 +272,15 @@ const hasSushi=()=>chosen('santori').length>0;
 const countAll=()=>allChosen().reduce((sum,p)=>sum+qty(p.brand,p.id),0);
 
 function renderCategories(){
- const kinds=['Todos',...new Set(rows().map(x=>x.category))];
- $('categories').innerHTML=kinds.map(v=>'<button type="button" class="category" data-category="'+escapeHTML(v)+'" aria-pressed="'+(v===category)+'">'+escapeHTML(v)+'</button>').join('');
+ const kinds=['Todos',...new Set(allRows().map(x=>x.category))];
+ const dropdown=$('categoryFilter');
+ dropdown.innerHTML=kinds.map(v=>'<option value="'+escapeHTML(v)+'">'+(v==='Todos'?'Todas las categorías':escapeHTML(v))+'</option>').join('');
+ dropdown.value=category;
 }
 function renderProducts(){
- const matches=rows().filter(p=>(category==='Todos'||p.category===category)&&normalize(p.name+' '+p.desc+' '+p.category).includes(normalize(query)));
- $('products').innerHTML=matches.length?matches.map(p=>'<article class="product"><div><span class="cat">'+escapeHTML(p.category)+'</span><h3>'+escapeHTML(p.name)+'</h3></div><p>'+escapeHTML(p.desc||'Plato a consultar con el restaurante')+'</p><div class="product-bottom"><span class="price-note">Precio a confirmar</span><div class="stepper"><button type="button" data-step="-1" data-id="'+p.id+'" data-item-brand="'+p.brand+'" aria-label="Quitar '+escapeHTML(p.name)+'">−</button><span class="qty">'+qty(p.brand,p.id)+'</span><button type="button" data-step="1" data-id="'+p.id+'" data-item-brand="'+p.brand+'" aria-label="Agregar '+escapeHTML(p.name)+'">+</button></div></div></article>').join(''):'<p style="color:#c7af89">No encontramos platos con ese término. Podés consultarnos en las observaciones.</p>';
+ const matches=allRows().filter(p=>(category==='Todos'||p.category===category)&&normalize(p.name+' '+p.desc+' '+p.category+' '+catalog[p.brand].name).includes(normalize(query)));
+ $('searchHelp').textContent=query.trim()?matches.length+' resultado'+(matches.length===1?'':'s')+' en ambas cartas.':'Buscá en ambas cartas. Cada plato indica su restaurante.';
+ $('products').innerHTML=matches.length?matches.map(p=>'<article class="product"><div><span class="brand-tag '+p.brand+'">'+escapeHTML(catalog[p.brand].name)+'</span><span class="cat">'+escapeHTML(p.category)+'</span><h3>'+escapeHTML(p.name)+'</h3></div><p>'+escapeHTML(p.desc||'Plato a consultar con el restaurante')+'</p><div class="product-bottom"><span class="price-note">Precio a confirmar</span><div class="stepper"><button type="button" data-step="-1" data-id="'+p.id+'" data-item-brand="'+p.brand+'" aria-label="Quitar '+escapeHTML(p.name)+'">−</button><span class="qty">'+qty(p.brand,p.id)+'</span><button type="button" data-step="1" data-id="'+p.id+'" data-item-brand="'+p.brand+'" aria-label="Agregar '+escapeHTML(p.name)+'">+</button></div></div></article>').join(''):'<p style="color:#c7af89">No encontramos platos con ese término en las dos cartas. Podés indicarnos tu consulta en observaciones.</p>';
 }
 function groupHTML(key){
  const products=chosen(key);
@@ -305,25 +333,13 @@ function refreshWhatsApp(){
  if(notes)lines.push('','Observaciones: '+notes);
  $('send').href='https://wa.me/'+WHATSAPP_TAKEAWAY+'?text='+encodeURIComponent(lines.join('\n'));
 }
-function changeBrand(next){
- if(!catalog[next])next='tasca';
- brand=next;category='Todos';query='';$('search').value='';
- document.querySelectorAll('[data-brand]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.brand===brand)));
- $('catalogTitle').textContent='Elegí tus platos · '+catalog[brand].name;
- $('viewBook').href=catalog[brand].menu;
- $('placeLabel').textContent='Sumá platos de '+catalog[brand].name+' al mismo carrito. Retiro siempre en La Tasca.';
- $('send').textContent='Enviar al WhatsApp de Santori';
- $('validation').textContent='';
- history.replaceState(null,'','?restaurante='+brand);
- renderCategories();renderProducts();renderBasket();
-}
+
 function increment(key,id,step){
  if(!catalog[key]||!Number.isInteger(id)||id<0||id>=catalog[key].products.length)return;
  carts[key][id]=Math.max(0,Math.min(50,qty(key,id)+step));
  $('validation').textContent='';
  renderProducts();renderBasket();
 }
-document.querySelectorAll('[data-brand]').forEach(b=>b.addEventListener('click',()=>changeBrand(b.dataset.brand)));
 $('products').addEventListener('click',e=>{
  const btn=e.target.closest('button[data-step]');
  if(btn)increment(btn.dataset.itemBrand,Number(btn.dataset.id),Number(btn.dataset.step));
@@ -332,10 +348,7 @@ $('basketItems').addEventListener('click',e=>{
  const btn=e.target.closest('button[data-step]');
  if(btn)increment(btn.dataset.itemBrand,Number(btn.dataset.id),Number(btn.dataset.step));
 });
-$('categories').addEventListener('click',e=>{
- const btn=e.target.closest('button[data-category]');
- if(btn){category=btn.dataset.category;renderCategories();renderProducts();}
-});
+$('categoryFilter').addEventListener('change',e=>{category=e.target.value;renderProducts();});
 $('search').addEventListener('input',e=>{query=e.target.value;renderProducts()});
 ['customerName','pickup','notes','sushiPeople'].forEach(id=>$(id).addEventListener('input',()=>{$('validation').textContent='';refreshWhatsApp();}));
 $('send').addEventListener('click',e=>{
@@ -359,7 +372,7 @@ function goCheckout(){
 }
 $('goCheckout').addEventListener('click',goCheckout);
 $('openBasket').addEventListener('click',goCheckout);
-changeBrand(new URLSearchParams(location.search).get('restaurante')||'tasca');
+renderCategories();renderProducts();renderBasket();
 })();
 </script>
 </body>
