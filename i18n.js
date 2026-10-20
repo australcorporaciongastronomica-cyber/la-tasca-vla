@@ -2,6 +2,18 @@
 (function () {
   "use strict";
   const PAIRS = [
+
+    // Reviews carousel: static headers, labels and methodology disclaimer
+    ["La experiencia, contada por quienes nos visitan","Our guests, in their own words"],
+    ["Sabores que se recuerdan, momentos para compartir y personas que nos eligen. Conocé algunas experiencias de nuestros visitantes.","Memorable flavours, moments to share and guests who choose us. Explore some of their experiences."],
+    ["Resúmenes de opiniones, no citas textuales. Relevamiento del 15/06 al 15/09/2026. Las reseñas de Google Maps fueron consultadas mediante un índice público; las de Tripadvisor, en la plataforma. Solo se muestran estrellas individuales documentadas.","Review summaries, not verbatim quotations. Research period: June 15 to September 15, 2026. Google Maps reviews were checked via a public index; Tripadvisor reviews on its platform. Individual star ratings are displayed only when documented."],
+    ["Opinión de un visitante","Guest review"],
+    ["Controles de opiniones","Review controls"],
+    ["Seleccionar opinión","Select a review"],
+    ["Opinión anterior","Previous review"],["Siguiente opinión","Next review"],
+    ["VER FUENTE DE LA RESEÑA ↗","VIEW REVIEW SOURCE ↗"],
+    ["5 de 5 estrellas","5 out of 5 stars"],
+    ["Un reconocimiento a nuestra experiencia","An award for our guest experience"],
     // Accessibility labels and interaction feedback
     ["Acceso directo a las cartas completas","Quick access to full menus"],
     ["Carrito único Take Away para La Tasca y Santori","One takeaway cart for La Tasca and Santori"],
