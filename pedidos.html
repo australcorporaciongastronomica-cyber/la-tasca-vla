@@ -94,8 +94,8 @@
     .location-hint strong{color:var(--gold)}
     .catalog-subtitle{margin:4px 0 0;color:#c9b89f;font-size:11px}
     .catalog-head h2{font-size:clamp(28px,3vw,37px);line-height:1.08}
-    .pdf-link{display:inline-flex;align-items:center;justify-content:center;min-height:45px;padding:10px 15px;background:#3c3020;color:#f7dfb1;border:1px solid var(--gold);font-size:11px;border-radius:8px;white-space:nowrap}
-    .pdf-link:hover{background:#6b4d2d}
+    .pdf-link{display:inline-flex;align-items:center;justify-content:center;min-height:62px;padding:17px 27px;background:linear-gradient(120deg,#f3dbad,#d5ae70);color:#20170c;border:2px solid #f4dfbb;font-size:14px;font-weight:800;letter-spacing:1px;border-radius:10px;white-space:nowrap;box-shadow:0 8px 22px rgba(0,0,0,.3);text-transform:uppercase}
+    .pdf-link:hover{background:#fce6c0;color:#20170c;transform:translateY(-1px)}
     .filter{display:grid;grid-template-columns:minmax(0,1fr) minmax(170px,260px);gap:10px;align-items:center}
     .category-select{width:100%;min-height:45px;border:1px solid #6e5b43;background:#171510;border-radius:8px;color:#f7ecd8;padding:10px 14px;font:inherit}
     .category-select option{background:#171510;color:#fff}
@@ -110,7 +110,7 @@
       .filter{grid-template-columns:1fr}
       .catalog-head{align-items:start;gap:9px}
       .catalog-head h2{font-size:32px}
-      .pdf-link{min-height:42px;padding:9px 12px}
+      .pdf-link{width:100%;min-height:60px;padding:16px 18px;font-size:13px;white-space:normal;text-align:center}
       .checkout-jump{font-size:12px;min-height:48px}
       .note{padding:11px 13px;margin:12px 0 15px}
     }
@@ -131,7 +131,7 @@
   <section class="catalog" aria-label="Platos disponibles para solicitar">
     <div class="catalog-head">
       <div><h2 id="catalogTitle">Elegí tus platos</h2><p class="catalog-subtitle">La Tasca + Santori · Catálogo unificado</p></div>
-      <a class="pdf-link" href="cartas.html">Ver carta completa ↗</a>
+      <a class="pdf-link" href="cartas.html" aria-label="Ver cartas completas de La Tasca y Santori">VER CARTAS COMPLETAS ↗</a>
     </div>
     <p class="note">Platos y precios sujetos a confirmación por WhatsApp. Sin cobros online.</p>
     <div class="filter">
