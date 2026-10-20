@@ -353,6 +353,7 @@
     return "es";
   }
   locale=applySavedLocale();
+  try{localStorage.setItem(storageKey,locale)}catch(_){}
   window.siteI18n={
     language:()=>locale,
     toEnglish:value=>translate(value)||value,
