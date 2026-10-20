@@ -223,7 +223,8 @@
     ["Rolls, sashimis y nigiris","Rolls, sashimi and nigiri"],
     ["Rolls, nigiris, tiraditos y sashimis","Rolls, nigiri, tiradito and sashimi"],
     ["Lenguado y parmesano","Sole and Parmesan"],
-    ["Lomo y manteca oriental","Beef tenderloin and oriental butter"]
+    ["Lomo y manteca oriental","Beef tenderloin and oriental butter"],
+    ["Salmón y huevo de codorniz","Salmon and quail egg"]
   ];
 
   const dictionary = new Map(PAIRS.map(([es,en])=>[normalize(es),en]));
