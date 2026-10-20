@@ -17,6 +17,7 @@
   {venue:"Santori",author:"Belén Olima Vera",platform:"Google Maps",stars:5,dateEs:"Septiembre de 2026",dateEn:"September 2026",es:"Valora las rabas, el arroz con mariscos, la limonada y el cheesecake, además de la excelente atención.",en:"Enjoys the squid, seafood rice, lemonade and cheesecake, along with the excellent service.",url:GOOGLE_SANTORI},
   {venue:"La Tasca",author:"Fernanda D",platform:"Tripadvisor",stars:null,dateEs:"11 de julio de 2026",dateEn:"July 11, 2026",es:"Destaca la comida, la atención de Flor y la música; expresa sus ganas de volver.",en:"Enjoys the food, Flor's service and the music, and looks forward to returning.",url:TRIPADVISOR}
  ];
+ reviews.forEach((review,i)=>{review.pt=["Destaca o atendimento à família, o menu infantil, o sushi e o ceviche frescos e o ambiente acolhedor.","Um grupo de seis pessoas gostou do atendimento rápido, dos pratos, dos drinques e de uma surpresa especial de aniversário.","Elogia o excelente atendimento e o sushi; afirma que voltaria sem hesitar.","Descreve uma ótima experiência em família: comida deliciosa, atendimento excelente, agilidade e ambiente agradável.","Valoriza a proposta Nikkei, o ceviche, a qualidade do sushi e a apresentação caprichada.","Destaca os petiscos, a tortilha de batata, o sushi e o atendimento de Elizabeth.","Agradece a rapidez, a atenção da equipe e o atendimento de Narela; considera o lugar seu favorito em Villa La Angostura.","Valoriza o ambiente acolhedor e o atendimento; recomenda especialmente os frutos do mar e a truta.","Destaca as lulas, o arroz com frutos do mar, a limonada e o cheesecake, além do excelente atendimento.","Destaca a comida, o atendimento de Flor e a música; diz que gostaria de voltar."][i];review.datePt=["Setembro de 2026","Setembro de 2026","Agosto de 2026","31 de julho de 2026","Agosto de 2026","27 de julho de 2026","Agosto de 2026","5 de julho de 2026","Setembro de 2026","11 de julho de 2026"][i]});
  const root=document.getElementById("guest-reviews");
  if(!root)return;
  const $=id=>document.getElementById(id);
@@ -24,27 +25,27 @@
  const source=$("guest-review-source"),date=$("guest-review-date"),stars=$("guest-review-stars"),link=$("guest-review-link"),dots=$("guest-review-dots"),progress=$("guest-review-progress");
  const back=$("guest-review-back"),next=$("guest-review-next");
  const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
- const BUTTON_LABEL={es:"Ver más opiniones",en:"View more reviews"};
- const DOT_LABEL={es:"Ver opinión",en:"Show review"};
+ const BUTTON_LABEL={es:"Ver más opiniones",en:"View more reviews",pt:"Ver mais avaliações"};
+ const DOT_LABEL={es:"Ver opinión",en:"Show review",pt:"Ver avaliação"};
  let index=0;
  let pending=0;
  let halted=false;
  const english=()=>window.siteI18n?.language?.()==="en";
- const locale=()=>english()?"en":"es";
+ const locale=()=>["es","en","pt"].includes(window.siteI18n?.language?.())?window.siteI18n.language():"es";
  const fill=()=>{
   const item=reviews[index];
   venue.textContent=item.venue;
-  text.textContent=english()?item.en:item.es;
+  text.textContent=locale()==="pt"?item.pt:english()?item.en:item.es;
   author.textContent=item.author;
   source.textContent=item.platform;
-  date.textContent=english()?item.dateEn:item.dateEs;
+  date.textContent=locale()==="pt"?item.datePt:english()?item.dateEn:item.dateEs;
   stars.hidden=item.stars===null;
   if(item.stars!==null){
    stars.textContent="★".repeat(item.stars);
-   stars.setAttribute("aria-label",english()?item.stars+" out of 5 stars":item.stars+" de 5 estrellas");
+   stars.setAttribute("aria-label",locale()==="pt"?item.stars+" de 5 estrelas":english()?item.stars+" out of 5 stars":item.stars+" de 5 estrellas");
   }
   link.href=item.url;
-  link.textContent=english()?"MORE REVIEWS ↗":"VER MÁS OPINIONES ↗";
+  link.textContent=locale()==="pt"?"VER MAIS AVALIAÇÕES ↗":english()?"MORE REVIEWS ↗":"VER MÁS OPINIONES ↗";
   link.setAttribute("aria-label",BUTTON_LABEL[locale()]+": "+item.platform);
   progress.textContent=(index+1)+" / "+reviews.length;
   [...dots.children].forEach((dot,i)=>{
