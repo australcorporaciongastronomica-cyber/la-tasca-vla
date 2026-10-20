@@ -3,6 +3,24 @@
   "use strict";
   const PAIRS = [
 
+
+    // Homepage photo-first redesign and authentic salon gallery
+    ["ARMAR PEDIDO TAKE AWAY ↗","BUILD A TAKEAWAY ORDER ↗"],
+    ["La calidez de nuestros espacios","The warmth of our spaces"],
+    ["Descubrí el salón de La Tasca y la atmósfera de Santori: madera, luz cálida y sabores de la Patagonia.","Discover La Tasca's dining room and Santori's atmosphere: natural wood, warm lights and Patagonian flavours."],
+    ["Un salón para quedarse","A dining room to savour"],
+    ["La calidez de la madera y el espíritu de Villa La Angostura.","Warm timber interiors and the spirit of Villa La Angostura."],
+    ["Un ambiente diferente","A distinctive atmosphere"],
+    ["La experiencia Nikkei, arriba en la cabaña.","The Nikkei experience, upstairs in the cabin."],
+    ["Nuestra cocina, en cada detalle.","Our cuisine, down to every detail."],
+    ["Vinos y encuentros","Wine and good company"],
+    ["Una mesa para compartir.","A table worth sharing."],
+    ["Sabor y presentación.","Flavour and presentation."],
+    ["Más fotografías de nuestros espacios:","More photos of our restaurants:"],
+    ["Más fotografías en Instagram","More photographs on Instagram"],
+    ["Instagram La Tasca ↗","La Tasca on Instagram ↗"],
+    ["Instagram Santori ↗","Santori on Instagram ↗"],
+    ["Opiniones resumidas · Google Maps y Tripadvisor · Junio–septiembre 2026","Review summaries · Google Maps and Tripadvisor · June–September 2026"],
     // Reviews carousel: static headers, labels and methodology disclaimer
     ["La experiencia, contada por quienes nos visitan","What our guests are saying"],
     ["Sabores que se recuerdan, momentos para compartir y personas que nos eligen. Conocé algunas experiencias de nuestros visitantes.","Memorable flavours, moments to share and guests who choose us. Explore some of their experiences."],
