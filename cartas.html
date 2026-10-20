@@ -141,7 +141,7 @@
       </button>
       <p class="choose-tip">La Tasca está abajo, en planta baja. Para encontrar Santori, subí a la cabaña. Ambas propuestas comparten dirección.</p>
       <a class="button-link" id="sidebarReserve" href="https://wa.me/5492944788994" target="_blank" rel="noopener">Consultar reserva ↗</a>
-      <a class="button-link order-link" id="sidebarOrder" href="pedidos.html?restaurante=tasca">🛍 Armar pedido Take Away ↗</a>
+      <a class="button-link order-link" id="sidebarOrder" href="pedidos.html">🛍 Armar pedido Take Away ↗</a>
     </aside>
 
     <section class="reader" id="reader" aria-label="Carta digital tipo libro">
@@ -169,7 +169,7 @@
         <button class="navbutton" id="next" type="button" disabled>Siguiente →</button>
       </div>
       <a class="button-link mobile-reserve" id="mobileReserve" href="https://wa.me/5492944788994" target="_blank" rel="noopener">Consultar reserva ↗</a>
-      <a class="button-link mobile-reserve order-link" id="mobileOrder" href="pedidos.html?restaurante=tasca">🛍 Armar pedido Take Away ↗</a>
+      <a class="button-link mobile-reserve order-link" id="mobileOrder" href="pedidos.html">🛍 Armar pedido Take Away ↗</a>
     </section>
   </main>
   <p class="footnote">La Tasca · planta baja &nbsp; | &nbsp; Santori · arriba, en la cabaña &nbsp; · &nbsp; Av. Arrayanes 6155, Villa La Angostura</p>
@@ -266,7 +266,7 @@
       const d=restaurants[key];
       $('readerTitle').textContent=d.name;$('readerLocation').textContent=d.place;
       $('sidebarReserve').href=d.whatsapp;$('mobileReserve').href=d.whatsapp;$('originalPdf').href=d.pdf;
-      $('sidebarOrder').href='pedidos.html?restaurante='+key;$('mobileOrder').href='pedidos.html?restaurante='+key;
+      $('sidebarOrder').href='pedidos.html';$('mobileOrder').href='pedidos.html';
       document.querySelectorAll('[data-restaurant]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.restaurant===key)));
       history.replaceState(null,'','?restaurante='+key);
       book.replaceChildren();updateNavigation();loading('Abriendo la carta de '+d.name+'…');
