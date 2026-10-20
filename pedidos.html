@@ -278,7 +278,13 @@ function renderCategories(){
  dropdown.value=category;
 }
 function renderProducts(){
- const matches=allRows().filter(p=>(category==='Todos'||p.category===category)&&normalize(p.name+' '+p.desc+' '+p.category+' '+catalog[p.brand].name).includes(normalize(query)));
+ const matches=allRows().filter(p=>{
+   if(category!=='Todos'&&p.category!==category)return false;
+   const t=window.siteI18n;
+   const bilingual=[p.name,p.desc,p.category,catalog[p.brand].name];
+   if(t)bilingual.push(...[p.name,p.desc,p.category].map(x=>t.toEnglish(x)));
+   return normalize(bilingual.join(' ')).includes(normalize(query));
+ });
  $('searchHelp').textContent=query.trim()?matches.length+' resultado'+(matches.length===1?'':'s')+' en ambas cartas.':'Buscá en ambas cartas. Cada plato indica su restaurante.';
  $('products').innerHTML=matches.length?matches.map(p=>'<article class="product"><div><span class="brand-tag '+p.brand+'">'+escapeHTML(catalog[p.brand].name)+'</span><span class="cat">'+escapeHTML(p.category)+'</span><h3>'+escapeHTML(p.name)+'</h3></div><p>'+escapeHTML(p.desc||'Plato a consultar con el restaurante')+'</p><div class="product-bottom"><span class="price-note">Precio a confirmar</span><div class="stepper"><button type="button" data-step="-1" data-id="'+p.id+'" data-item-brand="'+p.brand+'" aria-label="Quitar '+escapeHTML(p.name)+'">−</button><span class="qty">'+qty(p.brand,p.id)+'</span><button type="button" data-step="1" data-id="'+p.id+'" data-item-brand="'+p.brand+'" aria-label="Agregar '+escapeHTML(p.name)+'">+</button></div></div></article>').join(''):'<p style="color:#c7af89">No encontramos platos con ese término en las dos cartas. Podés indicarnos tu consulta en observaciones.</p>';
 }
@@ -350,6 +356,7 @@ $('basketItems').addEventListener('click',e=>{
 });
 $('categoryFilter').addEventListener('change',e=>{category=e.target.value;renderProducts();});
 $('search').addEventListener('input',e=>{query=e.target.value;renderProducts()});
+window.addEventListener('site:languagechange',()=>{renderCategories();renderProducts();renderBasket();});
 ['customerName','pickup','notes','sushiPeople'].forEach(id=>$(id).addEventListener('input',()=>{$('validation').textContent='';refreshWhatsApp();}));
 $('send').addEventListener('click',e=>{
  if(!countAll()){e.preventDefault();$('validation').textContent='Primero elegí al menos un plato.';return;}
@@ -375,5 +382,6 @@ $('openBasket').addEventListener('click',goCheckout);
 renderCategories();renderProducts();renderBasket();
 })();
 </script>
+  <script src="i18n.js?v=2" defer></script>
 </body>
 </html>
