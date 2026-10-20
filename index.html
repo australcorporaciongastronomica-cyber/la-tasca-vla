@@ -1322,6 +1322,56 @@
     .action-btn.btn-order:hover{background:rgba(48,147,85,.4)}
     .btn-order .btn-icon{background:rgba(49,183,95,.26);color:#b3ffc6}
     @media(max-width:760px){.hero-order-links{margin:11px auto 3px;gap:8px}.hero-order-links a{width:100%;max-width:100%;min-height:48px}}
+
+    /* RESEÑAS: CARRUSEL EDITORIAL LA TASCA + SANTORI */
+    .guest-reviews{padding:clamp(70px,9vw,110px) 0;background:radial-gradient(ellipse at 50% 0,rgba(151,110,61,.12),transparent 62%),linear-gradient(180deg,#10100f 0%,#1b1814 55%,#111110 100%);border-top:1px solid rgba(218,185,129,.18);border-bottom:1px solid rgba(218,185,129,.22)}
+    .guest-reviews__heading{text-align:center;margin:0 auto 38px;max-width:780px}
+    .guest-reviews__heading .section-label{color:#dec08b}
+    .guest-reviews__heading h2{font:500 clamp(42px,6vw,70px)/1.02 'Cormorant Garamond',Georgia,serif;color:#fdf4e4;margin:11px 0 19px}
+    .guest-reviews__heading p{font-size:13px;color:#cabb9f;line-height:1.9;margin:0 auto;max-width:630px}
+    .guest-reviews__frame{max-width:920px;margin:0 auto;border:1px solid rgba(218,185,129,.45);background:linear-gradient(125deg,rgba(43,35,25,.91),rgba(20,21,19,.97));border-radius:18px;box-shadow:0 22px 72px rgba(0,0,0,.36);position:relative;overflow:hidden}
+    .guest-reviews__frame:before{content:"";position:absolute;top:0;left:16%;right:16%;height:1px;background:linear-gradient(90deg,transparent,#f5ddaa,transparent);pointer-events:none}
+    .guest-reviews__frame:after{content:"“";position:absolute;top:-22px;right:28px;font:300 160px/1 'Cormorant Garamond',Georgia,serif;color:rgba(223,193,141,.10);pointer-events:none}
+    .guest-review{min-height:315px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:35px clamp(24px,7vw,80px) 23px;position:relative;z-index:1;transition:opacity .26s ease,transform .26s ease;opacity:1;transform:translateY(0)}
+    .guest-review.is-fading{opacity:0;transform:translateY(7px)}
+    .guest-review__meta{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 13px;align-items:center;min-height:25px}
+    .guest-review__place{border-radius:99px;border:1px solid #d2b277;color:#f6deb1;padding:5px 14px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+    .guest-review__source{font-size:11px;color:#dfcfb5;letter-spacing:.4px}
+    .guest-review__stars{margin:17px 0 4px;color:#edc783;letter-spacing:5px;font-size:20px;line-height:1}
+    .guest-review__stars[hidden]{display:none}
+    .guest-review__text{font:500 clamp(24px,3.6vw,38px)/1.23 'Cormorant Garamond',Georgia,serif;color:#fff8ea;max-width:760px;margin:20px 0 22px;text-wrap:balance}
+    .guest-review__attribution{font-size:12px;font-weight:700;letter-spacing:.3px;color:#f0d5a3}
+    .guest-review__date{font-size:10px;color:#a99b87;letter-spacing:.8px;margin-top:4px}
+    .guest-reviews__controls{position:relative;display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;padding:6px 18px 23px;z-index:1}
+    .guest-reviews__arrow{width:48px;height:44px;display:grid;place-items:center;border:1px solid rgba(221,189,128,.52);background:rgba(18,18,16,.6);color:#f8dca8;border-radius:8px;font-size:19px;cursor:pointer;transition:background .2s}
+    .guest-reviews__arrow:hover{background:#5b452c}
+    .guest-reviews__dots{display:flex;gap:7px;align-items:center;justify-content:center;flex-wrap:wrap}
+    .guest-reviews__dot{width:10px;height:10px;border:1px solid #d1b587;border-radius:50%;background:transparent;cursor:pointer;padding:0;transition:width .2s,background .2s}
+    .guest-reviews__dot[aria-current=true]{background:#e4c58c;width:23px;border-radius:99px}
+    .guest-reviews__arrow:focus-visible,.guest-reviews__dot:focus-visible,.guest-reviews__source-link:focus-visible{outline:3px solid #fff;outline-offset:4px}
+    .guest-reviews__below{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;padding:0 25px 28px}
+    .guest-reviews__counter{font-size:10px;color:#ada087;letter-spacing:1.1px;font-variant-numeric:tabular-nums}
+    .guest-reviews__source-link{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#f4d49b;text-decoration:underline;text-underline-offset:4px}
+    .guest-reviews__source-link:hover{color:white}
+    .guest-reviews__footnote{text-align:center;max-width:790px;margin:20px auto 0;color:#988b7b;font-size:10px;line-height:1.75}
+    @media(max-width:650px){
+      .guest-reviews{padding:64px 0}
+      .guest-reviews__heading{margin-bottom:24px}
+      .guest-reviews__heading h2{font-size:47px;margin:12px 0}
+      .guest-reviews__heading p{font-size:12px;line-height:1.7}
+      .guest-reviews__frame{border-radius:11px}
+      .guest-reviews__frame:after{right:12px;top:-8px;font-size:95px}
+      .guest-review{min-height:360px;padding:30px 19px 14px}
+      .guest-review__text{font-size:clamp(25px,7vw,32px);margin:19px 0}
+      .guest-reviews__arrow{height:43px;width:43px}
+      .guest-reviews__dots{max-width:188px;gap:6px}
+      .guest-reviews__footnote{font-size:9px;padding:0 10px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .guest-review,.guest-reviews__dot{transition:none}
+      .guest-review.is-fading{opacity:1;transform:none}
+    }
+
   </style>
 
 </head>
@@ -1792,6 +1842,41 @@
 
 
 
+
+  <!-- OPINIONES REALES: RESÚMENES DEL INFORME DE REPUTACIÓN 15/09/2026 -->
+  <section class="guest-reviews" id="opiniones" aria-labelledby="guest-reviews-title">
+    <div class="container" id="guest-reviews">
+      <div class="guest-reviews__heading">
+        <div class="section-label">La Tasca · Santori · Google Maps · Tripadvisor</div>
+        <h2 id="guest-reviews-title">La experiencia, contada por quienes nos visitan</h2>
+        <p>Sabores que se recuerdan, momentos para compartir y personas que nos eligen. Conocé algunas experiencias de nuestros visitantes.</p>
+      </div>
+      <div class="guest-reviews__frame">
+        <article class="guest-review" id="guest-review" aria-label="Opinión de un visitante" aria-live="off">
+          <div class="guest-review__meta">
+            <span class="guest-review__place" id="guest-review-venue">Santori</span>
+            <span class="guest-review__source" id="guest-review-source">Google Maps</span>
+          </div>
+          <div class="guest-review__stars" id="guest-review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+          <p class="guest-review__text" id="guest-review-text">Destaca la atención a su familia, el menú infantil, la frescura del sushi y el ceviche, y el ambiente cálido.</p>
+          <span class="guest-review__attribution" id="guest-review-author">Belén Musladini</span>
+          <span class="guest-review__date" id="guest-review-date">Septiembre de 2026</span>
+        </article>
+        <nav class="guest-reviews__controls" aria-label="Controles de opiniones">
+          <button class="guest-reviews__arrow" id="guest-review-back" type="button" aria-label="Opinión anterior">←</button>
+          <div class="guest-reviews__dots" id="guest-review-dots" aria-label="Seleccionar opinión"></div>
+          <button class="guest-reviews__arrow" id="guest-review-next" type="button" aria-label="Siguiente opinión">→</button>
+        </nav>
+        <div class="guest-reviews__below">
+          <span class="guest-reviews__counter" id="guest-review-progress">1 / 10</span>
+          <a class="guest-reviews__source-link" id="guest-review-link" href="https://es.restaurantguru.com/Santori-Villa-La-Angostura" target="_blank" rel="noopener">VER FUENTE DE LA RESEÑA ↗</a>
+        </div>
+      </div>
+      <p class="guest-reviews__footnote">Resúmenes de opiniones, no citas textuales. Relevamiento del 15/06 al 15/09/2026. Las reseñas de Google Maps fueron consultadas mediante un índice público; las de Tripadvisor, en la plataforma. Solo se muestran estrellas individuales documentadas.</p>
+    </div>
+  </section>
+
+
   <!-- TRIPADVISOR -->
 
   <section class="tripadvisor">
@@ -1803,7 +1888,7 @@
       </div>
 
       <h2 class="section-title">
-        La experiencia también se comparte
+        Un reconocimiento a nuestra experiencia
       </h2>
 
       <p class="section-text">
@@ -2118,6 +2203,7 @@
 
 
   <script src="i18n.js?v=2" defer></script>
+  <script src="reviews.js?v=1" defer></script>
 </body>
 
 </html>
