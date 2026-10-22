@@ -103,6 +103,9 @@
     .brand-tag{display:inline-block;border-radius:99px;padding:4px 10px;color:#f6dfb9;background:#3c3022;border:1px solid #8d6e43;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
     .brand-tag.santori{background:#1c3129;color:#c5efdb;border-color:#5b9978}
     .product .cat{display:block;margin-top:10px}
+    .product .portion-note{color:#f3d49a;font-weight:700;font-size:11px;line-height:1.45;flex:none}
+    .product .portion-hint{color:#d7c6aa;font-size:10px;line-height:1.4;flex:none}
+    .basket-item .portion-basket{display:block;color:#f3d49a;font-weight:700;margin-top:3px}
     .checkout-jump{font-size:12px;letter-spacing:0}
     @media(max-width:650px){
       .header{padding:24px 14px 18px}.header h1{font-size:45px}
@@ -228,10 +231,11 @@ const catalog={
    ['Ceviches','Ceviche clásico','Lenguado y leche de tigre'],
    ['Ceviches','Ceviche Nikkei','Salmón, palta, salsa Nikkei'],
    ['Ceviches','Ceviche mixto','Pulpo, langostinos y lenguado'],
+    ['Tiraditos · 12 piezas','Tiradito de salmón','Salmón con salsa de maracuyá y crocante de batata'],
    ['Rolls · 10 piezas','Philadelphia','Salmón, queso Philadelphia y palta'],
    ['Rolls · 10 piezas','Langostinos','Langostino, queso Philadelphia y palta'],
-   ['Rolls · 10 piezas','Furai de langostinos','Langostino, queso Philadelphia y palta'],
-   ['Rolls · 10 piezas','Furai de salmón','Salmón, queso Philadelphia y palta'],
+   ['Furai · 5 piezas','Furai de langostinos','Langostino, queso Philadelphia y palta'],
+   ['Furai · 5 piezas','Furai de salmón','Salmón, queso Philadelphia y palta'],
    ['Rolls · 10 piezas','Veggie','Palta, vegetales y emulsión de almendras'],
    ['Rolls · 10 piezas','Acevichado','Langostino, palta y salsa acevichada'],
    ['Rolls · 10 piezas','Dos salmones','Tartar de salmón y salsa Nikkei'],
@@ -265,6 +269,22 @@ const normalize=v=>v.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase
 const brands=['tasca','santori'];
 const rows=key=>catalog[key].products.map((p,i)=>({brand:key,id:i,category:p[0],name:p[1],desc:p[2]}));
 const allRows=()=>brands.flatMap(key=>rows(key));
+const piecesPerUnit=p=>p.category==='Furai · 5 piezas'?5:p.category==='Rolls · 10 piezas'?10:p.category==='Tiraditos · 12 piezas'?12:0;
+function portionLabel(p,amount=1){
+  const pcs=piecesPerUnit(p);
+  if(!pcs)return '';
+  const lang=window.siteI18n?.language?.()||'es';
+  const total=pcs*amount;
+  if(lang==='en')return amount===1?'1 unit = '+pcs+' pieces':amount+' units × '+pcs+' pieces = '+total+' pieces';
+  if(lang==='pt')return amount===1?'1 unidade = '+pcs+' peças':amount+' unidades × '+pcs+' peças = '+total+' peças';
+  return amount===1?'1 unidad = '+pcs+' piezas':amount+' unidades × '+pcs+' piezas = '+total+' piezas';
+}
+function portionHint(p){
+  if(p.category!=='Furai · 5 piezas')return '';
+  const lang=window.siteI18n?.language?.()||'es';
+  return lang==='en'?'For 10 pieces, select 2 units':lang==='pt'?'Para 10 peças, selecione 2 unidades':'Para 10 piezas, seleccioná 2 unidades';
+}
+
 const qty=(key,id)=>carts[key][id]||0;
 const chosen=key=>rows(key).filter(p=>qty(key,p.id)>0);
 const allChosen=()=>brands.flatMap(key=>chosen(key));
@@ -286,14 +306,14 @@ function renderProducts(){
    return normalize(bilingual.join(' ')).includes(normalize(query));
  });
  $('searchHelp').textContent=query.trim()?matches.length+' resultado'+(matches.length===1?'':'s')+' en ambas cartas.':'Buscá en ambas cartas. Cada plato indica su restaurante.';
- $('products').innerHTML=matches.length?matches.map(p=>'<article class="product"><div><span class="brand-tag '+p.brand+'">'+escapeHTML(catalog[p.brand].name)+'</span><span class="cat">'+escapeHTML(p.category)+'</span><h3>'+escapeHTML(p.name)+'</h3></div><p>'+escapeHTML(p.desc||'Plato a consultar con el restaurante')+'</p><div class="product-bottom"><span class="price-note">Precio a confirmar</span><div class="stepper"><button type="button" data-step="-1" data-id="'+p.id+'" data-item-brand="'+p.brand+'" aria-label="Quitar '+escapeHTML(p.name)+'">−</button><span class="qty">'+qty(p.brand,p.id)+'</span><button type="button" data-step="1" data-id="'+p.id+'" data-item-brand="'+p.brand+'" aria-label="Agregar '+escapeHTML(p.name)+'">+</button></div></div></article>').join(''):'<p style="color:#c7af89">No encontramos platos con ese término en las dos cartas. Podés indicarnos tu consulta en observaciones.</p>';
+ $('products').innerHTML=matches.length?matches.map(p=>'<article class="product"><div><span class="brand-tag '+p.brand+'">'+escapeHTML(catalog[p.brand].name)+'</span><span class="cat">'+escapeHTML(p.category)+'</span><h3>'+escapeHTML(p.name)+'</h3></div><p>'+escapeHTML(p.desc||'Plato a consultar con el restaurante')+'</p>'+(piecesPerUnit(p)?'<p class="portion-note">'+escapeHTML(portionLabel(p))+'</p>':'')+(portionHint(p)?'<p class="portion-hint">'+escapeHTML(portionHint(p))+'</p>':'')+'<div class="product-bottom"><span class="price-note">Precio a confirmar</span><div class="stepper"><button type="button" data-step="-1" data-id="'+p.id+'" data-item-brand="'+p.brand+'" aria-label="Quitar '+escapeHTML(p.name)+'">−</button><span class="qty">'+qty(p.brand,p.id)+'</span><button type="button" data-step="1" data-id="'+p.id+'" data-item-brand="'+p.brand+'" aria-label="Agregar '+escapeHTML(p.name)+'">+</button></div></div></article>').join(''):'<p style="color:#c7af89">No encontramos platos con ese término en las dos cartas. Podés indicarnos tu consulta en observaciones.</p>';
 }
 function groupHTML(key){
  const products=chosen(key);
  if(!products.length)return '';
  const label=key==='tasca'?'La Tasca':'Santori';
  return '<div class="basket-group"><div class="basket-group-title">'+label+'</div>'+
-   products.map(p=>'<div class="basket-item"><div><div class="basket-item-title">'+escapeHTML(p.name)+'</div><small>'+escapeHTML(p.category)+'</small></div><div class="stepper"><button type="button" data-step="-1" data-id="'+p.id+'" data-item-brand="'+key+'" aria-label="Quitar '+escapeHTML(p.name)+'">−</button><span class="qty">'+qty(key,p.id)+'</span><button type="button" data-step="1" data-id="'+p.id+'" data-item-brand="'+key+'" aria-label="Agregar '+escapeHTML(p.name)+'">+</button></div></div>').join('')+'</div>';
+   products.map(p=>'<div class="basket-item"><div><div class="basket-item-title">'+escapeHTML(p.name)+'</div><small>'+escapeHTML(p.category)+'</small>'+(piecesPerUnit(p)?'<small class="portion-basket">'+escapeHTML(portionLabel(p,qty(key,p.id)))+'</small>':'')+'</div><div class="stepper"><button type="button" data-step="-1" data-id="'+p.id+'" data-item-brand="'+key+'" aria-label="Quitar '+escapeHTML(p.name)+'">−</button><span class="qty">'+qty(key,p.id)+'</span><button type="button" data-step="1" data-id="'+p.id+'" data-item-brand="'+key+'" aria-label="Agregar '+escapeHTML(p.name)+'">+</button></div></div>').join('')+'</div>';
 }
 function renderBasket(){
  const total=countAll();
@@ -332,7 +352,7 @@ function refreshWhatsApp(){
    const group=chosen(key);
    if(group.length){
      lines.push('',''+catalog[key].name+':');
-     group.forEach(p=>lines.push(qty(key,p.id)+' x '+p.name));
+     group.forEach(p=>{const amount=qty(key,p.id),pcs=piecesPerUnit(p);lines.push(amount+' x '+p.name+(pcs?' ('+pcs+' piezas c/u · total '+(amount*pcs)+' piezas)':''));});
    }
  }
  if(hasSushi())lines.push('','Palitos y salsas para '+$('sushiPeople').value.trim()+' personas.');
