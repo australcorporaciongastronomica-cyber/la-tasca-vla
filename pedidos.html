@@ -352,7 +352,7 @@ function refreshWhatsApp(){
    const group=chosen(key);
    if(group.length){
      lines.push('',''+catalog[key].name+':');
-     group.forEach(p=>{const amount=qty(key,p.id),pcs=piecesPerUnit(p);lines.push(amount+' x '+p.name+(pcs?' ('+pcs+' piezas c/u · total '+(amount*pcs)+' piezas)':''));});
+     group.forEach(p=>lines.push(qty(key,p.id)+' x '+p.name));
    }
  }
  if(hasSushi())lines.push('','Palitos y salsas para '+$('sushiPeople').value.trim()+' personas.');
