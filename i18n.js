@@ -2,6 +2,9 @@
 (function () {
   "use strict";
   const PAIRS = [
+    ["© 2026 La Tasca & Santori · Todos los derechos reservados.","© 2026 La Tasca & Santori · All rights reserved."],
+    ["Diseño y desarrollo web","Web design and development"],
+    ["Créditos del sitio","Website credits"],
     // Verano, pedidos y mapa
     ["Cómo llegar a La Tasca y Santori con Google Maps","Get directions to La Tasca and Santori with Google Maps"],
     ["Ver mapa y horarios más abajo ↓","See map and opening hours below ↓"],
@@ -279,6 +282,9 @@
 
   const dictionary = new Map(PAIRS.map(([es,en])=>[normalize(es),en]));
   const DICTIONARY_PT = new Map([
+    ["© 2026 La Tasca & Santori · Todos los derechos reservados.","© 2026 La Tasca & Santori · Todos os direitos reservados."],
+    ["Diseño y desarrollo web","Design e desenvolvimento web"],
+    ["Créditos del sitio","Créditos do site"],
     // Verão, pedidos e mapa
     ["Cómo llegar a La Tasca y Santori con Google Maps","Como chegar ao La Tasca e Santori pelo Google Maps"],
     ["Ver mapa y horarios más abajo ↓","Veja o mapa e os horários abaixo ↓"],
