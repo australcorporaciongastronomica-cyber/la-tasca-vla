@@ -2,6 +2,24 @@
 (function () {
   "use strict";
   const PAIRS = [
+    // Verano, pedidos y mapa
+    ["Cómo llegar a La Tasca y Santori con Google Maps","Get directions to La Tasca and Santori with Google Maps"],
+    ["Ver mapa y horarios más abajo ↓","See map and opening hours below ↓"],
+    ["LA TASCA + SANTORI · TAKE AWAY","LA TASCA + SANTORI · TAKEAWAY"],
+    ["Tus favoritos,","Your favourites,"],
+    ["a tu manera.","your way."],
+    ["Explorá las propuestas de ambos restaurantes, elegí tus platos y armá tu pedido para enviarlo por WhatsApp.","Explore both restaurants, choose your dishes and build an order to send via WhatsApp."],
+    ["ARMÁ TU PEDIDO","BUILD YOUR ORDER"],
+    ["Armá tu pedido Take Away de La Tasca y Santori","Build your takeaway order from La Tasca and Santori"],
+    ["TEMPORADA DE VERANO · NOVIEMBRE 2026 — FEBRERO 2027","SUMMER SEASON · NOVEMBER 2026 — FEBRUARY 2027"],
+    ["El verano se vive","Summer is best enjoyed"],
+    ["al aire libre.","outdoors."],
+    ["Nos estamos preparando para una nueva temporada en Villa La Angostura. Vení a disfrutar de nuestro deck, el paisaje patagónico y una buena mesa para compartir.","We're preparing for a new season in Villa La Angostura. Come enjoy our outdoor deck, Patagonian scenery and a great meal together."],
+    ["Consultá por el deck","Ask about our deck"],
+    ["Encontranos en el mapa","Find us on the map"],
+    ["Mapa de ubicación de La Tasca y Santori","Location map for La Tasca and Santori"],
+    ["Mapa de La Tasca y Santori, Av. Arrayanes 6155, Villa La Angostura","Map of La Tasca and Santori, Av. Arrayanes 6155, Villa La Angostura"],
+
 
 
     // Homepage photo-first redesign and authentic salon gallery
@@ -261,6 +279,24 @@
 
   const dictionary = new Map(PAIRS.map(([es,en])=>[normalize(es),en]));
   const DICTIONARY_PT = new Map([
+    // Verão, pedidos e mapa
+    ["Cómo llegar a La Tasca y Santori con Google Maps","Como chegar ao La Tasca e Santori pelo Google Maps"],
+    ["Ver mapa y horarios más abajo ↓","Veja o mapa e os horários abaixo ↓"],
+    ["LA TASCA + SANTORI · TAKE AWAY","LA TASCA + SANTORI · PARA RETIRADA"],
+    ["Tus favoritos,","Seus favoritos,"],
+    ["a tu manera.","do seu jeito."],
+    ["Explorá las propuestas de ambos restaurantes, elegí tus platos y armá tu pedido para enviarlo por WhatsApp.","Explore os dois restaurantes, escolha seus pratos e monte seu pedido para enviar pelo WhatsApp."],
+    ["ARMÁ TU PEDIDO","FAÇA SEU PEDIDO"],
+    ["Armá tu pedido Take Away de La Tasca y Santori","Faça seu pedido para retirada do La Tasca e Santori"],
+    ["TEMPORADA DE VERANO · NOVIEMBRE 2026 — FEBRERO 2027","TEMPORADA DE VERÃO · NOVEMBRO 2026 — FEVEREIRO 2027"],
+    ["El verano se vive","O verão é melhor"],
+    ["al aire libre.","ao ar livre."],
+    ["Nos estamos preparando para una nueva temporada en Villa La Angostura. Vení a disfrutar de nuestro deck, el paisaje patagónico y una buena mesa para compartir.","Estamos nos preparando para uma nova temporada em Villa La Angostura. Venha aproveitar nosso deck ao ar livre, a paisagem patagônica e uma ótima refeição."],
+    ["Consultá por el deck","Consulte sobre nosso deck"],
+    ["Encontranos en el mapa","Encontre-nos no mapa"],
+    ["Mapa de ubicación de La Tasca y Santori","Mapa de localização de La Tasca e Santori"],
+    ["Mapa de La Tasca y Santori, Av. Arrayanes 6155, Villa La Angostura","Mapa do La Tasca e Santori, Av. Arrayanes 6155, Villa La Angostura"],
+
 // Navegação, localização, galeria e opiniões
     ["ARMAR PEDIDO TAKE AWAY ↗","FAZER PEDIDO PARA RETIRADA ↗"],
     ["ARMAR PEDIDO TAKE AWAY · LA TASCA + SANTORI ↗","FAZER PEDIDO PARA RETIRADA · LA TASCA + SANTORI ↗"],
