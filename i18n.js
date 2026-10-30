@@ -144,7 +144,7 @@
     ["La Tasca está en planta baja","La Tasca is on the ground floor"],
     ["y","and"],["Santori, arriba en la cabaña.","Santori is upstairs in the cabin."],
     ["Consultanos por WhatsApp para tu reserva.","Message us on WhatsApp to make a reservation."],
-    ["Montaña, nieve y gastronomía","Mountains, snow and great food"],
+    ["Entre lagos, bosques y sabores","Among lakes, forests and flavours"],
     ["Entre paisaje, producto y encuentros, La Tasca y Santori proponen una experiencia para disfrutar Villa La Angostura desde la mesa.","Enjoy the scenery, local ingredients and welcoming atmosphere of Villa La Angostura at La Tasca and Santori."],
     ["Elegí La Tasca o Santori y escribinos directamente para reservas, disponibilidad, pedidos y consultas.","Choose La Tasca or Santori and contact us directly for reservations, availability, orders and enquiries."],
 
@@ -430,7 +430,7 @@
     ["La Tasca está en planta baja","O La Tasca fica no térreo"],
     ["y","e"],["Santori, arriba en la cabaña.","O Santori fica em cima, na cabana."],
     ["Consultanos por WhatsApp para tu reserva.","Entre em contato pelo WhatsApp para fazer sua reserva."],
-    ["Montaña, nieve y gastronomía","Montanha, neve e gastronomia"],
+    ["Entre lagos, bosques y sabores","Entre lagos, bosques e sabores"],
     ["Entre paisaje, producto y encuentros, La Tasca y Santori proponen una experiencia para disfrutar Villa La Angostura desde la mesa.","Em meio à paisagem, aos sabores e aos encontros, La Tasca e Santori oferecem uma experiência para aproveitar Villa La Angostura à mesa."],
     ["Elegí La Tasca o Santori y escribinos directamente para reservas, disponibilidad, pedidos y consultas.","Escolha La Tasca ou Santori e fale diretamente conosco sobre reservas, disponibilidade, pedidos e dúvidas."],
     ["Villa La Angostura · Dos restaurantes · Un mismo lugar","Villa La Angostura · Dois restaurantes · Um mesmo lugar"],
