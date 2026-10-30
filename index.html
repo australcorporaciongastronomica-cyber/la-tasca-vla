@@ -1488,9 +1488,11 @@
     .order-feature__cta-icon{font-size:20px}
 
     /* CAMPAÑA DE VERANO */
-    .summer-deck{position:relative;isolation:isolate;overflow:hidden;min-height:460px;display:flex;align-items:center;padding:75px 0;border-block:1px solid #dfbe8640;background:radial-gradient(circle at 87% 50%,#222518,#0a0b0a 70%)}
-    .summer-deck::before{content:"";position:absolute;z-index:0;inset:0;background:url('deck-stella-verano-hd.webp') center 54%/cover no-repeat;filter:saturate(1.02) contrast(1.03)}
-    .summer-deck::after{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(5,8,6,.86) 0%,rgba(5,8,6,.66) 38%,rgba(5,8,6,.17) 73%,rgba(5,8,6,.04) 100%)}
+    .summer-deck{position:relative;isolation:isolate;overflow:hidden;min-height:460px;display:flex;align-items:center;padding:75px 0;border-block:1px solid #dfbe8640;background:#0b0d0a}
+    /* Imagen real: se carga como <img>, no como pseudoelemento CSS */
+    .summer-deck__photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:64% 54%;display:block;z-index:0}
+    .summer-deck::before{content:none}
+    .summer-deck::after{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(5,8,6,.92) 0%,rgba(5,8,6,.74) 37%,rgba(5,8,6,.21) 75%,rgba(5,8,6,.08) 100%)}
     .summer-deck__inner{position:relative;z-index:2}
     .summer-deck h2,.summer-deck p{text-shadow:0 3px 15px rgba(0,0,0,.54)}
     .summer-deck h2{font:500 clamp(45px,6.4vw,79px)/1.02 'Cormorant Garamond',Georgia,serif;max-width:670px;margin:14px 0;color:#fff2df;text-wrap:balance}
@@ -1521,10 +1523,12 @@
       .order-feature h2{font-size:clamp(42px,10vw,58px)}
       .order-feature p{font-size:12px;margin:auto}
       .order-feature__cta{min-height:80px;padding:18px}
-      .summer-deck{min-height:490px;padding:60px 0}
-      .summer-deck::before{background-position:62% center;opacity:1}
-      .summer-deck::after{background:linear-gradient(90deg,rgba(5,8,6,.84),rgba(5,8,6,.69) 60%,rgba(5,8,6,.48))}
-      .summer-deck h2{font-size:clamp(48px,10vw,70px)}
+      .summer-deck{min-height:0;padding:0 0 42px;display:block;background:#0b0d0a}
+      /* Foto por encima del texto para que siempre se vea en móvil */
+      .summer-deck__photo{position:relative;inset:auto;height:245px;width:100%;object-fit:cover;object-position:69% 56%;z-index:0}
+      .summer-deck::after{inset:0 0 auto;height:245px;background:linear-gradient(180deg,transparent 74%,#0b0d0a 100%)}
+      .summer-deck__inner{padding-top:20px;padding-bottom:0}
+      .summer-deck h2{font-size:clamp(43px,9.2vw,68px)}
       .summer-deck p{font-size:13px;line-height:1.8}
       .summer-deck__eyebrow{font-size:9px;letter-spacing:1.1px}
       .visit-map__frame{height:330px;border-radius:12px}
@@ -1950,6 +1954,7 @@
 
   <!-- DECK / VERANO PATAGÓNICO 2026-27 -->
   <section class="summer-deck" id="verano" aria-labelledby="summer-deck-title">
+    <img class="summer-deck__photo" src="deck-stella-verano-hd.webp?v=20261030-2" width="1672" height="941" alt="" aria-hidden="true" fetchpriority="high" decoding="async" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/australcorporaciongastronomica-cyber/la-tasca-vla/main/deck-stella-verano-hd.webp';">
     <div class="container summer-deck__inner">
       <div class="summer-deck__eyebrow">TEMPORADA DE VERANO · NOVIEMBRE 2026 — FEBRERO 2027</div>
       <h2 id="summer-deck-title">El verano se vive <em>al aire libre.</em></h2>
