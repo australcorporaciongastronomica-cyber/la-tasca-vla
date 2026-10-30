@@ -1489,8 +1489,8 @@
 
     /* CAMPAÑA DE VERANO */
     .summer-deck{position:relative;isolation:isolate;overflow:hidden;min-height:460px;display:flex;align-items:center;padding:75px 0;border-block:1px solid #dfbe8640;background:radial-gradient(circle at 87% 50%,#222518,#0a0b0a 70%)}
-    .summer-deck::before{content:"";position:absolute;z-index:0;inset:0 0 0 auto;width:54%;background:url('deck-verano-stella.webp') right center/auto 100% no-repeat;filter:saturate(1.09) contrast(1.04)}
-    .summer-deck::after{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(90deg,#0a0b0a 0%,#0a0b0afa 37%,#0a0b0abd 65%,#0a0b0a12 100%)}
+    .summer-deck::before{content:"";position:absolute;z-index:0;inset:0;background:url('deck-patagonia-sin-lago.webp') center 56%/cover no-repeat;filter:saturate(1.05) contrast(1.03)}
+    .summer-deck::after{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(5,8,6,.83),rgba(5,8,6,.72) 35%,rgba(5,8,6,.34) 70%,rgba(5,8,6,.10))}
     .summer-deck__inner{position:relative;z-index:2}
     .summer-deck h2,.summer-deck p{text-shadow:0 3px 15px rgba(0,0,0,.54)}
     .summer-deck h2{font:500 clamp(45px,6.4vw,79px)/1.02 'Cormorant Garamond',Georgia,serif;max-width:670px;margin:14px 0;color:#fff2df;text-wrap:balance}
@@ -1498,6 +1498,7 @@
     .summer-deck p{font-size:15px;line-height:1.85;max-width:580px;color:#e4d7c5}
     .summer-deck__cta{display:inline-flex;align-items:center;justify-content:center;gap:25px;margin-top:27px;min-height:55px;padding:14px 25px;background:#d9b67b;border:1px solid #f2d39c;color:#22170d;font-size:12px;font-weight:700;border-radius:9px;transition:transform .2s,background .2s}
     .summer-deck__cta:hover{transform:translateY(-2px);background:#f2d69f}
+    .summer-deck__note{margin-top:13px;font-size:10px!important;letter-spacing:.25px;opacity:.78}
 
     /* MAPA INSERTADO EN UBICACIÓN */
     #ubicacion{scroll-margin-top:25px}
@@ -1521,8 +1522,8 @@
       .order-feature p{font-size:12px;margin:auto}
       .order-feature__cta{min-height:80px;padding:18px}
       .summer-deck{min-height:490px;padding:60px 0}
-      .summer-deck::before{width:100%;background-position:54% center;background-size:cover;opacity:.88}
-      .summer-deck::after{background:linear-gradient(90deg,rgba(7,9,8,.88),rgba(7,9,8,.64) 58%,rgba(7,9,8,.42))}
+      .summer-deck::before{background-position:61% center;opacity:.97}
+      .summer-deck::after{background:linear-gradient(90deg,rgba(5,8,6,.87),rgba(5,8,6,.67) 58%,rgba(5,8,6,.42))}
       .summer-deck h2{font-size:clamp(48px,10vw,70px)}
       .summer-deck p{font-size:13px;line-height:1.8}
       .summer-deck__eyebrow{font-size:9px;letter-spacing:1.1px}
@@ -1542,7 +1543,8 @@
 .site-footer__signature{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:4px 8px;line-height:1.35;color:#f1d4a0}
 .site-footer__copyright{font-size:27px;font-family:Georgia,serif;line-height:1;color:#eac88a}
 .site-footer__year{font-size:16px;font-weight:600;color:#eac88a}
-.site-footer__author{font-size:clamp(17px,2.1vw,22px);font-weight:700;letter-spacing:.5px;color:#f2dcb3}
+.site-footer__author{display:inline-flex;align-items:center;gap:8px;font-size:clamp(17px,2.1vw,22px);font-weight:700;letter-spacing:.5px;color:#f2dcb3;text-decoration:underline;text-underline-offset:5px;text-decoration-color:rgba(233,207,152,.38)}
+.site-footer__author:hover,.site-footer__author:focus-visible{color:#fff1d4;text-decoration-color:currentColor;outline-offset:4px}
 .site-footer__author span{color:#d9b67b}
 @media(max-width:550px){.site-footer{padding:34px 16px 42px}.site-footer__place{font-size:10px;letter-spacing:1px}.site-footer__place span{margin:0 5px}.site-footer__legal{font-size:11px}.site-footer__credit{padding:20px 12px;gap:9px}.site-footer__credit-label{font-size:11px;letter-spacing:1px}.site-footer__signature{gap:4px 6px}.site-footer__copyright{font-size:24px}.site-footer__year{font-size:14px}.site-footer__author{font-size:17px;letter-spacing:0}}
 
@@ -1953,6 +1955,7 @@
       <h2 id="summer-deck-title">El verano se vive <em>al aire libre.</em></h2>
       <p>Nos estamos preparando para una nueva temporada en Villa La Angostura. Vení a disfrutar de nuestro deck, el paisaje patagónico y una buena mesa para compartir.</p>
       <a class="summer-deck__cta" href="https://wa.me/5492944788994?text=Hola%2C%20quisiera%20consultar%20por%20el%20deck%20para%20la%20temporada%20de%20verano." target="_blank" rel="noopener noreferrer">Consultá por el deck <span aria-hidden="true">↗</span></a>
+      <p class="summer-deck__note">Imagen ilustrativa inspirada en el entorno patagónico.</p>
     </div>
   </section>
 
@@ -2355,7 +2358,7 @@
     <div class="site-footer__signature">
       <span class="site-footer__copyright" aria-hidden="true">©</span>
       <span class="site-footer__year">2026</span>
-      <strong class="site-footer__author">CAYETANO <span>WEB DESIGN</span></strong>
+      <a class="site-footer__author" href="https://www.instagram.com/caye2400/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Cayetano, @caye2400"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>CAYETANO</a>
     </div>
   </div>
 </footer>
