@@ -1535,6 +1535,31 @@
     @media(prefers-reduced-motion:reduce){.home-directions__main,.order-feature__cta,.summer-deck__cta{transition:none}}
 
 
+/* BODEGAS: carrusel tipográfico sin dependencias externas */
+.wineries{position:relative;overflow:hidden;padding:64px 0 56px;background:radial-gradient(ellipse at 78% 12%,rgba(120,62,49,.16),transparent 55%),linear-gradient(125deg,#100e0e,#1b1114 60%,#0e0c0d);border-top:1px solid rgba(207,167,111,.27);border-bottom:1px solid rgba(207,167,111,.22);color:#f7f0e7}
+.wineries__head{text-align:center;max-width:900px;margin:0 auto}
+.wineries__eyebrow{font-size:11px;font-weight:700;letter-spacing:2.4px;color:#d3ae77}
+.wineries h2{font:500 clamp(40px,5.4vw,67px)/1.08 'Cormorant Garamond',Georgia,serif;margin:13px 0 12px;color:#f7efe4}
+.wineries h2 em{font-weight:400;color:#d7b884}
+.wineries__description{font-size:14px;line-height:1.9;color:#d1c3b7;max-width:630px;margin:0 auto}
+.winery-marquee{position:relative;overflow:hidden;width:100%;margin:35px 0 18px;border-top:1px solid rgba(206,162,110,.18);border-bottom:1px solid rgba(206,162,110,.18);padding:19px 0}
+.winery-marquee::before,.winery-marquee::after{content:"";position:absolute;top:0;bottom:0;width:min(12vw,110px);z-index:2;pointer-events:none}
+.winery-marquee::before{left:0;background:linear-gradient(90deg,#140f11,transparent)}
+.winery-marquee::after{right:0;background:linear-gradient(270deg,#130e10,transparent)}
+.winery-marquee__track{display:flex;align-items:center;width:max-content;animation:winery-marquee 80s linear infinite;will-change:transform}
+.winery-marquee__group{display:flex;flex:none;align-items:center;gap:0}
+.winery-marquee__item{display:inline-flex;align-items:center;gap:30px;padding:0 22px;white-space:nowrap;font:500 clamp(23px,2.25vw,31px)/1.35 'Cormorant Garamond',Georgia,serif;color:#e9d7c1;letter-spacing:.15px}
+.winery-marquee__star{font:400 11px/1 Montserrat,Arial,sans-serif;color:#ad7e4f;flex:none}
+.winery-marquee:hover .winery-marquee__track,.winery-marquee:focus-within .winery-marquee__track{animation-play-state:paused}
+@keyframes winery-marquee{to{transform:translateX(-50%)}}
+.wineries__footer{text-align:center}
+.wineries__link{display:inline-flex;gap:14px;align-items:center;justify-content:center;min-height:44px;padding:8px 4px;color:#e7c28c;border-bottom:1px solid rgba(231,194,140,.65);font-size:12px;font-weight:600;letter-spacing:.65px}
+.wineries__link:hover{color:white;border-bottom-color:white}
+.wineries__link:focus-visible{outline:3px solid #e7c28c;outline-offset:5px}
+@media(max-width:760px){.wineries{padding:52px 0 45px}.wineries__head{padding:0 18px}.wineries__eyebrow{font-size:9px;letter-spacing:1.6px}.wineries h2{font-size:clamp(43px,10vw,59px)}.wineries__description{font-size:12px;line-height:1.85}.winery-marquee{margin:28px 0 14px;padding:18px 0}.winery-marquee__item{font-size:25px;gap:20px;padding:0 14px}.winery-marquee::before,.winery-marquee::after{width:20px}.winery-marquee__track{animation-duration:80s}.wineries__link{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.winery-marquee{overflow-x:auto;scrollbar-width:thin}.winery-marquee__track{animation:none;will-change:auto}}
+
+
 /* Créditos del sitio: firma profesional, legible en PC y celular */
 .site-footer{padding:42px 18px 46px;text-align:center;background:#050505;border-top:1px solid rgba(215,183,120,.18);color:#b9ac99;text-transform:none;letter-spacing:normal;font-family:Montserrat,Arial,sans-serif}
 .site-footer__place{font-size:11px;line-height:1.7;letter-spacing:1.8px;text-transform:uppercase;color:#cfb78d}
@@ -1969,6 +1994,74 @@
       <p>Nos estamos preparando para una nueva temporada en Villa La Angostura. Vení a disfrutar de nuestro deck, el paisaje patagónico y una buena mesa para compartir.</p>
       <a class="summer-deck__cta" href="https://wa.me/5492944788994?text=Hola%2C%20quisiera%20consultar%20por%20el%20deck%20para%20la%20temporada%20de%20verano." target="_blank" rel="noopener noreferrer">Consultá por el deck <span aria-hidden="true">↗</span></a>
       <p class="summer-deck__note">Imagen ilustrativa inspirada en el entorno patagónico.</p>
+    </div>
+  </section>
+
+  <!-- BODEGAS Y ETIQUETAS CONFIRMADAS EN LA CARTA DE LA TASCA, OCTUBRE 2026 -->
+  <section class="wineries" id="bodegas" aria-labelledby="wineries-title">
+    <div class="container wineries__head">
+      <p class="wineries__eyebrow">LA TASCA · NUESTRA SELECCIÓN DE VINOS</p>
+      <h2 id="wineries-title">Bodegas para <em>descubrir.</em></h2>
+      <p class="wineries__description">Etiquetas de la Patagonia, Mendoza y otras regiones argentinas que forman parte de nuestra carta.</p>
+    </div>
+    <div class="winery-marquee" aria-label="Bodegas y etiquetas presentes en nuestra carta">
+      <div class="winery-marquee__track">
+      <div class="winery-marquee__group" role="list">
+        <span class="winery-marquee__item" role="listitem">Malma<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Catena Zapata<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Zuccardi<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Patritti<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">El Enemigo<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Rosell Boher<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Rutini<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Las Perdices<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Susana Balbo<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Bodega Chacra<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Atamisque<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Luca<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Viña Cobos<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Escorihuela<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Cuvelier Los Andes<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Bressia<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Mantra<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Monteviejo<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Bira Wines<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Bodega Desierto<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Rolland<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Aniello<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Ernesto Catena<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Bodega Caro<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+      </div>
+      <div class="winery-marquee__group" aria-hidden="true">
+        <span class="winery-marquee__item">Malma<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Catena Zapata<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Zuccardi<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Patritti<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">El Enemigo<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Rosell Boher<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Rutini<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Las Perdices<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Susana Balbo<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Bodega Chacra<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Atamisque<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Luca<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Viña Cobos<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Escorihuela<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Cuvelier Los Andes<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Bressia<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Mantra<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Monteviejo<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Bira Wines<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Bodega Desierto<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Rolland<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Aniello<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Ernesto Catena<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Bodega Caro<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+      </div>
+      </div>
+    </div>
+    <div class="wineries__footer">
+      <a class="wineries__link" href="cartas.html?restaurante=tasca" aria-label="Ver carta completa de La Tasca, incluidos los vinos">Explorá nuestra carta <span aria-hidden="true">↗</span></a>
     </div>
   </section>
 
