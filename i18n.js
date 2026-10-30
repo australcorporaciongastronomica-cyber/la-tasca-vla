@@ -2,6 +2,14 @@
 (function () {
   "use strict";
   const PAIRS = [
+    // Bodegas y vinos
+    ["LA TASCA · NUESTRA SELECCIÓN DE VINOS","LA TASCA · OUR WINE SELECTION"],
+    ["Bodegas para","Wineries to"],
+    ["descubrir.","discover."],
+    ["Etiquetas de la Patagonia, Mendoza y otras regiones argentinas que forman parte de nuestra carta.","Wines from Patagonia, Mendoza and other Argentine regions featured on our menu."],
+    ["Bodegas y etiquetas presentes en nuestra carta","Wineries and labels featured on our menu"],
+    ["Explorá nuestra carta","Explore our menu"],
+    ["Ver carta completa de La Tasca, incluidos los vinos","View La Tasca's full menu, including wines"],
     ["© 2026 La Tasca & Santori · Todos los derechos reservados.","© 2026 La Tasca & Santori · All rights reserved."],
     ["Diseño y desarrollo web","Web design and development"],
     ["Créditos del sitio","Website credits"],
@@ -283,6 +291,14 @@
 
   const dictionary = new Map(PAIRS.map(([es,en])=>[normalize(es),en]));
   const DICTIONARY_PT = new Map([
+    // Bodegas y vinos
+    ["LA TASCA · NUESTRA SELECCIÓN DE VINOS","LA TASCA · NOSSA SELEÇÃO DE VINHOS"],
+    ["Bodegas para","Vinícolas para"],
+    ["descubrir.","descobrir."],
+    ["Etiquetas de la Patagonia, Mendoza y otras regiones argentinas que forman parte de nuestra carta.","Vinhos da Patagônia, Mendoza e outras regiões argentinas presentes em nossa carta."],
+    ["Bodegas y etiquetas presentes en nuestra carta","Vinícolas e rótulos presentes em nossa carta"],
+    ["Explorá nuestra carta","Explore nosso cardápio"],
+    ["Ver carta completa de La Tasca, incluidos los vinos","Ver cardápio completo do La Tasca, incluindo os vinhos"],
     ["© 2026 La Tasca & Santori · Todos los derechos reservados.","© 2026 La Tasca & Santori · Todos os direitos reservados."],
     ["Diseño y desarrollo web","Design e desenvolvimento web"],
     ["Créditos del sitio","Créditos do site"],
