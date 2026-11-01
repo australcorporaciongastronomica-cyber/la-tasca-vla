@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="index,follow">
-<meta name="description" content="Solicitá tu mesa en La Tasca o Santori, Villa La Angostura. Confirmamos cada reserva personalmente.">
+<meta name="description" content="Solicitá tu mesa en La Tasca o Santori, Villa La Angostura. Reserva tu mesa online en La Tasca y Santori.">
 <title>Solicitar reserva | La Tasca & Santori</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,11 +18,11 @@
  <a class="back" href="index.html">← Volver a La Tasca y Santori</a>
  <div class="top"><div class="eyebrow">VILLA LA ANGOSTURA · LA TASCA & SANTORI</div>
  <h1>Tu próxima mesa, <em>nosotros la preparamos.</em></h1>
- <p>Elegí el restaurante, día y horario. Enviá una <strong>solicitud de reserva</strong> y nuestro equipo te contactará para confirmarla, según disponibilidad.</p></div>
+ <p>Elegí el restaurante, el día y el horario que prefieras. Al terminar, tu reserva quedará registrada y confirmada.</p></div>
  <div class="shell">
   <section class="panel" aria-labelledby="formHeading">
-   <h2 id="formHeading">Solicitar una mesa</h2>
-   <p class="fine"><strong>Importante:</strong> enviar este formulario no confirma la mesa. La reserva queda confirmada únicamente cuando el restaurante te responda.</p>
+   <h2 id="formHeading">Reservá tu mesa</h2>
+   <p class="fine">Elegí tu fecha, horario y restaurante. Recibirás la confirmación al enviar la reserva.</p>
    <form id="requestForm" class="grid">
     <label>Restaurante / Restaurant
      <select name="venue" required><option value="La Tasca">La Tasca</option><option value="Santori">Santori</option></select>
@@ -50,7 +50,7 @@
       <input type="checkbox" name="consent" required>
       <span>Acepto que La Tasca y Santori utilicen estos datos únicamente para responder y gestionar mi solicitud de reserva.</span>
     </label>
-    <button class="submit wide" id="send" type="submit">Enviar solicitud de reserva</button>
+    <button class="submit wide" id="send" type="submit">Confirmar mi reserva</button>
     <p class="notice wide" id="notice" role="status" aria-live="polite"></p>
    </form>
   </section>
@@ -61,7 +61,7 @@
    </div>
   </aside>
  </div>
- <p class="help">La Tasca y Santori · Av. Arrayanes 6155, Villa La Angostura · Los horarios están sujetos a disponibilidad y confirmación.</p>
+ <p class="help">La Tasca y Santori · Av. Arrayanes 6155, Villa La Angostura · Ante cualquier cambio, nos comunicaremos por WhatsApp.</p>
 </main>
 <script>
 (()=>{
@@ -114,15 +114,15 @@
    guests:Number(f.guests.value),guest_name:f.guest_name.value.trim(),phone:f.phone.value.trim(),
    notes:f.notes.value.trim(),consent:f.consent.checked,website:f.website.value
   };
-  button.disabled=true;notify("Enviando solicitud...");
+  button.disabled=true;notify("Registrando tu reserva...");
   try{
    const result=await fetch("https://jtcltmnulmxvzqmlhgge.supabase.co/functions/v1/public-reservation-request",{
     method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(fields)
    });
    const data=await result.json();
-   if(!result.ok||!data.ok){notify(data.error||"No se pudo registrar la solicitud. Contactanos por WhatsApp.",true);return}
+   if(!result.ok||!data.ok){notify(data.error||"No se pudo registrar la reserva. Contactanos por WhatsApp.",true);return}
    form.reset();dateInput.value=today();updateSlots();
-   notify("¡Solicitud recibida! Todavía NO está confirmada. Nos comunicaremos para confirmar disponibilidad.");
+   notify(data.message||"¡Tu reserva quedó confirmada! Gracias por elegir La Tasca y Santori. Si necesitamos realizar algún ajuste o informarte algún cambio, nos comunicaremos por WhatsApp al número que nos dejaste. ¡Te esperamos!");
   }catch{
    notify("No pudimos comunicarnos con el sistema. Por favor, contactanos por WhatsApp.",true);
   }finally{button.disabled=false}
