@@ -1578,7 +1578,18 @@
 .site-footer__author span{color:#d9b67b}
 @media(max-width:550px){.site-footer{padding:34px 16px 42px}.site-footer__place{font-size:10px;letter-spacing:1px}.site-footer__place span{margin:0 5px}.site-footer__legal{font-size:11px}.site-footer__credit{padding:20px 12px;gap:9px}.site-footer__credit-label{font-size:11px;letter-spacing:1px}.site-footer__signature{gap:4px 6px}.site-footer__copyright{font-size:24px}.site-footer__year{font-size:14px}.site-footer__author{font-size:17px;letter-spacing:0}}
 
-  </style>
+  /* SOLICITAR RESERVA: acceso público, sin mostrar datos internos */
+.public-reserve-feature{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:850px;margin:15px auto 20px;padding:20px 23px;background:linear-gradient(110deg,#171715,#29251d);border:1px solid #cbb07f;border-radius:14px;color:#f7e7cc}
+.public-reserve-feature__text{display:flex;flex-direction:column;gap:5px}
+.public-reserve-feature__text strong{font:500 clamp(26px,4vw,37px)/1 'Cormorant Garamond',Georgia,serif}
+.public-reserve-feature__text span{font-size:11px;color:#d7c9b2;line-height:1.6}
+.public-reserve-feature__btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:12px 20px;background:#e2bf81;border-radius:9px;color:#201910;font-size:12px;font-weight:700;text-decoration:none;text-align:center;white-space:nowrap}
+.public-reserve-feature__btn:hover{background:#f5d9a9}
+.contact-reserve-link{display:inline-flex;min-height:53px;align-items:center;justify-content:center;padding:13px 23px;margin:28px auto 0;background:#dfbd80;color:#171512!important;border-radius:9px;font-weight:700;text-decoration:none;font-size:12px;letter-spacing:.4px}
+.contact-reserve-link:hover{background:#f5d9a9}
+@media(max-width:630px){.public-reserve-feature{flex-direction:column;align-items:stretch;padding:17px 16px;gap:15px;text-align:center}.public-reserve-feature__btn{width:100%}}
+
+</style>
 
 </head>
 
@@ -1655,6 +1666,11 @@
         <a href="cartas.html?restaurante=tasca" class="hero-menu-access__link">VER CARTA LA TASCA <span aria-hidden="true">↗</span></a>
         <a href="cartas.html?restaurante=santori" class="hero-menu-access__link">VER CARTA SANTORI <span aria-hidden="true">↗</span></a>
       </nav>
+
+      <div class="public-reserve-feature" aria-label="Solicitar una mesa en La Tasca o Santori">
+        <div class="public-reserve-feature__text"><strong>¿Reservamos tu mesa?</strong><span>Elegí fecha y horario. Te confirmamos personalmente según disponibilidad.</span></div>
+        <a href="reservas.html" class="public-reserve-feature__btn">SOLICITAR RESERVA ↗</a>
+      </div>
 
       <div class="hero-floor-sign" aria-label="Dónde se encuentra cada restaurante">
         <a href="#en-que-piso"><span class="floor-arrow" aria-hidden="true">↑</span> Santori · Arriba, en la cabaña</a>
@@ -2412,6 +2428,8 @@
 
       </p>
 
+
+      <a class="contact-reserve-link" href="reservas.html">SOLICITAR RESERVA EN LA WEB ↗</a>
 
       <div class="contact-links">
 
