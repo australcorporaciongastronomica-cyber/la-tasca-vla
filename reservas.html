@@ -31,6 +31,7 @@
     <label>Horario / Time
       <select name="service_time" id="time" required><option value="">Elegí el horario</option></select>
       <span style="font-size:11px;color:#b9ad9b;font-weight:400">Almuerzo: 12:00 a 15:15 · Cena: 20:00 a 23:00</span>
+      <span id="timeHelp" aria-live="polite" style="font-size:11px;color:#d9b982;font-weight:400"></span>
     </label>
     <label>Personas / Guests
       <input type="number" name="guests" min="1" max="12" value="2" required>
@@ -76,6 +77,8 @@
  function updateSlots(){
   const selected=dateInput.value;
   const previous=timeInput.value;
+  const isToday=selected===today();
+  const currentTime=nowClock();
   timeInput.replaceChildren();
   timeInput.add(new Option("Elegí el horario",""));
   const formatTime=minutes=>String(Math.floor(minutes/60)).padStart(2,"0")+":"+String(minutes%60).padStart(2,"0");
@@ -87,12 +90,19 @@
    const optgroup=document.createElement("optgroup");
    optgroup.label=group.label;
    for(const time of group.slots){
-    if(selected===today()&&time<=nowClock())continue;
-    optgroup.append(new Option(time,time));
+    const unavailable=isToday&&time<=currentTime;
+    const option=new Option(unavailable?time+" · ya pasó":time,time);
+    option.disabled=unavailable;
+    optgroup.append(option);
    }
-   if(optgroup.children.length)timeInput.append(optgroup);
+   timeInput.append(optgroup);
   }
-  if([...timeInput.querySelectorAll("option")].some(o=>o.value===previous))timeInput.value=previous;
+  const preserved=[...timeInput.querySelectorAll("option")].find(o=>o.value===previous&&!o.disabled);
+  if(preserved)timeInput.value=previous;
+  const pastLunch=isToday&&currentTime>="15:15";
+  document.querySelector("#timeHelp").textContent=pastLunch
+   ?"El almuerzo de hoy ya pasó. Elegí otra fecha para reservar al mediodía."
+   :isToday?"Los horarios que ya pasaron hoy aparecen deshabilitados.":"";
  }
  updateSlots();dateInput.addEventListener("change",updateSlots);
  const notify=(text,fail=false)=>{message.textContent=text;message.className="notice wide "+(fail?"error":"ok")};
