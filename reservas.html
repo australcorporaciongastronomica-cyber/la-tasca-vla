@@ -25,11 +25,12 @@
    <p class="fine"><strong>Importante:</strong> enviar este formulario no confirma la mesa. La reserva queda confirmada únicamente cuando el restaurante te responda.</p>
    <form id="requestForm" class="grid">
     <label>Restaurante / Restaurant
-     <select name="venue" required><option value="La Tasca">La Tasca · Cocina y vinos (planta baja)</option><option value="Santori">Santori · Sushi nikkei (arriba)</option></select>
+     <select name="venue" required><option value="La Tasca">La Tasca</option><option value="Santori">Santori</option></select>
     </label>
     <label>Fecha / Date <input type="date" name="service_date" id="date" required></label>
     <label>Horario / Time
       <select name="service_time" id="time" required><option value="">Elegí el horario</option></select>
+      <span style="font-size:11px;color:#b9ad9b;font-weight:400">Almuerzo: 12:00 a 15:15 · Cena: 20:00 a 23:00</span>
     </label>
     <label>Personas / Guests
       <input type="number" name="guests" min="1" max="12" value="2" required>
@@ -75,18 +76,24 @@
  dateInput.min=day;dateInput.max=max.toISOString().slice(0,10);dateInput.value=day;
  function updateSlots(){
   const selected=dateInput.value;
-  const slots=[];
-  for(const [start,end] of [[12,15],[20,23]]){
-   for(let h=start;h<=end;h++)for(const m of [0,30])slots.push(String(h).padStart(2,"0")+":"+String(m).padStart(2,"0"));
-  }
   const previous=timeInput.value;
   timeInput.replaceChildren();
-  const placeholder=new Option("Elegí el horario","");timeInput.append(placeholder);
-  for(const time of slots){
-   if(selected===today()&&time<=nowClock())continue;
-   timeInput.add(new Option(time,time));
+  timeInput.add(new Option("Elegí el horario",""));
+  const formatTime=minutes=>String(Math.floor(minutes/60)).padStart(2,"0")+":"+String(minutes%60).padStart(2,"0");
+  const groups=[
+   {label:"Almuerzo · 12:00 a 15:15",slots:[...Array.from({length:7},(_,i)=>formatTime(12*60+i*30)),"15:15"]},
+   {label:"Cena · 20:00 a 23:00",slots:Array.from({length:7},(_,i)=>formatTime(20*60+i*30))}
+  ];
+  for(const group of groups){
+   const optgroup=document.createElement("optgroup");
+   optgroup.label=group.label;
+   for(const time of group.slots){
+    if(selected===today()&&time<=nowClock())continue;
+    optgroup.append(new Option(time,time));
+   }
+   if(optgroup.children.length)timeInput.append(optgroup);
   }
-  if([...timeInput.options].some(o=>o.value===previous))timeInput.value=previous;
+  if([...timeInput.querySelectorAll("option")].some(o=>o.value===previous))timeInput.value=previous;
  }
  updateSlots();dateInput.addEventListener("change",updateSlots);
  const notify=(text,fail=false)=>{message.textContent=text;message.className="notice wide "+(fail?"error":"ok")};
