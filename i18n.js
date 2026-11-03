@@ -973,6 +973,11 @@
     DICTIONARY_PT.set(normalize(es),pt);
   }
 
+  // Final public-page wording and accessible language switcher label.
+  for(const [es,en,pt] of [["Reservá online en La Tasca o Santori. También podés escribirnos para consultas y pedidos Take Away.","Book online at La Tasca or Santori. You can also message us about enquiries and takeaway orders.","Reserve on-line no La Tasca ou Santori. Você também pode nos escrever para tirar dúvidas e fazer pedidos para retirada."],["Idioma","Language","Idioma"],["Septiembre de 2026","September 2026","Setembro de 2026"],["12:00 a 16:00 hs","12:00–16:00","12:00–16:00"],["20:00 a 00:00 hs","20:00–00:00","20:00–00:00"]]){
+    dictionary.set(normalize(es),en);
+    DICTIONARY_PT.set(normalize(es),pt);
+  }
   function translateFor(value,language) {
     const input=normalize(value);
     const dict=language==="pt"?DICTIONARY_PT:dictionary;
@@ -1103,7 +1108,7 @@
     const div=document.createElement("div");
     div.className="site-language";
     div.setAttribute("role","group");
-    div.setAttribute("aria-label","Idioma / Language");
+    div.setAttribute("aria-label","Idioma");
     for(const option of [{value:"es",label:"ES"},{value:"en",label:"EN"},{value:"pt",label:"PT"}]){
       const btn=document.createElement("button");
       btn.type="button";
