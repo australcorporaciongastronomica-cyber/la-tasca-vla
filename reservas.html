@@ -36,29 +36,29 @@
    <h2 id="formHeading">Reservá tu mesa</h2>
    <p class="fine">Consultá la disponibilidad en tiempo real. Al finalizar te informamos si tu mesa está confirmada o si ingresaste a lista de espera.</p>
    <form id="requestForm" class="grid">
-    <label>Restaurante / Restaurant
+    <label>Restaurante
      <select name="venue" required><option value="La Tasca">La Tasca</option><option value="Santori">Santori</option></select>
     </label>
-    <label>Fecha / Date <input type="date" name="service_date" id="date" required></label>
-    <label>Horario / Time
+    <label>Fecha <input type="date" name="service_date" id="date" required></label>
+    <label>Horario
       <select name="service_time" id="time" required><option value="">Elegí el horario</option></select>
       <span style="font-size:11px;color:#b9ad9b;font-weight:400">Almuerzo: 12:00 a 15:15 · Cena: 20:00 a 23:00</span>
       <span id="timeHelp" aria-live="polite" style="font-size:11px;color:#d9b982;font-weight:400"></span>
     </label>
-    <label>Personas / Guests
+    <label>Personas
       <input type="number" name="guests" min="1" max="12" value="2" required>
     </label>
     <div id="availabilityBox" class="wide availability-box" aria-live="polite">
      <strong>Disponibilidad en tiempo real</strong>
      <p>Elegí restaurante, fecha, horario y personas para consultar lugares disponibles.</p>
     </div>
-    <label class="wide">Nombre y apellido / Name
+    <label class="wide">Nombre y apellido
       <input name="guest_name" type="text" maxlength="100" autocomplete="name" required placeholder="Tu nombre">
     </label>
     <label class="wide">WhatsApp o teléfono con código de país
       <input name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="28" required placeholder="+54 9 294 ...">
     </label>
-    <label class="wide">Observaciones / Special requests (opcional)
+    <label class="wide">Observaciones (opcional)
       <textarea name="notes" maxlength="350" placeholder="Alergias, celebración o detalles importantes"></textarea>
     </label>
     <label class="trap" aria-hidden="true">Sitio web <input name="website" tabindex="-1" autocomplete="off"></label>
@@ -81,33 +81,122 @@
 </main>
 <script>
 (()=>{
+ "use strict";
  const form=document.querySelector("#requestForm");
  const dateInput=document.querySelector("#date");
  const timeInput=document.querySelector("#time");
  const message=document.querySelector("#notice");
  const button=document.querySelector("#send");
+ const availabilityBox=document.querySelector("#availabilityBox");
+ const endpoint="https://jtcltmnulmxvzqmlhgge.supabase.co/functions/v1/public-reservation-request";
  const today=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"America/Argentina/Buenos_Aires",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
  const nowClock=()=>new Intl.DateTimeFormat("sv-SE",{timeZone:"America/Argentina/Buenos_Aires",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date());
- const day=today(); const max=new Date(day+"T12:00:00Z"); max.setUTCDate(max.getUTCDate()+60);
+ const getLang=()=>{
+   const active=window.siteI18n?.language?.();
+   if(["es","en","pt"].includes(active))return active;
+   const param=new URLSearchParams(location.search).get("lang");
+   if(["es","en","pt"].includes(param))return param;
+   try{const saved=localStorage.getItem("tasca_santori_lang");if(["es","en","pt"].includes(saved))return saved}catch{}
+   return "es";
+ };
+ const messages={
+  es:{
+   chooseTime:"Elegí el horario",lunch:"Almuerzo · 12:00 a 15:15",dinner:"Cena · 20:00 a 23:00",
+   passed:" · ya pasó",pastLunch:"El almuerzo de hoy ya pasó. Elegí otra fecha para reservar al mediodía.",
+   pastSlots:"Los horarios que ya pasaron hoy aparecen deshabilitados.",
+   choose:"Disponibilidad en tiempo real",
+   chooseDetail:"Elegí restaurante, fecha, horario y personas para consultar lugares disponibles.",
+   checking:"Consultando disponibilidad…",checkingDetail:"Estamos comprobando los lugares para el turno seleccionado.",
+   available:"Hay lugar para tu grupo",
+   availableDetail:n=>n+" lugares disponibles en el salón para este turno. La reserva se confirma al finalizar.",
+   wait:"Sin disponibilidad · Lista de espera",
+   waitDetail:n=>"No quedan suficientes lugares para "+n+" personas en el salón a esa hora. Podés anotarte en la lista de espera; te contactaremos por WhatsApp si se libera una mesa. No queda confirmada.",
+   previewError:"No pudimos consultar el cupo",
+   previewErrorDetail:"Podés continuar. Al enviar, el sistema verificará si queda lugar y te informará si tu reserva está confirmada o pasa a lista de espera.",
+   confirmBtn:"Confirmar mi reserva",waitBtn:"Anotarme en la lista de espera",
+   submitting:"Verificando disponibilidad y registrando tus datos...",
+   confirmedSuccess:"¡Tu reserva quedó confirmada! Gracias por elegir La Tasca y Santori. Si necesitamos ajustar algún detalle, nos comunicaremos por WhatsApp. ¡Te esperamos!",
+   waitlistSuccess:"Por ahora no quedan mesas disponibles para ese turno. Tus datos quedaron en LISTA DE ESPERA, pero tu reserva NO está confirmada. Si se libera una mesa, nos comunicaremos por WhatsApp.",
+   errorSave:"No pudimos registrar la solicitud. Contactanos por WhatsApp.",
+   errorNetwork:"No pudimos comunicarnos con el sistema. Por favor, contactanos por WhatsApp.",
+   errorPhone:"Ya recibimos varias solicitudes desde este teléfono. Contactanos por WhatsApp.",
+   errorRate:"Se alcanzó el límite de solicitudes. Contactanos por WhatsApp.",
+   errorValidation:"Revisá la fecha, el horario, las personas y tus datos. Para grupos de más de 12, contactanos por WhatsApp.",
+   errorDate:"Elegí una fecha válida dentro de los próximos 60 días.",
+   errorPast:"Elegí un horario futuro."
+  },
+  en:{
+   chooseTime:"Choose a time",lunch:"Lunch · 12:00–15:15",dinner:"Dinner · 20:00–23:00",
+   passed:" · past",pastLunch:"Today's lunch service has ended. Choose another date for lunch.",
+   pastSlots:"Times that have already passed today are unavailable.",
+   choose:"Live availability",
+   chooseDetail:"Choose your restaurant, date, time and party size to check available seats.",
+   checking:"Checking availability…",checkingDetail:"We're checking availability for your selected time.",
+   available:"A table is available for your group",
+   availableDetail:n=>n+" seats are available in the dining room for this time slot. Your booking is confirmed when you finish.",
+   wait:"Fully booked · Waiting list",
+   waitDetail:n=>"There aren't enough seats for "+n+" guests in the dining room at this time. You can join the waiting list and we'll message you on WhatsApp if a table opens up. This is NOT a confirmed booking.",
+   previewError:"Couldn't check availability",
+   previewErrorDetail:"You can continue. When you submit, we'll check availability and tell you whether your booking is confirmed or placed on the waiting list.",
+   confirmBtn:"Confirm my booking",waitBtn:"Join the waiting list",
+   submitting:"Checking availability and saving your details…",
+   confirmedSuccess:"Your table is confirmed! Thank you for choosing La Tasca & Santori. If we need to adjust any details, we'll contact you via WhatsApp. We look forward to welcoming you!",
+   waitlistSuccess:"There are currently no tables available for this time. You've joined the WAITING LIST, but your table is NOT confirmed. We'll contact you via WhatsApp if a table becomes available.",
+   errorSave:"We couldn't register your request. Please contact us via WhatsApp.",
+   errorNetwork:"We couldn't connect to our booking system. Please contact us via WhatsApp.",
+   errorPhone:"We've received several requests from this phone number. Please contact us via WhatsApp.",
+   errorRate:"The request limit has been reached. Please contact us via WhatsApp.",
+   errorValidation:"Please check the date, time, party size and your details. For groups larger than 12, contact us via WhatsApp.",
+   errorDate:"Choose a valid date within the next 60 days.",
+   errorPast:"Choose a future time."
+  },
+  pt:{
+   chooseTime:"Escolha o horário",lunch:"Almoço · 12:00–15:15",dinner:"Jantar · 20:00–23:00",
+   passed:" · já passou",pastLunch:"O horário de almoço de hoje já passou. Escolha outra data.",
+   pastSlots:"Os horários que já passaram hoje estão indisponíveis.",
+   choose:"Disponibilidade em tempo real",
+   chooseDetail:"Escolha o restaurante, a data, o horário e o número de pessoas para consultar os lugares disponíveis.",
+   checking:"Consultando disponibilidade…",checkingDetail:"Estamos verificando as vagas para o horário selecionado.",
+   available:"Há lugar para seu grupo",
+   availableDetail:n=>n+" lugares disponíveis no salão para este horário. Sua reserva será confirmada ao finalizar.",
+   wait:"Sem disponibilidade · Lista de espera",
+   waitDetail:n=>"Não há lugares suficientes para "+n+" pessoas no salão nesse horário. Você pode entrar na lista de espera e entraremos em contato pelo WhatsApp se houver uma mesa disponível. A reserva NÃO está confirmada.",
+   previewError:"Não foi possível consultar a disponibilidade",
+   previewErrorDetail:"Você pode continuar. Ao enviar, verificaremos a disponibilidade e informaremos se sua reserva foi confirmada ou se entrou na lista de espera.",
+   confirmBtn:"Confirmar minha reserva",waitBtn:"Entrar na lista de espera",
+   submitting:"Verificando a disponibilidade e registrando seus dados…",
+   confirmedSuccess:"Sua mesa está confirmada! Agradecemos por escolher La Tasca e Santori. Se precisarmos ajustar algum detalhe, entraremos em contato pelo WhatsApp. Esperamos por você!",
+   waitlistSuccess:"No momento, não há mesas disponíveis para esse horário. Você entrou na LISTA DE ESPERA, mas sua reserva NÃO está confirmada. Entraremos em contato pelo WhatsApp se uma mesa ficar disponível.",
+   errorSave:"Não foi possível registrar sua solicitação. Entre em contato pelo WhatsApp.",
+   errorNetwork:"Não foi possível conectar ao sistema de reservas. Entre em contato pelo WhatsApp.",
+   errorPhone:"Recebemos várias solicitações deste número de telefone. Entre em contato pelo WhatsApp.",
+   errorRate:"O limite de solicitações foi atingido. Entre em contato pelo WhatsApp.",
+   errorValidation:"Confira a data, o horário, o número de pessoas e seus dados. Para grupos com mais de 12 pessoas, entre em contato pelo WhatsApp.",
+   errorDate:"Escolha uma data válida nos próximos 60 dias.",
+   errorPast:"Escolha um horário futuro."
+  }
+ };
+ const L=(key,...args)=>{
+  const value=(messages[getLang()]||messages.es)[key];
+  return typeof value==="function"?value(...args):value;
+ };
+ const day=today(),max=new Date(day+"T12:00:00Z");max.setUTCDate(max.getUTCDate()+60);
  dateInput.min=day;dateInput.max=max.toISOString().slice(0,10);dateInput.value=day;
+ const formatTime=minutes=>String(Math.floor(minutes/60)).padStart(2,"0")+":"+String(minutes%60).padStart(2,"0");
  function updateSlots(){
-  const selected=dateInput.value;
-  const previous=timeInput.value;
-  const isToday=selected===today();
-  const currentTime=nowClock();
+  const selected=dateInput.value,previous=timeInput.value;
+  const isToday=selected===today(),currentTime=nowClock();
   timeInput.replaceChildren();
-  timeInput.add(new Option("Elegí el horario",""));
-  const formatTime=minutes=>String(Math.floor(minutes/60)).padStart(2,"0")+":"+String(minutes%60).padStart(2,"0");
+  timeInput.add(new Option(L("chooseTime"),""));
   const groups=[
-   {label:"Almuerzo · 12:00 a 15:15",slots:[...Array.from({length:7},(_,i)=>formatTime(12*60+i*30)),"15:15"]},
-   {label:"Cena · 20:00 a 23:00",slots:Array.from({length:7},(_,i)=>formatTime(20*60+i*30))}
+   {label:L("lunch"),slots:[...Array.from({length:7},(_,i)=>formatTime(12*60+i*30)),"15:15"]},
+   {label:L("dinner"),slots:Array.from({length:7},(_,i)=>formatTime(20*60+i*30))}
   ];
   for(const group of groups){
-   const optgroup=document.createElement("optgroup");
-   optgroup.label=group.label;
+   const optgroup=document.createElement("optgroup");optgroup.label=group.label;
    for(const time of group.slots){
     const unavailable=isToday&&time<=currentTime;
-    const option=new Option(unavailable?time+" · ya pasó":time,time);
+    const option=new Option(unavailable?time+L("passed"):time,time);
     option.disabled=unavailable;
     optgroup.append(option);
    }
@@ -116,14 +205,8 @@
   const preserved=[...timeInput.querySelectorAll("option")].find(o=>o.value===previous&&!o.disabled);
   if(preserved)timeInput.value=previous;
   const pastLunch=isToday&&currentTime>="15:15";
-  document.querySelector("#timeHelp").textContent=pastLunch
-   ?"El almuerzo de hoy ya pasó. Elegí otra fecha para reservar al mediodía."
-   :isToday?"Los horarios que ya pasaron hoy aparecen deshabilitados.":"";
+  document.querySelector("#timeHelp").textContent=pastLunch?L("pastLunch"):isToday?L("pastSlots"):"";
  }
- updateSlots();dateInput.addEventListener("change",updateSlots);
- const availabilityBox=document.querySelector("#availabilityBox");
- const endpoint="https://jtcltmnulmxvzqmlhgge.supabase.co/functions/v1/public-reservation-request";
- let previewRequest=0;
  const preview=(kind,title,detail)=>{
   availabilityBox.className="wide availability-box "+kind;
   availabilityBox.replaceChildren();
@@ -131,63 +214,75 @@
   const p=document.createElement("p");p.textContent=detail;
   availabilityBox.append(strong,p);
   button.classList.toggle("waitlist",kind==="waitlist");
-  button.textContent=kind==="waitlist"?"Anotarme en la lista de espera":"Confirmar mi reserva";
+  button.textContent=kind==="waitlist"?L("waitBtn"):L("confirmBtn");
  };
+ const idlePreview=()=>preview("",L("choose"),L("chooseDetail"));
+ let previewRequest=0;
  const checkAvailability=async()=>{
   const f=form.elements,venue=f.venue.value,date=f.service_date.value,time=f.service_time.value;
-  const guests=Number(f.guests.value);
-  const serial=++previewRequest;
-  if(!venue||!date||!time||!Number.isInteger(guests)||guests<1||guests>12){
-   preview("","Disponibilidad en tiempo real","Elegí restaurante, fecha, horario y personas para consultar lugares disponibles.");
-   return;
-  }
-  preview("loading","Consultando disponibilidad…","Estamos comprobando los lugares para el turno seleccionado.");
+  const guests=Number(f.guests.value),serial=++previewRequest;
+  if(!venue||!date||!time||!Number.isInteger(guests)||guests<1||guests>12){idlePreview();return}
+  preview("loading",L("checking"),L("checkingDetail"));
   try{
    const response=await fetch(endpoint,{method:"POST",headers:{"content-type":"application/json"},
     body:JSON.stringify({action:"availability",venue,service_date:date,service_time:time,guests})});
    const data=await response.json();
    if(serial!==previewRequest)return;
-   if(!response.ok||!data.ok)throw Error("No disponible");
+   if(!response.ok||!data.ok)throw Error("No availability");
    const free=Number(data.remaining_pax);
-   if(data.available){
-    preview("available","Hay lugar para tu grupo",
-     free+" lugares disponibles en el salón para este turno. La reserva se confirma al finalizar.");
-   }else{
-    preview("waitlist","Sin disponibilidad · Lista de espera",
-     "No quedan suficientes lugares para "+guests+" personas en el salón a esa hora. Podés anotarte en la lista de espera; te contactaremos por WhatsApp si se libera una mesa. No queda confirmada.");
-   }
+   if(data.available)preview("available",L("available"),L("availableDetail",free));
+   else preview("waitlist",L("wait"),L("waitDetail",guests));
   }catch{
-   if(serial===previewRequest)
-    preview("error","No pudimos consultar el cupo","Podés continuar. Al enviar, el sistema verificará si queda lugar y te informará si tu reserva está confirmada o pasa a lista de espera.");
+   if(serial===previewRequest)preview("error",L("previewError"),L("previewErrorDetail"));
   }
  };
- form.elements.venue.addEventListener("change",checkAvailability);
+ let lastNotice=null;
+ const notify=(text,fail=false,kind="ok",key=null)=>{
+  lastNotice={fail,kind,key};
+  message.textContent=text;
+  message.className="notice wide "+(fail?"error":kind);
+ };
+ const classifyError=(msg,status)=>{
+  if(/Ya recibimos varias solicitudes/i.test(msg))return "errorPhone";
+  if(/Se alcanzó el límite/i.test(msg)||status===429)return "errorRate";
+  if(/fecha entre hoy|próximos 60 días/i.test(msg))return "errorDate";
+  if(/horario futuro/i.test(msg))return "errorPast";
+  if(/Revisá restaurante|más de 12 personas/i.test(msg))return "errorValidation";
+  return "errorSave";
+ };
+ updateSlots();
+ dateInput.addEventListener("change",()=>{updateSlots();checkAvailability()});
  timeInput.addEventListener("change",checkAvailability);
- dateInput.addEventListener("change",checkAvailability);
+ form.elements.venue.addEventListener("change",checkAvailability);
  form.elements.guests.addEventListener("input",checkAvailability);
- const notify=(text,fail=false,kind="ok")=>{message.textContent=text;message.className="notice wide "+(fail?"error":kind)};
- form.addEventListener("submit",async e=>{
-  e.preventDefault();if(!form.reportValidity())return;
-  const f=form.elements;
-  const fields={
+ form.addEventListener("submit",async event=>{
+  event.preventDefault();if(!form.reportValidity())return;
+  const f=form.elements,fields={
    venue:f.venue.value,service_date:f.service_date.value,service_time:f.service_time.value,
    guests:Number(f.guests.value),guest_name:f.guest_name.value.trim(),phone:f.phone.value.trim(),
    notes:f.notes.value.trim(),consent:f.consent.checked,website:f.website.value
   };
-  button.disabled=true;notify("Verificando disponibilidad y registrando tus datos...");
+  button.disabled=true;notify(L("submitting"),false,"ok","submitting");
   try{
-   const result=await fetch(endpoint,{
-    method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(fields)
-   });
-   const data=await result.json();
-   if(!result.ok||!data.ok){notify(data.error||"No se pudo registrar la reserva. Contactanos por WhatsApp.",true);return}
-   form.reset();dateInput.value=today();updateSlots();
-   preview("","Disponibilidad en tiempo real","Elegí restaurante, fecha, horario y personas para consultar lugares disponibles.");
-   notify(data.message||"Tus datos quedaron registrados.",false,data.status==="waitlist"?"waitlist":"ok");
+   const response=await fetch(endpoint,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(fields)});
+   const data=await response.json();
+   if(!response.ok||!data.ok){
+    const key=classifyError(data.error||"",response.status);
+    notify(getLang()==="es"&&data.error?data.error:L(key),true,"error",key);return;
+   }
+   form.reset();dateInput.value=today();updateSlots();++previewRequest;idlePreview();
+   const key=data.status==="waitlist"?"waitlistSuccess":"confirmedSuccess";
+   notify(L(key),false,data.status==="waitlist"?"waitlist":"ok",key);
   }catch{
-   notify("No pudimos comunicarnos con el sistema. Por favor, contactanos por WhatsApp.",true);
+   notify(L("errorNetwork"),true,"error","errorNetwork");
   }finally{button.disabled=false}
+ });
+ window.addEventListener("site:languagechange",()=>{
+  updateSlots();
+  if(lastNotice?.key)notify(L(lastNotice.key),lastNotice.fail,lastNotice.kind,lastNotice.key);
+  checkAvailability();
  });
 })();
 </script>
+<script src="i18n.js?v=6" defer></script>
 </body></html>
