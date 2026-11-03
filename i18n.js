@@ -995,6 +995,9 @@
     const trailing=(raw.match(/\\s*$/)||[""])[0];
     return leading+spanish+trailing;
   }
+  // Required restaurant choice: retain explicit venue selection in all three languages.
+  dictionary.set(normalize("Elegí La Tasca o Santori"),"Choose La Tasca or Santori");
+  DICTIONARY_PT.set(normalize("Elegí La Tasca o Santori"),"Escolha La Tasca ou Santori");
   function translateFor(value,language) {
     const input=normalize(value);
     const dict=language==="pt"?DICTIONARY_PT:dictionary;
