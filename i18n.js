@@ -978,6 +978,23 @@
     dictionary.set(normalize(es),en);
     DICTIONARY_PT.set(normalize(es),pt);
   }
+  // Recover the canonical Spanish source if a browser/plugin or another dynamic
+  // update replaces a translated node. This makes PT → EN → ES switching reliable.
+  const spanishByTranslatedText=new Map();
+  for(const [es,en] of dictionary){
+    if(en&&normalize(en))spanishByTranslatedText.set(normalize(en),es);
+  }
+  for(const [es,pt] of DICTIONARY_PT){
+    if(pt&&normalize(pt))spanishByTranslatedText.set(normalize(pt),es);
+  }
+  function recoverSpanish(value){
+    const raw=String(value);
+    const spanish=spanishByTranslatedText.get(normalize(raw));
+    if(!spanish)return raw;
+    const leading=(raw.match(/^\\s*/)||[""])[0];
+    const trailing=(raw.match(/\\s*$/)||[""])[0];
+    return leading+spanish+trailing;
+  }
   function translateFor(value,language) {
     const input=normalize(value);
     const dict=language==="pt"?DICTIONARY_PT:dictionary;
@@ -1010,7 +1027,7 @@
     if(!parent||parent.closest(exclusions))return;
     let state=originals.get(node);
     if(!state||node.nodeValue!==state.last){
-      state={raw:node.nodeValue,last:node.nodeValue};
+      state={raw:recoverSpanish(node.nodeValue),last:node.nodeValue};
       originals.set(node,state);
     }
     const translated=translate(state.raw);
@@ -1029,7 +1046,7 @@
       if(!element.hasAttribute(name))continue;
       const current=element.getAttribute(name);
       const currentState=originalsForElement[name];
-      if(!currentState||current!==currentState.last)originalsForElement[name]={raw:current,last:current};
+      if(!currentState||current!==currentState.last)originalsForElement[name]={raw:recoverSpanish(current),last:current};
       const item=originalsForElement[name];
       const next=locale!=="es"?(translate(item.raw)||item.raw):item.raw;
       if(current!==next)element.setAttribute(name,next);
