@@ -23,6 +23,19 @@
 .availability-box.error{border-color:#85634c}
 .notice.waitlist{color:#ffe0a4}
 .submit.waitlist{background:#e0b477;color:#22180f}
+
+/* Dynamic arrival-staggering suggestions: inviting, not an automatic time change. */
+.arrival-alternatives{background:linear-gradient(120deg,#342d21,#29251e);border:1px solid #b89a66;border-radius:15px;padding:17px 18px}
+.arrival-alternatives[hidden]{display:none!important}
+.arrival-alternatives strong{display:block;color:#f3d6a0;font-size:14px;margin:0 0 8px}
+.arrival-alternatives p{font-size:12px;color:#e5d8c3;line-height:1.6;margin:0 0 13px}
+.arrival-options{display:flex;flex-wrap:wrap;gap:10px}
+.arrival-time{border:1px solid #d7b879;background:#d9b783;border-radius:10px;color:#201911;padding:11px 14px;text-align:left;cursor:pointer;min-width:115px}
+.arrival-time:hover{background:#f1d39d;transform:translateY(-1px)}
+.arrival-time strong{color:#201911;font-size:17px;line-height:1.25;margin:0}
+.arrival-time span{font-size:10px;color:#423320;font-weight:700}
+.availability-box.nearly{border-color:#e9b96e;background:#3f3322}
+.availability-box.nearly strong{color:#ffe2a2}
 </style>
 </head>
 <body>
@@ -52,6 +65,7 @@
      <strong>Disponibilidad en tiempo real</strong>
      <p>Elegí restaurante, fecha, horario y personas para consultar lugares disponibles.</p>
     </div>
+    <div id="arrivalAlternatives" class="wide arrival-alternatives" hidden aria-live="polite"></div>
     <label class="wide">Nombre y apellido
       <input name="guest_name" type="text" maxlength="100" autocomplete="name" required placeholder="Tu nombre">
     </label>
@@ -88,6 +102,7 @@
  const message=document.querySelector("#notice");
  const button=document.querySelector("#send");
  const availabilityBox=document.querySelector("#availabilityBox");
+ const alternativesBox=document.querySelector("#arrivalAlternatives");
  const endpoint="https://jtcltmnulmxvzqmlhgge.supabase.co/functions/v1/public-reservation-request";
  const today=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"America/Argentina/Buenos_Aires",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
  const nowClock=()=>new Intl.DateTimeFormat("sv-SE",{timeZone:"America/Argentina/Buenos_Aires",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date());
@@ -104,6 +119,15 @@
    chooseTime:"Elegí el horario",lunch:"Almuerzo · 12:00 a 15:15",dinner:"Cena · 20:00 a 23:00",
    passed:" · ya pasó",pastLunch:"El almuerzo de hoy ya pasó. Elegí otra fecha para reservar al mediodía.",
    pastSlots:"Los horarios que ya pasaron hoy aparecen deshabilitados.",
+   arrivalFull:"Llegadas completas para este horario",
+   arrivalFullDetail:(n,max)=>"Ya hay "+n+" de "+max+" reservas programadas a esa hora. Para cuidar los tiempos de atención, te sugerimos elegir otra hora. También podés anotarte en lista de espera, sin confirmación de mesa.",
+   arrivalNear:"Último cupo de llegada en este horario",
+   arrivalNearDetail:(n,max)=>"Ya hay "+n+" de "+max+" reservas para esta hora. Podés reservar si queda lugar, o elegir un horario más tranquilo.",
+   arrivalInfo:(n,max,pax)=>"Llegadas previstas: "+n+"/"+max+" reservas · "+pax+" personas.",
+   recommend:"Horarios sugeridos para una mejor experiencia",
+   recommendDetail:"Distribuimos las llegadas para que podamos atender a cada mesa con la dedicación que merece. Elegí el horario que prefieras.",
+   chooseAlternative:"Elegir",
+   groupCount:(n,max)=>n+"/"+max+" reservas",
    choose:"Disponibilidad en tiempo real",
    chooseDetail:"Elegí restaurante, fecha, horario y personas para consultar lugares disponibles.",
    checking:"Consultando disponibilidad…",checkingDetail:"Estamos comprobando los lugares para el turno seleccionado.",
@@ -129,6 +153,15 @@
    chooseTime:"Choose a time",lunch:"Lunch · 12:00–15:15",dinner:"Dinner · 20:00–23:00",
    passed:" · past",pastLunch:"Today's lunch service has ended. Choose another date for lunch.",
    pastSlots:"Times that have already passed today are unavailable.",
+   arrivalFull:"This arrival time is fully booked",
+   arrivalFullDetail:(n,max)=>"There are already "+n+" of "+max+" bookings arriving at this time. To ensure attentive service, please choose another time. You can also join the waiting list, but that does not confirm a table.",
+   arrivalNear:"Last arrival slot available at this time",
+   arrivalNearDetail:(n,max)=>"There are already "+n+" of "+max+" bookings at this time. You can book if seats are available, or choose a quieter arrival time.",
+   arrivalInfo:(n,max,pax)=>"Scheduled arrivals: "+n+"/"+max+" bookings · "+pax+" guests.",
+   recommend:"Suggested times for a smoother dining experience",
+   recommendDetail:"We stagger arrivals so we can give every table the attention it deserves. Choose the time you prefer.",
+   chooseAlternative:"Choose",
+   groupCount:(n,max)=>n+"/"+max+" bookings",
    choose:"Live availability",
    chooseDetail:"Choose your restaurant, date, time and party size to check available seats.",
    checking:"Checking availability…",checkingDetail:"We're checking availability for your selected time.",
@@ -154,6 +187,15 @@
    chooseTime:"Escolha o horário",lunch:"Almoço · 12:00–15:15",dinner:"Jantar · 20:00–23:00",
    passed:" · já passou",pastLunch:"O horário de almoço de hoje já passou. Escolha outra data.",
    pastSlots:"Os horários que já passaram hoje estão indisponíveis.",
+   arrivalFull:"Horário com chegadas completas",
+   arrivalFullDetail:(n,max)=>"Já existem "+n+" de "+max+" reservas previstas para este horário. Para garantir um bom atendimento, sugerimos outro horário. Você também pode entrar na lista de espera, sem confirmação de mesa.",
+   arrivalNear:"Última vaga de chegada neste horário",
+   arrivalNearDetail:(n,max)=>"Já existem "+n+" de "+max+" reservas para este horário. Você pode reservar se houver lugar ou escolher um horário mais tranquilo.",
+   arrivalInfo:(n,max,pax)=>"Chegadas previstas: "+n+"/"+max+" reservas · "+pax+" pessoas.",
+   recommend:"Horários sugeridos para uma experiência melhor",
+   recommendDetail:"Distribuímos as chegadas para atender cada mesa com a atenção que merece. Escolha o horário que preferir.",
+   chooseAlternative:"Escolher",
+   groupCount:(n,max)=>n+"/"+max+" reservas",
    choose:"Disponibilidade em tempo real",
    chooseDetail:"Escolha o restaurante, a data, o horário e o número de pessoas para consultar os lugares disponíveis.",
    checking:"Consultando disponibilidade…",checkingDetail:"Estamos verificando as vagas para o horário selecionado.",
@@ -216,12 +258,40 @@
   button.classList.toggle("waitlist",kind==="waitlist");
   button.textContent=kind==="waitlist"?L("waitBtn"):L("confirmBtn");
  };
+ const renderAlternatives=data=>{
+  alternativesBox.replaceChildren();
+  alternativesBox.hidden=true;
+  const options=Array.isArray(data?.alternatives)?data.alternatives.filter(x=>/^\\d{2}:\\d{2}$/.test(x.time)):[],
+   arrivals=Number(data?.group_count)||0;
+  // If nobody has booked the requested time, don't needlessly encourage a move.
+  if(!options.length||data?.available&&arrivals===0)return;
+  const heading=document.createElement("strong");heading.textContent=L("recommend");
+  const detail=document.createElement("p");detail.textContent=L("recommendDetail");
+  const group=document.createElement("div");group.className="arrival-options";
+  for(const suggestion of options){
+   const b=document.createElement("button");b.type="button";b.className="arrival-time";
+   b.setAttribute("aria-label",L("chooseAlternative")+" "+suggestion.time);
+   const tm=document.createElement("strong");tm.textContent=suggestion.time;
+   const occupancy=document.createElement("span");
+   occupancy.textContent=L("groupCount",suggestion.groups,Number(data.max_groups_per_time)||3);
+   b.append(tm,occupancy);
+   b.onclick=()=>{
+    timeInput.value=suggestion.time;
+    timeInput.dispatchEvent(new Event("change",{bubbles:true}));
+    timeInput.focus();
+   };
+   group.append(b);
+  }
+  alternativesBox.append(heading,detail,group);
+  alternativesBox.hidden=false;
+ };
+ const clearAlternatives=()=>{alternativesBox.hidden=true;alternativesBox.replaceChildren()};
  const idlePreview=()=>preview("",L("choose"),L("chooseDetail"));
  let previewRequest=0;
  const checkAvailability=async()=>{
   const f=form.elements,venue=f.venue.value,date=f.service_date.value,time=f.service_time.value;
   const guests=Number(f.guests.value),serial=++previewRequest;
-  if(!venue||!date||!time||!Number.isInteger(guests)||guests<1||guests>12){idlePreview();return}
+  if(!venue||!date||!time||!Number.isInteger(guests)||guests<1||guests>12){idlePreview();clearAlternatives();return}
   preview("loading",L("checking"),L("checkingDetail"));
   try{
    const response=await fetch(endpoint,{method:"POST",headers:{"content-type":"application/json"},
@@ -229,11 +299,19 @@
    const data=await response.json();
    if(serial!==previewRequest)return;
    if(!response.ok||!data.ok)throw Error("No availability");
-   const free=Number(data.remaining_pax);
-   if(data.available)preview("available",L("available"),L("availableDetail",free));
-   else preview("waitlist",L("wait"),L("waitDetail",guests));
+   const free=Number(data.remaining_pax),arrivals=Number(data.group_count)||0;
+   const maxGroups=Number(data.max_groups_per_time)||3;
+   if(!data.available&&data.reason==="arrivals")
+    preview("waitlist",L("arrivalFull"),L("arrivalFullDetail",arrivals,maxGroups));
+   else if(!data.available)
+    preview("waitlist",L("wait"),L("waitDetail",guests));
+   else if(arrivals===maxGroups-1)
+    preview("nearly",L("arrivalNear"),L("arrivalNearDetail",arrivals,maxGroups)+" "+L("availableDetail",free));
+   else
+    preview("available",L("available"),L("availableDetail",free)+" "+L("arrivalInfo",arrivals,maxGroups,Number(data.arrival_pax)||0));
+   renderAlternatives(data);
   }catch{
-   if(serial===previewRequest)preview("error",L("previewError"),L("previewErrorDetail"));
+   if(serial===previewRequest){preview("error",L("previewError"),L("previewErrorDetail"));clearAlternatives()}
   }
  };
  let lastNotice=null;
@@ -270,7 +348,7 @@
     const key=classifyError(data.error||"",response.status);
     notify(getLang()==="es"&&data.error?data.error:L(key),true,"error",key);return;
    }
-   form.reset();dateInput.value=today();updateSlots();++previewRequest;idlePreview();
+   form.reset();dateInput.value=today();updateSlots();++previewRequest;idlePreview();clearAlternatives();
    const key=data.status==="waitlist"?"waitlistSuccess":"confirmedSuccess";
    notify(L(key),false,data.status==="waitlist"?"waitlist":"ok",key);
   }catch{
