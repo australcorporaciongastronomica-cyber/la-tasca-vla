@@ -11,6 +11,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:dark;font-family:Montserrat,Arial,sans-serif;background:#0c0d0c;color:#f8f3e9}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 80% -10%,#3c3326 0%,transparent 50%),#0c0d0c}a{color:inherit}.layout{max-width:1080px;margin:auto;padding:30px 18px 50px}.back{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:13px;color:#d4ba8d;margin-bottom:35px}.back:hover{text-decoration:underline}.top{margin-bottom:26px}.eyebrow{color:#cbb083;font-size:11px;letter-spacing:2px;font-weight:700}.top h1{font:500 clamp(48px,7vw,74px)/1.01 'Cormorant Garamond',Georgia,serif;margin:10px 0}.top p{max-width:660px;color:#cec7bc;line-height:1.8;font-size:14px;margin:0}.shell{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(250px,.8fr);gap:20px}.panel{border:1px solid #4d4437;background:linear-gradient(160deg,#24221f,#171917);border-radius:18px;padding:clamp(20px,3vw,34px);box-shadow:0 16px 45px #0007}.panel h2{font:500 34px/1.05 'Cormorant Garamond',serif;margin:0 0 12px}.fine{font-size:12px;color:#c8c2b7;line-height:1.65;margin-bottom:22px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}label{display:flex;flex-direction:column;gap:7px;font-size:12px;color:#eae5d8;font-weight:600}input,select,textarea,button{font:inherit}input,select,textarea{width:100%;min-height:48px;border:1px solid #625b4e;background:#111311;color:#f8f5eb;border-radius:10px;padding:12px;font-size:14px}input:focus,select:focus,textarea:focus{outline:2px solid #d6b57a;outline-offset:2px}textarea{resize:vertical;min-height:87px}.wide{grid-column:1/-1}.agree{display:flex;flex-direction:row;align-items:flex-start;gap:12px;font-size:12px;line-height:1.6;color:#d1cabd;font-weight:400}.agree input{min-height:0;width:18px;height:18px;flex:none;margin:2px 0}.submit{background:#d9b982;color:#1b1915;border:none;border-radius:10px;padding:16px 20px;font-size:13px;font-weight:700;cursor:pointer;min-height:55px}.submit:disabled{opacity:.58;cursor:wait}.submit:hover:not(:disabled){background:#f4d7a2}.notice{min-height:24px;font-size:13px;line-height:1.65}.notice.ok{color:#a5deb5}.notice.error{color:#ffa9a9}.side{display:flex;flex-direction:column;gap:17px}.side .panel{box-shadow:none}.side h3{font:500 29px/1.1 'Cormorant Garamond',serif;margin:0 0 12px}.side p{line-height:1.85;font-size:13px;color:#c9c1b2}.side a{display:inline-block;text-decoration:none;border:1px solid #ac9267;border-radius:9px;padding:13px 15px;color:#efd7ac;font-size:12px;font-weight:700;margin-top:8px}.side a:hover{background:#28251e}.help{font-size:11px;color:#a49e92;margin-top:20px;line-height:1.6}.hidden{display:none!important}.trap{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}@media(max-width:760px){.shell{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.wide{grid-column:auto}.back{margin-bottom:24px}.top h1{font-size:54px}.panel{padding:21px}}
+
+.availability-box{border:1px solid #6e6957;border-radius:12px;background:#252820;padding:18px 20px;margin:0;display:flex;flex-direction:column;gap:6px}
+.availability-box strong{font-size:15px;font-weight:750;color:#efe9dc}
+.availability-box p{font-size:13px;line-height:1.65;margin:0;color:#c8c5b8}
+.availability-box.available{border-color:#5c9c7a;background:#1f3329}
+.availability-box.available strong{color:#adebc1}
+.availability-box.waitlist{border-color:#c9a368;background:#3b3020}
+.availability-box.waitlist strong{color:#ffe0a4}
+.availability-box.loading{border-color:#786a53}
+.availability-box.error{border-color:#85634c}
+.notice.waitlist{color:#ffe0a4}
+.submit.waitlist{background:#e0b477;color:#22180f}
 </style>
 </head>
 <body>
@@ -36,6 +48,10 @@
     <label>Personas / Guests
       <input type="number" name="guests" min="1" max="12" value="2" required>
     </label>
+    <div id="availabilityBox" class="wide availability-box" aria-live="polite">
+     <strong>Disponibilidad en tiempo real</strong>
+     <p>Elegí restaurante, fecha, horario y personas para consultar lugares disponibles.</p>
+    </div>
     <label class="wide">Nombre y apellido / Name
       <input name="guest_name" type="text" maxlength="100" autocomplete="name" required placeholder="Tu nombre">
     </label>
@@ -48,7 +64,7 @@
     <label class="trap" aria-hidden="true">Sitio web <input name="website" tabindex="-1" autocomplete="off"></label>
     <label class="agree wide">
       <input type="checkbox" name="consent" required>
-      <span>Acepto que La Tasca y Santori utilicen estos datos únicamente para responder y gestionar mi solicitud de reserva.</span>
+      <span>Acepto que La Tasca y Santori utilicen estos datos únicamente para gestionar mi reserva o solicitud de lista de espera.</span>
     </label>
     <button class="submit wide" id="send" type="submit">Confirmar mi reserva</button>
     <p class="notice wide" id="notice" role="status" aria-live="polite"></p>
@@ -105,7 +121,51 @@
    :isToday?"Los horarios que ya pasaron hoy aparecen deshabilitados.":"";
  }
  updateSlots();dateInput.addEventListener("change",updateSlots);
- const notify=(text,fail=false)=>{message.textContent=text;message.className="notice wide "+(fail?"error":"ok")};
+ const availabilityBox=document.querySelector("#availabilityBox");
+ const endpoint="https://jtcltmnulmxvzqmlhgge.supabase.co/functions/v1/public-reservation-request";
+ let previewRequest=0;
+ const preview=(kind,title,detail)=>{
+  availabilityBox.className="wide availability-box "+kind;
+  availabilityBox.replaceChildren();
+  const strong=document.createElement("strong");strong.textContent=title;
+  const p=document.createElement("p");p.textContent=detail;
+  availabilityBox.append(strong,p);
+  button.classList.toggle("waitlist",kind==="waitlist");
+  button.textContent=kind==="waitlist"?"Anotarme en la lista de espera":"Confirmar mi reserva";
+ };
+ const checkAvailability=async()=>{
+  const f=form.elements,venue=f.venue.value,date=f.service_date.value,time=f.service_time.value;
+  const guests=Number(f.guests.value);
+  const serial=++previewRequest;
+  if(!venue||!date||!time||!Number.isInteger(guests)||guests<1||guests>12){
+   preview("","Disponibilidad en tiempo real","Elegí restaurante, fecha, horario y personas para consultar lugares disponibles.");
+   return;
+  }
+  preview("loading","Consultando disponibilidad…","Estamos comprobando los lugares para el turno seleccionado.");
+  try{
+   const response=await fetch(endpoint,{method:"POST",headers:{"content-type":"application/json"},
+    body:JSON.stringify({action:"availability",venue,service_date:date,service_time:time,guests})});
+   const data=await response.json();
+   if(serial!==previewRequest)return;
+   if(!response.ok||!data.ok)throw Error("No disponible");
+   const free=Number(data.remaining_pax);
+   if(data.available){
+    preview("available","Hay lugar para tu grupo",
+     free+" lugares disponibles en el salón para este turno. La reserva se confirma al finalizar.");
+   }else{
+    preview("waitlist","Sin disponibilidad · Lista de espera",
+     "No quedan suficientes lugares para "+guests+" personas en el salón a esa hora. Podés anotarte en la lista de espera; te contactaremos por WhatsApp si se libera una mesa. No queda confirmada.");
+   }
+  }catch{
+   if(serial===previewRequest)
+    preview("error","No pudimos consultar el cupo","Podés continuar. Al enviar, el sistema verificará si queda lugar y te informará si tu reserva está confirmada o pasa a lista de espera.");
+  }
+ };
+ form.elements.venue.addEventListener("change",checkAvailability);
+ timeInput.addEventListener("change",checkAvailability);
+ dateInput.addEventListener("change",checkAvailability);
+ form.elements.guests.addEventListener("input",checkAvailability);
+ const notify=(text,fail=false,kind="ok")=>{message.textContent=text;message.className="notice wide "+(fail?"error":kind)};
  form.addEventListener("submit",async e=>{
   e.preventDefault();if(!form.reportValidity())return;
   const f=form.elements;
@@ -114,15 +174,16 @@
    guests:Number(f.guests.value),guest_name:f.guest_name.value.trim(),phone:f.phone.value.trim(),
    notes:f.notes.value.trim(),consent:f.consent.checked,website:f.website.value
   };
-  button.disabled=true;notify("Registrando tu reserva...");
+  button.disabled=true;notify("Verificando disponibilidad y registrando tus datos...");
   try{
-   const result=await fetch("https://jtcltmnulmxvzqmlhgge.supabase.co/functions/v1/public-reservation-request",{
+   const result=await fetch(endpoint,{
     method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(fields)
    });
    const data=await result.json();
    if(!result.ok||!data.ok){notify(data.error||"No se pudo registrar la reserva. Contactanos por WhatsApp.",true);return}
    form.reset();dateInput.value=today();updateSlots();
-   notify(data.message||"¡Tu reserva quedó confirmada! Gracias por elegir La Tasca y Santori. Si necesitamos realizar algún ajuste o informarte algún cambio, nos comunicaremos por WhatsApp al número que nos dejaste. ¡Te esperamos!");
+   preview("","Disponibilidad en tiempo real","Elegí restaurante, fecha, horario y personas para consultar lugares disponibles.");
+   notify(data.message||"Tus datos quedaron registrados.",false,data.status==="waitlist"?"waitlist":"ok");
   }catch{
    notify("No pudimos comunicarnos con el sistema. Por favor, contactanos por WhatsApp.",true);
   }finally{button.disabled=false}
