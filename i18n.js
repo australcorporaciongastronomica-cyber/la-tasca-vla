@@ -614,6 +614,365 @@
     ["Salmón y huevo de codorniz","Salmão e ovo de codorna"],
 
   ])DICTIONARY_PT.set(normalize(es),pt);
+
+  // Reservations, live availability and the remaining standalone public pages.
+  // Keep Spanish source strings as dictionary keys for the shared ES / EN / PT switcher.
+  for(const [es,en,pt] of [
+  [
+    "¿Reservamos tu mesa?",
+    "Ready to book a table?",
+    "Vamos reservar sua mesa?"
+  ],
+  [
+    "Elegí fecha y horario. Si hay lugar, tu reserva se confirma online; si no, podés entrar a lista de espera.",
+    "Choose your date and time. If there's availability, your booking is confirmed online; otherwise, you can join the waiting list.",
+    "Escolha a data e o horário. Se houver disponibilidade, sua reserva será confirmada on-line; caso contrário, você poderá entrar na lista de espera."
+  ],
+  [
+    "RESERVÁ TU MESA ↗",
+    "BOOK A TABLE ↗",
+    "RESERVE SUA MESA ↗"
+  ],
+  [
+    "Reservar una mesa en La Tasca o Santori",
+    "Book a table at La Tasca or Santori",
+    "Reservar uma mesa no La Tasca ou Santori"
+  ],
+  [
+    "SOLICITAR RESERVA EN LA WEB ↗",
+    "BOOK A TABLE ONLINE ↗",
+    "RESERVE UMA MESA ON-LINE ↗"
+  ],
+  [
+    "← Volver a La Tasca y Santori",
+    "← Back to La Tasca and Santori",
+    "← Voltar ao La Tasca e Santori"
+  ],
+  [
+    "VILLA LA ANGOSTURA · LA TASCA & SANTORI",
+    "VILLA LA ANGOSTURA · LA TASCA & SANTORI",
+    "VILLA LA ANGOSTURA · LA TASCA & SANTORI"
+  ],
+  [
+    "Tu próxima mesa,",
+    "Your next table,",
+    "Sua próxima mesa,"
+  ],
+  [
+    "nosotros la preparamos.",
+    "we'll make it special.",
+    "nós preparamos para você."
+  ],
+  [
+    "Elegí restaurante, fecha y horario. Si hay disponibilidad, tu mesa se confirma al instante. Si está completo, podés anotarte en nuestra lista de espera.",
+    "Choose your restaurant, date and time. If a table is available, your booking is confirmed instantly. If we're full, you can join our waiting list.",
+    "Escolha o restaurante, a data e o horário. Se houver disponibilidade, sua reserva será confirmada na hora. Se estivermos lotados, você poderá entrar na lista de espera."
+  ],
+  [
+    "Reservá tu mesa",
+    "Book your table",
+    "Reserve sua mesa"
+  ],
+  [
+    "Consultá la disponibilidad en tiempo real. Al finalizar te informamos si tu mesa está confirmada o si ingresaste a lista de espera.",
+    "Check live availability. When you finish, we'll tell you whether your table is confirmed or you've joined the waiting list.",
+    "Consulte a disponibilidade em tempo real. Ao finalizar, informaremos se sua mesa está confirmada ou se você entrou na lista de espera."
+  ],
+  [
+    "Restaurante",
+    "Restaurant",
+    "Restaurante"
+  ],
+  [
+    "Fecha",
+    "Date",
+    "Data"
+  ],
+  [
+    "Horario",
+    "Time",
+    "Horário"
+  ],
+  [
+    "Elegí el horario",
+    "Choose a time",
+    "Escolha o horário"
+  ],
+  [
+    "Almuerzo: 12:00 a 15:15 · Cena: 20:00 a 23:00",
+    "Lunch: 12:00–15:15 · Dinner: 20:00–23:00",
+    "Almoço: 12:00–15:15 · Jantar: 20:00–23:00"
+  ],
+  [
+    "Personas",
+    "Guests",
+    "Pessoas"
+  ],
+  [
+    "Disponibilidad en tiempo real",
+    "Live availability",
+    "Disponibilidade em tempo real"
+  ],
+  [
+    "Elegí restaurante, fecha, horario y personas para consultar lugares disponibles.",
+    "Choose a restaurant, date, time and party size to check availability.",
+    "Escolha o restaurante, a data, o horário e o número de pessoas para consultar a disponibilidade."
+  ],
+  [
+    "Nombre y apellido",
+    "Full name",
+    "Nome e sobrenome"
+  ],
+  [
+    "Tu nombre",
+    "Your name",
+    "Seu nome"
+  ],
+  [
+    "WhatsApp o teléfono con código de país",
+    "WhatsApp or phone with country code",
+    "WhatsApp ou telefone com código do país"
+  ],
+  [
+    "Observaciones (opcional)",
+    "Special requests (optional)",
+    "Observações (opcional)"
+  ],
+  [
+    "Alergias, celebración o detalles importantes",
+    "Allergies, celebration or important details",
+    "Alergias, comemorações ou informações importantes"
+  ],
+  [
+    "Sitio web",
+    "Website",
+    "Site"
+  ],
+  [
+    "Acepto que La Tasca y Santori utilicen estos datos únicamente para gestionar mi reserva o solicitud de lista de espera.",
+    "I agree that La Tasca and Santori may use these details only to manage my booking or waiting-list request.",
+    "Concordo que La Tasca e Santori utilizem estes dados apenas para gerenciar minha reserva ou solicitação de lista de espera."
+  ],
+  [
+    "Confirmar mi reserva",
+    "Confirm my booking",
+    "Confirmar minha reserva"
+  ],
+  [
+    "Anotarme en la lista de espera",
+    "Join the waiting list",
+    "Entrar na lista de espera"
+  ],
+  [
+    "¿Necesitás una respuesta inmediata?",
+    "Need an immediate response?",
+    "Precisa de uma resposta imediata?"
+  ],
+  [
+    "Contactá directamente al restaurante por WhatsApp, especialmente para grupos de más de 12 personas.",
+    "Contact the restaurant directly on WhatsApp, especially for groups of more than 12.",
+    "Entre em contato diretamente com o restaurante pelo WhatsApp, especialmente para grupos com mais de 12 pessoas."
+  ],
+  [
+    "WhatsApp La Tasca ↗",
+    "La Tasca on WhatsApp ↗",
+    "WhatsApp do La Tasca ↗"
+  ],
+  [
+    "WhatsApp Santori ↗",
+    "Santori on WhatsApp ↗",
+    "WhatsApp do Santori ↗"
+  ],
+  [
+    "La Tasca y Santori · Av. Arrayanes 6155, Villa La Angostura · Ante cualquier cambio, nos comunicaremos por WhatsApp.",
+    "La Tasca and Santori · Av. Arrayanes 6155, Villa La Angostura · We'll contact you on WhatsApp if anything changes.",
+    "La Tasca e Santori · Av. Arrayanes 6155, Villa La Angostura · Entraremos em contato pelo WhatsApp se houver alguma alteração."
+  ],
+  [
+    "El almuerzo de hoy ya pasó. Elegí otra fecha para reservar al mediodía.",
+    "Today's lunch service has ended. Choose another date for lunch.",
+    "O horário de almoço de hoje já passou. Escolha outra data para almoçar."
+  ],
+  [
+    "Los horarios que ya pasaron hoy aparecen deshabilitados.",
+    "Past time slots are unavailable today.",
+    "Os horários que já passaram hoje estão indisponíveis."
+  ],
+  [
+    "Consultando disponibilidad…",
+    "Checking availability…",
+    "Consultando disponibilidade…"
+  ],
+  [
+    "Estamos comprobando los lugares para el turno seleccionado.",
+    "We're checking seats for the selected time.",
+    "Estamos verificando as vagas para o horário selecionado."
+  ],
+  [
+    "Hay lugar para tu grupo",
+    "A table is available for your group",
+    "Há lugar para seu grupo"
+  ],
+  [
+    "Sin disponibilidad · Lista de espera",
+    "Fully booked · Waiting list",
+    "Sem disponibilidade · Lista de espera"
+  ],
+  [
+    "No pudimos consultar el cupo",
+    "Couldn't check availability",
+    "Não foi possível consultar a disponibilidade"
+  ],
+  [
+    "Podés continuar. Al enviar, el sistema verificará si queda lugar y te informará si tu reserva está confirmada o pasa a lista de espera.",
+    "You can continue. When you submit, we'll check availability and tell you whether your booking is confirmed or on the waiting list.",
+    "Você pode continuar. Ao enviar, verificaremos a disponibilidade e informaremos se sua reserva foi confirmada ou se entrou na lista de espera."
+  ],
+  [
+    "Verificando disponibilidad y registrando tus datos...",
+    "Checking availability and saving your details…",
+    "Verificando a disponibilidade e registrando seus dados…"
+  ],
+  [
+    "No se pudo registrar la reserva. Contactanos por WhatsApp.",
+    "We couldn't save your booking. Please contact us on WhatsApp.",
+    "Não foi possível registrar sua reserva. Entre em contato pelo WhatsApp."
+  ],
+  [
+    "No pudimos comunicarnos con el sistema. Por favor, contactanos por WhatsApp.",
+    "Couldn't reach our booking system. Please contact us on WhatsApp.",
+    "Não foi possível acessar o sistema de reservas. Entre em contato pelo WhatsApp."
+  ],
+  [
+    "Tus datos quedaron registrados.",
+    "Your details have been saved.",
+    "Seus dados foram registrados."
+  ],
+  [
+    "Día de la Madre",
+    "Mother's Day",
+    "Dia das Mães"
+  ],
+  [
+    "← VOLVER AL INICIO",
+    "← BACK TO HOME",
+    "← VOLTAR AO INÍCIO"
+  ],
+  [
+    "Domingo 18 de octubre · Villa La Angostura",
+    "Sunday, October 18 · Villa La Angostura",
+    "Domingo, 18 de outubro · Villa La Angostura"
+  ],
+  [
+    "Día de",
+    "Mother's",
+    "Dia das"
+  ],
+  [
+    "la Madre",
+    "Day",
+    "Mães"
+  ],
+  [
+    "Dos menús especiales. Una ocasión para compartir.",
+    "Two special menus. An occasion to share.",
+    "Dois cardápios especiais. Uma ocasião para compartilhar."
+  ],
+  [
+    "Conocé las propuestas completas de La Tasca y Santori. Elegí la experiencia que más te guste y reservá directamente por WhatsApp.",
+    "Explore the special menus at La Tasca and Santori. Choose your favourite and book directly via WhatsApp.",
+    "Conheça os cardápios especiais do La Tasca e Santori. Escolha sua experiência favorita e reserve diretamente pelo WhatsApp."
+  ],
+  [
+    "$80.000 por persona · Agua o gaseosa incluida",
+    "ARS 80,000 per person · Water or soft drink included",
+    "ARS 80.000 por pessoa · Água ou refrigerante incluído"
+  ],
+  [
+    "Almuerzo y cena",
+    "Lunch and dinner",
+    "Almoço e jantar"
+  ],
+  [
+    "La Tasca: música en vivo · 13:30 a 14:30 hs",
+    "La Tasca: live music · 13:30–14:30",
+    "La Tasca: música ao vivo · 13h30 às 14h30"
+  ],
+  [
+    "Tocá el menú para verlo más grande. Música en vivo durante el almuerzo.",
+    "Tap the menu to enlarge it. Live music at lunchtime.",
+    "Toque no cardápio para ampliar. Música ao vivo durante o almoço."
+  ],
+  [
+    "RESERVAR MENÚ LA TASCA ↗",
+    "BOOK LA TASCA MENU ↗",
+    "RESERVAR CARDÁPIO LA TASCA ↗"
+  ],
+  [
+    "Tocá el menú para verlo más grande. Propuesta especial de cocina Nikkei.",
+    "Tap the menu to enlarge it. Special Nikkei cuisine.",
+    "Toque no cardápio para ampliar. Cozinha Nikkei especial."
+  ],
+  [
+    "RESERVAR MENÚ SANTORI ↗",
+    "BOOK SANTORI MENU ↗",
+    "RESERVAR CARDÁPIO SANTORI ↗"
+  ],
+  [
+    "Para confirmar el",
+    "To confirm the",
+    "Para confirmar o"
+  ],
+  [
+    "menú especial",
+    "special menu",
+    "cardápio especial"
+  ],
+  [
+    ", se solicita una",
+    ", a",
+    ", é solicitado um"
+  ],
+  [
+    "seña del 50% ($40.000 por persona)",
+    "50% deposit (ARS 40,000 per person)",
+    "sinal de 50% (ARS 40.000 por pessoa)"
+  ],
+  [
+    ", descontable del valor final. Nuestra",
+    ", deducted from the final bill. Our",
+    ", descontado do valor final. Nosso"
+  ],
+  [
+    "carta habitual",
+    "regular menu",
+    "cardápio habitual"
+  ],
+  [
+    "también está disponible.",
+    "is also available.",
+    "também está disponível."
+  ],
+  [
+    "Menú ampliado",
+    "Enlarged menu",
+    "Cardápio ampliado"
+  ],
+  [
+    "Cerrar menú ampliado",
+    "Close enlarged menu",
+    "Fechar cardápio ampliado"
+  ],
+  [
+    "Esc o × para cerrar",
+    "Press Esc or × to close",
+    "Pressione Esc ou × para fechar"
+  ]
+]){
+    dictionary.set(normalize(es),en);
+    DICTIONARY_PT.set(normalize(es),pt);
+  }
+
   function translateFor(value,language) {
     const input=normalize(value);
     const dict=language==="pt"?DICTIONARY_PT:dictionary;
@@ -686,12 +1045,36 @@
     let node;
     while((node=walker.nextNode()))updateTextNode(node);
     root.querySelectorAll("[placeholder],[aria-label],[title]").forEach(updateAttributes);
+    // Keep the selected language while navigating between public pages.
+    root.querySelectorAll('a[href]').forEach(a=>{
+      const raw=a.getAttribute("href");
+      if(!raw||raw.startsWith("#")||raw.startsWith("mailto:")||raw.startsWith("tel:"))return;
+      let url;
+      try{url=new URL(raw,location.href)}catch{return}
+      if(url.origin!==location.origin||!/(?:\/|\.html)$/.test(url.pathname))return;
+      if(locale==="es")url.searchParams.delete("lang");
+      else url.searchParams.set("lang",locale);
+      a.setAttribute("href",url.pathname+url.search+url.hash);
+    });
+    const meta=document.querySelector('meta[name="description"]');
+    if(meta&&document.body?.querySelector("#requestForm")){
+      const descriptions={
+        es:"Reservá online en La Tasca o Santori, Villa La Angostura. Consultá disponibilidad y lista de espera en tiempo real.",
+        en:"Book online at La Tasca or Santori in Villa La Angostura. Check live availability and waiting-list options.",
+        pt:"Reserve on-line no La Tasca ou Santori, em Villa La Angostura. Consulte a disponibilidade e a lista de espera em tempo real."
+      };
+      if(meta.content!==descriptions[locale])meta.content=descriptions[locale];
+    }
     const originalTitle="La Tasca & Santori | Villa La Angostura";
     const title=document.title;
     if(title.includes("Armá tu pedido")||title.includes("Build your order")||title.includes("Faça seu pedido")){
       document.title=locale==="pt"?"Faça seu pedido | La Tasca & Santori":locale==="en"?"Build your order | La Tasca & Santori":"Armá tu pedido | La Tasca & Santori";
     }else if(title.includes("Nuestras cartas")||title.includes("Our menus")||title.includes("Nossos cardápios")){
       document.title=locale==="pt"?"Nossos cardápios | La Tasca & Santori":locale==="en"?"Our menus | La Tasca & Santori":"Nuestras cartas | La Tasca & Santori";
+    }else if(title.includes("Reservar mesa")||title.includes("Book a table")||title.includes("Reservar uma mesa")){
+      document.title=locale==="pt"?"Reservar uma mesa | La Tasca & Santori":locale==="en"?"Book a table | La Tasca & Santori":"Reservar mesa | La Tasca & Santori";
+    }else if(title.includes("Día de la Madre")||title.includes("Mother's Day")||title.includes("Dia das Mães")){
+      document.title=locale==="pt"?"Dia das Mães | La Tasca & Santori":locale==="en"?"Mother's Day | La Tasca & Santori":"Día de la Madre | La Tasca & Santori";
     }
   }
   function updateLocale(next){
