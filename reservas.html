@@ -103,6 +103,8 @@
  const button=document.querySelector("#send");
  const availabilityBox=document.querySelector("#availabilityBox");
  const alternativesBox=document.querySelector("#arrivalAlternatives");
+ const pauseState=()=>window.reservationsPause;
+ const isPausedToday=()=>{const s=pauseState();return Boolean(s?.loaded&&s.date===dateInput.value&&s.pausedVenues.includes(form.elements.venue.value))};
  const endpoint="https://jtcltmnulmxvzqmlhgge.supabase.co/functions/v1/public-reservation-request";
  const today=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"America/Argentina/Buenos_Aires",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
  const nowClock=()=>new Intl.DateTimeFormat("sv-SE",{timeZone:"America/Argentina/Buenos_Aires",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date());
@@ -291,6 +293,7 @@
  const checkAvailability=async()=>{
   const f=form.elements,venue=f.venue.value,date=f.service_date.value,time=f.service_time.value;
   const guests=Number(f.guests.value),serial=++previewRequest;
+  if(isPausedToday()){preview("error","HOY SIN LUGAR · Reservas online pausadas","Elegí una fecha a partir de mañana o consultanos por WhatsApp ante posibles cancelaciones.");clearAlternatives();button.disabled=true;return;}
   if(!venue||!date||!time||!Number.isInteger(guests)||guests<1||guests>12){idlePreview();clearAlternatives();return}
   preview("loading",L("checking"),L("checkingDetail"));
   try{
@@ -328,19 +331,27 @@
   if(/Revisá restaurante|más de 12 personas/i.test(msg))return "errorValidation";
   return "errorSave";
  };
+ let sending=false;
+ const updatePauseUI=()=>{
+  button.disabled=sending||isPausedToday();
+  if(isPausedToday()){++previewRequest;preview("error","HOY SIN LUGAR · Reservas online pausadas","Elegí otra fecha o consultanos por WhatsApp por posibles cancelaciones.");clearAlternatives();}
+ };
  updateSlots();
- dateInput.addEventListener("change",()=>{updateSlots();checkAvailability()});
+ dateInput.addEventListener("change",()=>{updateSlots();updatePauseUI();checkAvailability()});
  timeInput.addEventListener("change",checkAvailability);
- form.elements.venue.addEventListener("change",checkAvailability);
+ form.elements.venue.addEventListener("change",()=>{updatePauseUI();checkAvailability()});
+ window.addEventListener("reservations:pausechange",()=>{updateSlots();updatePauseUI();if(!isPausedToday())checkAvailability()});
  form.elements.guests.addEventListener("input",checkAvailability);
  form.addEventListener("submit",async event=>{
-  event.preventDefault();if(!form.reportValidity())return;
+  event.preventDefault();
+  if(isPausedToday()){updatePauseUI();return;}
+  if(!form.reportValidity())return;
   const f=form.elements,fields={
    venue:f.venue.value,service_date:f.service_date.value,service_time:f.service_time.value,
    guests:Number(f.guests.value),guest_name:f.guest_name.value.trim(),phone:f.phone.value.trim(),
    notes:f.notes.value.trim(),consent:f.consent.checked,website:f.website.value
   };
-  button.disabled=true;notify(L("submitting"),false,"ok","submitting");
+  sending=true;button.disabled=true;notify(L("submitting"),false,"ok","submitting");
   try{
    const response=await fetch(endpoint,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(fields)});
    const data=await response.json();
@@ -353,7 +364,7 @@
    notify(L(key),false,data.status==="waitlist"?"waitlist":"ok",key);
   }catch{
    notify(L("errorNetwork"),true,"error","errorNetwork");
-  }finally{button.disabled=false}
+  }finally{sending=false;button.disabled=isPausedToday()}
  });
  window.addEventListener("site:languagechange",()=>{
   updateSlots();
@@ -362,5 +373,6 @@
  });
 })();
 </script>
+<script src="booking-pause-banner.js?v=1" defer></script>
 <script src="i18n.js?v=9" defer></script>
 </body></html>
