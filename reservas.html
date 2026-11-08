@@ -352,6 +352,7 @@
  // Nunca elegir Cena por defecto si todavía quedan horarios de Almuerzo disponibles.
  const defaultQuickShift=()=>dateInput.value===today()&&nowClock()>="15:15"?"dinner":"lunch";
  let quickShift=defaultQuickShift();
+ let quickShiftUserChosen=false;
  const quickDays=(date,count)=>{
   const d=new Date(date+"T12:00:00Z");d.setUTCDate(d.getUTCDate()+count);
   return d.toISOString().slice(0,10);
@@ -409,14 +410,14 @@
    }
    timeInput.append(optgroup);
   }
-  const preserved=[...timeInput.querySelectorAll("option")].find(o=>o.value===previous&&!o.disabled);
+  const preserved=previous&&[...timeInput.querySelectorAll("option")].find(o=>o.value===previous&&!o.disabled);
   if(preserved){
    timeInput.value=previous;
    // Solo un horario vigente explícitamente seleccionado puede conservar su turno.
    quickShift=Number(previous.slice(0,2))<17?"lunch":"dinner";
   }else{
    timeInput.value="";
-   quickShift=defaultQuickShift();
+   if(!quickShiftUserChosen)quickShift=defaultQuickShift();
   }
   const pastLunch=isToday&&currentTime>="15:15";
   document.querySelector("#timeHelp").textContent=pastLunch?L("pastLunch"):isToday?L("pastSlots"):"";
@@ -582,6 +583,7 @@
  document.querySelector("#quickShiftButtons").addEventListener("click",event=>{
   const b=event.target.closest("[data-quick-shift]");if(!b)return;
   quickShift=b.dataset.quickShift;
+  quickShiftUserChosen=true;
   timeInput.value="";
   renderQuickControls();
   timeInput.dispatchEvent(new Event("change",{bubbles:true}));
@@ -594,12 +596,12 @@
   });
  }
  timeInput.addEventListener("change",()=>{
-  if(timeInput.value)quickShift=Number(timeInput.value.slice(0,2))<17?"lunch":"dinner";
+  if(timeInput.value){quickShift=Number(timeInput.value.slice(0,2))<17?"lunch":"dinner";quickShiftUserChosen=true;}
   renderQuickControls();
  });
  form.elements.venue.addEventListener("change",renderQuickControls);
 
- dateInput.addEventListener("change",()=>{clearAutoShift();updateSlots();updatePauseUI();checkAvailability()});
+ dateInput.addEventListener("change",()=>{quickShiftUserChosen=false;timeInput.value="";clearAutoShift();updateSlots();updatePauseUI();checkAvailability()});
  timeInput.addEventListener("change",()=>{clearAutoShift();updatePauseUI();checkAvailability()});
  form.elements.venue.addEventListener("change",()=>{clearAutoShift();updatePauseUI();checkAvailability()});
  window.addEventListener("reservations:pausechange",()=>{const current=today();dateInput.min=current;if(dateInput.value<current)dateInput.value=current;updateSlots();updatePauseUI();if(!isPausedToday())checkAvailability()});
@@ -645,7 +647,7 @@
  const refreshQuickTimes=()=>{
   const date=today();
   if(date!==lastLocalDay){
-   if(dateInput.value===lastLocalDay)dateInput.value=date;
+   if(dateInput.value===lastLocalDay){dateInput.value=date;timeInput.value="";quickShiftUserChosen=false;}
    dateInput.min=date;
    const maxDate=new Date(date+"T12:00:00Z");maxDate.setUTCDate(maxDate.getUTCDate()+60);
    dateInput.max=maxDate.toISOString().slice(0,10);
