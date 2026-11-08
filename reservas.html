@@ -457,6 +457,30 @@
   dateInput.dispatchEvent(new Event("change",{bubbles:true}));dateInput.focus();
  });
  updateSlots();updatePauseUI();updatePunctualityText();
+ // Borrador local desde la prueba; no se envía ni confirma automáticamente.
+ (function restoreMessageDraft(){
+  const key="tasca_reserva_texto_v1";
+  let raw;
+  try{raw=sessionStorage.getItem(key);sessionStorage.removeItem(key)}catch{return}
+  if(!raw)return;
+  try{
+   const d=JSON.parse(raw);
+   if(!d||typeof d.created_at!=="number"||Date.now()-d.created_at>15*60*1000||d.created_at>Date.now()+60000)return;
+   const f=form.elements;
+   if(["La Tasca","Santori"].includes(d.venue))f.venue.value=d.venue;
+   if(typeof d.date==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(d.date)&&d.date>=dateInput.min&&d.date<=dateInput.max)dateInput.value=d.date;
+   updateSlots();
+   if(typeof d.time==="string"&&[...timeInput.options].some(o=>o.value===d.time&&!o.disabled))timeInput.value=d.time;
+   if(Number.isInteger(d.guests)&&d.guests>=1&&d.guests<=12)f.guests.value=String(d.guests);
+   if(typeof d.guest_name==="string")f.guest_name.value=d.guest_name.slice(0,100);
+   if(typeof d.notes==="string")f.notes.value=d.notes.slice(0,350);
+   clearAutoShift();updatePauseUI();
+   const note=document.createElement("p");note.className="fine";note.style.color="#e6cd9b";
+   note.textContent="Borrador preparado desde tu mensaje. Revisá fecha, horario y datos; completá tu WhatsApp y aceptá el consentimiento antes de confirmar.";
+   document.querySelector("#formHeading").after(note);
+   void checkAvailability();
+  }catch{/* Conservar el formulario si el borrador es inválido. */}
+ })();
  dateInput.addEventListener("change",()=>{clearAutoShift();updateSlots();updatePauseUI();checkAvailability()});
  timeInput.addEventListener("change",()=>{clearAutoShift();updatePauseUI();checkAvailability()});
  form.elements.venue.addEventListener("change",()=>{clearAutoShift();updatePauseUI();checkAvailability()});
