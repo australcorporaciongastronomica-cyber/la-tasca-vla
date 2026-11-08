@@ -348,14 +348,18 @@
   en:{today:"Today",tomorrow:"Tomorrow",lunch:"Lunch",dinner:"Dinner",passed:"Past"},
   pt:{today:"Hoje",tomorrow:"Amanhã",lunch:"Almoço",dinner:"Jantar",passed:"Passou"}
  };
- let quickShift=Number(nowClock().slice(0,2))<16?"lunch":"dinner";
+ // Al abrir la página, usar el turno que todavía admite reservas en la fecha elegida.
+ // Nunca elegir Cena por defecto si todavía quedan horarios de Almuerzo disponibles.
+ const defaultQuickShift=()=>dateInput.value===today()&&nowClock()>="15:15"?"dinner":"lunch";
+ let quickShift=defaultQuickShift();
  const quickDays=(date,count)=>{
   const d=new Date(date+"T12:00:00Z");d.setUTCDate(d.getUTCDate()+count);
   return d.toISOString().slice(0,10);
  };
  function renderQuickControls(){
   const lang=getLang(),word=quickLabels[lang]||quickLabels.es;
-  if(timeInput.value)quickShift=Number(timeInput.value.slice(0,2))<17?"lunch":"dinner";
+  // No deducir el turno de un valor restaurado automáticamente por el navegador.
+  // La selección manual y la fecha elegida son la fuente de verdad.
   for(const button of document.querySelectorAll("[data-quick-venue]")){
    button.setAttribute("aria-pressed",String(form.elements.venue.value===button.dataset.quickVenue));
   }
@@ -406,7 +410,14 @@
    timeInput.append(optgroup);
   }
   const preserved=[...timeInput.querySelectorAll("option")].find(o=>o.value===previous&&!o.disabled);
-  if(preserved)timeInput.value=previous;
+  if(preserved){
+   timeInput.value=previous;
+   // Solo un horario vigente explícitamente seleccionado puede conservar su turno.
+   quickShift=Number(previous.slice(0,2))<17?"lunch":"dinner";
+  }else{
+   timeInput.value="";
+   quickShift=defaultQuickShift();
+  }
   const pastLunch=isToday&&currentTime>="15:15";
   document.querySelector("#timeHelp").textContent=pastLunch?L("pastLunch"):isToday?L("pastSlots"):"";
   renderQuickControls();
@@ -582,7 +593,10 @@
    input.dispatchEvent(new Event("input",{bubbles:true}));
   });
  }
- timeInput.addEventListener("change",renderQuickControls);
+ timeInput.addEventListener("change",()=>{
+  if(timeInput.value)quickShift=Number(timeInput.value.slice(0,2))<17?"lunch":"dinner";
+  renderQuickControls();
+ });
  form.elements.venue.addEventListener("change",renderQuickControls);
 
  dateInput.addEventListener("change",()=>{clearAutoShift();updateSlots();updatePauseUI();checkAvailability()});
@@ -626,6 +640,23 @@
    notify(L("errorNetwork"),true,"error","errorNetwork");
   }finally{sending=false;updatePauseUI()}
  });
+ // Una página que permanece abierta también actualiza las horas vigentes.
+ let lastLocalDay=today();
+ const refreshQuickTimes=()=>{
+  const date=today();
+  if(date!==lastLocalDay){
+   if(dateInput.value===lastLocalDay)dateInput.value=date;
+   dateInput.min=date;
+   const maxDate=new Date(date+"T12:00:00Z");maxDate.setUTCDate(maxDate.getUTCDate()+60);
+   dateInput.max=maxDate.toISOString().slice(0,10);
+   lastLocalDay=date;
+  }
+  updateSlots();
+  updatePauseUI();
+ };
+ window.addEventListener("pageshow",refreshQuickTimes);
+ document.addEventListener("visibilitychange",()=>{if(!document.hidden)refreshQuickTimes()});
+ setInterval(refreshQuickTimes,60*1000);
  window.addEventListener("site:languagechange",()=>{
   renderAutoShift();updatePunctualityText();updateSlots();
   if(lastNotice?.key)notify(L(lastNotice.key),lastNotice.fail,lastNotice.kind,lastNotice.key);
