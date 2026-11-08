@@ -150,6 +150,7 @@
    autoShiftAccept:to=>"Aceptar "+to,
    autoShiftAccepted:to=>"Horario aceptado: "+to,
    autoShiftWarning:"Aceptá el horario sugerido antes de confirmar la reserva.",
+   confirmedAt:(venue,time)=>" Horario confirmado: "+time+" · "+venue+".",
    autoShiftCapacity:"Ese horario se acaba de completar. Revisá el siguiente que te proponemos.",
    chooseTime:"Elegí el horario",lunch:"Almuerzo · 12:00 a 15:15",dinner:"Cena · 20:00 a 23:00",
    passed:" · ya pasó",pastLunch:"El almuerzo de hoy ya pasó. Elegí otra fecha para reservar al mediodía.",
@@ -190,6 +191,7 @@
    autoShiftAccept:to=>"Accept "+to,
    autoShiftAccepted:to=>"Time accepted: "+to,
    autoShiftWarning:"Please accept the suggested time before confirming your booking.",
+   confirmedAt:(venue,time)=>" Confirmed time: "+time+" · "+venue+".",
    autoShiftCapacity:"That slot has just filled up. Please review the next available time.",
    chooseTime:"Choose a time",lunch:"Lunch · 12:00–15:15",dinner:"Dinner · 20:00–23:00",
    passed:" · past",pastLunch:"Today's lunch service has ended. Choose another date for lunch.",
@@ -230,6 +232,7 @@
    autoShiftAccept:to=>"Aceitar "+to,
    autoShiftAccepted:to=>"Horário aceito: "+to,
    autoShiftWarning:"Aceite o novo horário antes de confirmar a reserva.",
+   confirmedAt:(venue,time)=>" Horário confirmado: "+time+" · "+venue+".",
    autoShiftCapacity:"Esse horário acabou de ficar completo. Confira a próxima opção.",
    chooseTime:"Escolha o horário",lunch:"Almoço · 12:00–15:15",dinner:"Jantar · 20:00–23:00",
    passed:" · já passou",pastLunch:"O horário de almoço de hoje já passou. Escolha outra data.",
@@ -396,7 +399,7 @@
      void checkAvailability();
      return;
     }
-    if(autoShift)clearAutoShift();
+    if(autoShift){clearAutoShift();button.disabled=isPausedToday();}
    }
    const free=Number(data.remaining_pax),arrivals=Number(data.group_count)||0;
    const maxGroups=Number(data.max_groups_per_time)||3;
@@ -490,7 +493,7 @@
    }
    form.reset();clearAutoShift();dateInput.value=today();updateSlots();++previewRequest;idlePreview();clearAlternatives();
    const key=data.status==="waitlist"?"waitlistSuccess":"confirmedSuccess";
-   notify(L(key),false,data.status==="waitlist"?"waitlist":"ok",key);
+   notify(L(key)+(data.status==="confirmed"?L("confirmedAt",fields.venue,fields.service_time):""),false,data.status==="waitlist"?"waitlist":"ok",key);
   }catch{
    notify(L("errorNetwork"),true,"error","errorNetwork");
   }finally{sending=false;updatePauseUI()}
