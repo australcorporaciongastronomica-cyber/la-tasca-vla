@@ -146,8 +146,21 @@ function parse(raw){
  return {venue,date,time,guests,name,notes:notes.join(". "),missing};
 }
 let draft=null;
+const availableHours=["12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:15","20:00","20:30","21:00","21:30","22:00","22:30","23:00"];
+for(const time of availableHours){
+ const option=document.createElement("option");option.value=time;option.textContent=time;
+ $("editTime").append(option);
+}
+$("editDate").min=today();$("editDate").max=plus(today(),60);
 function show(p){
-draft=p;const target=$("fields");target.replaceChildren();
+draft=p;
+$("editVenue").value=p.venue||"";
+$("editDate").value=p.date&&p.date>=today()&&p.date<=plus(today(),60)?p.date:"";
+$("editTime").value=p.time||"";
+$("editGuests").value=p.guests&&p.guests<=12?String(p.guests):"";
+$("editName").value=p.name||"";
+$("editNotes").value=p.notes||"";
+const target=$("fields");target.replaceChildren();
 for(const [label,value] of [["Restaurante",p.venue],["Fecha",p.date],["Hora",p.time],["Personas",p.guests?p.guests+" PAX":null],["Nombre",p.name],["Teléfono",null]]){
 const div=document.createElement("div");div.className="field";
 const small=document.createElement("span");small.textContent=label;
@@ -157,6 +170,25 @@ $("notes").hidden=!p.notes;$("notes").textContent=p.notes?"Observaciones detecta
 $("feedback").textContent=p.missing.length?"Revisá también: "+p.missing.join(", ")+". El WhatsApp y el consentimiento se completan después.":"Datos principales identificados. Falta tu WhatsApp y consentimiento.";
 $("preview").hidden=false;$("preview").scrollIntoView({behavior:"smooth",block:"start"});
 }
+$("applyFix").onclick=()=>{
+ if(!draft)return;
+ const fixed={
+  venue:$("editVenue").value||null,
+  date:$("editDate").value||null,
+  time:$("editTime").value||null,
+  guests:$("editGuests").value?Number($("editGuests").value):null,
+  name:$("editName").value.trim()||null,
+  notes:$("editNotes").value.trim(),
+  missing:[]
+ };
+ if(!fixed.venue)fixed.missing.push("restaurante");
+ if(!fixed.date||fixed.date<today()||fixed.date>plus(today(),60))fixed.missing.push("fecha válida");
+ if(!availableHours.includes(fixed.time))fixed.missing.push("horario permitido");
+ if(!Number.isInteger(fixed.guests)||fixed.guests<1||fixed.guests>12)fixed.missing.push("cantidad entre 1 y 12");
+ if(!fixed.name)fixed.missing.push("nombre");
+ show(fixed);
+ $("adjust").open=false;
+};
 $("interpret").onclick=()=>{const raw=$("message").value.trim();if(raw.length<6){$("message").focus();return}show(parse(raw))};
 document.querySelectorAll("[data-example]").forEach(b=>b.onclick=()=>{$("message").value=b.dataset.example;show(parse(b.dataset.example))});
 $("edit").onclick=()=>{$("message").focus();$("message").scrollIntoView({behavior:"smooth",block:"start"})};
