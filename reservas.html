@@ -36,6 +36,10 @@
 .arrival-time span{font-size:10px;color:#423320;font-weight:700}
 .availability-box.nearly{border-color:#e9b96e;background:#3f3322}
 .availability-box.nearly strong{color:#ffe2a2}
+.booking-punctuality{background:linear-gradient(125deg,#29281f,#202720);border:1px solid #9f8a63;border-left:4px solid #d4b678;border-radius:12px;padding:18px 20px;color:#f0e2c7;display:grid;gap:7px}
+.booking-punctuality strong{font-size:13px;font-weight:700;letter-spacing:.045em;color:#f2d9a3}
+.booking-punctuality p{font-size:12px;line-height:1.7;margin:0;color:#ddd3c2}
+.booking-punctuality .clock-icon{font-size:20px;line-height:1}
 .submit[hidden]{display:none!important}.pause-form-warning[hidden]{display:none!important}.pause-form-warning{border:1px solid #bea578;background:linear-gradient(125deg,#35291c,#222a20);border-radius:12px;padding:22px;margin:0 0 20px;display:grid;gap:9px;color:#eedbb9}.pause-form-warning strong{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(27px,4vw,37px);font-weight:500}.pause-form-warning p{font-size:13px;line-height:1.65;margin:0}.pause-form-warning a{font-size:12px;color:#efd1a0;text-decoration:underline}.request-paused input:disabled,.request-paused select:disabled,.request-paused textarea:disabled{opacity:.42;cursor:not-allowed}.request-paused #send{background:#55483a;color:#f4e3c5;opacity:1;cursor:not-allowed}
 </style>
 </head>
@@ -82,6 +86,11 @@
       <input type="checkbox" name="consent" required>
       <span>Acepto que La Tasca y Santori utilicen estos datos únicamente para gestionar mi reserva o solicitud de lista de espera.</span>
     </label>
+    <aside class="booking-punctuality wide" id="bookingPunctuality" aria-label="Condiciones de puntualidad de la reserva">
+     <div class="clock-icon" aria-hidden="true">◷</div>
+     <strong id="bookingPunctualityTitle">Tolerancia de llegada: 15 minutos</strong>
+     <p id="bookingPunctualityText">Te esperamos a la hora de tu reserva. Contás con 15 minutos de tolerancia; pasado ese tiempo, si no te presentaste, la mesa quedará liberada. Si tenés una demora, avisanos por WhatsApp.</p>
+    </aside>
     <button class="submit wide" id="send" type="submit" disabled>Verificando disponibilidad…</button>
     <p class="notice wide" id="notice" role="status" aria-live="polite"></p>
    </form>
@@ -148,7 +157,7 @@
    previewErrorDetail:"Podés continuar. Al enviar, el sistema verificará si queda lugar y te informará si tu reserva está confirmada o pasa a lista de espera.",
    confirmBtn:"Confirmar mi reserva",waitBtn:"Anotarme en la lista de espera",
    submitting:"Verificando disponibilidad y registrando tus datos...",
-   confirmedSuccess:"¡Tu reserva quedó confirmada! Gracias por elegir La Tasca y Santori. Si necesitamos ajustar algún detalle, nos comunicaremos por WhatsApp. ¡Te esperamos!",
+   confirmedSuccess:"¡Tu reserva quedó confirmada! Gracias por elegir La Tasca y Santori. Importante: tenés 15 minutos de tolerancia desde el horario reservado. Si no te presentás, la mesa quedará liberada. Si vas a demorarte, avisanos por WhatsApp. ¡Te esperamos!",
    waitlistSuccess:"Por ahora no quedan mesas disponibles para ese turno. Tus datos quedaron en LISTA DE ESPERA, pero tu reserva NO está confirmada. Si se libera una mesa, nos comunicaremos por WhatsApp.",
    errorSave:"No pudimos registrar la solicitud. Contactanos por WhatsApp.",
    errorNetwork:"No pudimos comunicarnos con el sistema. Por favor, contactanos por WhatsApp.",
@@ -182,7 +191,7 @@
    previewErrorDetail:"You can continue. When you submit, we'll check availability and tell you whether your booking is confirmed or placed on the waiting list.",
    confirmBtn:"Confirm my booking",waitBtn:"Join the waiting list",
    submitting:"Checking availability and saving your details…",
-   confirmedSuccess:"Your table is confirmed! Thank you for choosing La Tasca & Santori. If we need to adjust any details, we'll contact you via WhatsApp. We look forward to welcoming you!",
+   confirmedSuccess:"Your booking is confirmed! Thank you for choosing La Tasca & Santori. Please note: there is a 15-minute grace period from your booked time. If you do not arrive, the table will be released. If you are running late, please message us on WhatsApp. We look forward to welcoming you!",
    waitlistSuccess:"There are currently no tables available for this time. You've joined the WAITING LIST, but your table is NOT confirmed. We'll contact you via WhatsApp if a table becomes available.",
    errorSave:"We couldn't register your request. Please contact us via WhatsApp.",
    errorNetwork:"We couldn't connect to our booking system. Please contact us via WhatsApp.",
@@ -216,7 +225,7 @@
    previewErrorDetail:"Você pode continuar. Ao enviar, verificaremos a disponibilidade e informaremos se sua reserva foi confirmada ou se entrou na lista de espera.",
    confirmBtn:"Confirmar minha reserva",waitBtn:"Entrar na lista de espera",
    submitting:"Verificando a disponibilidade e registrando seus dados…",
-   confirmedSuccess:"Sua mesa está confirmada! Agradecemos por escolher La Tasca e Santori. Se precisarmos ajustar algum detalhe, entraremos em contato pelo WhatsApp. Esperamos por você!",
+   confirmedSuccess:"Sua reserva está confirmada! Obrigado por escolher La Tasca e Santori. Atenção: há uma tolerância de 15 minutos após o horário reservado. Se você não chegar, a mesa será liberada. Em caso de atraso, avise-nos pelo WhatsApp. Esperamos por você!",
    waitlistSuccess:"No momento, não há mesas disponíveis para esse horário. Você entrou na LISTA DE ESPERA, mas sua reserva NÃO está confirmada. Entraremos em contato pelo WhatsApp se uma mesa ficar disponível.",
    errorSave:"Não foi possível registrar sua solicitação. Entre em contato pelo WhatsApp.",
    errorNetwork:"Não foi possível conectar ao sistema de reservas. Entre em contato pelo WhatsApp.",
@@ -226,6 +235,16 @@
    errorDate:"Escolha uma data válida nos próximos 60 dias.",
    errorPast:"Escolha um horário futuro."
   }
+ };
+ const punctualityText={
+  es:{title:"Tolerancia de llegada: 15 minutos",detail:"Te esperamos a la hora de tu reserva. Contás con 15 minutos de tolerancia; pasado ese tiempo, si no te presentaste, la mesa quedará liberada. Si tenés una demora, avisanos por WhatsApp."},
+  en:{title:"Arrival grace period: 15 minutes",detail:"Please arrive at your reserved time. Your table will be held for 15 minutes; if you have not arrived after that, it will be released. If you are running late, let us know via WhatsApp."},
+  pt:{title:"Tolerância de chegada: 15 minutos",detail:"Chegue no horário reservado. Há uma tolerância de 15 minutos; após esse prazo, se você não chegar, a mesa será liberada. Em caso de atraso, avise-nos pelo WhatsApp."}
+ };
+ const updatePunctualityText=()=>{
+  const copy=punctualityText[getLang()]||punctualityText.es;
+  document.querySelector("#bookingPunctualityTitle").textContent=copy.title;
+  document.querySelector("#bookingPunctualityText").textContent=copy.detail;
  };
  const L=(key,...args)=>{
   const value=(messages[getLang()]||messages.es)[key];
@@ -365,7 +384,7 @@
   dateInput.value=d.toISOString().slice(0,10);
   dateInput.dispatchEvent(new Event("change",{bubbles:true}));dateInput.focus();
  });
- updateSlots();updatePauseUI();
+ updateSlots();updatePauseUI();updatePunctualityText();
  dateInput.addEventListener("change",()=>{updateSlots();updatePauseUI();checkAvailability()});
  timeInput.addEventListener("change",checkAvailability);
  form.elements.venue.addEventListener("change",()=>{updatePauseUI();checkAvailability()});
@@ -396,7 +415,7 @@
   }finally{sending=false;updatePauseUI()}
  });
  window.addEventListener("site:languagechange",()=>{
-  updateSlots();
+  updatePunctualityText();updateSlots();
   if(lastNotice?.key)notify(L(lastNotice.key),lastNotice.fail,lastNotice.kind,lastNotice.key);
   checkAvailability();
  });
