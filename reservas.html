@@ -27,6 +27,12 @@
 /* Dynamic arrival-staggering suggestions: inviting, not an automatic time change. */
 .arrival-alternatives{background:linear-gradient(120deg,#342d21,#29251e);border:1px solid #b89a66;border-radius:15px;padding:17px 18px}
 .arrival-alternatives[hidden]{display:none!important}
+.arrival-auto-shift[hidden]{display:none!important}
+.arrival-auto-shift{border:1px solid #bda16d;background:linear-gradient(110deg,#372e1c,#1f2e27);padding:19px 20px;border-radius:13px;display:grid;gap:10px}
+.arrival-auto-shift strong{font-size:15px;color:#ffe0a6}
+.arrival-auto-shift p{font-size:12px;line-height:1.7;margin:0;color:#e8dfd1}
+.arrival-auto-shift button{width:fit-content;max-width:100%;min-height:45px;border:1px solid #e4c591;border-radius:8px;background:#e4c591;color:#211d17;font-size:12px;font-weight:700;padding:10px 16px;cursor:pointer}
+.arrival-auto-shift button:disabled{background:transparent;color:#cae4c7;border-color:#617a68;cursor:default}
 .arrival-alternatives strong{display:block;color:#f3d6a0;font-size:14px;margin:0 0 8px}
 .arrival-alternatives p{font-size:12px;color:#e5d8c3;line-height:1.6;margin:0 0 13px}
 .arrival-options{display:flex;flex-wrap:wrap;gap:10px}
@@ -72,6 +78,11 @@
      <p>Elegí restaurante, fecha, horario y personas para consultar lugares disponibles.</p>
     </div>
     <div id="arrivalAlternatives" class="wide arrival-alternatives" hidden aria-live="polite"></div>
+    <section id="autoShiftNotice" class="arrival-auto-shift wide" hidden aria-label="Propuesta de otro horario" aria-live="polite">
+     <strong id="autoShiftTitle">Te proponemos otro horario disponible</strong>
+     <p id="autoShiftText"></p>
+     <button id="acceptAutoShift" type="button">Aceptar el horario sugerido</button>
+    </section>
     <label class="wide">Nombre y apellido
       <input name="guest_name" type="text" maxlength="100" autocomplete="name" required placeholder="Tu nombre">
     </label>
@@ -134,6 +145,12 @@
  };
  const messages={
   es:{
+   autoShiftTitle:"Organizamos las llegadas para atenderte mejor",
+   autoShiftDetail:(from,to)=>"El horario de "+from+" ya no tiene cupo. Para evitar que lleguen demasiadas mesas juntas (máximo 3 reservas cada 30 minutos), te proponemos las "+to+". Confirmá que te sirve el nuevo horario.",
+   autoShiftAccept:to=>"Aceptar "+to,
+   autoShiftAccepted:to=>"Horario aceptado: "+to,
+   autoShiftWarning:"Aceptá el horario sugerido antes de confirmar la reserva.",
+   autoShiftCapacity:"Ese horario se acaba de completar. Revisá el siguiente que te proponemos.",
    chooseTime:"Elegí el horario",lunch:"Almuerzo · 12:00 a 15:15",dinner:"Cena · 20:00 a 23:00",
    passed:" · ya pasó",pastLunch:"El almuerzo de hoy ya pasó. Elegí otra fecha para reservar al mediodía.",
    pastSlots:"Los horarios que ya pasaron hoy aparecen deshabilitados.",
@@ -168,6 +185,12 @@
    errorPast:"Elegí un horario futuro."
   },
   en:{
+   autoShiftTitle:"Staggered arrivals for better service",
+   autoShiftDetail:(from,to)=>"The "+from+" slot is no longer available. To avoid too many tables arriving together (maximum 3 bookings per 30 minutes), we suggest "+to+". Please accept this new time before confirming.",
+   autoShiftAccept:to=>"Accept "+to,
+   autoShiftAccepted:to=>"Time accepted: "+to,
+   autoShiftWarning:"Please accept the suggested time before confirming your booking.",
+   autoShiftCapacity:"That slot has just filled up. Please review the next available time.",
    chooseTime:"Choose a time",lunch:"Lunch · 12:00–15:15",dinner:"Dinner · 20:00–23:00",
    passed:" · past",pastLunch:"Today's lunch service has ended. Choose another date for lunch.",
    pastSlots:"Times that have already passed today are unavailable.",
@@ -202,6 +225,12 @@
    errorPast:"Choose a future time."
   },
   pt:{
+   autoShiftTitle:"Chegadas distribuídas para melhor atendimento",
+   autoShiftDetail:(from,to)=>"O horário de "+from+" não tem mais vagas. Para evitar muitas mesas chegando juntas (máximo de 3 reservas a cada 30 minutos), sugerimos "+to+". Confirme se esse novo horário funciona para você.",
+   autoShiftAccept:to=>"Aceitar "+to,
+   autoShiftAccepted:to=>"Horário aceito: "+to,
+   autoShiftWarning:"Aceite o novo horário antes de confirmar a reserva.",
+   autoShiftCapacity:"Esse horário acabou de ficar completo. Confira a próxima opção.",
    chooseTime:"Escolha o horário",lunch:"Almoço · 12:00–15:15",dinner:"Jantar · 20:00–23:00",
    passed:" · já passou",pastLunch:"O horário de almoço de hoje já passou. Escolha outra data.",
    pastSlots:"Os horários que já passaram hoje estão indisponíveis.",
@@ -318,6 +347,27 @@
  const clearAlternatives=()=>{alternativesBox.hidden=true;alternativesBox.replaceChildren()};
  const idlePreview=()=>preview("",L("choose"),L("chooseDetail"));
  let previewRequest=0;
+ let autoShift=null;
+ const autoShiftNotice=document.querySelector("#autoShiftNotice");
+ const autoShiftTitle=document.querySelector("#autoShiftTitle");
+ const autoShiftText=document.querySelector("#autoShiftText");
+ const autoShiftAccept=document.querySelector("#acceptAutoShift");
+ const renderAutoShift=()=>{
+  if(!autoShift){autoShiftNotice.hidden=true;return;}
+  autoShiftTitle.textContent=L("autoShiftTitle");
+  autoShiftText.textContent=L("autoShiftDetail",autoShift.from,autoShift.to);
+  autoShiftAccept.textContent=autoShift.accepted?L("autoShiftAccepted",autoShift.to):L("autoShiftAccept",autoShift.to);
+  autoShiftAccept.disabled=autoShift.accepted;
+  autoShiftNotice.hidden=false;
+ };
+ const clearAutoShift=()=>{autoShift=null;renderAutoShift();};
+ autoShiftAccept.addEventListener("click",()=>{
+  if(!autoShift)return;
+  autoShift.accepted=true;
+  renderAutoShift();
+  button.disabled=sending||isPausedToday();
+  timeInput.focus();
+ });
  const checkAvailability=async()=>{
   const f=form.elements,venue=f.venue.value,date=f.service_date.value,time=f.service_time.value;
   const guests=Number(f.guests.value),serial=++previewRequest;
@@ -330,6 +380,24 @@
    const data=await response.json();
    if(serial!==previewRequest)return;
    if(!response.ok||!data.ok)throw Error("No availability");
+   if(!data.available){
+    // Prefer the next later available 30-minute slot; client must explicitly accept.
+    const next=(Array.isArray(data.alternatives)?data.alternatives:[])
+     .filter(x=>typeof x.time==="string"&&x.time.length===5&&x.time[2]===":"&&
+       x.time>time&&[...timeInput.options].some(option=>option.value===x.time&&!option.disabled))
+     .sort((a,b)=>a.time.localeCompare(b.time))[0];
+    if(next){
+     const original=autoShift?.from||time;
+     timeInput.value=next.time;
+     autoShift={venue,date,from:original,to:next.time,accepted:false};
+     renderAutoShift();
+     button.disabled=true;
+     clearAlternatives();
+     void checkAvailability();
+     return;
+    }
+    if(autoShift)clearAutoShift();
+   }
    const free=Number(data.remaining_pax),arrivals=Number(data.group_count)||0;
    const maxGroups=Number(data.max_groups_per_time)||3;
    if(!data.available&&data.reason==="arrivals")
@@ -340,7 +408,8 @@
     preview("nearly",L("arrivalNear"),L("arrivalNearDetail",arrivals,maxGroups)+" "+L("availableDetail",free));
    else
     preview("available",L("available"),L("availableDetail",free)+" "+L("arrivalInfo",arrivals,maxGroups,Number(data.arrival_pax)||0));
-   renderAlternatives(data);
+   if(autoShift){clearAlternatives();button.disabled=!autoShift.accepted;}
+   else renderAlternatives(data);
   }catch{
    if(serial===previewRequest){preview("error",L("previewError"),L("previewErrorDetail"));clearAlternatives()}
   }
@@ -369,7 +438,7 @@
    if(field.name==="venue"&&pauseState()?.loaded&&pauseState().pausedVenues.length===1){field.disabled=false;continue;}
    field.disabled=blocked;
   }
-  button.disabled=sending||blocked;
+  button.disabled=sending||blocked||Boolean(autoShift&&!autoShift.accepted);
   button.hidden=blocked;
   if(blocked){
    ++previewRequest;
@@ -385,14 +454,15 @@
   dateInput.dispatchEvent(new Event("change",{bubbles:true}));dateInput.focus();
  });
  updateSlots();updatePauseUI();updatePunctualityText();
- dateInput.addEventListener("change",()=>{updateSlots();updatePauseUI();checkAvailability()});
- timeInput.addEventListener("change",checkAvailability);
- form.elements.venue.addEventListener("change",()=>{updatePauseUI();checkAvailability()});
+ dateInput.addEventListener("change",()=>{clearAutoShift();updateSlots();updatePauseUI();checkAvailability()});
+ timeInput.addEventListener("change",()=>{clearAutoShift();updatePauseUI();checkAvailability()});
+ form.elements.venue.addEventListener("change",()=>{clearAutoShift();updatePauseUI();checkAvailability()});
  window.addEventListener("reservations:pausechange",()=>{const current=today();dateInput.min=current;if(dateInput.value<current)dateInput.value=current;updateSlots();updatePauseUI();if(!isPausedToday())checkAvailability()});
- form.elements.guests.addEventListener("input",checkAvailability);
+ form.elements.guests.addEventListener("input",()=>{clearAutoShift();updatePauseUI();checkAvailability()});
  form.addEventListener("submit",async event=>{
   event.preventDefault();
   if(isPausedToday()){updatePauseUI();return;}
+  if(autoShift&&!autoShift.accepted){notify(L("autoShiftWarning"),true,"error");autoShiftNotice.scrollIntoView({behavior:"smooth",block:"center"});return;}
   if(!form.reportValidity())return;
   const f=form.elements,fields={
    venue:f.venue.value,service_date:f.service_date.value,service_time:f.service_time.value,
@@ -401,13 +471,24 @@
   };
   sending=true;button.disabled=true;notify(L("submitting"),false,"ok","submitting");
   try{
+   // Recheck immediately before saving to avoid offering a slot taken while filling the form.
+   const availability=await fetch(endpoint,{method:"POST",headers:{"content-type":"application/json"},
+    body:JSON.stringify({action:"availability",venue:fields.venue,service_date:fields.service_date,
+     service_time:fields.service_time,guests:fields.guests})});
+   const fresh=await availability.json();
+   if(!availability.ok||!fresh.ok)throw Error("Availability recheck failed");
+   if(!fresh.available){
+    notify(L("autoShiftCapacity"),true,"error");
+    void checkAvailability();
+    return;
+   }
    const response=await fetch(endpoint,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(fields)});
    const data=await response.json();
    if(!response.ok||!data.ok){
     const key=classifyError(data.error||"",response.status);
     notify(getLang()==="es"&&data.error?data.error:L(key),true,"error",key);return;
    }
-   form.reset();dateInput.value=today();updateSlots();++previewRequest;idlePreview();clearAlternatives();
+   form.reset();clearAutoShift();dateInput.value=today();updateSlots();++previewRequest;idlePreview();clearAlternatives();
    const key=data.status==="waitlist"?"waitlistSuccess":"confirmedSuccess";
    notify(L(key),false,data.status==="waitlist"?"waitlist":"ok",key);
   }catch{
@@ -415,7 +496,7 @@
   }finally{sending=false;updatePauseUI()}
  });
  window.addEventListener("site:languagechange",()=>{
-  updatePunctualityText();updateSlots();
+  renderAutoShift();updatePunctualityText();updateSlots();
   if(lastNotice?.key)notify(L(lastNotice.key),lastNotice.fail,lastNotice.kind,lastNotice.key);
   checkAvailability();
  });
