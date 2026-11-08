@@ -76,7 +76,7 @@ return pad(hour)+":"+pad(minute);
 }
 function findGuests(s){
 const n="(\\d{1,2}|un|uno|una|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|once|doce)";
-const m=s.match(new RegExp("\\b"+n+"\\s*(?:personas?|pax|comensales?|lugares?)\\b"))||s.match(new RegExp("\\b(?:somos|seremos|mesa\\s+para|mesa\\s+de|para|grupo\\s+de)\\s*"+n+"\\b"));
+const m=s.match(new RegExp("\\b(?:somos|seremos|mesa\\s+para|mesa\\s+de|grupo\\s+de)\\s*"+n+"\\b"))||s.match(new RegExp("\\b"+n+"\\s*(?:personas?|pax|comensales?|lugares?)\\b"))||s.match(new RegExp("\\bpara\\s+"+n+"\\b"));
 if(!m)return null;return /^\d+$/.test(m[1])?Number(m[1]):numberWords[m[1]]||null;
 }
 function findName(src){
