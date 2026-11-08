@@ -348,7 +348,7 @@
   en:{today:"Today",tomorrow:"Tomorrow",lunch:"Lunch",dinner:"Dinner",passed:"Past"},
   pt:{today:"Hoje",tomorrow:"Amanhã",lunch:"Almoço",dinner:"Jantar",passed:"Passou"}
  };
- let quickShift="dinner";
+ let quickShift=Number(nowClock().slice(0,2))<16?"lunch":"dinner";
  const quickDays=(date,count)=>{
   const d=new Date(date+"T12:00:00Z");d.setUTCDate(d.getUTCDate()+count);
   return d.toISOString().slice(0,10);
