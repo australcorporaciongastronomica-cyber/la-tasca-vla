@@ -353,8 +353,8 @@
   button.disabled=sending||blocked;
   if(blocked){
    ++previewRequest;
-   button.textContent=pauseState()?.loaded?"RESERVAS DE HOY CERRADAS":"VERIFICANDO ESTADO DE RESERVAS…";
    preview("error","HOY SIN LUGAR","Para reservar, elegí otra fecha en el calendario. El sistema no admite confirmaciones de hoy.");
+   button.textContent=pauseState()?.loaded?"RESERVAS DE HOY CERRADAS":"VERIFICANDO ESTADO DE RESERVAS…";
    clearAlternatives();
   }else if(!sending){button.textContent=L("confirmBtn");}
  };
