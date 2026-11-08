@@ -5,25 +5,39 @@
 <title>Reserva por mensaje · Prueba La Tasca y Santori</title>
 <style>
 :root{color-scheme:dark;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#101411;color:#faf2e2}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#433721 0%,transparent 55%),#101411;min-height:100vh}main{max-width:900px;margin:auto;padding:28px 16px 70px}a{color:#ecd09c}.back{font-size:13px;text-decoration:none}.tag{font-size:11px;letter-spacing:.17em;color:#d6b781;font-weight:850;text-transform:uppercase;margin-top:29px}h1{font:400 clamp(40px,7vw,72px)/1.03 Georgia,serif;letter-spacing:-.04em;margin:15px 0}h1 em{color:#daba82;font-style:normal}.lead{color:#d1cec3;font-size:15px;line-height:1.7;max-width:670px}.layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(220px,.65fr);gap:15px;margin-top:26px}.panel{border:1px solid #665c49;background:linear-gradient(140deg,#252b24,#1e231f);border-radius:18px;padding:21px;margin-bottom:14px}.panel h2{font-size:22px;margin:0 0 9px}.panel p{font-size:13px;line-height:1.65;color:#b9c2b7}textarea{width:100%;min-height:170px;padding:14px;margin:15px 0 12px;resize:vertical;border-radius:12px;border:1px solid #987d56;color:#fff6e4;background:#101811;font:16px/1.55 system-ui;outline:none}textarea:focus{border-color:#e7c68d;box-shadow:0 0 0 3px #c4a36a33}button{cursor:pointer;border:0;border-radius:11px;background:#dfbd84;color:#211910;padding:15px;font-weight:850;font-size:14px}button.secondary{background:#37473b;border:1px solid #697d66;color:#f8efe0}.mainbtn{width:100%;min-height:53px}.examples{display:grid;gap:7px;margin-top:15px}.examples button{background:#314035;border:1px solid #536952;text-align:left;color:#e9e5dc;font-size:12px;padding:12px}.micro{font-size:11px!important;color:#b7bcb0!important}.preview[hidden]{display:none}.fields{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:18px 0}.field{background:#1d3023;border:1px solid #526855;padding:12px;border-radius:10px;min-width:0}.field span{display:block;font-size:10px;color:#b7c7b2;font-weight:850;text-transform:uppercase}.field strong{display:block;font-size:16px;margin-top:5px;overflow-wrap:anywhere}.missing{color:#ffcb9e}.actions{display:flex;gap:8px;flex-wrap:wrap}.actions button{flex:1 1 170px}.note{background:#3d3427;border-left:3px solid #e4c18a;padding:10px;font-size:12px;line-height:1.6;border-radius:7px}.note[hidden]{display:none}.steps{display:grid;gap:16px}.steps div{display:flex;gap:11px;font-size:13px;line-height:1.5;color:#dce1d5}.steps b{display:grid;place-items:center;flex:none;background:#d6b67e;color:#231b10;border-radius:8px;width:29px;height:29px}.footer{border-top:1px solid #4a5549;padding-top:16px;margin-top:25px;font-size:11px;line-height:1.6;color:#b9c1b8}@media(max-width:650px){.layout{grid-template-columns:1fr}.panel{padding:16px}h1{font-size:46px}}
+
+main{max-width:790px;padding-top:18px}.tag{margin-top:16px}h1{font-size:clamp(42px,6vw,63px);margin:11px 0}.lead{margin-top:10px;max-width:690px}
+.layout{grid-template-columns:minmax(0,1fr);max-width:740px;margin:19px auto 0}textarea#message{min-height:122px;max-height:360px;margin:13px 0 9px}
+.examples-toggle{border:1px solid #566a56;background:#273429;border-radius:11px;margin-top:13px;padding:12px 14px}
+.examples-toggle summary{cursor:pointer;font-size:12px;font-weight:800;color:#e8ddc9}.examples{margin-top:11px}
+.preview{scroll-margin-top:10px}.preview .fields{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin:12px 0}
+.preview .field{padding:11px}.preview .field strong{font-size:15px}
+.adjust{border:1px solid #566957;border-radius:11px;background:#202c23;padding:11px 13px;margin:12px 0}
+.adjust summary{font-size:13px;color:#f0d7a5;cursor:pointer;font-weight:800}
+.adjust-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin-top:15px}
+.adjust-grid label{display:flex;flex-direction:column;gap:5px;color:#c4d2c1;font-size:12px;font-weight:700}.adjust-grid label.wide{grid-column:1/-1}
+.adjust-grid input,.adjust-grid select,.adjust-grid textarea{width:100%;border-radius:9px;border:1px solid #668064;background:#101a13;color:#f8efdf;font:15px system-ui;min-height:43px;padding:9px}
+.adjust-grid textarea{margin:0;min-height:65px}.adjust-grid button{grid-column:1/-1}
+@media(max-width:540px){.preview .fields{grid-template-columns:repeat(2,minmax(0,1fr))}.panel{padding:15px}.adjust-grid{grid-template-columns:1fr}.adjust-grid label.wide{grid-column:auto}}
 </style></head>
 <body><main>
 <a href="reservas.html" class="back">‹ Ir al formulario tradicional</a>
 <div class="tag">LA TASCA & SANTORI · PRUEBA GRATIS</div>
-<h1>Reservá <em>con tus palabras.</em></h1>
-<p class="lead">Escribí como si mandaras un WhatsApp. Esta prueba reconoce datos comunes, te muestra lo que entendió y te ayuda a completar el formulario sin empezar de cero.</p>
+<h1>Escribí y <em>reservá.</em></h1>
+<p class="lead">Una frase, sin casilleros. La leemos, te mostramos lo entendido y comprobamos disponibilidad antes de confirmar.</p>
 <div class="layout">
 <div>
 <section class="panel">
-<h2>Escribí tu reserva</h2>
+<h2>¿Para cuándo necesitás la mesa?</h2>
 <p>Por ejemplo: “Somos 4 mañana a las 21 en Santori, a nombre de Lucía. Es un cumpleaños”.</p>
 <textarea id="message" maxlength="500" placeholder="Hola, somos 4 mañana a las 21 en Santori, a nombre de Lucía. Es un cumpleaños."></textarea>
 <button type="button" id="interpret" class="mainbtn">Interpretar mensaje</button>
 <p class="micro">Prueba local sin IA generativa ni API paga. Este texto no se envía al restaurante al interpretarlo.</p>
-<div class="examples">
+<details class="examples-toggle"><summary>Ver ejemplos de mensajes</summary><div class="examples">
 <button type="button" data-example="Hola, somos 4 mañana a las 21 en Santori, a nombre de Lucía. Es un cumpleaños.">Ejemplo: mañana, 4 personas, Santori</button>
 <button type="button" data-example="Quiero mesa para dos el sábado a las 20:30 en La Tasca, a nombre de Marcos.">Ejemplo: sábado, 2 personas, La Tasca</button>
 <button type="button" data-example="Somos seis para el domingo a las 13 en Santori, a nombre de Andrea. Una persona es celíaca.">Ejemplo: domingo, 6 personas, Santori</button>
-</div>
+</div></details>
 </section>
 <section class="panel preview" id="preview" hidden aria-live="polite">
 <div class="tag" style="margin:0 0 10px">BORRADOR · NO ES UNA RESERVA CONFIRMADA</div>
@@ -31,15 +45,21 @@
 <div id="fields" class="fields"></div>
 <p id="notes" class="note" hidden></p>
 <p id="feedback"></p>
+<details id="adjust" class="adjust"><summary>¿Algo se interpretó mal? Corregilo acá</summary>
+<div class="adjust-grid">
+<label>Restaurante <select id="editVenue"><option value="">Elegir local</option><option value="La Tasca">La Tasca</option><option value="Santori">Santori</option></select></label>
+<label>Fecha <input id="editDate" type="date"></label>
+<label>Hora <select id="editTime"><option value="">Elegir hora</option></select></label>
+<label>Personas <input id="editGuests" type="number" min="1" max="12" inputmode="numeric"></label>
+<label class="wide">Nombre <input id="editName" type="text" maxlength="100" autocomplete="name"></label>
+<label class="wide">Observaciones <textarea id="editNotes" rows="2" maxlength="350"></textarea></label>
+<button type="button" id="applyFix" class="secondary">Aplicar correcciones</button>
+</div></details>
 <div class="actions"><button type="button" id="continue">Continuar y verificar cupo</button><button type="button" id="edit" class="secondary">Corregir texto</button></div>
 <p class="micro">Todavía falta revisar el formulario, agregar WhatsApp y aceptar el uso de datos. No se guarda ninguna mesa hasta confirmar.</p>
 </section>
 </div>
-<aside class="panel"><h2>En 3 pasos</h2><div class="steps">
-<div><b>1</b><span>Escribís una frase con fecha, hora, cantidad y restaurante.</span></div>
-<div><b>2</b><span>Revisás los datos. Lo que falte queda pendiente, sin inventar nada.</span></div>
-<div><b>3</b><span>El formulario verifica la disponibilidad real y te permite confirmar.</span></div>
-</div></aside>
+
 </div>
 <div class="footer">Prototipo sin inteligencia artificial generativa. La Tasca y Santori · Villa La Angostura. La interpretación por sí sola nunca crea ni modifica reservas.</div>
 </main>
@@ -66,13 +86,21 @@ if(m){const current=new Date(base+"T12:00:00Z").getUTCDay();let delta=(dayNames.
 return null;
 }
 function findTime(s){
-const m=s.match(/\b(?:a\s+las?|para\s+las?|sobre\s+las?|tipo\s+las?)\s*(\d{1,2})(?:[:.](\d{2}))?\s*(?:hs?|horas?)?\s*(?:(?:de\s+la\s+)?(noche|tarde|manana)|\b(pm|am))?\b/)||s.match(/\b([012]?\d)[:.](\d{2})\b/);
-if(!m)return null;let hour=Number(m[1]),minute=Number(m[2]||0),period=m[3]||m[4]||"";
-if(hour>23||minute>59)return null;
-if((period==="noche"||period==="tarde"||period==="pm")&&hour<12)hour+=12;
-if(hour<12&&!period)return null;
-if((period==="manana"||period==="am")&&hour===12)hour=0;
-return pad(hour)+":"+pad(minute);
+ const explicit=s.match(/\b(?:a\s+las?|para\s+las?|sobre\s+las?|tipo\s+las?)\s*(\d{1,2})(?:[:.](\d{2}))?\s*(?:(?:de\s+la\s+)?(noche|tarde|manana)|\b(pm|am))?\b/);
+ const hours=s.match(/\b(\d{1,2})(?:[:.](\d{2}))?\s*(?:hs?\.?|hrs?\.?|horas?)\b/);
+ const digital=s.match(/\b([01]?\d|2[0-3])[:.](\d{2})\b/);
+ const periodTime=s.match(/\b(\d{1,2})\s*(am|pm)\b/);
+ const m=explicit||hours||digital||periodTime;
+ if(!m)return null;
+ let hour=Number(m[1]),minute=Number(m[2]||0);
+ let period=explicit===m?(m[3]||m[4]||""):periodTime===m?m[2]:"";
+ if(periodTime===m)minute=0;
+ if(hour>23||minute>59)return null;
+ if((period==="noche"||period==="tarde"||period==="pm")&&hour<12)hour+=12;
+ if((period==="manana"||period==="am")&&hour===12)hour=0;
+ // Evitar interpretar "9" como 09:00 o 21:00 sin especificación.
+ if(hour<12&&!period)return null;
+ return pad(hour)+":"+pad(minute);
 }
 function findGuests(s){
 const n="(\\d{1,2}|un|uno|una|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|once|doce)";
@@ -80,32 +108,59 @@ const m=s.match(new RegExp("\\b(?:somos|seremos|mesa\\s+para|mesa\\s+de|grupo\\s
 if(!m)return null;return /^\d+$/.test(m[1])?Number(m[1]):numberWords[m[1]]||null;
 }
 function findName(src){
-const m=src.match(/(?:a\s+nombre\s+de|mi\s+nombre\s+es)\s+([A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+(?:\s+[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+){0,2})/i);
-if(!m)return null;return m[1].split(/\s+/).filter((w,i,arr)=>i===0||!["en","para","con","es","un","una","y"].includes(norm(w))).slice(0,2).join(" ");
+ const m=src.match(/\b(?:a\s+nombre\s+de|mi\s+nombre\s+es|me\s+llamo|soy)\s+([A-Za-zÀ-ÿ]+(?:\s+[A-Za-zÀ-ÿ]+){0,3})/i);
+ if(!m||/\bno\s+$/i.test(src.slice(0,m.index)))return null;
+ const stop=new Set(["quiero","quisiera","necesito","para","en","con","es","un","una","y","que","somos","reservar","mesa","somos","el","la","al","por","hoy","mañana","manana","telefono","teléfono"]);
+ const words=[];
+ for(const word of m[1].split(/\s+/)){
+  if(stop.has(norm(word)))break;
+  words.push(word);
+  if(words.length===3)break;
+ }
+ if(!words.length)return null;
+ return words.map(w=>w.charAt(0).toLocaleUpperCase("es-AR")+w.slice(1).toLocaleLowerCase("es-AR")).join(" ");
 }
 function parse(raw){
-const s=norm(raw),santori=/\b(santori|nikkei)\b/.test(s),tasca=/\btasca\b/.test(s);
-const venue=santori&&!tasca?"Santori":tasca&&!santori?"La Tasca":null;
-const date=findDate(s),pTime=findTime(s),time=allowed.has(pTime)?pTime:null,guests=findGuests(s),name=findName(raw);
-const notes=[];
-if(/\b(cumpleanos|cumple)\b/.test(s))notes.push("Cumpleaños");
-if(/\baniversario\b/.test(s))notes.push("Aniversario");
-if(/\b(celiac[oa]|sin gluten)\b/.test(s))notes.push("Celiaquía / sin gluten (confirmar detalles)");
-if(/\b(alergi|alergic)/.test(s))notes.push("Alergia: consultar detalles");
-if(/\bvegan[oa]\b/.test(s))notes.push("Opción vegana");
-if(/\b(sillita|silla de bebe)\b/.test(s))notes.push("Silla para bebé");
-const missing=[];
-if(!venue)missing.push("restaurante");
-if(!date)missing.push("fecha");
-if(!time)missing.push(pTime?"horario habilitado":"hora exacta");
-if(!guests||guests>12)missing.push(guests>12?"grupo mayor de 12 personas":"cantidad de personas");
-if(!name)missing.push("nombre");
-if(date&&(date<today()||date>plus(today(),60)))missing.push("fecha dentro de los próximos 60 días");
-return {venue,date,time,guests,name,notes:notes.join(". "),missing};
+ const s=norm(raw),santori=/\b(santori|nikkei)\b/.test(s),tasca=/\btasca\b/.test(s);
+ const venue=santori&&!tasca?"Santori":tasca&&!santori?"La Tasca":null;
+ const date=findDate(s),parsedTime=findTime(s),time=allowed.has(parsedTime)?parsedTime:null;
+ const guests=findGuests(s),name=findName(raw);
+ const clauses=s.split(/[.!?;\n]/).map(t=>t.trim()).filter(Boolean);
+ const hasAffirmative=(match,negated)=>clauses.some(t=>match.test(t)&&!negated.test(t));
+ const noCeliac=/\b(?:no\s+(?:hay|tenemos|tengo|tiene|tienen|somos|es|son)|ningun[oa]s?|ningun[oa]\s+persona)\s+(?:(?:personas?|nadie|comensales?|que\s+sea)\s+){0,3}celiac[oa]s?\b/;
+ const noAllergy=/\b(?:no\s+(?:hay|tenemos|tengo|tiene|tienen)|sin|ningun[oa]s?)\s+(?:personas?\s+con\s+)?(?:alergias?|alergic[oa]s?)\b/;
+ const notes=[];
+ if(/\b(cumpleanos|cumple)\b/.test(s))notes.push("Cumpleaños");
+ if(/\baniversario\b/.test(s))notes.push("Aniversario");
+ if(hasAffirmative(/\b(celiac[oa]s?|sin gluten)\b/,noCeliac))notes.push("Celiaquía / sin gluten (confirmar detalles)");
+ if(hasAffirmative(/\b(alergi\w*|alergic[oa]s?)\b/,noAllergy))notes.push("Alergia: consultar detalles");
+ if(/\bvegan[oa]s?\b/.test(s))notes.push("Opción vegana");
+ if(/\b(sillita|silla de bebe)\b/.test(s))notes.push("Silla para bebé");
+ const missing=[];
+ if(!venue)missing.push("restaurante");
+ if(!date)missing.push("fecha");
+ if(!time)missing.push(parsedTime?"horario habilitado":"hora exacta");
+ if(!guests||guests>12)missing.push(guests>12?"grupo mayor de 12 personas":"cantidad de personas");
+ if(!name)missing.push("nombre");
+ if(date&&(date<today()||date>plus(today(),60)))missing.push("fecha dentro de los próximos 60 días");
+ return {venue,date,time,guests,name,notes:notes.join(". "),missing};
 }
 let draft=null;
+const availableHours=["12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:15","20:00","20:30","21:00","21:30","22:00","22:30","23:00"];
+for(const time of availableHours){
+ const option=document.createElement("option");option.value=time;option.textContent=time;
+ $("editTime").append(option);
+}
+$("editDate").min=today();$("editDate").max=plus(today(),60);
 function show(p){
-draft=p;const target=$("fields");target.replaceChildren();
+draft=p;
+$("editVenue").value=p.venue||"";
+$("editDate").value=p.date&&p.date>=today()&&p.date<=plus(today(),60)?p.date:"";
+$("editTime").value=p.time||"";
+$("editGuests").value=p.guests&&p.guests<=12?String(p.guests):"";
+$("editName").value=p.name||"";
+$("editNotes").value=p.notes||"";
+const target=$("fields");target.replaceChildren();
 for(const [label,value] of [["Restaurante",p.venue],["Fecha",p.date],["Hora",p.time],["Personas",p.guests?p.guests+" PAX":null],["Nombre",p.name],["Teléfono",null]]){
 const div=document.createElement("div");div.className="field";
 const small=document.createElement("span");small.textContent=label;
@@ -115,6 +170,25 @@ $("notes").hidden=!p.notes;$("notes").textContent=p.notes?"Observaciones detecta
 $("feedback").textContent=p.missing.length?"Revisá también: "+p.missing.join(", ")+". El WhatsApp y el consentimiento se completan después.":"Datos principales identificados. Falta tu WhatsApp y consentimiento.";
 $("preview").hidden=false;$("preview").scrollIntoView({behavior:"smooth",block:"start"});
 }
+$("applyFix").onclick=()=>{
+ if(!draft)return;
+ const fixed={
+  venue:$("editVenue").value||null,
+  date:$("editDate").value||null,
+  time:$("editTime").value||null,
+  guests:$("editGuests").value?Number($("editGuests").value):null,
+  name:$("editName").value.trim()||null,
+  notes:$("editNotes").value.trim(),
+  missing:[]
+ };
+ if(!fixed.venue)fixed.missing.push("restaurante");
+ if(!fixed.date||fixed.date<today()||fixed.date>plus(today(),60))fixed.missing.push("fecha válida");
+ if(!availableHours.includes(fixed.time))fixed.missing.push("horario permitido");
+ if(!Number.isInteger(fixed.guests)||fixed.guests<1||fixed.guests>12)fixed.missing.push("cantidad entre 1 y 12");
+ if(!fixed.name)fixed.missing.push("nombre");
+ show(fixed);
+ $("adjust").open=false;
+};
 $("interpret").onclick=()=>{const raw=$("message").value.trim();if(raw.length<6){$("message").focus();return}show(parse(raw))};
 document.querySelectorAll("[data-example]").forEach(b=>b.onclick=()=>{$("message").value=b.dataset.example;show(parse(b.dataset.example))});
 $("edit").onclick=()=>{$("message").focus();$("message").scrollIntoView({behavior:"smooth",block:"start"})};
