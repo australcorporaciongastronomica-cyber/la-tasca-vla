@@ -47,6 +47,41 @@
 .booking-punctuality p{font-size:12px;line-height:1.7;margin:0;color:#ddd3c2}
 .booking-punctuality .clock-icon{font-size:20px;line-height:1}
 .submit[hidden]{display:none!important}.pause-form-warning[hidden]{display:none!important}.pause-form-warning{border:1px solid #bea578;background:linear-gradient(125deg,#35291c,#222a20);border-radius:12px;padding:22px;margin:0 0 20px;display:grid;gap:9px;color:#eedbb9}.pause-form-warning strong{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(27px,4vw,37px);font-weight:500}.pause-form-warning p{font-size:13px;line-height:1.65;margin:0}.pause-form-warning a{font-size:12px;color:#efd1a0;text-decoration:underline}.request-paused input:disabled,.request-paused select:disabled,.request-paused textarea:disabled{opacity:.42;cursor:not-allowed}.request-paused #send{background:#55483a;color:#f4e3c5;opacity:1;cursor:not-allowed}
+
+/* Selección exprés para clientes. Los controles originales permanecen como respaldo accesible. */
+.quick-choice{display:flex;gap:9px;align-items:stretch}
+.quick-choice button{flex:1;border-radius:11px;border:1px solid #8b7858;background:#312f27;color:#f4e8d2;padding:13px 8px;min-height:51px;font-size:14px;font-weight:750;cursor:pointer}
+.quick-choice button[aria-pressed="true"]{background:#e4c18a;color:#25190e;border-color:#ffe4af}
+.quick-choice button:disabled{opacity:.48;cursor:default}
+.quick-dates{margin:-4px 0 -5px}.quick-dates button{min-height:44px}
+.quick-shifts{margin:2px 0 -7px}
+.quick-times{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:-2px 0 0}
+.quick-times button{border:1px solid #6e805f;background:#25342a;color:#f3ebdb;border-radius:9px;min-height:48px;font-size:15px;font-weight:800;cursor:pointer}
+.quick-times button[aria-pressed="true"]{background:#dfbf86;color:#211b12;border:2px solid #f5d7a7}
+.quick-times button:disabled{opacity:.35;cursor:not-allowed}
+.quick-guests{display:flex;align-items:end;gap:10px;min-width:0}
+.quick-guests label{flex:1;min-width:85px}
+.quick-guests input{font-size:21px;text-align:center;font-weight:850}
+.quick-stepper{display:flex;gap:7px}
+.quick-stepper button{min-width:50px;min-height:49px;padding:5px;background:#344a3a;color:#f5e9ce;border:1px solid #7c987b;border-radius:10px;font-size:24px;font-weight:750;cursor:pointer}
+.quick-notes{border:1px solid #645b4b;background:#272924;border-radius:10px;padding:12px 14px}
+.quick-notes summary{cursor:pointer;font-size:12px;font-weight:700;line-height:1.5;color:#f2d7aa}
+.quick-notes summary span{font-weight:500;color:#bdb8aa;margin-left:7px}
+.quick-notes label{margin-top:14px}
+.quick-notes textarea{font-size:14px}
+#formHeading{font-size:clamp(29px,4vw,40px)}
+@media(max-width:760px){
+ .panel[aria-labelledby="formHeading"]{padding:17px}
+ #requestForm{gap:13px}
+ .quick-times{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+ .quick-times button{font-size:14px;min-height:47px}
+ .quick-choice button{min-height:49px}
+ .availability-box{padding:13px 14px}
+ .booking-punctuality{padding:13px 14px}
+ .submit{min-height:58px;font-size:15px}
+}
+@media(max-width:360px){.quick-times{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-stepper button{min-width:43px}}
+
 </style>
 </head>
 <body>
@@ -57,22 +92,41 @@
  <p>Elegí restaurante, fecha y horario. Si hay disponibilidad, tu mesa se confirma al instante. Si está completo, podés anotarte en nuestra lista de espera.</p></div>
  <div class="shell">
   <section class="panel" aria-labelledby="formHeading">
-   <h2 id="formHeading">Reservá tu mesa</h2>
-   <p class="fine">Consultá la disponibilidad en tiempo real. Al finalizar te informamos si tu mesa está confirmada o si ingresaste a lista de espera.</p>
+   <h2 id="formHeading">Reservá tu mesa en pocos toques</h2>
+   <p class="fine">Elegí dónde, cuándo y para cuántas personas. Comprobamos disponibilidad antes de confirmar.</p>
    <div id="todayCloseNotice" class="pause-form-warning" hidden role="status"><strong>Hoy no contamos con más lugares.</strong><p>Las reservas online para esta fecha están cerradas. Podés elegir mañana u otra fecha desde el calendario.</p><a href="#" id="chooseTomorrow">Consultar disponibilidad para mañana</a></div>
     <form id="requestForm" class="grid">
+    <div class="quick-choice wide" id="quickVenueButtons" role="group" aria-label="Elegí restaurante">
+      <button type="button" data-quick-venue="La Tasca">La Tasca</button>
+      <button type="button" data-quick-venue="Santori">Santori</button>
+    </div>
     <label>Restaurante
      <select name="venue" required><option value="" disabled selected>Elegí La Tasca o Santori</option><option value="La Tasca">La Tasca</option><option value="Santori">Santori</option></select>
     </label>
     <label>Fecha <input type="date" name="service_date" id="date" required></label>
+    <div class="quick-choice wide quick-dates" id="quickDayButtons" role="group" aria-label="Elegí día">
+      <button type="button" data-quick-day="0">Hoy</button>
+      <button type="button" data-quick-day="1">Mañana</button>
+    </div>
+    <div class="quick-choice wide quick-shifts" id="quickShiftButtons" role="group" aria-label="Elegí turno">
+      <button type="button" data-quick-shift="lunch">Almuerzo</button>
+      <button type="button" data-quick-shift="dinner">Cena</button>
+    </div>
     <label>Horario
       <select name="service_time" id="time" required><option value="">Elegí el horario</option></select>
       <span style="font-size:11px;color:#b9ad9b;font-weight:400">Almuerzo: 12:00 a 15:15 · Cena: 20:00 a 23:00</span>
       <span id="timeHelp" aria-live="polite" style="font-size:11px;color:#d9b982;font-weight:400"></span>
     </label>
-    <label>Personas
-      <input type="number" name="guests" min="1" max="12" value="2" required>
-    </label>
+    <div class="quick-times wide" id="quickTimeButtons" role="group" aria-label="Horarios del turno"></div>
+    <div class="quick-guests">
+      <label>Personas
+       <input type="number" name="guests" id="quickGuestCount" min="1" max="12" value="2" inputmode="numeric" required>
+      </label>
+      <div class="quick-stepper" role="group" aria-label="Cambiar cantidad de personas">
+       <button type="button" id="quickMinus" aria-label="Una persona menos">−</button>
+       <button type="button" id="quickPlus" aria-label="Una persona más">＋</button>
+      </div>
+    </div>
     <div id="availabilityBox" class="wide availability-box" aria-live="polite">
      <strong>Disponibilidad en tiempo real</strong>
      <p>Elegí restaurante, fecha, horario y personas para consultar lugares disponibles.</p>
@@ -89,9 +143,11 @@
     <label class="wide">WhatsApp o teléfono con código de país
       <input name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="28" required placeholder="+54 9 294 ...">
     </label>
-    <label class="wide">Observaciones (opcional)
-      <textarea name="notes" maxlength="350" placeholder="Alergias, celebración o detalles importantes"></textarea>
-    </label>
+    <details class="quick-notes wide"><summary>¿Alergias, cumpleaños o algún pedido especial? <span>Opcional</span></summary>
+      <label>Observaciones
+       <textarea name="notes" maxlength="350" placeholder="Alergias, celebración o detalles importantes"></textarea>
+      </label>
+    </details>
     <label class="trap" aria-hidden="true">Sitio web <input name="website" tabindex="-1" autocomplete="off"></label>
     <label class="agree wide">
       <input type="checkbox" name="consent" required>
@@ -287,6 +343,49 @@
  const requestedDate=new URLSearchParams(location.search).get("fecha");
  dateInput.value=requestedDate&&/^\d{4}-\d{2}-\d{2}$/.test(requestedDate)&&requestedDate>=day&&requestedDate<=dateInput.max?requestedDate:day;
  const formatTime=minutes=>String(Math.floor(minutes/60)).padStart(2,"0")+":"+String(minutes%60).padStart(2,"0");
+ const quickLabels={
+  es:{today:"Hoy",tomorrow:"Mañana",lunch:"Almuerzo",dinner:"Cena",passed:"Pasó"},
+  en:{today:"Today",tomorrow:"Tomorrow",lunch:"Lunch",dinner:"Dinner",passed:"Past"},
+  pt:{today:"Hoje",tomorrow:"Amanhã",lunch:"Almoço",dinner:"Jantar",passed:"Passou"}
+ };
+ let quickShift="dinner";
+ const quickDays=(date,count)=>{
+  const d=new Date(date+"T12:00:00Z");d.setUTCDate(d.getUTCDate()+count);
+  return d.toISOString().slice(0,10);
+ };
+ function renderQuickControls(){
+  const lang=getLang(),word=quickLabels[lang]||quickLabels.es;
+  if(timeInput.value)quickShift=Number(timeInput.value.slice(0,2))<17?"lunch":"dinner";
+  for(const button of document.querySelectorAll("[data-quick-venue]")){
+   button.setAttribute("aria-pressed",String(form.elements.venue.value===button.dataset.quickVenue));
+  }
+  for(const button of document.querySelectorAll("[data-quick-day]")){
+   const n=Number(button.dataset.quickDay);
+   button.setAttribute("aria-pressed",String(dateInput.value===quickDays(today(),n)));
+   button.textContent=n===0?word.today:word.tomorrow;
+  }
+  for(const button of document.querySelectorAll("[data-quick-shift]")){
+   button.setAttribute("aria-pressed",String(quickShift===button.dataset.quickShift));
+   button.textContent=button.dataset.quickShift==="lunch"?word.lunch:word.dinner;
+  }
+  const target=document.querySelector("#quickTimeButtons");
+  target.replaceChildren();
+  const chosen=timeInput.value;
+  for(const time of quickShift==="lunch"?
+    ["12:00","12:30","13:00","13:30","14:00","14:30","15:00","15:15"]:
+    ["20:00","20:30","21:00","21:30","22:00","22:30","23:00"]){
+   const option=[...timeInput.options].find(o=>o.value===time);
+   const control=document.createElement("button");control.type="button";control.textContent=time;
+   control.disabled=!option||option.disabled;control.setAttribute("aria-pressed",String(chosen===time));
+   control.setAttribute("aria-label",time+(control.disabled?" · "+word.passed:""));
+   control.addEventListener("click",()=>{
+    if(control.disabled)return;
+    timeInput.value=time;
+    timeInput.dispatchEvent(new Event("change",{bubbles:true}));
+   });
+   target.append(control);
+  }
+ }
  function updateSlots(){
   const selected=dateInput.value,previous=timeInput.value;
   const isToday=selected===today(),currentTime=nowClock();
@@ -310,6 +409,7 @@
   if(preserved)timeInput.value=previous;
   const pastLunch=isToday&&currentTime>="15:15";
   document.querySelector("#timeHelp").textContent=pastLunch?L("pastLunch"):isToday?L("pastSlots"):"";
+  renderQuickControls();
  }
  const preview=(kind,title,detail)=>{
   availabilityBox.className="wide availability-box "+kind;
@@ -457,6 +557,34 @@
   dateInput.dispatchEvent(new Event("change",{bubbles:true}));dateInput.focus();
  });
  updateSlots();updatePauseUI();updatePunctualityText();
+ document.querySelector("#quickVenueButtons").addEventListener("click",event=>{
+  const b=event.target.closest("[data-quick-venue]");if(!b)return;
+  form.elements.venue.value=b.dataset.quickVenue;
+  form.elements.venue.dispatchEvent(new Event("change",{bubbles:true}));
+  renderQuickControls();
+ });
+ document.querySelector("#quickDayButtons").addEventListener("click",event=>{
+  const b=event.target.closest("[data-quick-day]");if(!b)return;
+  dateInput.value=quickDays(today(),Number(b.dataset.quickDay));
+  dateInput.dispatchEvent(new Event("change",{bubbles:true}));
+ });
+ document.querySelector("#quickShiftButtons").addEventListener("click",event=>{
+  const b=event.target.closest("[data-quick-shift]");if(!b)return;
+  quickShift=b.dataset.quickShift;
+  timeInput.value="";
+  renderQuickControls();
+  timeInput.dispatchEvent(new Event("change",{bubbles:true}));
+ });
+ for(const [id,delta] of [["quickMinus",-1],["quickPlus",1]]){
+  document.querySelector("#"+id).addEventListener("click",()=>{
+   const input=form.elements.guests;
+   input.value=String(Math.max(1,Math.min(12,(Number(input.value)||2)+delta)));
+   input.dispatchEvent(new Event("input",{bubbles:true}));
+  });
+ }
+ timeInput.addEventListener("change",renderQuickControls);
+ form.elements.venue.addEventListener("change",renderQuickControls);
+
  dateInput.addEventListener("change",()=>{clearAutoShift();updateSlots();updatePauseUI();checkAvailability()});
  timeInput.addEventListener("change",()=>{clearAutoShift();updatePauseUI();checkAvailability()});
  form.elements.venue.addEventListener("change",()=>{clearAutoShift();updatePauseUI();checkAvailability()});
