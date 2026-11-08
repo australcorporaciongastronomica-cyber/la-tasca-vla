@@ -36,6 +36,7 @@
 .arrival-time span{font-size:10px;color:#423320;font-weight:700}
 .availability-box.nearly{border-color:#e9b96e;background:#3f3322}
 .availability-box.nearly strong{color:#ffe2a2}
+.pause-form-warning[hidden]{display:none!important}.pause-form-warning{border:1px solid #bea578;background:linear-gradient(125deg,#35291c,#222a20);border-radius:12px;padding:22px;margin:0 0 20px;display:grid;gap:9px;color:#eedbb9}.pause-form-warning strong{font-family:"Cormorant Garamond",Georgia,serif;font-size:clamp(27px,4vw,37px);font-weight:500}.pause-form-warning p{font-size:13px;line-height:1.65;margin:0}.pause-form-warning a{font-size:12px;color:#efd1a0;text-decoration:underline}.request-paused input:disabled,.request-paused select:disabled,.request-paused textarea:disabled{opacity:.42;cursor:not-allowed}.request-paused #send{background:#55483a;color:#f4e3c5;opacity:1;cursor:not-allowed}
 </style>
 </head>
 <body>
@@ -48,7 +49,8 @@
   <section class="panel" aria-labelledby="formHeading">
    <h2 id="formHeading">Reservá tu mesa</h2>
    <p class="fine">Consultá la disponibilidad en tiempo real. Al finalizar te informamos si tu mesa está confirmada o si ingresaste a lista de espera.</p>
-   <form id="requestForm" class="grid">
+   <div id="todayCloseNotice" class="pause-form-warning" hidden role="status"><strong>Hoy no contamos con más lugares.</strong><p>Las reservas online para esta fecha están cerradas. Podés elegir mañana u otra fecha desde el calendario.</p><a href="#" id="chooseTomorrow">Consultar disponibilidad para mañana</a></div>
+    <form id="requestForm" class="grid">
     <label>Restaurante
      <select name="venue" required><option value="" disabled selected>Elegí La Tasca o Santori</option><option value="La Tasca">La Tasca</option><option value="Santori">Santori</option></select>
     </label>
@@ -80,7 +82,7 @@
       <input type="checkbox" name="consent" required>
       <span>Acepto que La Tasca y Santori utilicen estos datos únicamente para gestionar mi reserva o solicitud de lista de espera.</span>
     </label>
-    <button class="submit wide" id="send" type="submit">Confirmar mi reserva</button>
+    <button class="submit wide" id="send" type="submit" disabled>Verificando disponibilidad…</button>
     <p class="notice wide" id="notice" role="status" aria-live="polite"></p>
    </form>
   </section>
@@ -104,7 +106,12 @@
  const availabilityBox=document.querySelector("#availabilityBox");
  const alternativesBox=document.querySelector("#arrivalAlternatives");
  const pauseState=()=>window.reservationsPause;
- const isPausedToday=()=>{const s=pauseState();return Boolean(s?.loaded&&s.date===dateInput.value&&s.pausedVenues.includes(form.elements.venue.value))};
+ const isPausedToday=()=>{
+  if(dateInput.value!==today())return false;
+  const s=pauseState();
+  if(!s?.loaded)return true;
+  return s.date===today()&&(s.pausedVenues.length===2||s.pausedVenues.includes(form.elements.venue.value));
+ };
  const endpoint="https://jtcltmnulmxvzqmlhgge.supabase.co/functions/v1/public-reservation-request";
  const today=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"America/Argentina/Buenos_Aires",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
  const nowClock=()=>new Intl.DateTimeFormat("sv-SE",{timeZone:"America/Argentina/Buenos_Aires",hour:"2-digit",minute:"2-digit",hour12:false}).format(new Date());
@@ -225,7 +232,9 @@
   return typeof value==="function"?value(...args):value;
  };
  const day=today(),max=new Date(day+"T12:00:00Z");max.setUTCDate(max.getUTCDate()+60);
- dateInput.min=day;dateInput.max=max.toISOString().slice(0,10);dateInput.value=day;
+ dateInput.min=day;dateInput.max=max.toISOString().slice(0,10);
+ const requestedDate=new URLSearchParams(location.search).get("fecha");
+ dateInput.value=requestedDate&&/^\d{4}-\d{2}-\d{2}$/.test(requestedDate)&&requestedDate>=day&&requestedDate<=dateInput.max?requestedDate:day;
  const formatTime=minutes=>String(Math.floor(minutes/60)).padStart(2,"0")+":"+String(minutes%60).padStart(2,"0");
  function updateSlots(){
   const selected=dateInput.value,previous=timeInput.value;
@@ -293,7 +302,7 @@
  const checkAvailability=async()=>{
   const f=form.elements,venue=f.venue.value,date=f.service_date.value,time=f.service_time.value;
   const guests=Number(f.guests.value),serial=++previewRequest;
-  if(isPausedToday()){preview("error","HOY SIN LUGAR · Reservas online pausadas","Elegí una fecha a partir de mañana o consultanos por WhatsApp ante posibles cancelaciones.");clearAlternatives();button.disabled=true;return;}
+  if(isPausedToday()){preview("error","RESERVAS DE HOY CERRADAS","Elegí una fecha posterior para consultar disponibilidad.");clearAlternatives();button.disabled=true;return;}
   if(!venue||!date||!time||!Number.isInteger(guests)||guests<1||guests>12){idlePreview();clearAlternatives();return}
   preview("loading",L("checking"),L("checkingDetail"));
   try{
@@ -333,10 +342,29 @@
  };
  let sending=false;
  const updatePauseUI=()=>{
-  button.disabled=sending||isPausedToday();
-  if(isPausedToday()){++previewRequest;preview("error","HOY SIN LUGAR · Reservas online pausadas","Elegí otra fecha o consultanos por WhatsApp por posibles cancelaciones.");clearAlternatives();}
+  const blocked=isPausedToday(),notice=document.querySelector("#todayCloseNotice");
+  notice.hidden=!blocked;
+  document.querySelector(".panel[aria-labelledby='formHeading']").classList.toggle("request-paused",blocked);
+  for(const field of form.querySelectorAll("input,select,textarea")){
+   if(field===dateInput||field.name==="website")continue;
+   if(field.name==="venue"&&pauseState()?.loaded&&pauseState().pausedVenues.length===1){field.disabled=false;continue;}
+   field.disabled=blocked;
+  }
+  button.disabled=sending||blocked;
+  if(blocked){
+   ++previewRequest;
+   button.textContent=pauseState()?.loaded?"RESERVAS DE HOY CERRADAS":"VERIFICANDO ESTADO DE RESERVAS…";
+   preview("error","HOY SIN LUGAR","Para reservar, elegí otra fecha en el calendario. El sistema no admite confirmaciones de hoy.");
+   clearAlternatives();
+  }else if(!sending){button.textContent=L("confirmBtn");}
  };
- updateSlots();
+ document.querySelector("#chooseTomorrow").addEventListener("click",event=>{
+  event.preventDefault();
+  const d=new Date(today()+"T12:00:00Z");d.setUTCDate(d.getUTCDate()+1);
+  dateInput.value=d.toISOString().slice(0,10);
+  dateInput.dispatchEvent(new Event("change",{bubbles:true}));dateInput.focus();
+ });
+ updateSlots();updatePauseUI();
  dateInput.addEventListener("change",()=>{updateSlots();updatePauseUI();checkAvailability()});
  timeInput.addEventListener("change",checkAvailability);
  form.elements.venue.addEventListener("change",()=>{updatePauseUI();checkAvailability()});
@@ -364,7 +392,7 @@
    notify(L(key),false,data.status==="waitlist"?"waitlist":"ok",key);
   }catch{
    notify(L("errorNetwork"),true,"error","errorNetwork");
-  }finally{sending=false;button.disabled=isPausedToday()}
+  }finally{sending=false;updatePauseUI()}
  });
  window.addEventListener("site:languagechange",()=>{
   updateSlots();
