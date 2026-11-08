@@ -66,13 +66,21 @@ if(m){const current=new Date(base+"T12:00:00Z").getUTCDay();let delta=(dayNames.
 return null;
 }
 function findTime(s){
-const m=s.match(/\b(?:a\s+las?|para\s+las?|sobre\s+las?|tipo\s+las?)\s*(\d{1,2})(?:[:.](\d{2}))?\s*(?:hs?|horas?)?\s*(?:(?:de\s+la\s+)?(noche|tarde|manana)|\b(pm|am))?\b/)||s.match(/\b([012]?\d)[:.](\d{2})\b/);
-if(!m)return null;let hour=Number(m[1]),minute=Number(m[2]||0),period=m[3]||m[4]||"";
-if(hour>23||minute>59)return null;
-if((period==="noche"||period==="tarde"||period==="pm")&&hour<12)hour+=12;
-if(hour<12&&!period)return null;
-if((period==="manana"||period==="am")&&hour===12)hour=0;
-return pad(hour)+":"+pad(minute);
+ const explicit=s.match(/\b(?:a\s+las?|para\s+las?|sobre\s+las?|tipo\s+las?)\s*(\d{1,2})(?:[:.](\d{2}))?\s*(?:(?:de\s+la\s+)?(noche|tarde|manana)|\b(pm|am))?\b/);
+ const hours=s.match(/\b(\d{1,2})(?:[:.](\d{2}))?\s*(?:hs?\.?|hrs?\.?|horas?)\b/);
+ const digital=s.match(/\b([01]?\d|2[0-3])[:.](\d{2})\b/);
+ const periodTime=s.match(/\b(\d{1,2})\s*(am|pm)\b/);
+ const m=explicit||hours||digital||periodTime;
+ if(!m)return null;
+ let hour=Number(m[1]),minute=Number(m[2]||0);
+ let period=explicit===m?(m[3]||m[4]||""):periodTime===m?m[2]:"";
+ if(periodTime===m)minute=0;
+ if(hour>23||minute>59)return null;
+ if((period==="noche"||period==="tarde"||period==="pm")&&hour<12)hour+=12;
+ if((period==="manana"||period==="am")&&hour===12)hour=0;
+ // Evitar interpretar "9" como 09:00 o 21:00 sin especificación.
+ if(hour<12&&!period)return null;
+ return pad(hour)+":"+pad(minute);
 }
 function findGuests(s){
 const n="(\\d{1,2}|un|uno|una|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|once|doce)";
@@ -80,28 +88,42 @@ const m=s.match(new RegExp("\\b(?:somos|seremos|mesa\\s+para|mesa\\s+de|grupo\\s
 if(!m)return null;return /^\d+$/.test(m[1])?Number(m[1]):numberWords[m[1]]||null;
 }
 function findName(src){
-const m=src.match(/(?:a\s+nombre\s+de|mi\s+nombre\s+es)\s+([A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+(?:\s+[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+){0,2})/i);
-if(!m)return null;return m[1].split(/\s+/).filter((w,i,arr)=>i===0||!["en","para","con","es","un","una","y"].includes(norm(w))).slice(0,2).join(" ");
+ const m=src.match(/\b(?:a\s+nombre\s+de|mi\s+nombre\s+es|me\s+llamo|soy)\s+([A-Za-zÀ-ÿ]+(?:\s+[A-Za-zÀ-ÿ]+){0,3})/i);
+ if(!m||/\bno\s+$/i.test(src.slice(0,m.index)))return null;
+ const stop=new Set(["quiero","quisiera","necesito","para","en","con","es","un","una","y","que","somos","reservar","mesa","somos","el","la","al","por","hoy","mañana","manana","telefono","teléfono"]);
+ const words=[];
+ for(const word of m[1].split(/\s+/)){
+  if(stop.has(norm(word)))break;
+  words.push(word);
+  if(words.length===3)break;
+ }
+ if(!words.length)return null;
+ return words.map(w=>w.charAt(0).toLocaleUpperCase("es-AR")+w.slice(1).toLocaleLowerCase("es-AR")).join(" ");
 }
 function parse(raw){
-const s=norm(raw),santori=/\b(santori|nikkei)\b/.test(s),tasca=/\btasca\b/.test(s);
-const venue=santori&&!tasca?"Santori":tasca&&!santori?"La Tasca":null;
-const date=findDate(s),pTime=findTime(s),time=allowed.has(pTime)?pTime:null,guests=findGuests(s),name=findName(raw);
-const notes=[];
-if(/\b(cumpleanos|cumple)\b/.test(s))notes.push("Cumpleaños");
-if(/\baniversario\b/.test(s))notes.push("Aniversario");
-if(/\b(celiac[oa]|sin gluten)\b/.test(s))notes.push("Celiaquía / sin gluten (confirmar detalles)");
-if(/\b(alergi|alergic)/.test(s))notes.push("Alergia: consultar detalles");
-if(/\bvegan[oa]\b/.test(s))notes.push("Opción vegana");
-if(/\b(sillita|silla de bebe)\b/.test(s))notes.push("Silla para bebé");
-const missing=[];
-if(!venue)missing.push("restaurante");
-if(!date)missing.push("fecha");
-if(!time)missing.push(pTime?"horario habilitado":"hora exacta");
-if(!guests||guests>12)missing.push(guests>12?"grupo mayor de 12 personas":"cantidad de personas");
-if(!name)missing.push("nombre");
-if(date&&(date<today()||date>plus(today(),60)))missing.push("fecha dentro de los próximos 60 días");
-return {venue,date,time,guests,name,notes:notes.join(". "),missing};
+ const s=norm(raw),santori=/\b(santori|nikkei)\b/.test(s),tasca=/\btasca\b/.test(s);
+ const venue=santori&&!tasca?"Santori":tasca&&!santori?"La Tasca":null;
+ const date=findDate(s),parsedTime=findTime(s),time=allowed.has(parsedTime)?parsedTime:null;
+ const guests=findGuests(s),name=findName(raw);
+ const clauses=s.split(/[.!?;\n]/).map(t=>t.trim()).filter(Boolean);
+ const hasAffirmative=(match,negated)=>clauses.some(t=>match.test(t)&&!negated.test(t));
+ const noCeliac=/\b(?:no\s+(?:hay|tenemos|tengo|tiene|tienen|somos|es|son)|ningun[oa]s?|ningun[oa]\s+persona)\s+(?:(?:personas?|nadie|comensales?|que\s+sea)\s+){0,3}celiac[oa]s?\b/;
+ const noAllergy=/\b(?:no\s+(?:hay|tenemos|tengo|tiene|tienen)|sin|ningun[oa]s?)\s+(?:personas?\s+con\s+)?(?:alergias?|alergic[oa]s?)\b/;
+ const notes=[];
+ if(/\b(cumpleanos|cumple)\b/.test(s))notes.push("Cumpleaños");
+ if(/\baniversario\b/.test(s))notes.push("Aniversario");
+ if(hasAffirmative(/\b(celiac[oa]s?|sin gluten)\b/,noCeliac))notes.push("Celiaquía / sin gluten (confirmar detalles)");
+ if(hasAffirmative(/\b(alergi\w*|alergic[oa]s?)\b/,noAllergy))notes.push("Alergia: consultar detalles");
+ if(/\bvegan[oa]s?\b/.test(s))notes.push("Opción vegana");
+ if(/\b(sillita|silla de bebe)\b/.test(s))notes.push("Silla para bebé");
+ const missing=[];
+ if(!venue)missing.push("restaurante");
+ if(!date)missing.push("fecha");
+ if(!time)missing.push(parsedTime?"horario habilitado":"hora exacta");
+ if(!guests||guests>12)missing.push(guests>12?"grupo mayor de 12 personas":"cantidad de personas");
+ if(!name)missing.push("nombre");
+ if(date&&(date<today()||date>plus(today(),60)))missing.push("fecha dentro de los próximos 60 días");
+ return {venue,date,time,guests,name,notes:notes.join(". "),missing};
 }
 let draft=null;
 function show(p){
