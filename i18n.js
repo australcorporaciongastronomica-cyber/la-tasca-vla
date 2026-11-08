@@ -978,6 +978,23 @@
     dictionary.set(normalize(es),en);
     DICTIONARY_PT.set(normalize(es),pt);
   }
+  // Reserva pública exprés: controles nuevos también traducidos a EN y PT.
+  for(const [es,en,pt] of [
+   ["Reservá tu mesa en pocos toques","Book your table in a few taps","Reserve sua mesa com poucos toques"],
+   ["Elegí dónde, cuándo y para cuántas personas. Comprobamos disponibilidad antes de confirmar.","Choose where, when and for how many guests. We check availability before confirming.","Escolha onde, quando e para quantas pessoas. Conferimos a disponibilidade antes de confirmar."],
+   ["¿Alergias, cumpleaños o algún pedido especial?","Allergies, birthdays or any special requests?","Alergias, aniversários ou algum pedido especial?"],
+   ["Opcional","Optional","Opcional"],
+   ["Elegí restaurante","Choose restaurant","Escolha o restaurante"],
+   ["Elegí día","Choose day","Escolha o dia"],
+   ["Elegí turno","Choose service","Escolha o turno"],
+   ["Horarios del turno","Available service times","Horários do turno"],
+   ["Cambiar cantidad de personas","Change party size","Alterar número de pessoas"],
+   ["Una persona más","Add one guest","Adicionar uma pessoa"],
+   ["Una persona menos","Remove one guest","Remover uma pessoa"]
+  ]){
+   dictionary.set(normalize(es),en);
+   DICTIONARY_PT.set(normalize(es),pt);
+  }
   // Recover the canonical Spanish source if a browser/plugin or another dynamic
   // update replaces a translated node. This makes PT → EN → ES switching reliable.
   const spanishByTranslatedText=new Map();
