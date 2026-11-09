@@ -37,6 +37,12 @@ nav button.active{background:var(--ink);color:white;border-color:var(--ink)}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
 .chip{padding:4px 8px;border-radius:6px;font-size:10px;letter-spacing:.02em;font-weight:800;background:#eef1ea;color:#546c5a}
 .chip.high{background:#f9efe3;color:#926338}.chip.unknown{background:#f3eeee;color:#93655c}.chip.bought{background:#e8f3ec;color:#3d7653}
+.chip.fixed{background:#dcefe0;color:#17633b;border:1px solid #b8dcc2;font-size:11px}
+.chip.chosen{background:#23583c;color:white;font-size:11px}
+.chip.pending{background:#f3f1ed;color:#7a7468;border:1px solid #e7e1d8}
+.legend{margin:12px 0 18px;padding:12px 15px;background:#fff;border:1px solid var(--line);border-radius:10px;font-size:13px;line-height:1.6;color:#4c5d52}
+.legend strong{color:#19623c}
+
 .item h3{font-size:16px;line-height:1.35;margin:0;font-weight:780}
 .item .qty{font-size:14px;font-weight:800;color:#42584a}.item .note{font-size:12.5px;line-height:1.48;color:#637169;min-height:29px}
 .item .warn{padding:9px 10px;border-radius:8px;background:#fbf0df;color:#71542f;font-size:12px;line-height:1.4}
@@ -58,6 +64,7 @@ nav button.active{background:var(--ink);color:white;border-color:var(--ink)}
 <main class="wrap">
 <div class="summary"><div class="number"><strong id="countSalon">29</strong><span>Rubros de salón</span></div><div class="number"><strong id="countCamara">7</strong><span>Artículos cámara / Tatiana</span></div><div class="number"><strong id="countTotal">—</strong><span>Referencias en total</span></div></div>
 <div class="info"><b>Para revisar, no para comprar automáticamente</b>Las cantidades son orientativas: comparar primero con el stock útil, compras anteriores y presupuesto. Las publicaciones pueden variar de precio, versión o disponibilidad. No se cargaron precios estimativos para evitar decisiones con valores desactualizados.</div>
+<div class="legend"><strong>✓ LINK FIJO</strong> = el artículo tiene una publicación o ficha de producto específica, no una búsqueda genérica. <strong>✓ ELEGIDO</strong> = modelo que ya seleccionamos para el pedido. <span style="color:#7a7468">PENDIENTE</span> = falta fijar modelo y enlace. Ninguno de estos checks significa que se haya comprado o recibido.</div>
 <nav aria-label="Secciones" id="tabs">
 <button data-tab="salon" class="active">Salón / Temporada</button>
 <button data-tab="camara">Cámara / Bateas</button>
@@ -88,6 +95,7 @@ nav button.active{background:var(--ink);color:white;border-color:var(--ink)}
  const escape=s=>String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]});
  const symbol=(s)=>({'Vajilla':'🍷','Cubiertos':'🍴','Servicio':'◈','Santori':'🥢','Cristalería':'🥃','Mesa':'◉','Comunicaciones':'📻','Cartas':'▤','Textil':'▧','Infusiones':'🫖','Exterior':'✧','Uniformes':'♟'}[s]||'▦');
  let tab='salon';
+ function hasFixedLink(x){const url=(x.link||'').trim();return /^https?:\/\//i.test(url)&&!/\/categoria-producto\/|listado\.mercadolibre\.com\.ar\/|\/search\?|\/busqueda\//i.test(url);}
  function visible(){const query=$('#q').value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');const pr=$('#priority').value;const gr=$('#group').value;
  return DATA.filter(x=>(tab==='todos'||x.scope===tab)&&(!pr||x.prioridad===pr)&&(!gr||x.grupo===gr)&&(!query||[x.nombre,x.detalle,x.grupo,x.cantidad].join(' ').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').includes(query)));
  }
@@ -98,6 +106,9 @@ nav button.active{background:var(--ink);color:white;border-color:var(--ink)}
  if(!out.length){$('#cards').innerHTML='<div class="empty">No hay artículos con esos filtros.</div>';return;}
  $('#cards').innerHTML=out.map(x=>{
  const priority=(x.prioridad||'').includes('ADQUIRIDO')?'bought':x.prioridad==='ALTA'?'high':x.prioridad==='POR DEFINIR'?'unknown':'';
+ const fixed=hasFixedLink(x);
+ const selected=fixed&&(x.id==='S01'||x.id==='S02');
+ const linkChip=fixed?('<span class="chip '+(selected?'chosen':'fixed')+'">'+(selected?'✓ ELEGIDO':'✓ LINK FIJO')+'</span>'):'<span class="chip pending">ENLACE PENDIENTE</span>';
  const photoID=(x.foto||'').match(/\/d\/([^/]+)/);
  let visual='<span class="symbol">'+symbol(x.grupo)+'</span>';
  if(photoID)visual='<img loading="lazy" alt="Referencia visual: '+escape(x.nombre)+'" src="https://drive.google.com/thumbnail?id='+encodeURIComponent(photoID[1])+'&sz=w600" onerror="this.style.display=\'none\';this.parentElement.insertAdjacentHTML(\'beforeend\',\'<span class=&#34;symbol&#34;>▦</span>\')" >';
@@ -107,7 +118,7 @@ nav button.active{background:var(--ink);color:white;border-color:var(--ink)}
  if(x.fuente) actions+='<a href="'+escape(x.fuente)+'" target="_blank" rel="noopener noreferrer" class="ghost">'+(x.foto?'Ver foto':x.link?'Referencia original':'Ver referencia')+'</a>';
  if(x.buscar) actions+='<a href="'+escape(x.buscar)+'" target="_blank" rel="noopener noreferrer" class="ghost">Buscar en Mercado Libre</a>';
  if(!actions) { const term=encodeURIComponent(x.nombre.replace(/\n/g,' ')).replace(/%20/g,'-');actions='<a class="ghost" href="https://listado.mercadolibre.com.ar/'+term+'" target="_blank" rel="noopener noreferrer">Buscar equivalente</a>'; }
- return '<article class="item"><div class="visual"><span class="ref">'+escape(x.id)+'</span>'+visual+'</div><div class="body"><div class="chips"><span class="chip">'+escape(x.grupo)+'</span><span class="chip '+priority+'">'+escape(x.prioridad)+'</span></div><h3>'+escape(x.nombre)+'</h3><div class="qty">'+escape(x.cantidad)+'</div>'+(x.detalle?'<div class="note">'+escape(x.detalle)+'</div>':'')+(x.aviso?'<div class="warn">'+escape(x.aviso)+'</div>':'')+'<div class="actions">'+actions+'</div></div></article>';
+ return '<article class="item"><div class="visual"><span class="ref">'+escape(x.id)+'</span>'+visual+'</div><div class="body"><div class="chips"><span class="chip">'+escape(x.grupo)+'</span><span class="chip '+priority+'">'+escape(x.prioridad)+'</span>'+linkChip+'</div><h3>'+escape(x.nombre)+'</h3><div class="qty">'+escape(x.cantidad)+'</div>'+(x.detalle?'<div class="note">'+escape(x.detalle)+'</div>':'')+(x.aviso?'<div class="warn">'+escape(x.aviso)+'</div>':'')+'<div class="actions">'+actions+'</div></div></article>';
  }).join('');}
  document.querySelectorAll('#tabs button').forEach(b=>b.addEventListener('click',function(){tab=this.dataset.tab;document.querySelectorAll('#tabs button').forEach(t=>t.classList.toggle('active',t===this));$('#q').value='';$('#priority').value='';groups();render();window.scrollTo({top:190,behavior:'smooth'});}));
  ['#q','#priority','#group'].forEach(sel=>$(sel).addEventListener(sel==='#q'?'input':'change',render));
