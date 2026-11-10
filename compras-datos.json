@@ -444,6 +444,23 @@
     "validado": false
   },
   {
+    "id": "S32",
+    "scope": "salon",
+    "grupo": "Barra",
+    "nombre": "Revolvedores largos para tragos · negros",
+    "cantidad": "Cantidad a definir",
+    "prioridad": "MEDIA",
+    "detalle": "Revolvedores o batidores largos para mezclar cócteles y tragos. Color exclusivamente negro; no comprar colores surtidos. Confirmar largo, material y modelo con barra.",
+    "link": "",
+    "foto": "",
+    "fuente": "",
+    "tipo": "Modelo y cantidad pendientes de selección",
+    "buscar": "",
+    "estado": "Relevar / cotizar",
+    "aviso": "Cantidad pendiente de confirmar. No comprar hasta seleccionar modelo y presentación.",
+    "validado": false
+  },
+  {
     "id": "S25",
     "scope": "salon",
     "grupo": "Servicio",
