@@ -371,14 +371,14 @@
     "nombre": "Manteles adicionales",
     "cantidad": "26 unidades",
     "prioridad": "MEDIA",
-    "detalle": "Verificar medidas, color y cantidad disponible.",
+    "detalle": "Se manda a hacer a medida. Relevar medidas de las mesas, definir color y tela, y verificar stock actual antes de encargar la confección.",
     "link": "",
     "foto": "",
     "fuente": "",
-    "tipo": "",
-    "buscar": "https://listado.mercadolibre.com.ar/manteles-restaurante-tela",
-    "estado": "Relevar / cotizar",
-    "aviso": ""
+    "tipo": "Confección a medida",
+    "buscar": "",
+    "estado": "Se manda a hacer a medida",
+    "aviso": "SE MANDA A HACER A MEDIDA — 26 manteles. Solicitar presupuesto de confección; no comprar manteles estándar."
   },
   {
     "id": "S22",
@@ -506,14 +506,14 @@
     "nombre": "Fundas nuevas para sillones exteriores",
     "cantidad": "Cantidad a relevar",
     "prioridad": "BAJA",
-    "detalle": "Repuesto para rotación de lavado; tomar medidas de los sillones.",
+    "detalle": "Se manda a hacer a medida. Relevar cantidad de sillones y medidas de cada funda; definir tela apta para exterior y cotizar la confección.",
     "link": "",
     "foto": "",
     "fuente": "",
-    "tipo": "",
-    "buscar": "https://listado.mercadolibre.com.ar/fundas-almohadones-exterior-impermeables",
-    "estado": "Relevar / cotizar",
-    "aviso": ""
+    "tipo": "Confección a medida",
+    "buscar": "",
+    "estado": "Se manda a hacer a medida",
+    "aviso": "SE MANDA A HACER A MEDIDA — Cantidad pendiente de relevamiento. No comprar fundas estándar."
   },
   {
     "id": "S27",
