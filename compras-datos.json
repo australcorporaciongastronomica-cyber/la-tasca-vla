@@ -427,17 +427,18 @@
     "id": "S25",
     "scope": "salon",
     "grupo": "Servicio",
-    "nombre": "Bandejas grandes antideslizantes",
+    "nombre": "Bandeja de mozo antideslizante Carol · 40,5 cm",
     "cantidad": "5 unidades",
     "prioridad": "MEDIA",
-    "detalle": "Gran tamaño para salón; confirmar diámetro y peso.",
-    "link": "",
+    "detalle": "Bandeja de mozo antideslizante Carol de 40,5 cm, modelo elegido para servicio de salón. Presentación según publicación; pedido de 5 unidades.",
+    "link": "https://www.mercadolibre.com.ar/bandeja-de-mozo-405cm-antideslizante-excelente-calidad-carol/p/MLA27106205",
     "foto": "",
     "fuente": "",
-    "tipo": "",
+    "tipo": "Modelo elegido · publicación específica Mercado Libre",
     "buscar": "https://listado.mercadolibre.com.ar/bandeja-mozo-grande-antideslizante",
     "estado": "Relevar / cotizar",
-    "aviso": ""
+    "aviso": "Modelo seleccionado; confirmar disponibilidad y características antes de comprar. No significa adquirido.",
+    "validado": true
   },
   {
     "id": "S26",
