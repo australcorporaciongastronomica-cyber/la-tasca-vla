@@ -427,6 +427,23 @@
     "aviso": ""
   },
   {
+    "id": "S31",
+    "scope": "salon",
+    "grupo": "Cristalería",
+    "nombre": "Vasos para Fernet",
+    "cantidad": "10 unidades",
+    "prioridad": "MEDIA",
+    "detalle": "Vasos para servicio de Fernet en salón. Modelo, capacidad, diseño y material a confirmar antes de comprar.",
+    "link": "",
+    "foto": "",
+    "fuente": "",
+    "tipo": "Pendiente de seleccionar modelo",
+    "buscar": "",
+    "estado": "Relevar / cotizar",
+    "aviso": "No está seleccionado el modelo. Verificar similitud con los vasos actuales antes de comprar.",
+    "validado": false
+  },
+  {
     "id": "S25",
     "scope": "salon",
     "grupo": "Servicio",
