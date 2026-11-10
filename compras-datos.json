@@ -88,7 +88,6 @@
     "estado": "Relevar / cotizar",
     "aviso": "Confirmar distribución por tipo de cubierto y línea Focus con el stock actual antes de solicitar. Foto real del salón para comparar la línea y el detalle en V. No confirma las medidas de cada cubierto.",
     "fotoFuente": "Nuestra foto original · 10/10/2026 · tenedor, cuchillo y cuchara de mesa (no cucharita de café)",
-    "segunda": "https://www.volf.com.ar/22box24-set-de-cubiertos-focus-box-24-piezas-1/p",
     "validado": true
   },
   {
@@ -109,9 +108,7 @@
     "fotoFuente": "",
     "segunda": "",
     "fotoProducto": "https://http2.mlstatic.com/D_Q_NP_706794-MLA99951099401_112025-F.webp",
-    "validado": true,
-    "alternativaSinML": "https://www.aacompany.com.ar/productos/set-6-cuchillos-jumbo-polywood-tramontina/",
-    "alternativaEtiqueta": "Tienda alternativa: AA Company"
+    "validado": true
   },
   {
     "id": "S05",
@@ -146,9 +143,7 @@
     "estado": "Relevar / cotizar",
     "aviso": "Confirmar coincidencia visual con la cubertería existente. Foto real del salón para comparar la línea y el detalle en V. No confirma las medidas de cada cubierto.",
     "fotoFuente": "Nuestra foto original · 10/10/2026 · tenedor, cuchillo y cuchara de mesa (no cucharita de café)",
-    "validado": true,
-    "alternativaSinML": "https://www.volf.com.ar/22cpx6-cuchara-de-postre-focus-set-x6/p",
-    "alternativaEtiqueta": "Tienda oficial Volf"
+    "validado": true
   },
   {
     "id": "S07",
@@ -166,10 +161,7 @@
     "estado": "Relevar / cotizar",
     "aviso": "Enlace alternativo localizado para el modelo Focus, sin confirmación final del comprador. No confundir con cucharita de té. Foto del salón es referencia de la línea, no de la cucharita de café.",
     "fotoFuente": "Nuestra foto original · 10/10/2026 · tenedor, cuchillo y cuchara de mesa (no cucharita de café)",
-    "segunda": "https://www.volf.com.ar/22ccx6-cuchara-de-cafe-focus-set-x6/p",
-    "validado": true,
-    "alternativaSinML": "https://www.volf.com.ar/22ccx6-cuchara-de-cafe-focus-set-x6/p",
-    "alternativaEtiqueta": "Tienda oficial Volf"
+    "validado": true
   },
   {
     "id": "S08",
@@ -203,9 +195,7 @@
     "buscar": "https://listado.mercadolibre.com.ar/sojero-ceramica-negra-sushi",
     "estado": "Relevar / cotizar",
     "aviso": "",
-    "validado": true,
-    "alternativaSinML": "https://www.decoviral.com.ar/productos/dip-salsera-cuadrada/",
-    "alternativaEtiqueta": "Tienda Decoviral"
+    "validado": true
   },
   {
     "id": "S10",
@@ -272,9 +262,7 @@
     "buscar": "https://listado.mercadolibre.com.ar/copa-limonada-copon-vidrio",
     "estado": "Relevar / cotizar",
     "aviso": "Modelo seleccionado; confirmar disponibilidad y precio antes de comprar. No significa adquirido.",
-    "validado": true,
-    "alternativaSinML": "https://piclesdistribuidora.com/productos/vaso-dubai-460ml-x24/",
-    "alternativaEtiqueta": "Tienda alternativa: Picles (x12 según ficha)"
+    "validado": true
   },
   {
     "id": "S15",
@@ -324,9 +312,7 @@
     "buscar": "https://listado.mercadolibre.com.ar/baofeng-bf-a58",
     "estado": "Relevar / cotizar",
     "aviso": "Los equipos BF-A58 se comprarán como pack completo según lo indicado. Confirmar en la publicación que cada equipo incluya batería, antena, cargador y auricular/micrófono antes de pagar; no se solicita accesorio separado.",
-    "validado": true,
-    "alternativaSinML": "https://www.baofeng.com.ar/equipos-portatiles/handies-analogicos-bibanda/handy-baofeng-bf-a58",
-    "alternativaEtiqueta": "Ficha oficial Baofeng BF-A58 (unidad)"
+    "validado": true
   },
   {
     "id": "S19",
