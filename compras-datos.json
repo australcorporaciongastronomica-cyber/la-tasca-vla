@@ -313,24 +313,8 @@
     "tipo": "Modelo BF-A58 elegido · publicación de Mercado Libre pack x4",
     "buscar": "https://listado.mercadolibre.com.ar/baofeng-bf-a58",
     "estado": "Relevar / cotizar",
-    "aviso": "ATENCIÓN: la presentación x4 no coincide exactamente con los 10 equipos solicitados. Confirmar cuántos handys nuevos hacen falta y cómo completar cantidades. El check ✓ OK refiere al modelo, no a una compra.",
+    "aviso": "Los equipos BF-A58 se comprarán como pack completo según lo indicado. Confirmar en la publicación que cada equipo incluya batería, antena, cargador y auricular/micrófono antes de pagar; no se solicita accesorio separado.",
     "validado": true
-  },
-  {
-    "id": "S18",
-    "scope": "salon",
-    "grupo": "Comunicaciones",
-    "nombre": "Auriculares originales de repuesto",
-    "cantidad": "7 unidades",
-    "prioridad": "ALTA",
-    "detalle": "Auriculares de repuesto con gancho de goma para oreja, micrófono y botón PTT. Confirmar originalidad y compatibilidad específica con Baofeng BF-A58 antes de comprar.",
-    "link": "https://www.baofeng.com.ar/accesorios/complementos/auriculares-manos-libres-baofeng-plug-k",
-    "foto": "",
-    "fuente": "",
-    "tipo": "Catálogo o ficha de proveedor",
-    "buscar": "https://listado.mercadolibre.com.ar/auricular-original-baofeng-bf-a58-gancho-ptt",
-    "estado": "Relevar / cotizar",
-    "aviso": "Los accesorios de la ficha no están confirmados aún para BF-A58; evitar dar por válida la compatibilidad solo por el conector."
   },
   {
     "id": "S19",
