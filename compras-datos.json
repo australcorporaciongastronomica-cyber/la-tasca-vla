@@ -33,7 +33,16 @@
       "Apósitos estériles no adherentes para quemaduras leves",
       "Mascarilla con barrera para RCP, si hay capacitación",
       "Verificar necesidad de termómetro y manta térmica"
-    ]
+    ],
+    "presupuesto": {
+      "cantidad": 1,
+      "precioUnitario": 25637,
+      "unidad": "botiquín 68 elementos",
+      "tipo": "referencia",
+      "subtotal": 25637,
+      "nota": "Precio orientativo de mercado, no cotización del vendedor elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S01",
@@ -50,7 +59,16 @@
     "buscar": "https://listado.mercadolibre.com.ar/copas-vino-gastronomica-x12",
     "estado": "Relevar / cotizar",
     "aviso": "",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 6,
+      "precioUnitario": 26055,
+      "unidad": "cajas x12",
+      "tipo": "referencia",
+      "subtotal": 156330,
+      "nota": "Precio orientativo de mercado, no cotización del vendedor elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S02",
@@ -67,7 +85,16 @@
     "buscar": "https://listado.mercadolibre.com.ar/plato-postre-arcopal-zelie-negro-18-cm-x6",
     "estado": "Relevar / cotizar",
     "aviso": "✓ MODELO CONFIRMADO POR SALÓN EL 10/11/2026: Arcopal Zelie negro de 18 cm, plato de postre. No reemplazar por Diwali de 19 cm. Cantidad prevista: 48 unidades (8 packs x 6). Confirmar stock, precio y entrega antes de comprar.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 8,
+      "precioUnitario": 21325,
+      "unidad": "packs x6",
+      "tipo": "referencia",
+      "subtotal": 170600,
+      "nota": "Precio orientativo de mercado, no cotización del vendedor elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S03",
@@ -85,7 +112,16 @@
     "estado": "Relevar / cotizar",
     "aviso": "Confirmar distribución por tipo de cubierto y línea Focus con el stock actual antes de solicitar. Foto real del salón para comparar la línea y el detalle en V. No confirma las medidas de cada cubierto.",
     "fotoFuente": "Nuestra foto original · 10/10/2026 · tenedor, cuchillo y cuchara de mesa (no cucharita de café)",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 3,
+      "precioUnitario": 96067,
+      "unidad": "cajas x24",
+      "tipo": "referencia",
+      "subtotal": 288201,
+      "nota": "Precio orientativo de mercado, no cotización del vendedor elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S04",
@@ -105,7 +141,16 @@
     "fotoFuente": "",
     "segunda": "",
     "fotoProducto": "https://http2.mlstatic.com/D_Q_NP_706794-MLA99951099401_112025-F.webp",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 4,
+      "precioUnitario": 32688,
+      "unidad": "packs x6",
+      "tipo": "referencia",
+      "subtotal": 130752,
+      "nota": "Precio orientativo de mercado, no cotización del vendedor elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S05",
@@ -122,7 +167,16 @@
     "buscar": "https://listado.mercadolibre.com.ar/copa-agua-gastronomia",
     "estado": "Relevar / cotizar",
     "aviso": "Confirmar disponibilidad y precio al realizar el pedido; seleccionado, no comprado.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 3,
+      "precioUnitario": 27132,
+      "unidad": "cajas x12",
+      "tipo": "referencia",
+      "subtotal": 81396,
+      "nota": "Precio orientativo de mercado, no cotización del vendedor elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S06",
@@ -140,7 +194,16 @@
     "estado": "Relevar / cotizar",
     "aviso": "Confirmar coincidencia visual con la cubertería existente. Foto real del salón para comparar la línea y el detalle en V. No confirma las medidas de cada cubierto.",
     "fotoFuente": "Nuestra foto original · 10/10/2026 · tenedor, cuchillo y cuchara de mesa (no cucharita de café)",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 12,
+      "precioUnitario": 26450,
+      "unidad": "packs x6",
+      "tipo": "referencia",
+      "subtotal": 317400,
+      "nota": "Precio orientativo de mercado, no cotización del vendedor elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S07",
@@ -158,7 +221,16 @@
     "estado": "Relevar / cotizar",
     "aviso": "Enlace alternativo localizado para el modelo Focus, sin confirmación final del comprador. No confundir con cucharita de té. Foto del salón es referencia de la línea, no de la cucharita de café.",
     "fotoFuente": "Nuestra foto original · 10/10/2026 · tenedor, cuchillo y cuchara de mesa (no cucharita de café)",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 4,
+      "precioUnitario": 18609,
+      "unidad": "packs x6",
+      "tipo": "referencia",
+      "subtotal": 74436,
+      "nota": "Precio orientativo de mercado, no cotización del vendedor elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S08",
@@ -175,7 +247,16 @@
     "buscar": "https://listado.mercadolibre.com.ar/jarras-agua-vidrio-gastronomicas",
     "estado": "Relevar / cotizar",
     "aviso": "Modelo seleccionado; verificar precio y disponibilidad al comprar. No implica artículo adquirido.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 20,
+      "precioUnitario": 5000,
+      "unidad": "jarras",
+      "tipo": "estimacion",
+      "subtotal": 100000,
+      "nota": "Valor estimado por comparable; validar el precio del enlace elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S09",
@@ -192,7 +273,16 @@
     "buscar": "https://listado.mercadolibre.com.ar/sojero-ceramica-negra-sushi",
     "estado": "Relevar / cotizar",
     "aviso": "",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 10,
+      "precioUnitario": 3900,
+      "unidad": "sojeros",
+      "tipo": "referencia",
+      "subtotal": 39000,
+      "nota": "Precio orientativo de mercado, no cotización del vendedor elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S10",
@@ -209,7 +299,16 @@
     "buscar": "https://listado.mercadolibre.com.ar/apoya-palitos-sushi-ceramica",
     "estado": "Relevar / cotizar",
     "aviso": "Modelo seleccionado, pendiente de compra. Confirmar precio y disponibilidad antes de pedir.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 10,
+      "precioUnitario": 13489,
+      "unidad": "packs x2",
+      "tipo": "referencia",
+      "subtotal": 134890,
+      "nota": "Precio orientativo de mercado, no cotización del vendedor elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S12",
@@ -226,7 +325,16 @@
     "buscar": "https://listado.mercadolibre.com.ar/vasos-infantiles-plastico-pastel",
     "estado": "Relevar / cotizar",
     "aviso": "ATENCIÓN: presentación x40, pero necesidad original de 10. Confirmar si se acepta comprar 40 unidades. Revisar si son reutilizables y aptos para uso gastronómico antes de comprar.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 1,
+      "precioUnitario": 18000,
+      "unidad": "pack x40 (se necesitan 10)",
+      "tipo": "referencia",
+      "subtotal": 18000,
+      "nota": "Necesitan 10 pero la publicación es pack x40.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S13",
@@ -243,7 +351,16 @@
     "buscar": "",
     "estado": "Relevar / cotizar",
     "aviso": "Comprobar piezas por caja de la publicación antes de hacer el pedido; 24 unidades es el objetivo original.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 2,
+      "precioUnitario": 47000,
+      "unidad": "cajas x12 supuestas",
+      "tipo": "estimacion",
+      "subtotal": 94000,
+      "nota": "Hay que confirmar si el enlace vende realmente cajas de 12.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S14",
@@ -260,7 +377,16 @@
     "buscar": "https://listado.mercadolibre.com.ar/copa-limonada-copon-vidrio",
     "estado": "Relevar / cotizar",
     "aviso": "Modelo seleccionado; confirmar disponibilidad y precio antes de comprar. No significa adquirido.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 1,
+      "precioUnitario": 18020,
+      "unidad": "caja x12",
+      "tipo": "referencia",
+      "subtotal": 18020,
+      "nota": "Precio orientativo de mercado, no cotización del vendedor elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S15",
@@ -277,7 +403,16 @@
     "buscar": "https://listado.mercadolibre.com.ar/molinillo-pimienta-madera",
     "estado": "Relevar / cotizar",
     "aviso": "Modelo seleccionado; verificar dimensiones, disponibilidad y precio antes de comprar. No significa adquirido.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 10,
+      "precioUnitario": 13965,
+      "unidad": "pimenteros",
+      "tipo": "estimacion",
+      "subtotal": 139650,
+      "nota": "Valor estimado por comparable; validar el precio del enlace elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S16",
@@ -294,7 +429,16 @@
     "buscar": "",
     "estado": "Relevar / cotizar",
     "aviso": "Producto elegido como referencia; no equivale a comprado. Verificar que la publicación incluya 1 unidad por compra o ajustar cantidades.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 6,
+      "precioUnitario": 4000,
+      "unidad": "saleros",
+      "tipo": "estimacion",
+      "subtotal": 24000,
+      "nota": "Valor estimado por comparable; validar el precio del enlace elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S17",
@@ -311,7 +455,16 @@
     "buscar": "https://listado.mercadolibre.com.ar/baofeng-bf-a58",
     "estado": "Relevar / cotizar",
     "aviso": "Los equipos BF-A58 se comprarán como pack completo según lo indicado. Confirmar en la publicación que cada equipo incluya batería, antena, cargador y auricular/micrófono antes de pagar; no se solicita accesorio separado.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 1,
+      "precioUnitario": 491260,
+      "unidad": "2 packs x4 y 2 equipos sueltos",
+      "tipo": "estimacion",
+      "subtotal": 491260,
+      "nota": "2 packs ×4 a $191.599 más 2 equipos sueltos a $54.031. No comprar 12 por error.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S19",
@@ -327,7 +480,16 @@
     "tipo": "Confección a medida",
     "buscar": "",
     "estado": "Se manda a hacer a medida",
-    "aviso": "SE MANDA A HACER — 10 cartas, diseño y presupuesto de impresión a confirmar."
+    "aviso": "SE MANDA A HACER — 10 cartas, diseño y presupuesto de impresión a confirmar.",
+    "presupuesto": {
+      "cantidad": 10,
+      "precioUnitario": 15000,
+      "unidad": "cartas Santori",
+      "tipo": "provision",
+      "subtotal": 150000,
+      "nota": "Precio de impresión supuesto; pedir cotización.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S20",
@@ -343,7 +505,16 @@
     "tipo": "Confección a medida",
     "buscar": "",
     "estado": "Se manda a hacer a medida",
-    "aviso": "SE MANDA A HACER — 10 cartas, diseño y presupuesto de impresión a confirmar."
+    "aviso": "SE MANDA A HACER — 10 cartas, diseño y presupuesto de impresión a confirmar.",
+    "presupuesto": {
+      "cantidad": 10,
+      "precioUnitario": 15000,
+      "unidad": "cartas La Tasca",
+      "tipo": "provision",
+      "subtotal": 150000,
+      "nota": "Precio de impresión supuesto; pedir cotización.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S21",
@@ -359,7 +530,16 @@
     "tipo": "Confección a medida",
     "buscar": "",
     "estado": "Se manda a hacer a medida",
-    "aviso": "SE MANDA A HACER A MEDIDA — 26 manteles. Solicitar presupuesto de confección; no comprar manteles estándar."
+    "aviso": "SE MANDA A HACER A MEDIDA — 26 manteles. Solicitar presupuesto de confección; no comprar manteles estándar.",
+    "presupuesto": {
+      "cantidad": 26,
+      "precioUnitario": 15000,
+      "unidad": "manteles a medida",
+      "tipo": "provision",
+      "subtotal": 390000,
+      "nota": "El precio de la confección varía según las medidas y la tela.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S22",
@@ -377,7 +557,16 @@
     "estado": "Modelo elegido · falta completar stock para 6",
     "aviso": "✓ MODELO APROBADO SEGÚN FOTO DEL USUARIO. ATENCIÓN: Gastronomía Bashir indica 2 unidades en stock (consulta 10/11/2026) y necesitamos 6; gestionar reposición o conseguir 4 adicionales del MISMO modelo. Precio publicado de referencia: $34.578 por unidad en promoción; confirmar precio, disponibilidad, envío a Villa La Angostura y compatibilidad del filtro de malla S34 antes de comprar.",
     "validado": true,
-    "fotoProducto": "https://acdn-us.mitiendanube.com/stores/006/466/914/products/d_914659-mla88187987235_072025-b-0eb0bf2e960b8c27f617565088815640-1024-1024.webp"
+    "fotoProducto": "https://acdn-us.mitiendanube.com/stores/006/466/914/products/d_914659-mla88187987235_072025-b-0eb0bf2e960b8c27f617565088815640-1024-1024.webp",
+    "presupuesto": {
+      "cantidad": 6,
+      "precioUnitario": 34578,
+      "unidad": "teteras",
+      "tipo": "referencia",
+      "subtotal": 207468,
+      "nota": "Sólo 2 unidades disponibles en la tienda de referencia.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S34",
@@ -394,7 +583,16 @@
     "buscar": "",
     "estado": "Relevar / cotizar",
     "aviso": "✓ MODELO ELEGIDO (10/11/2026): filtro de malla metálica fina con borde, confirmado por salón. Todavía NO comprado. Antes de pedir las 6 unidades, medir el diámetro de la tetera y elegir el tamaño compatible (6, 6,5, 7 u 8 cm); confirmar disponibilidad, precio y envío.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 6,
+      "precioUnitario": 5000,
+      "unidad": "filtros de malla",
+      "tipo": "referencia",
+      "subtotal": 30000,
+      "nota": "Precio orientativo de mercado, no cotización del vendedor elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S23",
@@ -411,7 +609,16 @@
     "buscar": "",
     "estado": "Relevar / cotizar",
     "aviso": "Matías pidió 12 copas balón; modifica la cantidad anterior de 10 copones. Confirmar disponibilidad y contenido comercial antes de pagar.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 1,
+      "precioUnitario": 57518,
+      "unidad": "caja x12",
+      "tipo": "estimacion",
+      "subtotal": 57518,
+      "nota": "Valor estimado por comparable; validar el precio del enlace elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S24",
@@ -428,7 +635,16 @@
     "buscar": "",
     "estado": "Relevar / cotizar",
     "aviso": "Modelo elegido; confirmar disponibilidad y contenido comercial antes de comprar.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 1,
+      "precioUnitario": 52814,
+      "unidad": "caja x12",
+      "tipo": "estimacion",
+      "subtotal": 52814,
+      "nota": "Valor estimado por comparable; validar el precio del enlace elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S31",
@@ -445,7 +661,16 @@
     "buscar": "",
     "estado": "Relevar / cotizar",
     "aviso": "Modelo elegido. ANTES DE COMPRAR: verificar cuántos vasos trae cada caja y ajustar la compra a las 10 unidades requeridas.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 10,
+      "precioUnitario": 5000,
+      "unidad": "vasos Fernet",
+      "tipo": "estimacion",
+      "subtotal": 50000,
+      "nota": "Valor estimado por comparable; validar el precio del enlace elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S33",
@@ -462,7 +687,16 @@
     "buscar": "",
     "estado": "Relevar / cotizar",
     "validado": true,
-    "aviso": "Modelo elegido, pero confirmar unidades por caja y número de cajas a solicitar antes de comprar. No confundir con copa con pie ni reemplazar sin validar otros vasos ya elegidos."
+    "aviso": "Modelo elegido, pero confirmar unidades por caja y número de cajas a solicitar antes de comprar. No confundir con copa con pie ni reemplazar sin validar otros vasos ya elegidos.",
+    "presupuesto": {
+      "cantidad": 1,
+      "precioUnitario": 28200,
+      "unidad": "caja x12 supuesta",
+      "tipo": "provision",
+      "subtotal": 28200,
+      "nota": "Cantidad sin definir: se supone una caja de 12 vasos.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S32",
@@ -479,7 +713,16 @@
     "buscar": "",
     "estado": "Relevar / cotizar",
     "aviso": "✓ OK indica modelo elegido, NO comprado. IMPORTANTE: verificar que Mercado Libre permita elegir color NEGRO y que el paquete incluya las 100 unidades antes de pagar. Si ofrece otro color, no comprar.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 1,
+      "precioUnitario": 7944,
+      "unidad": "pack x100",
+      "tipo": "referencia",
+      "subtotal": 7944,
+      "nota": "Precio orientativo de mercado, no cotización del vendedor elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S25",
@@ -496,7 +739,16 @@
     "buscar": "https://listado.mercadolibre.com.ar/bandeja-mozo-grande-antideslizante",
     "estado": "Relevar / cotizar",
     "aviso": "Modelo seleccionado; confirmar disponibilidad y características antes de comprar. No significa adquirido.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 5,
+      "precioUnitario": 12488,
+      "unidad": "bandejas",
+      "tipo": "referencia",
+      "subtotal": 62440,
+      "nota": "Precio orientativo de mercado, no cotización del vendedor elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S26",
@@ -512,7 +764,16 @@
     "tipo": "Confección a medida",
     "buscar": "",
     "estado": "Se manda a hacer a medida",
-    "aviso": "SE MANDA A HACER A MEDIDA — Cantidad pendiente de relevamiento. No comprar fundas estándar."
+    "aviso": "SE MANDA A HACER A MEDIDA — Cantidad pendiente de relevamiento. No comprar fundas estándar.",
+    "presupuesto": {
+      "cantidad": 6,
+      "precioUnitario": 90000,
+      "unidad": "fundas exteriores supuestas",
+      "tipo": "provision",
+      "subtotal": 540000,
+      "nota": "Cantidad de fundas aún no relevada: se supone 6 unidades a $90.000; si son fundas integrales de sillón podrían costar bastante más.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S27",
@@ -529,7 +790,16 @@
     "buscar": "",
     "estado": "Relevar / cotizar",
     "aviso": "Modelo seleccionado, todavía no comprado. Verificar color, talle/medidas, y si cada publicación corresponde a 1 delantal antes de encargar las 8 unidades.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 8,
+      "precioUnitario": 15000,
+      "unidad": "delantales",
+      "tipo": "estimacion",
+      "subtotal": 120000,
+      "nota": "Valor estimado por comparable; validar el precio del enlace elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S28",
@@ -545,7 +815,16 @@
     "tipo": "Confección a medida",
     "buscar": "",
     "estado": "Se manda a hacer a medida",
-    "aviso": "SE MANDA A HACER — Confirmar talles, cantidad, diseño y presupuesto antes de encargar."
+    "aviso": "SE MANDA A HACER — Confirmar talles, cantidad, diseño y presupuesto antes de encargar.",
+    "presupuesto": {
+      "cantidad": 10,
+      "precioUnitario": 32000,
+      "unidad": "chombas supuestas",
+      "tipo": "provision",
+      "subtotal": 320000,
+      "nota": "Talles y cantidad pendientes: se presuponen 10 chombas.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "S29",
@@ -561,7 +840,16 @@
     "tipo": "Confección a medida",
     "buscar": "",
     "estado": "Se manda a hacer a medida",
-    "aviso": "SE MANDA A HACER — Confirmar talles, cantidad, diseño y presupuesto antes de encargar."
+    "aviso": "SE MANDA A HACER — Confirmar talles, cantidad, diseño y presupuesto antes de encargar.",
+    "presupuesto": {
+      "cantidad": 10,
+      "precioUnitario": 40000,
+      "unidad": "camisas supuestas",
+      "tipo": "provision",
+      "subtotal": 400000,
+      "nota": "Talles y cantidad pendientes: se presuponen 10 camisas.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "T78",
@@ -578,7 +866,16 @@
     "link": "https://www.mercadolibre.com.ar/p/MLA47433747?pdp_filters=item_id:MLA2039012598#origin=share&sid=share&wid=MLA2039012598&action=more",
     "buscar": "",
     "aviso": "Link original del catálogo Tatiana y ficha específica del pack x6, 49 × 34 × 12 cm con tapa.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 6,
+      "precioUnitario": 14000,
+      "unidad": "bateas con tapa",
+      "tipo": "estimacion",
+      "subtotal": 84000,
+      "nota": "Valor estimado por comparable; validar el precio del enlace elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "T79",
@@ -595,7 +892,16 @@
     "link": "https://www.mercadolibre.com.ar/p/MLA35602756?pdp_filters=item_id:MLA1420957965#origin=share&sid=share&wid=MLA1420957965&action=more",
     "buscar": "",
     "aviso": "ATENCIÓN: para contenedores negros, el fabricante advierte que algunos modelos NO son aptos para contacto directo con alimentos. Validar uso con envases internos o variante blanca certificada.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 12,
+      "precioUnitario": 12075,
+      "unidad": "contenedores bajos",
+      "tipo": "referencia",
+      "subtotal": 144900,
+      "nota": "Precio orientativo de mercado, no cotización del vendedor elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "T80",
@@ -612,7 +918,16 @@
     "link": "https://www.mercadolibre.com.ar/p/MLA52881750?pdp_filters=item_id:MLA2561898362#origin=share&sid=share&wid=MLA2561898362&action=more",
     "buscar": "",
     "aviso": "ATENCIÓN: para contenedores negros, el fabricante advierte que algunos modelos NO son aptos para contacto directo con alimentos. Validar uso con envases internos o variante blanca certificada.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 5,
+      "precioUnitario": 28306,
+      "unidad": "contenedores altos",
+      "tipo": "estimacion",
+      "subtotal": 141530,
+      "nota": "Valor estimado por comparable; validar el precio del enlace elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "T81",
@@ -629,7 +944,16 @@
     "link": "https://www.mercadolibre.com.ar/up/MLAU2891067331?pdp_filters=item_id:MLA1974858082#origin=share&sid=share&wid=MLA1974858082&action=more",
     "buscar": "",
     "aviso": "Comprobar compatibilidad con modelo y cantidad de contenedores antes de aprobar.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 12,
+      "precioUnitario": 9806,
+      "unidad": "tapas con bisagra",
+      "tipo": "referencia",
+      "subtotal": 117672,
+      "nota": "Precio orientativo de mercado, no cotización del vendedor elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "T82",
@@ -646,7 +970,16 @@
     "link": "https://www.mercadolibre.com.ar/p/MLA35570727?pdp_filters=item_id:MLA3342561812#origin=share&sid=share&wid=MLA3342561812&action=more",
     "buscar": "",
     "aviso": "ATENCIÓN: para contenedores negros, el fabricante advierte que algunos modelos NO son aptos para contacto directo con alimentos. Validar uso con envases internos o variante blanca certificada.",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 6,
+      "precioUnitario": 11401,
+      "unidad": "contenedores intermedios",
+      "tipo": "referencia",
+      "subtotal": 68406,
+      "nota": "Precio orientativo de mercado, no cotización del vendedor elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "T83",
@@ -663,7 +996,16 @@
     "link": "https://www.mercadolibre.com.ar/p/MLA47689743?pdp_filters=item_id:MLA2093915103&attributes=COLOR:MLA68687626,UNITS_PER_PACK:MLA47689743#origin=share&sid=share&wid=MLA2093915103&action=more",
     "buscar": "",
     "aviso": "",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 24,
+      "precioUnitario": 11995,
+      "unidad": "canastos ventilados",
+      "tipo": "estimacion",
+      "subtotal": 287880,
+      "nota": "Valor estimado por comparable; validar el precio del enlace elegido.",
+      "fecha": "2026-11-10"
+    }
   },
   {
     "id": "T84",
@@ -680,6 +1022,15 @@
     "link": "https://www.mercadolibre.com.ar/up/MLAU3908518669?pdp_filters=item_id:MLA3219465684#origin=share&sid=share&wid=MLA3219465684&action=more",
     "buscar": "",
     "aviso": "",
-    "validado": true
+    "validado": true,
+    "presupuesto": {
+      "cantidad": 3,
+      "precioUnitario": 55740,
+      "unidad": "organizadores garnish",
+      "tipo": "estimacion",
+      "subtotal": 167220,
+      "nota": "Valor estimado por comparable; validar el precio del enlace elegido.",
+      "fecha": "2026-11-10"
+    }
   }
 ]
