@@ -303,17 +303,18 @@
     "id": "S17",
     "scope": "salon",
     "grupo": "Comunicaciones",
-    "nombre": "Handys completos",
-    "cantidad": "10 equipos",
+    "nombre": "Handys Baofeng BF-A58 · pack de 4",
+    "cantidad": "10 equipos solicitados · publicación pack ×4",
     "prioridad": "ALTA",
-    "detalle": "Auditar equipos actuales antes de pedir 10 nuevos; comprobar compatibilidad.",
-    "link": "https://www.baofeng.com.ar/equipos-portatiles/handies-analogicos-bibanda/handy-baofeng-uv-5r-8w",
+    "detalle": "Modelo correcto confirmado: Baofeng BF-A58 VHF/UHF, pack de 4 equipos según publicación. No reemplazar por UV-5R. Para cubrir 10 equipos: 2 packs aportan 8; cotizar 2 equipos individuales o 3 packs = 12 (2 extra).",
+    "link": "https://www.mercadolibre.com.ar/pack-de-4-radios-baofeng-bf-a58-digitales-vhfuhf-de-5-w-y-largo-alcance/p/MLA63652747",
     "foto": "",
     "fuente": "",
-    "tipo": "Catálogo o ficha de proveedor",
-    "buscar": "https://listado.mercadolibre.com.ar/handy-Baofeng-UV5R-original",
+    "tipo": "Modelo BF-A58 elegido · publicación de Mercado Libre pack x4",
+    "buscar": "https://listado.mercadolibre.com.ar/baofeng-bf-a58",
     "estado": "Relevar / cotizar",
-    "aviso": ""
+    "aviso": "ATENCIÓN: la presentación x4 no coincide exactamente con los 10 equipos solicitados. Confirmar cuántos handys nuevos hacen falta y cómo completar cantidades. El check ✓ OK refiere al modelo, no a una compra.",
+    "validado": true
   },
   {
     "id": "S18",
@@ -322,14 +323,14 @@
     "nombre": "Auriculares originales de repuesto",
     "cantidad": "7 unidades",
     "prioridad": "ALTA",
-    "detalle": "Requeridos: gancho oreja de goma, PTT, conector tipo Kenwood de 2 pines; verificar modelo.",
+    "detalle": "Auriculares de repuesto con gancho de goma para oreja, micrófono y botón PTT. Confirmar originalidad y compatibilidad específica con Baofeng BF-A58 antes de comprar.",
     "link": "https://www.baofeng.com.ar/accesorios/complementos/auriculares-manos-libres-baofeng-plug-k",
     "foto": "",
     "fuente": "",
     "tipo": "Catálogo o ficha de proveedor",
-    "buscar": "https://listado.mercadolibre.com.ar/auricular-baofeng-original-gancho-PTT",
+    "buscar": "https://listado.mercadolibre.com.ar/auricular-original-baofeng-bf-a58-gancho-ptt",
     "estado": "Relevar / cotizar",
-    "aviso": ""
+    "aviso": "Los accesorios de la ficha no están confirmados aún para BF-A58; evitar dar por válida la compatibilidad solo por el conector."
   },
   {
     "id": "S19",
