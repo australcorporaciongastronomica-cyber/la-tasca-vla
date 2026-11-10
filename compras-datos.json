@@ -269,17 +269,18 @@
     "id": "S15",
     "scope": "salon",
     "grupo": "Mesa",
-    "nombre": "Pimenteros estilo madera",
+    "nombre": "Pimenteros · Molinillo de madera marrón claro",
     "cantidad": "10 unidades",
     "prioridad": "MEDIA",
-    "detalle": "Elegir acabado resistente al servicio.",
-    "link": "",
+    "detalle": "Molinillo pimentero de madera para granos de pimienta, tamaño chico y acabado marrón claro. Modelo seleccionado para servicio de mesa.",
+    "link": "https://www.mercadolibre.com.ar/molinillo-pimentero-de-madera-granos-pimienta-chico-marron-claro/p/MLA79563104",
     "foto": "",
     "fuente": "",
-    "tipo": "",
+    "tipo": "Modelo elegido · publicación específica de Mercado Libre",
     "buscar": "https://listado.mercadolibre.com.ar/molinillo-pimienta-madera",
     "estado": "Relevar / cotizar",
-    "aviso": ""
+    "aviso": "Modelo seleccionado; verificar dimensiones, disponibilidad y precio antes de comprar. No significa adquirido.",
+    "validado": true
   },
   {
     "id": "S16",
