@@ -215,22 +215,6 @@
     "validado": true
   },
   {
-    "id": "T74",
-    "scope": "salon",
-    "grupo": "Descartables / Salón",
-    "nombre": "Cubiertos descartables negros",
-    "detalle": "Tenedor/cuchillo/cuchara negra aptos alimento",
-    "cantidad": "200 juegos (tenedor + cuchillo + cuchara)",
-    "prioridad": "A VERIFICAR",
-    "estado": "Pendiente de modelo/enlace",
-    "fuente": "https://drive.google.com/file/d/1Ygeeo6MFN_f-5ghjqUhnSTsTloeS8SIk/view",
-    "tipo": "Foto en Drive",
-    "foto": "https://drive.google.com/file/d/1Ygeeo6MFN_f-5ghjqUhnSTsTloeS8SIk/view",
-    "link": "",
-    "buscar": "",
-    "aviso": ""
-  },
-  {
     "id": "S12",
     "scope": "salon",
     "grupo": "Servicio",
@@ -339,14 +323,14 @@
     "nombre": "Cartas Santori",
     "cantidad": "10 unidades",
     "prioridad": "ALTA",
-    "detalle": "Conservar versión y formato actual; cubrir Santori + deck.",
+    "detalle": "SE MANDA A HACER. Conservar el diseño y formato de las cartas actuales de Santori; 10 unidades para salón y deck. Solicitar confección/presupuesto a proveedor, no compra de producto estándar.",
     "link": "",
     "foto": "",
     "fuente": "",
-    "tipo": "",
-    "buscar": "https://listado.mercadolibre.com.ar/portacarta-restaurante",
-    "estado": "Relevar / cotizar",
-    "aviso": ""
+    "tipo": "Confección a medida",
+    "buscar": "",
+    "estado": "Se manda a hacer a medida",
+    "aviso": "SE MANDA A HACER — 10 cartas, diseño y presupuesto de impresión a confirmar."
   },
   {
     "id": "S20",
@@ -355,14 +339,14 @@
     "nombre": "Cartas La Tasca",
     "cantidad": "10 unidades",
     "prioridad": "ALTA",
-    "detalle": "Conservar versión vigente y formato actual; cubrir Tasca + deck.",
+    "detalle": "SE MANDA A HACER. Conservar el diseño y formato de las cartas actuales de La Tasca; 10 unidades para salón y deck. Solicitar confección/presupuesto a proveedor, no compra de producto estándar.",
     "link": "",
     "foto": "",
     "fuente": "",
-    "tipo": "",
-    "buscar": "https://listado.mercadolibre.com.ar/portacarta-restaurante",
-    "estado": "Relevar / cotizar",
-    "aviso": ""
+    "tipo": "Confección a medida",
+    "buscar": "",
+    "estado": "Se manda a hacer a medida",
+    "aviso": "SE MANDA A HACER — 10 cartas, diseño y presupuesto de impresión a confirmar."
   },
   {
     "id": "S21",
@@ -556,14 +540,14 @@
     "nombre": "Chombas de salón",
     "cantidad": "Talles y cantidad a definir",
     "prioridad": "BAJA",
-    "detalle": "Tela liviana; blanco al mediodía, negro a la noche; logo opcional.",
+    "detalle": "SE MANDA A HACER. Chombas de salón por encargo para temporada de verano. Tela liviana; blanco para mediodía y negro para noche; logo opcional. Definir talles y cantidad. Solicitar confección/presupuesto a proveedor, no compra de producto estándar.",
     "link": "",
     "foto": "",
     "fuente": "",
-    "tipo": "",
-    "buscar": "https://listado.mercadolibre.com.ar/chomba-piqu%C3%A9-fina-blanco-negro",
-    "estado": "Relevar / cotizar",
-    "aviso": ""
+    "tipo": "Confección a medida",
+    "buscar": "",
+    "estado": "Se manda a hacer a medida",
+    "aviso": "SE MANDA A HACER — Confirmar talles, cantidad, diseño y presupuesto antes de encargar."
   },
   {
     "id": "S29",
@@ -572,14 +556,14 @@
     "nombre": "Camisas de salón",
     "cantidad": "Talles y cantidad a definir",
     "prioridad": "BAJA",
-    "detalle": "Tela liviana verano, manga a definir, combinación con delantal.",
+    "detalle": "SE MANDA A HACER. Camisas de salón por encargo para temporada de verano. Tela liviana, manga a definir y combinación con delantal. Definir talles y cantidad. Solicitar confección/presupuesto a proveedor, no compra de producto estándar.",
     "link": "",
     "foto": "",
     "fuente": "",
-    "tipo": "",
-    "buscar": "https://listado.mercadolibre.com.ar/camisa-lino-gastronomia-mozo",
-    "estado": "Relevar / cotizar",
-    "aviso": ""
+    "tipo": "Confección a medida",
+    "buscar": "",
+    "estado": "Se manda a hacer a medida",
+    "aviso": "SE MANDA A HACER — Confirmar talles, cantidad, diseño y presupuesto antes de encargar."
   },
   {
     "id": "T78",
@@ -588,14 +572,15 @@
     "nombre": "Batea blanca para sushi",
     "detalle": "49 × 34 × 12 cm, plástico de grado alimentario CON TAPA",
     "cantidad": "6 unidades",
-    "prioridad": "A VERIFICAR",
+    "prioridad": "POR DEFINIR",
     "estado": "Relevar / cotizar",
     "fuente": "https://www.mercadolibre.com.ar/p/MLA47433747?pdp_filters=item_id:MLA2039012598#origin=share&sid=share&wid=MLA2039012598&action=more",
-    "tipo": "Publicación Mercado Libre",
+    "tipo": "Publicación exacta elegida y compartida · Mercado Libre",
     "foto": "",
     "link": "https://www.mercadolibre.com.ar/p/MLA47433747?pdp_filters=item_id:MLA2039012598#origin=share&sid=share&wid=MLA2039012598&action=more",
     "buscar": "",
-    "aviso": "Link original del catálogo Tatiana y ficha específica del pack x6, 49 × 34 × 12 cm con tapa."
+    "aviso": "Link original del catálogo Tatiana y ficha específica del pack x6, 49 × 34 × 12 cm con tapa.",
+    "validado": true
   },
   {
     "id": "T79",
@@ -604,14 +589,15 @@
     "nombre": "Contenedor Atenas M4312 A · bajo",
     "detalle": "40 × 30 × 12 cm NEGRO",
     "cantidad": "12 unidades",
-    "prioridad": "A VERIFICAR",
+    "prioridad": "POR DEFINIR",
     "estado": "Relevar / cotizar",
     "fuente": "https://www.mercadolibre.com.ar/p/MLA35602756?pdp_filters=item_id:MLA1420957965#origin=share&sid=share&wid=MLA1420957965&action=more",
-    "tipo": "Publicación Mercado Libre",
+    "tipo": "Publicación exacta elegida y compartida · Mercado Libre",
     "foto": "",
     "link": "https://www.mercadolibre.com.ar/p/MLA35602756?pdp_filters=item_id:MLA1420957965#origin=share&sid=share&wid=MLA1420957965&action=more",
     "buscar": "",
-    "aviso": "ATENCIÓN: para contenedores negros, el fabricante advierte que algunos modelos NO son aptos para contacto directo con alimentos. Validar uso con envases internos o variante blanca certificada."
+    "aviso": "ATENCIÓN: para contenedores negros, el fabricante advierte que algunos modelos NO son aptos para contacto directo con alimentos. Validar uso con envases internos o variante blanca certificada.",
+    "validado": true
   },
   {
     "id": "T80",
@@ -620,14 +606,15 @@
     "nombre": "Contenedor Atenas · alto",
     "detalle": "40 × 30 × 22 cm; variante del enlace a comprobar COLOR NEGRO",
     "cantidad": "5 unidades",
-    "prioridad": "A VERIFICAR",
+    "prioridad": "POR DEFINIR",
     "estado": "Relevar / cotizar",
     "fuente": "https://www.mercadolibre.com.ar/p/MLA52881750?pdp_filters=item_id:MLA2561898362#origin=share&sid=share&wid=MLA2561898362&action=more",
-    "tipo": "Publicación Mercado Libre",
+    "tipo": "Publicación exacta elegida y compartida · Mercado Libre",
     "foto": "",
     "link": "https://www.mercadolibre.com.ar/p/MLA52881750?pdp_filters=item_id:MLA2561898362#origin=share&sid=share&wid=MLA2561898362&action=more",
     "buscar": "",
-    "aviso": "ATENCIÓN: para contenedores negros, el fabricante advierte que algunos modelos NO son aptos para contacto directo con alimentos. Validar uso con envases internos o variante blanca certificada."
+    "aviso": "ATENCIÓN: para contenedores negros, el fabricante advierte que algunos modelos NO son aptos para contacto directo con alimentos. Validar uso con envases internos o variante blanca certificada.",
+    "validado": true
   },
   {
     "id": "T81",
@@ -636,14 +623,15 @@
     "nombre": "Tapa negra Atenas con bisagra",
     "detalle": "40 × 30 cm; COLOR NEGRO",
     "cantidad": "12 unidades",
-    "prioridad": "A VERIFICAR",
+    "prioridad": "POR DEFINIR",
     "estado": "Relevar / cotizar",
     "fuente": "https://www.mercadolibre.com.ar/up/MLAU2891067331?pdp_filters=item_id:MLA1974858082#origin=share&sid=share&wid=MLA1974858082&action=more",
-    "tipo": "Publicación Mercado Libre",
+    "tipo": "Publicación exacta elegida y compartida · Mercado Libre",
     "foto": "",
     "link": "https://www.mercadolibre.com.ar/up/MLAU2891067331?pdp_filters=item_id:MLA1974858082#origin=share&sid=share&wid=MLA1974858082&action=more",
     "buscar": "",
-    "aviso": "Comprobar compatibilidad con modelo y cantidad de contenedores antes de aprobar."
+    "aviso": "Comprobar compatibilidad con modelo y cantidad de contenedores antes de aprobar.",
+    "validado": true
   },
   {
     "id": "T82",
@@ -652,14 +640,15 @@
     "nombre": "Contenedor Atenas · intermedio",
     "detalle": "40 × 30 × 17 cm; COLOR NEGRO",
     "cantidad": "6 unidades",
-    "prioridad": "A VERIFICAR",
+    "prioridad": "POR DEFINIR",
     "estado": "Relevar / cotizar",
     "fuente": "https://www.mercadolibre.com.ar/p/MLA35570727?pdp_filters=item_id:MLA3342561812#origin=share&sid=share&wid=MLA3342561812&action=more",
-    "tipo": "Publicación Mercado Libre",
+    "tipo": "Publicación exacta elegida y compartida · Mercado Libre",
     "foto": "",
     "link": "https://www.mercadolibre.com.ar/p/MLA35570727?pdp_filters=item_id:MLA3342561812#origin=share&sid=share&wid=MLA3342561812&action=more",
     "buscar": "",
-    "aviso": "ATENCIÓN: para contenedores negros, el fabricante advierte que algunos modelos NO son aptos para contacto directo con alimentos. Validar uso con envases internos o variante blanca certificada."
+    "aviso": "ATENCIÓN: para contenedores negros, el fabricante advierte que algunos modelos NO son aptos para contacto directo con alimentos. Validar uso con envases internos o variante blanca certificada.",
+    "validado": true
   },
   {
     "id": "T83",
@@ -668,14 +657,15 @@
     "nombre": "Canastos negros para guardar verduras ·",
     "detalle": "ventilados",
     "cantidad": "24 unidades",
-    "prioridad": "A VERIFICAR",
+    "prioridad": "POR DEFINIR",
     "estado": "Relevar / cotizar",
     "fuente": "https://www.mercadolibre.com.ar/p/MLA47689743?pdp_filters=item_id:MLA2093915103&attributes=COLOR:MLA68687626,UNITS_PER_PACK:MLA47689743#origin=share&sid=share&wid=MLA2093915103&action=more",
-    "tipo": "Publicación Mercado Libre",
+    "tipo": "Publicación exacta elegida y compartida · Mercado Libre",
     "foto": "",
     "link": "https://www.mercadolibre.com.ar/p/MLA47689743?pdp_filters=item_id:MLA2093915103&attributes=COLOR:MLA68687626,UNITS_PER_PACK:MLA47689743#origin=share&sid=share&wid=MLA2093915103&action=more",
     "buscar": "",
-    "aviso": ""
+    "aviso": "",
+    "validado": true
   },
   {
     "id": "T84",
@@ -684,13 +674,14 @@
     "nombre": "Portacondimentos garnish negro",
     "detalle": "Organizador negro de ingredientes; 1 cocina, 1 pastelería, 1 sushi",
     "cantidad": "3 unidades",
-    "prioridad": "A VERIFICAR",
+    "prioridad": "POR DEFINIR",
     "estado": "Relevar / cotizar",
     "fuente": "https://www.mercadolibre.com.ar/up/MLAU3908518669?pdp_filters=item_id:MLA3219465684#origin=share&sid=share&wid=MLA3219465684&action=more",
-    "tipo": "Publicación Mercado Libre",
+    "tipo": "Publicación exacta elegida y compartida · Mercado Libre",
     "foto": "",
     "link": "https://www.mercadolibre.com.ar/up/MLAU3908518669?pdp_filters=item_id:MLA3219465684#origin=share&sid=share&wid=MLA3219465684&action=more",
     "buscar": "",
-    "aviso": ""
+    "aviso": "",
+    "validado": true
   }
 ]
