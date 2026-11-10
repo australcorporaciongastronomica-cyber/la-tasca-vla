@@ -76,7 +76,7 @@ nav button.active{background:var(--ink);color:white;border-color:var(--ink)}
 <body>
 <header><div class="wrap headline"><div><div class="eyebrow">La Tasca · Santori · Villa La Angostura</div><h1>Relevamiento de temporada</h1><p>Salón, cristalería, equipamiento de cámara e insumos. Un catálogo de consulta con cantidades propuestas, fotos de referencia y enlaces a proveedores para revisar las compras con criterio.</p></div><span class="header-tag">Verano 2026 — 2027</span></div></header>
 <main class="wrap">
-<div class="summary"><div class="number ok"><strong id="countOk">3 ✓</strong><span>Productos elegidos · OK</span></div><div class="number"><strong id="countSalon">29</strong><span>Rubros de salón</span></div><div class="number"><strong id="countCamara">7</strong><span>Artículos cámara / Tatiana</span></div><div class="number"><strong id="countTotal">—</strong><span>Referencias en total</span></div></div>
+<div class="summary"><div class="number ok"><strong id="countOk">10 ✓</strong><span>Productos elegidos · OK</span></div><div class="number"><strong id="countSalon">30</strong><span>Rubros de salón</span></div><div class="number"><strong id="countCamara">7</strong><span>Artículos cámara / Tatiana</span></div><div class="number"><strong id="countTotal">113</strong><span>Referencias en total</span></div></div>
 <div class="emergency" role="alert">🚨 URGENTE: BOTIQUÍN DE PRIMEROS AUXILIOS COMPLETO — ¡NO TENEMOS!<small>Debe incluir curitas, gasas estériles, vendas, cinta hipoalergénica, guantes, solución fisiológica, apósitos, antiséptico y herramientas. Ver detalle completo en la primera tarjeta del listado.</small></div>
 <div class="info"><b>Para revisar, no para comprar automáticamente</b>Las cantidades son orientativas: comparar primero con el stock útil, compras anteriores y presupuesto. Las publicaciones pueden variar de precio, versión o disponibilidad. No se cargaron precios estimativos para evitar decisiones con valores desactualizados.</div>
 <div class="legend"><strong>✓ OK</strong> = artículo con modelo concreto y publicación que ya elegimos juntos. <span style="color:#7a7468">REFERENCIA</span> = hay una ficha específica, pero falta confirmar que sea la adecuada. <span style="color:#7a7468">PENDIENTE</span> = falta elegir modelo. <b>✓ OK no significa comprado, recibido ni disponible en stock.</b></div>
@@ -91,9 +91,10 @@ nav button.active{background:var(--ink);color:white;border-color:var(--ink)}
 <input id="q" type="search" placeholder="Buscar copa, cuchara, batea, cámara, auricular..." aria-label="Buscar artículos">
 <select id="priority"><option value="">Todas las prioridades</option><option value="ALTA">Prioridad alta</option><option value="MEDIA">Prioridad media</option><option value="BAJA">Prioridad baja</option><option value="POR DEFINIR">Por definir</option><option value="ADQUIRIDO SEGÚN CATÁLOGO">Marcado comprado</option></select>
 <select id="group"><option value="">Todas las categorías</option></select>
+<select id="status" aria-label="Filtrar productos por confirmación"><option value="">Todos los estados</option><option value="ok">✓ Solo OK</option><option value="pending">Sin confirmar</option></select>
 <button id="print">Imprimir / PDF</button>
 </div>
-<div class="meta"><span id="showing">Cargando artículos…</span><span>Última recopilación: 9 de noviembre de 2026 · v1</span></div>
+<div class="meta"><span id="showing">Cargando artículos…</span><span id="versionStatus">Revisión actual: 10 productos ✓ OK · 113 artículos</span></div>
 <div id="cards" class="cards"></div>
 <footer class="footer">
 <strong>Fuentes y estado de verificación</strong>
@@ -112,8 +113,8 @@ nav button.active{background:var(--ink);color:white;border-color:var(--ink)}
  const symbol=(s)=>({'Vajilla':'🍷','Cubiertos':'🍴','Servicio':'◈','Santori':'🥢','Cristalería':'🥃','Mesa':'◉','Comunicaciones':'📻','Cartas':'▤','Textil':'▧','Infusiones':'🫖','Exterior':'✧','Uniformes':'♟'}[s]||'▦');
  let tab='salon';
  function hasFixedLink(x){const url=(x.link||'').trim();return /^https?:\/\//i.test(url)&&!/\/categoria-producto\/|listado\.mercadolibre\.com\.ar\/|\/search\?|\/busqueda\//i.test(url);}
- function visible(){const query=$('#q').value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');const pr=$('#priority').value;const gr=$('#group').value;
- return DATA.filter(x=>(tab==='todos'||x.scope===tab)&&(!pr||x.prioridad===pr)&&(!gr||x.grupo===gr)&&(!query||[x.nombre,x.detalle,x.grupo,x.cantidad].join(' ').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').includes(query)));
+ function visible(){const query=$('#q').value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');const pr=$('#priority').value;const gr=$('#group').value;const st=$('#status').value;
+ return DATA.filter(x=>(tab==='todos'||x.scope===tab)&&(!pr||x.prioridad===pr)&&(!gr||x.grupo===gr)&&(!st||(st==='ok'?(x.validado===true&&hasFixedLink(x)):!(x.validado===true&&hasFixedLink(x))))&&(!query||[x.nombre,x.detalle,x.grupo,x.cantidad].join(' ').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').includes(query)));
  }
  function groups(){const options=[...new Set(DATA.filter(x=>tab==='todos'||x.scope===tab).map(x=>x.grupo))].sort();
  $('#group').innerHTML='<option value="">Todas las categorías</option>'+options.map(v=>'<option value="'+escape(v)+'">'+escape(v)+'</option>').join('');}
@@ -139,9 +140,11 @@ nav button.active{background:var(--ink);color:white;border-color:var(--ink)}
  return '<article class="item '+(x.fotoFuente?'real-photo':'')+(x.prioridad==='URGENTE'?' urgent':'')+'"><div class="visual"><span class="ref">'+escape(x.id)+'</span>'+visual+'</div><div class="body"><div class="chips"><span class="chip">'+escape(x.grupo)+'</span><span class="chip '+priority+'">'+escape(x.prioridad)+'</span>'+linkChip+'</div><h3>'+escape(x.nombre)+'</h3><div class="qty">'+escape(x.cantidad)+'</div>'+(x.detalle?'<div class="note">'+escape(x.detalle)+'</div>':'')+(Array.isArray(x.contenidoBotiquin)?'<div class="kit-content"><strong>CONTENIDO QUE DEBE INCLUIR</strong><ul>'+x.contenidoBotiquin.map(t=>'<li>'+escape(t)+'</li>').join('')+'</ul></div>':'')+(x.aviso?'<div class="warn">'+escape(x.aviso)+'</div>':'')+'<div class="actions">'+actions+'</div></div></article>';
  }).join('');}
  document.querySelectorAll('#tabs button').forEach(b=>b.addEventListener('click',function(){tab=this.dataset.tab;document.querySelectorAll('#tabs button').forEach(t=>t.classList.toggle('active',t===this));$('#q').value='';$('#priority').value='';groups();render();window.scrollTo({top:190,behavior:'smooth'});}));
- ['#q','#priority','#group'].forEach(sel=>$(sel).addEventListener(sel==='#q'?'input':'change',render));
+ ['#q','#priority','#group','#status'].forEach(sel=>$(sel).addEventListener(sel==='#q'?'input':'change',render));
  $('#print').addEventListener('click',()=>window.print());
- $('#countOk').textContent=DATA.filter(x=>x.validado===true&&hasFixedLink(x)).length+' ✓';
+ const approvedCount=DATA.filter(x=>x.validado===true&&hasFixedLink(x)).length;
+ $('#countOk').textContent=approvedCount+' ✓';
+ $('#versionStatus').textContent='Revisión publicada: '+approvedCount+' ✓ OK de '+DATA.length+' artículos';
  $('#countSalon').textContent=DATA.filter(x=>x.scope==='salon').length;
  $('#countCamara').textContent=DATA.filter(x=>x.scope==='camara').length;
  $('#countTotal').textContent=DATA.length;
