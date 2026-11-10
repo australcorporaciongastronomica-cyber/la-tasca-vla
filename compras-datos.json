@@ -404,15 +404,15 @@
     "nombre": "Filtro de MALLA METÁLICA fina con borde para tetera · repuesto",
     "cantidad": "6 unidades",
     "prioridad": "MEDIA",
-    "detalle": "NO es una canastilla rígida perforada. Filtro de malla metálica fina con borde de apoyo, para tetera blanca de porcelana. Referencia concreta: Tea Blends For You, repuesto de filtros de malla metálica, disponible en diámetros 6, 6,5, 7 y 8 cm; el borde suma 1 cm de diámetro. Elegir según la boca interior y profundidad de la tetera S22, de manera que pueda cerrar la tapa.",
+    "detalle": "Modelo aprobado: repuesto de filtro de malla metálica fina con borde de apoyo, Tea Blends For You. No usar canastilla rígida/perforada. El filtro va separado de la tetera blanca S22. Cantidad: 6 unidades. Tamaño pendiente de medir según la boca interior de las teteras y la posibilidad de cerrar la tapa.",
     "link": "https://www.teablendsforyou.com.ar/product-page/repuesto-filtros-malla-met%C3%A1lica-3-tama%C3%B1os",
     "foto": "",
     "fuente": "",
-    "tipo": "Referencia concreta · filtro de malla metálica, pendiente de validar",
+    "tipo": "Producto elegido y aprobado por salón · repuesto malla metálica fina",
     "buscar": "",
     "estado": "Relevar / cotizar",
-    "aviso": "REFERENCIA CORREGIDA: MALLA METÁLICA FINA, NO COLADOR PERFORADO RÍGIDO. Precio de referencia $5.000 c/u el 10/11/2026. Falta medir el diámetro interior de las teteras, confirmar el tamaño adecuado y stock de 6 antes de comprar.",
-    "validado": false
+    "aviso": "✓ MODELO ELEGIDO (10/11/2026): filtro de malla metálica fina con borde, confirmado por salón. Todavía NO comprado. Antes de pedir las 6 unidades, medir el diámetro de la tetera y elegir el tamaño compatible (6, 6,5, 7 u 8 cm); confirmar disponibilidad, precio y envío.",
+    "validado": true
   },
   {
     "id": "S23",
