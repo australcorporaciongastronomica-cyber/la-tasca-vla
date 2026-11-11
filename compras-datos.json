@@ -808,14 +808,14 @@
     "nombre": "Chombas de salón",
     "cantidad": "Talles y cantidad a definir",
     "prioridad": "BAJA",
-    "detalle": "SE MANDA A HACER. Chombas de salón por encargo para temporada de verano. Tela liviana; blanco para mediodía y negro para noche; logo opcional. Definir talles y cantidad. Solicitar confección/presupuesto a proveedor, no compra de producto estándar.",
+    "detalle": "SE MANDA A HACER. FOTO REAL DE REFERENCIA DEL SALÓN: chomba Santori negra de manga corta y cuello tipo polo, con botones, bordado STAFF en el pecho derecho de quien la viste y logo Santori en el izquierdo, ambos en hilo claro/beige. Reproducir este diseño en la confección. Definir talles, cantidad, material, medidas y presupuesto. Para La Tasca, confirmar diseño y bordado propios antes del encargo.",
     "link": "",
     "foto": "",
     "fuente": "",
     "tipo": "Confección a medida",
     "buscar": "",
     "estado": "Se manda a hacer a medida",
-    "aviso": "SE MANDA A HACER — Confirmar talles, cantidad, diseño y presupuesto antes de encargar.",
+    "aviso": "FOTO REAL DE REFERENCIA INCORPORADA — SE MANDA A HACER. Modelo Santori negro con bordados claros STAFF + Santori. Confirmar talles/cantidades y cotización; las 10 unidades del presupuesto son una estimación, NO un pedido confirmado.",
     "presupuesto": {
       "cantidad": 10,
       "precioUnitario": 32000,
@@ -824,7 +824,9 @@
       "subtotal": 320000,
       "nota": "Talles y cantidad pendientes: se presuponen 10 chombas.",
       "fecha": "2026-11-10"
-    }
+    },
+    "fotoProducto": "https://raw.githubusercontent.com/australcorporaciongastronomica-cyber/la-tasca-vla/main/assets/chomba-santori-referencia.svg",
+    "fotoReal": true
   },
   {
     "id": "S29",
