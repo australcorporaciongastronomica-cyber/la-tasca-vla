@@ -1,0 +1,2567 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:title" content="La Tasca & Santori | Villa La Angostura">
+  <meta property="og:description" content="Dos experiencias gastronómicas en Villa La Angostura. Conocé nuestras cartas y reservá tu mesa en La Tasca y Santori.">
+  <meta property="og:url" content="https://la-tasca-vla.pages.dev/">
+  <meta property="og:image" content="https://la-tasca-vla.pages.dev/tasca-vino-comida-horizontal.jpg">
+  <meta property="og:image:secure_url" content="https://la-tasca-vla.pages.dev/tasca-vino-comida-horizontal.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1600">
+  <meta property="og:image:height" content="900">
+  <meta property="og:image:alt" content="La Tasca: gastronomía, vinos y cocina patagónica en Villa La Angostura">
+  <meta name="twitter:card" content="summary_large_image">
+
+
+  <title>La Tasca & Santori | Villa La Angostura</title>
+
+  <meta
+    name="description"
+    content="La Tasca & Santori — Gastronomía y Sushi Nikkei en Villa La Angostura."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    :root {
+      --bg: #090909;
+      --bg-soft: #11100f;
+      --gold: #c9a96b;
+      --gold-soft: #dec18a;
+      --white: #ffffff;
+      --text: #f4efe8;
+      --muted: #c9c1b7;
+      --line: rgba(215, 183, 120, .22);
+      --shadow: 0 20px 55px rgba(0,0,0,.42);
+      --radius: 22px;
+      --radius-small: 16px;
+      --container: 1180px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section-label {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(46px, 6vw, 78px);
+      font-weight: 500;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .section-text {
+      max-width: 760px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    /* =========================
+       PORTADA
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+      padding: 48px 20px;
+
+      background:
+        linear-gradient(
+          rgba(0,0,0,.28),
+          rgba(0,0,0,.78)
+        ),
+        url('TASCA HORI.png')
+        center / cover
+        no-repeat;
+
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background:
+        radial-gradient(
+          circle at center,
+          transparent 18%,
+          rgba(0,0,0,.15) 62%,
+          rgba(0,0,0,.46) 100%
+        );
+
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1040px;
+    }
+
+    .hero-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 44px;
+      max-width: 760px;
+      margin: 0 auto 38px;
+      flex-wrap: wrap;
+    }
+
+    .hero-logo-wrap {
+      width: 310px;
+      height: 130px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 10px;
+    }
+
+    .hero-logo {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+
+      filter:
+        drop-shadow(
+          0 10px 20px rgba(0,0,0,.80)
+        );
+    }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 18px;
+
+      text-shadow:
+        0 4px 18px rgba(0,0,0,.78);
+    }
+
+    .hero-location {
+      color: rgba(255,255,255,.92);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 14px;
+      line-height: 1.8;
+
+      text-shadow:
+        0 3px 12px rgba(0,0,0,.85);
+    }
+
+    .hero-scroll {
+      margin-top: 36px;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.88);
+
+      text-shadow:
+        0 3px 12px rgba(0,0,0,.85);
+    }
+
+    /* =========================
+       INTRO
+    ========================= */
+
+    .intro {
+      padding: 96px 0 78px;
+      text-align: center;
+
+      background:
+        linear-gradient(
+          180deg,
+          #0d0d0d,
+          #11100f
+        );
+    }
+
+    /* =========================
+       TASCA / SANTORI
+    ========================= */
+
+    .brands {
+      padding: 28px 0 34px;
+      background: #11100f;
+    }
+
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .brand-card {
+      position: relative;
+      min-height: 610px;
+
+      border-radius: var(--radius);
+      overflow: hidden;
+
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+
+      display: flex;
+      align-items: flex-end;
+
+      isolation: isolate;
+      background: #0e0d0c;
+    }
+
+    .brand-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background-size: cover;
+      background-position: center;
+
+      z-index: -3;
+      transform: scale(1.02);
+    }
+
+    .brand-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(0,0,0,.05) 0%,
+          rgba(0,0,0,.16) 28%,
+          rgba(0,0,0,.55) 55%,
+          rgba(0,0,0,.94) 100%
+        );
+
+      z-index: -2;
+    }
+
+    .brand-card.tasca::before {
+      background-image:
+        url('tasca-vino-comida-horizontal.jpg');
+    }
+
+    .brand-card.santori::before {
+      background-image:
+        url('santori-neon-horizontal.jpg');
+    }
+
+    .brand-content {
+      width: 100%;
+      padding: 38px 32px 34px;
+    }
+
+    .brand-kicker {
+      color: rgba(255,255,255,.93);
+
+      font-size: 12px;
+      font-weight: 600;
+
+      letter-spacing: 3.2px;
+      text-transform: uppercase;
+
+      margin-bottom: 14px;
+
+      text-shadow:
+        0 3px 12px rgba(0,0,0,.95);
+    }
+
+    .brand-title {
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: clamp(52px, 5vw, 74px);
+      font-weight: 500;
+
+      color: #ffffff;
+
+      margin-bottom: 9px;
+
+      text-shadow:
+        0 5px 22px rgba(0,0,0,.88);
+    }
+
+    .brand-subtitle {
+      color: rgba(255,255,255,.90);
+
+      text-transform: uppercase;
+
+      letter-spacing: 3px;
+
+      font-size: 12px;
+      font-weight: 500;
+
+      margin-bottom: 18px;
+
+      text-shadow:
+        0 3px 12px rgba(0,0,0,.95);
+    }
+
+    .brand-description {
+      max-width: 520px;
+
+      color: rgba(255,255,255,.94);
+
+      line-height: 1.9;
+
+      font-size: 16px;
+
+      margin-bottom: 28px;
+
+      text-shadow:
+        0 3px 14px rgba(0,0,0,.90);
+    }
+
+    /* =========================
+       BOTONES / ACCESOS DIRECTOS
+    ========================= */
+
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .action-btn {
+      min-height: 76px;
+
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      gap: 12px;
+
+      padding: 13px 15px;
+
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 18px;
+
+      background: rgba(7,7,7,.58);
+      color: #ffffff;
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      box-shadow:
+        0 10px 28px rgba(0,0,0,.30),
+        inset 0 1px 0 rgba(255,255,255,.04);
+
+      transition:
+        transform .22s ease,
+        border-color .22s ease,
+        background .22s ease,
+        box-shadow .22s ease;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 15px 34px rgba(0,0,0,.42),
+        inset 0 1px 0 rgba(255,255,255,.08);
+    }
+
+    .action-btn:focus-visible,
+    .icon-btn:focus-visible,
+    .contact-choice:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 3px;
+    }
+
+    .action-btn.btn-menu {
+      grid-column: 1 / -1;
+      border-color: rgba(222,193,138,.46);
+      background:
+        linear-gradient(
+          90deg,
+          rgba(201,169,107,.16),
+          rgba(8,8,8,.62) 42%
+        );
+    }
+
+    .action-btn.btn-menu:hover {
+      border-color: rgba(231,205,156,.82);
+      background:
+        linear-gradient(
+          90deg,
+          rgba(201,169,107,.25),
+          rgba(8,8,8,.72) 48%
+        );
+    }
+
+    .action-btn.btn-whatsapp {
+      border-color: rgba(37,211,102,.34);
+    }
+
+    .action-btn.btn-whatsapp:hover {
+      border-color: rgba(37,211,102,.72);
+      background: rgba(37,211,102,.13);
+    }
+
+    .action-btn.btn-instagram {
+      border-color: rgba(225,48,108,.34);
+    }
+
+    .action-btn.btn-instagram:hover {
+      border-color: rgba(245,96,137,.72);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(131,58,180,.17),
+          rgba(225,48,108,.12),
+          rgba(252,175,69,.10)
+        );
+    }
+
+    .btn-icon {
+      width: 44px;
+      height: 44px;
+
+      flex: 0 0 44px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 14px;
+
+      background: rgba(255,255,255,.08);
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.09);
+    }
+
+    .btn-menu .btn-icon {
+      color: #f1d39d;
+      background: rgba(201,169,107,.16);
+    }
+
+    .btn-whatsapp .btn-icon,
+    .contact-choice .btn-icon {
+      color: #ffffff;
+      background: #25D366;
+    }
+
+    .btn-instagram .btn-icon {
+      color: #ffffff;
+
+      background:
+        linear-gradient(
+          135deg,
+          #833ab4,
+          #fd1d1d 58%,
+          #fcb045
+        );
+    }
+
+    .btn-icon svg {
+      width: 25px;
+      height: 25px;
+      display: block;
+    }
+
+    .btn-copy {
+      min-width: 0;
+      display: block;
+      text-align: left;
+    }
+
+    .btn-label {
+      display: block;
+
+      color: #ffffff;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+
+      line-height: 1.15;
+    }
+
+    .btn-meta {
+      display: block;
+
+      margin-top: 5px;
+
+      color: rgba(255,255,255,.68);
+
+      font-size: 10px;
+      font-weight: 400;
+
+      letter-spacing: .2px;
+      line-height: 1.25;
+
+      text-transform: none;
+    }
+
+    /* Botón secundario: ubicación */
+
+    .icon-btn {
+      min-height: 56px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 11px;
+
+      padding: 13px 22px;
+
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 16px;
+
+      background: rgba(255,255,255,.04);
+      color: #ffffff;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      letter-spacing: 1px;
+      text-transform: uppercase;
+
+      transition: .22s ease;
+    }
+
+    .icon-btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.65);
+      background: rgba(255,255,255,.09);
+    }
+
+    .icon-btn svg {
+      width: 22px;
+      height: 22px;
+      flex: 0 0 auto;
+    }
+
+    /* Contacto final */
+
+    .contact-links {
+      width: min(760px, 100%);
+      margin: 32px auto 0;
+
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      gap: 14px;
+    }
+
+    .contact-choice {
+      min-height: 78px;
+
+      display: flex;
+      align-items: center;
+
+      gap: 14px;
+
+      padding: 14px 17px;
+
+      border: 1px solid rgba(37,211,102,.30);
+      border-radius: 18px;
+
+      background: rgba(37,211,102,.055);
+
+      color: #ffffff;
+
+      transition: .22s ease;
+    }
+
+    .contact-choice:hover {
+      transform: translateY(-3px);
+
+      border-color: rgba(37,211,102,.68);
+      background: rgba(37,211,102,.12);
+    }
+
+    .contact-choice strong {
+      display: block;
+
+      font-size: 13px;
+      font-weight: 700;
+
+      letter-spacing: .7px;
+      text-transform: uppercase;
+    }
+
+    .contact-choice .btn-copy > span {
+      display: block;
+
+      margin-top: 4px;
+
+      color: rgba(255,255,255,.67);
+
+      font-size: 11px;
+      line-height: 1.3;
+    }
+
+    /* =========================
+       GALERIA
+    ========================= */
+
+    .gallery {
+      padding: 36px 0 92px;
+      background: #11100f;
+    }
+
+    .gallery-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 22px;
+    }
+
+    .gallery-card {
+      position: relative;
+      min-height: 360px;
+
+      border-radius: var(--radius-small);
+      overflow: hidden;
+
+      border: 1px solid var(--line);
+
+      box-shadow: var(--shadow);
+
+      background: #0e0d0c;
+    }
+
+    .gallery-card::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background-size: cover;
+      background-position: center;
+
+      transform: scale(1.03);
+
+      z-index: 0;
+    }
+
+    .gallery-card::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(0,0,0,.04) 0%,
+          rgba(0,0,0,.20) 45%,
+          rgba(0,0,0,.86) 100%
+        );
+
+      z-index: 1;
+    }
+
+    .gallery-card.tasca-plato::before {
+      background-image:
+        url('tasca-plato-horizontal.jpg');
+    }
+
+    .gallery-card.tasca-interior::before {
+      background-image:
+        url('tasca-interior-horizontal.jpg');
+    }
+
+    .gallery-card.santori-tabla::before {
+      background-image:
+        url('santori-tabla-horizontal.jpg');
+    }
+
+    .gallery-content {
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      z-index: 2;
+
+      padding: 24px 22px;
+    }
+
+    .gallery-tag {
+      color: #ffffff;
+
+      text-transform: uppercase;
+
+      letter-spacing: 3px;
+
+      font-size: 11px;
+      font-weight: 600;
+
+      margin-bottom: 8px;
+
+      text-shadow:
+        0 3px 12px rgba(0,0,0,.95);
+    }
+
+    .gallery-title {
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: 36px;
+
+      color: #ffffff;
+
+      line-height: 1.05;
+
+      margin-bottom: 8px;
+
+      text-shadow:
+        0 4px 16px rgba(0,0,0,.90);
+    }
+
+    .gallery-text {
+      color: rgba(255,255,255,.92);
+
+      font-size: 14px;
+
+      line-height: 1.7;
+
+      text-shadow:
+        0 3px 10px rgba(0,0,0,.90);
+    }
+
+    /* =========================
+       TRIPADVISOR
+    ========================= */
+
+    .tripadvisor {
+      padding: 100px 0;
+
+      text-align: center;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(201,169,107,.08),
+          transparent 45%
+        ),
+        #090909;
+    }
+
+    .trip-card {
+      position: relative;
+
+      width: min(760px, 100%);
+
+      margin: 38px auto 0;
+
+      padding: 46px 26px 42px;
+
+      border-radius: 26px;
+
+      border:
+        1px solid rgba(201,169,107,.28);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(24,23,21,.95),
+          rgba(11,11,10,.98)
+        );
+
+      box-shadow:
+        0 25px 70px rgba(0,0,0,.45);
+
+      overflow: hidden;
+    }
+
+    .trip-card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 280px;
+      height: 280px;
+
+      border-radius: 50%;
+
+      top: -180px;
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(201,169,107,.18),
+          transparent 70%
+        );
+
+      pointer-events: none;
+    }
+
+    .trip-small {
+      color: rgba(255,255,255,.72);
+
+      text-transform: uppercase;
+
+      letter-spacing: 3px;
+
+      font-size: 11px;
+
+      margin-bottom: 12px;
+    }
+
+    .trip-title {
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: clamp(38px, 5vw, 58px);
+
+      font-weight: 500;
+
+      color: #ffffff;
+
+      margin-bottom: 12px;
+    }
+
+    .trip-text {
+      max-width: 580px;
+
+      margin: 0 auto 28px;
+
+      color: rgba(255,255,255,.82);
+
+      font-size: 15px;
+
+      line-height: 1.8;
+    }
+
+    .trip-widget {
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      min-height: 130px;
+
+      margin-top: 20px;
+    }
+
+    .trip-widget ul {
+      list-style: none !important;
+
+      margin: 0 !important;
+
+      padding: 0 !important;
+    }
+
+    .trip-widget li {
+      list-style: none !important;
+    }
+
+    .trip-widget img {
+      margin: 0 auto !important;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* =========================
+       UBICACION
+    ========================= */
+
+    .visit {
+      padding: 100px 0;
+
+      text-align: center;
+
+      background:
+        linear-gradient(
+          180deg,
+          #0d0d0d,
+          #090909
+        );
+    }
+
+    .visit-box {
+      margin: 40px auto 0;
+
+      width: min(860px, 100%);
+
+      padding: 42px 26px;
+
+      border-radius: var(--radius);
+
+      background:
+        linear-gradient(
+          145deg,
+          #131211,
+          #0d0d0d
+        );
+
+      border: 1px solid var(--line);
+
+      box-shadow: var(--shadow);
+    }
+
+    .visit-address {
+      color: #f5efe7;
+
+      font-size: 19px;
+
+      line-height: 1.9;
+
+      margin-bottom: 30px;
+    }
+
+    .schedule-label {
+      color: #ffffff;
+
+      text-transform: uppercase;
+
+      letter-spacing: 3px;
+
+      font-size: 12px;
+      font-weight: 600;
+
+      margin-bottom: 18px;
+    }
+
+    .schedule-card {
+      width: min(460px, 100%);
+
+      margin: 0 auto;
+
+      padding: 28px 22px;
+
+      border-radius: 18px;
+
+      background: #0d0d0c;
+
+      border:
+        1px solid rgba(255,255,255,.12);
+    }
+
+    .schedule-card strong {
+      display: block;
+
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: 34px;
+      font-weight: 500;
+
+      margin-bottom: 10px;
+
+      color: #ffffff;
+    }
+
+    .schedule-card span {
+      display: block;
+
+      color: rgba(255,255,255,.82);
+
+      font-size: 16px;
+
+      line-height: 1.9;
+    }
+
+    .map-wrap {
+      margin-top: 26px;
+    }
+
+    /* =========================
+       CERRO BAYO
+    ========================= */
+
+    .scenic {
+      position: relative;
+
+      min-height: 520px;
+
+      display: flex;
+
+      align-items: flex-end;
+
+      background:
+
+        linear-gradient(
+          180deg,
+          rgba(0,0,0,.03) 0%,
+          rgba(0,0,0,.20) 50%,
+          rgba(5,5,5,.98) 100%
+        ),
+
+        url('cerro-bayo-piso-horizontal.jpg')
+        center / cover
+        no-repeat;
+    }
+
+    .scenic-content {
+      width: 100%;
+      padding: 70px 0 54px;
+    }
+
+    .scenic-inner {
+      width: min(
+        980px,
+        calc(100% - 32px)
+      );
+
+      margin: 0 auto;
+
+      text-align: center;
+    }
+
+    .scenic .section-label {
+      color: #ffffff;
+
+      text-shadow:
+        0 3px 12px rgba(0,0,0,.90);
+    }
+
+    .scenic-title {
+      font-family: 'Cormorant Garamond', serif;
+
+      font-size: clamp(44px, 5vw, 72px);
+
+      font-weight: 500;
+
+      color: #ffffff;
+
+      margin-bottom: 14px;
+
+      text-shadow:
+        0 5px 20px rgba(0,0,0,.88);
+    }
+
+    .scenic-text {
+      max-width: 720px;
+
+      margin: 0 auto;
+
+      color: rgba(255,255,255,.92);
+
+      line-height: 1.9;
+
+      font-size: 16px;
+
+      text-shadow:
+        0 3px 12px rgba(0,0,0,.88);
+    }
+
+    /* =========================
+       CONTACTO
+    ========================= */
+
+    .contact {
+      padding: 86px 0 94px;
+
+      text-align: center;
+
+      background: #050505;
+
+      border-top:
+        1px solid rgba(255,255,255,.04);
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      padding: 24px 16px 34px;
+
+      text-align: center;
+
+      color: #8d867d;
+
+      font-size: 11px;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+
+      background: #050505;
+    }
+
+    /* =========================
+       TABLET
+    ========================= */
+
+    @media (max-width: 980px) {
+
+      .brand-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .brand-card {
+        min-height: 560px;
+      }
+
+      .gallery-card {
+        min-height: 360px;
+      }
+
+    }
+
+    /* =========================
+       CELULAR
+    ========================= */
+
+    @media (max-width: 760px) {
+
+      .hero {
+        min-height: 92vh;
+      }
+
+      .hero-logos {
+        gap: 18px;
+      }
+
+      .hero-logo-wrap {
+        width: 44%;
+        min-width: 145px;
+        height: 90px;
+      }
+
+      .hero-location {
+        font-size: 13px;
+        letter-spacing: 1.4px;
+      }
+
+      .brand-card {
+        min-height: 520px;
+      }
+
+      .brand-content {
+        padding: 30px 20px 24px;
+      }
+
+      .brand-description {
+        font-size: 15px;
+      }
+
+      .actions {
+        width: 100%;
+        grid-template-columns: 1fr;
+      }
+
+      .action-btn.btn-menu {
+        grid-column: auto;
+      }
+
+      .action-btn {
+        min-height: 72px;
+      }
+
+      .btn-icon {
+        width: 46px;
+        height: 46px;
+        flex-basis: 46px;
+      }
+
+      .btn-label {
+        font-size: 12.5px;
+      }
+
+      .btn-meta {
+        font-size: 10.5px;
+      }
+
+      .icon-btn {
+        width: 100%;
+      }
+
+      .contact-links {
+        grid-template-columns: 1fr;
+      }
+
+      .trip-card {
+        padding: 38px 18px 34px;
+      }
+
+      .visit-box {
+        padding: 34px 18px;
+      }
+
+      .visit-address {
+        font-size: 17px;
+      }
+
+      .schedule-card strong {
+        font-size: 30px;
+      }
+
+      .scenic {
+        min-height: 430px;
+      }
+
+    }
+
+
+    /* Acceso directo a las cartas completas */
+    .hero-menu-access{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;max-width:730px;margin:28px auto 6px}
+    .hero-menu-access__link{display:flex;justify-content:center;align-items:center;gap:10px;padding:18px 22px;min-height:60px;flex:1 1 240px;max-width:350px;background:linear-gradient(125deg,#e6cea0,#c9a96b);color:#14120e;border:1px solid #ecdbb6;border-radius:8px;font-size:12px;font-weight:700;letter-spacing:1.3px;box-shadow:0 10px 35px rgba(0,0,0,.3);transition:transform .2s}
+    .hero-menu-access__link:hover{transform:translateY(-2px)}
+    @media(max-width:760px){.hero-menu-access{display:grid;gap:11px;margin:22px auto 4px}.hero-menu-access__link{width:100%;max-width:100%;font-size:12px;padding:15px;min-height:56px}}
+    .hero-menu-access__link:focus-visible{outline:3px solid white;outline-offset:3px}
+
+
+    /* ORIENTACIÓN: DOS RESTAURANTES, DOS NIVELES */
+    .hero-floor-sign{display:flex;align-items:center;justify-content:center;gap:11px 22px;flex-wrap:wrap;margin:21px auto 0;max-width:810px}
+    .hero-floor-sign a{display:inline-flex;align-items:center;gap:9px;color:#fff5e4;text-transform:uppercase;font-size:10px;letter-spacing:1px;font-weight:700;border-radius:99px;border:1px solid rgba(236,210,164,.64);padding:12px 18px;background:rgba(9,8,8,.74);backdrop-filter:blur(8px);transition:background .2s ease}
+    .hero-floor-sign a:hover{background:rgba(201,169,107,.28)}
+    .hero-floor-sign .floor-arrow{display:grid;place-items:center;width:22px;height:22px;background:#d9b77b;color:#1a140f;border-radius:50%;font-size:15px;line-height:1}
+    .floor-guide{background:linear-gradient(180deg,#10100f,#1c1915 50%,#0c0d0d);padding:clamp(65px,9vw,108px) 0;border-top:1px solid rgba(201,169,107,.28);border-bottom:1px solid rgba(201,169,107,.28);color:#f8f0e4}
+    .floor-guide__intro{text-align:center;max-width:840px;margin:0 auto 38px}
+    .floor-guide__intro .section-label{color:#d7b87f}
+    .floor-guide__intro h2{font:500 clamp(48px,6vw,80px)/1.05 'Cormorant Garamond',serif;margin:12px auto 15px}
+    .floor-guide__intro p{font-size:14px;color:#cfc3b1;line-height:1.9;max-width:680px;margin:auto}
+    .floor-guide__stack{max-width:950px;margin:auto;display:flex;flex-direction:column;gap:0;overflow:hidden;border:1px solid rgba(218,187,138,.47);box-shadow:0 26px 60px #0006}
+    .floor-guide__place{position:relative;isolation:isolate;display:grid;grid-template-columns:140px minmax(0,1fr) auto;align-items:center;gap:25px;min-height:220px;padding:32px 40px;background:#161412}
+    .floor-guide__place:before{content:"";position:absolute;inset:0;z-index:-2;opacity:.23;background-position:center;background-size:cover;background-repeat:no-repeat}
+    .floor-guide__place:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(95deg,#100e0eef 14%,#161411dd 65%,#17141095)}
+    .floor-guide__place--up:before{background-image:url('santori-neon-horizontal.jpg')}
+    .floor-guide__place--down:before{background-image:url('tasca-interior-horizontal.jpg')}
+    .floor-guide__number{display:flex;align-items:center;justify-content:center;flex-direction:column;border-right:1px solid rgba(218,187,138,.36);min-height:110px;color:#e9c68a}
+    .floor-guide__number b{font:500 65px/1 'Cormorant Garamond',Georgia,serif}
+    .floor-guide__number small{font-size:10px;letter-spacing:1.5px;font-weight:700}
+    .floor-guide__where{font-size:10px;letter-spacing:2.5px;color:#eed3a4;font-weight:700;text-transform:uppercase}
+    .floor-guide__place h3{font:500 clamp(40px,5vw,62px)/1 'Cormorant Garamond',serif;margin:9px 0 8px;color:#fff9ef}
+    .floor-guide__place p{color:#d8cbbb;font-size:13px;line-height:1.7;margin:0}
+    .floor-guide__link{min-width:150px;text-align:center;display:inline-flex;align-items:center;justify-content:center;border:1px solid #e2c48d;background:#d9b77b;color:#20160c;padding:16px 17px;font-size:11px;font-weight:700;letter-spacing:.8px;transition:background .2s}
+    .floor-guide__link:hover{background:#f4dcaf}
+    .floor-guide__landing{display:flex;align-items:center;justify-content:center;gap:16px;padding:12px;color:#e2c698;background:#2a2219;border-top:1px solid rgba(215,183,129,.28);border-bottom:1px solid rgba(215,183,129,.28);font-size:10px;text-transform:uppercase;letter-spacing:2px;font-weight:700}
+    .floor-guide__landing:before,.floor-guide__landing:after{content:"";height:1px;flex:1;background:rgba(215,183,129,.28)}
+    @media(max-width:820px){
+      .floor-guide__place{grid-template-columns:100px 1fr;padding:26px 22px;gap:17px}
+      .floor-guide__number{min-height:100px}.floor-guide__number b{font-size:56px}
+      .floor-guide__link{grid-column:2;justify-self:start;min-width:130px;padding:13px}
+    }
+    @media(max-width:560px){
+      .hero-floor-sign{gap:8px;margin-top:15px}
+      .hero-floor-sign a{width:100%;max-width:350px;justify-content:center;font-size:10px;padding:10px}
+      .hero-scroll{margin-top:18px}
+      .floor-guide__intro{margin-bottom:26px}.floor-guide__intro h2{font-size:53px}.floor-guide__intro p{font-size:13px}
+      .floor-guide__place{grid-template-columns:66px 1fr;gap:12px;min-height:220px;padding:23px 15px}
+      .floor-guide__number{min-height:88px}.floor-guide__number b{font-size:47px}.floor-guide__number small{font-size:9px}
+      .floor-guide__where{font-size:9px;letter-spacing:1.5px}
+      .floor-guide__place h3{font-size:46px}.floor-guide__place p{font-size:11px}
+      .floor-guide__link{grid-column:2}
+      .floor-guide__landing{font-size:9px;letter-spacing:1px}
+    }
+
+
+    /* ACCESOS TAKE AWAY, SIN MODIFICAR RESERVAS */
+    .hero-order-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:14px auto 4px;max-width:735px}
+    .hero-order-links a{min-width:220px;flex:1;max-width:350px;display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid #8ebc92;background:rgba(9,30,17,.84);color:#e6f8e9;min-height:50px;border-radius:9px;padding:12px;font-size:11px;font-weight:700;letter-spacing:.8px;transition:background .2s}
+    .hero-order-links a:hover{background:#1d6a39}
+    .action-btn.btn-order{grid-column:1/-1;border-color:rgba(115,203,132,.6);background:linear-gradient(90deg,rgba(45,145,83,.3),rgba(6,23,11,.8));}
+    .action-btn.btn-order:hover{background:rgba(48,147,85,.4)}
+    .btn-order .btn-icon{background:rgba(49,183,95,.26);color:#b3ffc6}
+    @media(max-width:760px){.hero-order-links{margin:11px auto 3px;gap:8px}.hero-order-links a{width:100%;max-width:100%;min-height:48px}}
+
+    /* RESEÑAS: CARRUSEL EDITORIAL LA TASCA + SANTORI */
+    .guest-reviews{padding:clamp(70px,9vw,110px) 0;background:radial-gradient(ellipse at 50% 0,rgba(151,110,61,.12),transparent 62%),linear-gradient(180deg,#10100f 0%,#1b1814 55%,#111110 100%);border-top:1px solid rgba(218,185,129,.18);border-bottom:1px solid rgba(218,185,129,.22)}
+    .guest-reviews__heading{text-align:center;margin:0 auto 38px;max-width:780px}
+    .guest-reviews__heading .section-label{color:#dec08b}
+    .guest-reviews__heading h2{font:500 clamp(42px,6vw,70px)/1.02 'Cormorant Garamond',Georgia,serif;color:#fdf4e4;margin:11px 0 19px}
+    .guest-reviews__heading p{font-size:13px;color:#cabb9f;line-height:1.9;margin:0 auto;max-width:630px}
+    .guest-reviews__frame{max-width:920px;margin:0 auto;border:1px solid rgba(218,185,129,.45);background:linear-gradient(125deg,rgba(43,35,25,.91),rgba(20,21,19,.97));border-radius:18px;box-shadow:0 22px 72px rgba(0,0,0,.36);position:relative;overflow:hidden}
+    .guest-reviews__frame:before{content:"";position:absolute;top:0;left:16%;right:16%;height:1px;background:linear-gradient(90deg,transparent,#f5ddaa,transparent);pointer-events:none}
+    .guest-reviews__frame:after{content:"✦";position:absolute;top:-22px;right:28px;font:300 160px/1 'Cormorant Garamond',Georgia,serif;color:rgba(223,193,141,.10);pointer-events:none}
+    .guest-review{min-height:315px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:35px clamp(24px,7vw,80px) 23px;position:relative;z-index:1;transition:opacity .26s ease,transform .26s ease;opacity:1;transform:translateY(0)}
+    .guest-review.is-fading{opacity:0;transform:translateY(7px)}
+    .guest-review__meta{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 13px;align-items:center;min-height:25px}
+    .guest-review__place{border-radius:99px;border:1px solid #d2b277;color:#f6deb1;padding:5px 14px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+    .guest-review__source{font-size:11px;color:#dfcfb5;letter-spacing:.4px}
+    .guest-review__stars{margin:17px 0 4px;color:#edc783;letter-spacing:5px;font-size:20px;line-height:1}
+    .guest-review__stars[hidden]{display:none}
+    .guest-review__text{font:500 clamp(24px,3.6vw,38px)/1.23 'Cormorant Garamond',Georgia,serif;color:#fff8ea;max-width:760px;margin:20px 0 22px;text-wrap:balance}
+    .guest-review__attribution{font-size:12px;font-weight:700;letter-spacing:.3px;color:#f0d5a3}
+    .guest-review__date{font-size:10px;color:#a99b87;letter-spacing:.8px;margin-top:4px}
+    .guest-reviews__controls{position:relative;display:flex;gap:12px;justify-content:center;align-items:center;flex-wrap:wrap;padding:6px 18px 23px;z-index:1}
+    .guest-reviews__arrow{width:48px;height:44px;display:grid;place-items:center;border:1px solid rgba(221,189,128,.52);background:rgba(18,18,16,.6);color:#f8dca8;border-radius:8px;font-size:19px;cursor:pointer;transition:background .2s}
+    .guest-reviews__arrow:hover{background:#5b452c}
+    .guest-reviews__dots{display:flex;gap:7px;align-items:center;justify-content:center;flex-wrap:wrap}
+    .guest-reviews__dot{width:10px;height:10px;border:1px solid #d1b587;border-radius:50%;background:transparent;cursor:pointer;padding:0;transition:width .2s,background .2s}
+    .guest-reviews__dot[aria-current=true]{background:#e4c58c;width:23px;border-radius:99px}
+    .guest-reviews__arrow:focus-visible,.guest-reviews__dot:focus-visible,.guest-reviews__source-link:focus-visible{outline:3px solid #fff;outline-offset:4px}
+    .guest-reviews__below{display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;padding:0 25px 28px}
+    .guest-reviews__counter{font-size:10px;color:#ada087;letter-spacing:1.1px;font-variant-numeric:tabular-nums}
+    .guest-reviews__source-link{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#f4d49b;text-decoration:underline;text-underline-offset:4px}
+    .guest-reviews__source-link:hover{color:white}
+    .guest-reviews__footnote{text-align:center;max-width:790px;margin:20px auto 0;color:#988b7b;font-size:10px;line-height:1.75}
+    @media(max-width:650px){
+      .guest-reviews{padding:64px 0}
+      .guest-reviews__heading{margin-bottom:24px}
+      .guest-reviews__heading h2{font-size:47px;margin:12px 0}
+      .guest-reviews__heading p{font-size:12px;line-height:1.7}
+      .guest-reviews__frame{border-radius:11px}
+      .guest-reviews__frame:after{right:12px;top:-8px;font-size:95px}
+      .guest-review{min-height:360px;padding:30px 19px 14px}
+      .guest-review__text{font-size:clamp(25px,7vw,32px);margin:19px 0}
+      .guest-reviews__arrow{height:43px;width:43px}
+      .guest-reviews__dots{max-width:188px;gap:6px}
+      .guest-reviews__footnote{font-size:9px;padding:0 10px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .guest-review,.guest-reviews__dot{transition:none}
+      .guest-review.is-fading{opacity:1;transform:none}
+    }
+
+
+    /* PORTADA DESPEJADA: LA CABAÑA DEBE VERSE */
+    .hero{
+      min-height:82vh; min-height:82svh;
+      padding:55px 20px;
+      background:linear-gradient(180deg,rgba(0,0,0,.43),rgba(0,0,0,.10) 37%,rgba(0,0,0,.14) 63%,rgba(0,0,0,.72) 100%),url('TASCA HORI.png') center center / cover no-repeat;
+    }
+    .hero::after{background:radial-gradient(circle at center,transparent 38%,rgba(0,0,0,.15) 79%,rgba(0,0,0,.28))}
+    .hero-scroll{margin-top:34px}
+    .home-quick-access{
+      padding:27px 0 32px;
+      background:linear-gradient(180deg,#1b1814,#0c0c0b);
+      border-top:1px solid rgba(223,190,134,.35);
+      border-bottom:1px solid rgba(223,190,134,.20);
+    }
+    .home-quick-access .container{max-width:930px;}
+    .home-quick-access .hero-menu-access{display:flex;justify-content:center;gap:13px;max-width:870px;margin:0 auto 10px;}
+    .home-quick-access .hero-menu-access__link{max-width:430px;min-height:60px;}
+    .home-quick-access .hero-order-links{max-width:870px;margin:0 auto;}
+    .home-quick-access .hero-order-links a{width:100%;max-width:870px;min-height:54px;}
+    .home-quick-access .hero-floor-sign{margin:16px auto 0;}
+    .home-quick-access .hero-floor-sign a{padding:10px 15px;background:rgba(18,17,15,.88)}
+    /* EL SALÓN COMO IMAGEN PROTAGONISTA */
+    .salon-gallery-header{max-width:755px;text-align:center;margin:0 auto 32px}
+    .salon-gallery-header h2{font:500 clamp(43px,5vw,70px)/1.02 'Cormorant Garamond',Georgia,serif;color:#faebd5;margin:0 0 14px}
+    .salon-gallery-header p{font-size:14px;color:#c6b8a3;line-height:1.85}
+    .gallery{padding:75px 0 82px}
+    .gallery-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+    .gallery-card{min-height:278px}
+    .gallery-card--feature{grid-column:span 2;min-height:408px}
+    .gallery-card--feature::after{background:linear-gradient(180deg,rgba(0,0,0,.00) 18%,rgba(0,0,0,.11) 49%,rgba(0,0,0,.84) 100%)}
+    .gallery-card.santori-ambiente::before{background-image:url('santori-neon-horizontal.jpg')}
+    .gallery-card.tasca-vino::before{background-image:url('tasca-vino-comida-horizontal.jpg')}
+    .salon-gallery-instagram{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:9px 17px;margin:29px auto 0;color:#c7baa5;font-size:11px}
+    .salon-gallery-instagram a{display:inline-flex;align-items:center;justify-content:center;min-height:43px;padding:10px 18px;border-radius:99px;border:1px solid rgba(215,181,128,.57);color:#f3d7a4;font-weight:700;transition:background .2s}
+    .salon-gallery-instagram a:hover{background:rgba(215,181,128,.20)}
+    .guest-reviews__footnote{color:#9e8c75;font-size:10px;line-height:1.6;max-width:590px}
+    @media(max-width:980px){
+      .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+      .gallery-card--feature{grid-column:span 2;min-height:390px}
+    }
+    @media(max-width:760px){
+      .hero{
+        min-height:650px; height:90svh;
+        display:flex;align-items:stretch;
+        padding:20px 16px 35px;
+        background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.05) 29%,rgba(0,0,0,.08) 56%,rgba(0,0,0,.74) 100%),url('TASCA HORI.png') 53% center / cover no-repeat;
+      }
+      .hero::after{background:linear-gradient(180deg,rgba(0,0,0,.13),transparent 38%,rgba(0,0,0,.08))}
+      .hero-content{height:100%;max-width:580px;display:flex;flex-direction:column;justify-content:flex-end;margin:0 auto}
+      .hero-logos{width:100%;max-width:385px;display:flex;gap:7px;flex-wrap:nowrap;justify-content:center;margin:0 auto auto;padding-top:50px}
+      .hero-logo-wrap{width:calc(50% - 4px);min-width:0;height:75px;padding:4px;}
+      .hero-subtitle{font-size:clamp(37px,8vw,50px);line-height:1.04;max-width:520px;margin:0 auto 13px}
+      .hero-location{font-size:10px;line-height:1.7;letter-spacing:1.3px;max-width:350px;margin:0 auto}
+      .hero-scroll{margin-top:15px;font-size:9px;letter-spacing:2px}
+      .hero .site-language{top:13px;right:13px}
+      .home-quick-access{padding:18px 0 22px;}
+      .home-quick-access .hero-menu-access{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:0 auto 9px;max-width:none}
+      .home-quick-access .hero-menu-access__link{min-height:57px;width:100%;max-width:none;padding:10px 7px;font-size:10px;letter-spacing:.32px}
+      .home-quick-access .hero-order-links{width:100%;max-width:none;margin:0 auto}
+      .home-quick-access .hero-order-links a{max-width:100%;min-height:52px;padding:12px;font-size:10px}
+      .home-quick-access .hero-floor-sign{display:flex;flex-wrap:nowrap;gap:8px;margin:13px auto 0;max-width:none}
+      .home-quick-access .hero-floor-sign a{width:50%;max-width:none;min-height:46px;padding:8px 6px;font-size:9px;letter-spacing:0;line-height:1.35;text-align:center}
+      .home-quick-access .floor-arrow{width:20px;height:20px;flex:none}
+      .gallery{padding:64px 0}
+      .salon-gallery-header{margin-bottom:24px}
+      .salon-gallery-header h2{font-size:43px}
+      .salon-gallery-header p{font-size:12px;line-height:1.7}
+      .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+      .gallery-card{min-height:212px}
+      .gallery-card--feature{grid-column:span 2;min-height:350px}
+      .gallery-card .gallery-content{padding:17px 13px}
+      .gallery-card .gallery-tag{font-size:9px;letter-spacing:1.8px}
+      .gallery-card .gallery-title{font-size:29px}
+      .gallery-card .gallery-text{font-size:10px;line-height:1.5}
+      .gallery-card--feature .gallery-title{font-size:41px}
+      .gallery-card--feature .gallery-text{font-size:13px}
+      .salon-gallery-instagram{gap:8px;margin-top:23px}
+      .salon-gallery-instagram span{width:100%;text-align:center}
+      .salon-gallery-instagram a{font-size:10px;padding:10px 12px}
+    }
+    @media(max-width:380px){
+      .hero{min-height:610px;height:88svh;}
+      .hero-subtitle{font-size:35px}
+      .home-quick-access .hero-menu-access__link{font-size:9px}
+      .home-quick-access .hero-floor-sign a{font-size:8px}
+    }
+    @media(prefers-reduced-motion:reduce){.gallery-card::before{transform:none}}
+
+
+    /* NUEVOS ACCESOS PRIORITARIOS */
+    .home-directions{margin:0 auto 18px;max-width:870px;text-align:center}
+    .home-directions__main{display:flex;align-items:center;gap:20px;text-align:left;min-height:94px;padding:18px 24px;border:1px solid #f4d6a3;border-radius:18px;background:linear-gradient(112deg,#e2c38c,#ba8a48);box-shadow:0 12px 35px #0006;color:#261b10;transition:transform .2s,box-shadow .2s}
+    .home-directions__main:hover{transform:translateY(-3px);box-shadow:0 19px 46px #0009}
+    .home-directions__pin{display:grid;place-items:center;flex:none;width:52px;height:52px;border-radius:50%;border:1px solid #7b5c3a;background:#ffffff38}
+    .home-directions__pin svg{width:29px;height:29px}
+    .home-directions__copy{display:flex;flex:1;flex-direction:column;gap:5px;min-width:0}
+    .home-directions__copy strong{font:600 clamp(31px,4.5vw,42px)/1 'Cormorant Garamond',Georgia,serif}
+    .home-directions__copy small{font-size:11px;font-weight:600;line-height:1.6;letter-spacing:.3px}
+    .home-directions__arrow{font-size:31px}
+    .home-directions__secondary{display:inline-block;margin-top:12px;padding:7px 13px;color:#e3c590;font-size:11px;text-decoration:underline;text-underline-offset:5px}
+    .home-directions__main:focus-visible,.home-directions__secondary:focus-visible,.order-feature__cta:focus-visible,.summer-deck__cta:focus-visible{outline:3px solid white;outline-offset:4px}
+
+    /* ARMÁ TU PEDIDO: BLOQUE DESTACADO */
+    .order-feature{padding:43px 0;background:radial-gradient(ellipse at 80% 0,#75462036,transparent 60%),#11100e;border-bottom:1px solid #e7c07a40}
+    .order-feature__inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,365px);gap:30px;align-items:center;max-width:1060px}
+    .order-feature__eyebrow,.summer-deck__eyebrow{font-size:10px;font-weight:700;letter-spacing:2.2px;color:#e1bb7f;line-height:1.7}
+    .order-feature h2{font:500 clamp(40px,5vw,63px)/1.03 'Cormorant Garamond',Georgia,serif;color:#fff4df;margin:10px 0}
+    .order-feature h2 em{font-weight:400;color:#e4c28a}
+    .order-feature p{color:#cfc1af;font-size:13px;line-height:1.8;max-width:580px}
+    .order-feature__cta{display:flex;gap:12px;align-items:center;justify-content:center;width:100%;min-height:100px;padding:20px 24px;border:1px solid #e9c893;border-radius:14px;background:linear-gradient(110deg,#e2bd77,#f2dfb2);color:#24180d;font-size:clamp(15px,1.6vw,19px);font-weight:700;letter-spacing:1px;box-shadow:0 12px 38px #0005;transition:transform .2s,box-shadow .2s}
+    .order-feature__cta:hover{transform:translateY(-3px);box-shadow:0 19px 48px #0008}
+    .order-feature__cta-arrow{font-size:25px}
+    .order-feature__cta-icon{font-size:20px}
+
+    /* CAMPAÑA DE VERANO */
+    /* Deck: dos columnas claras, sin superposiciones oscuras ni foto remota */
+    .summer-deck{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:stretch;min-height:520px;position:relative;overflow:hidden;border-block:1px solid #dfbe8640;background:#10110f;padding:0}
+    .summer-deck::before,.summer-deck::after{content:none;display:none}
+    .summer-deck__photo-wrap{grid-column:2;grid-row:1;position:relative;min-width:0;min-height:520px;overflow:hidden;margin:0;background:#24271f url('TASCA HORI.png') center/cover no-repeat}
+    .summer-deck__photo-wrap picture{display:block;width:100%;height:100%}
+    .summer-deck__photo{display:block;position:static;inset:auto;z-index:auto;opacity:1;filter:none;width:100%;height:100%;object-fit:cover;object-position:63% center}
+    .summer-deck__inner{grid-column:1;grid-row:1;position:relative;z-index:auto;width:100%;max-width:none;margin:0;padding:62px clamp(22px,4.3vw,76px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;background:radial-gradient(ellipse at left top,#2d2d2230,transparent 70%)}
+    .summer-deck h2,.summer-deck p{text-shadow:0 3px 15px rgba(0,0,0,.54)}
+    .summer-deck h2{font:500 clamp(45px,6.4vw,79px)/1.02 'Cormorant Garamond',Georgia,serif;max-width:670px;margin:14px 0;color:#fff2df;text-wrap:balance}
+    .summer-deck h2 em{color:#f5c98c;font-weight:400}
+    .summer-deck p{font-size:15px;line-height:1.85;max-width:580px;color:#e4d7c5}
+    .summer-deck__cta{display:inline-flex;align-items:center;justify-content:center;gap:25px;margin-top:27px;min-height:55px;padding:14px 25px;background:#d9b67b;border:1px solid #f2d39c;color:#22170d;font-size:12px;font-weight:700;border-radius:9px;transition:transform .2s,background .2s}
+    .summer-deck__cta:hover{transform:translateY(-2px);background:#f2d69f}
+    .summer-deck__note{margin-top:13px;font-size:10px!important;letter-spacing:.25px;opacity:.78}
+
+    /* MAPA INSERTADO EN UBICACIÓN */
+    #ubicacion{scroll-margin-top:25px}
+    .visit-map{max-width:850px;margin:32px auto 0;text-align:center}
+    .visit-map h3{font:500 clamp(30px,4vw,43px)/1.2 'Cormorant Garamond',Georgia,serif;margin:0 0 18px;color:#f3ddbd}
+    .visit-map__frame{display:block;width:100%;height:390px;border:1px solid #dfbe867a;border-radius:16px;background:#211f1b;box-shadow:0 14px 40px #0006}
+    .map-wrap{margin-top:18px}
+
+    @media(max-width:760px){
+      .home-directions{margin-bottom:13px}
+      .home-directions__main{min-height:84px;padding:14px 16px;gap:12px;border-radius:13px}
+      .home-directions__pin{width:45px;height:45px}
+      .home-directions__pin svg{width:25px;height:25px}
+      .home-directions__copy strong{font-size:34px}
+      .home-directions__copy small{font-size:10px}
+      .home-directions__arrow{font-size:25px}
+      .home-directions__secondary{font-size:10px;margin-top:7px;padding:6px}
+      .order-feature{padding:38px 0}
+      .order-feature__inner{grid-template-columns:1fr;gap:21px;text-align:center}
+      .order-feature h2{font-size:clamp(42px,10vw,58px)}
+      .order-feature p{font-size:12px;margin:auto}
+      .order-feature__cta{min-height:80px;padding:18px}
+      .summer-deck{display:flex;flex-direction:column;min-height:0;padding:0}
+      .summer-deck__photo-wrap{order:0;grid-column:auto;grid-row:auto;display:block;width:100%;height:auto;min-height:0;aspect-ratio:16/9;background:#24271f url('TASCA HORI.png') center/cover no-repeat}
+      .summer-deck__photo-wrap picture{display:block;width:100%;height:100%}
+      .summer-deck__photo{display:block;width:100%;height:100%;object-fit:cover;object-position:58% center;opacity:1;filter:none}
+      .summer-deck__inner{order:1;grid-column:auto;grid-row:auto;width:100%;padding:32px 20px 44px}
+      .summer-deck h2{font-size:clamp(43px,9.2vw,66px)}
+      .summer-deck p{font-size:13px;line-height:1.8}
+      .summer-deck__eyebrow{font-size:9px;letter-spacing:1.1px}
+      .visit-map__frame{height:330px;border-radius:12px}
+    }
+    @media(prefers-reduced-motion:reduce){.home-directions__main,.order-feature__cta,.summer-deck__cta{transition:none}}
+
+
+/* BODEGAS: carrusel tipográfico sin dependencias externas */
+.wineries{position:relative;overflow:hidden;padding:64px 0 56px;background:radial-gradient(ellipse at 78% 12%,rgba(120,62,49,.16),transparent 55%),linear-gradient(125deg,#100e0e,#1b1114 60%,#0e0c0d);border-top:1px solid rgba(207,167,111,.27);border-bottom:1px solid rgba(207,167,111,.22);color:#f7f0e7}
+.wineries__head{text-align:center;max-width:900px;margin:0 auto}
+.wineries__eyebrow{font-size:11px;font-weight:700;letter-spacing:2.4px;color:#d3ae77}
+.wineries h2{font:500 clamp(40px,5.4vw,67px)/1.08 'Cormorant Garamond',Georgia,serif;margin:13px 0 12px;color:#f7efe4}
+.wineries h2 em{font-weight:400;color:#d7b884}
+.wineries__description{font-size:14px;line-height:1.9;color:#d1c3b7;max-width:630px;margin:0 auto}
+.winery-marquee{position:relative;overflow:hidden;width:100%;margin:35px 0 18px;border-top:1px solid rgba(206,162,110,.18);border-bottom:1px solid rgba(206,162,110,.18);padding:19px 0}
+.winery-marquee::before,.winery-marquee::after{content:"";position:absolute;top:0;bottom:0;width:min(12vw,110px);z-index:2;pointer-events:none}
+.winery-marquee::before{left:0;background:linear-gradient(90deg,#140f11,transparent)}
+.winery-marquee::after{right:0;background:linear-gradient(270deg,#130e10,transparent)}
+.winery-marquee__track{display:flex;align-items:center;width:max-content;animation:winery-marquee 80s linear infinite;will-change:transform}
+.winery-marquee__group{display:flex;flex:none;align-items:center;gap:0}
+.winery-marquee__item{display:inline-flex;align-items:center;gap:30px;padding:0 22px;white-space:nowrap;font:500 clamp(23px,2.25vw,31px)/1.35 'Cormorant Garamond',Georgia,serif;color:#e9d7c1;letter-spacing:.15px}
+.winery-marquee__star{font:400 11px/1 Montserrat,Arial,sans-serif;color:#ad7e4f;flex:none}
+.winery-marquee:hover .winery-marquee__track,.winery-marquee:focus-within .winery-marquee__track{animation-play-state:paused}
+@keyframes winery-marquee{to{transform:translateX(-50%)}}
+.wineries__footer{text-align:center}
+.wineries__link{display:inline-flex;gap:14px;align-items:center;justify-content:center;min-height:44px;padding:8px 4px;color:#e7c28c;border-bottom:1px solid rgba(231,194,140,.65);font-size:12px;font-weight:600;letter-spacing:.65px}
+.wineries__link:hover{color:white;border-bottom-color:white}
+.wineries__link:focus-visible{outline:3px solid #e7c28c;outline-offset:5px}
+@media(max-width:760px){.wineries{padding:52px 0 45px}.wineries__head{padding:0 18px}.wineries__eyebrow{font-size:9px;letter-spacing:1.6px}.wineries h2{font-size:clamp(43px,10vw,59px)}.wineries__description{font-size:12px;line-height:1.85}.winery-marquee{margin:28px 0 14px;padding:18px 0}.winery-marquee__item{font-size:25px;gap:20px;padding:0 14px}.winery-marquee::before,.winery-marquee::after{width:20px}.winery-marquee__track{animation-duration:80s}.wineries__link{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.winery-marquee{overflow-x:auto;scrollbar-width:thin}.winery-marquee__track{animation:none;will-change:auto}}
+
+
+/* Créditos del sitio: firma profesional, legible en PC y celular */
+.site-footer{padding:42px 18px 46px;text-align:center;background:#050505;border-top:1px solid rgba(215,183,120,.18);color:#b9ac99;text-transform:none;letter-spacing:normal;font-family:Montserrat,Arial,sans-serif}
+.site-footer__place{font-size:11px;line-height:1.7;letter-spacing:1.8px;text-transform:uppercase;color:#cfb78d}
+.site-footer__place span{display:inline-block;margin:0 10px;color:#927247;font-size:9px;vertical-align:middle}
+.site-footer__divider{width:100px;height:1px;background:linear-gradient(90deg,transparent,#c9a96b,transparent);margin:18px auto}
+.site-footer__legal{font-size:12px;line-height:1.7;letter-spacing:.2px;color:#b9ac99}
+.site-footer__credit{display:flex;flex-direction:column;align-items:center;gap:11px;width:min(100%,540px);margin:24px auto 0;padding:21px 20px;border:1px solid rgba(201,169,107,.34);border-radius:15px;background:linear-gradient(135deg,rgba(201,169,107,.09),rgba(201,169,107,.025));box-shadow:0 10px 32px rgba(0,0,0,.16)}
+.site-footer__credit-label{font-size:12px;line-height:1.6;letter-spacing:1.5px;text-transform:uppercase;color:#d8c49e}
+.site-footer__signature{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:4px 8px;line-height:1.35;color:#f1d4a0}
+.site-footer__copyright{font-size:27px;font-family:Georgia,serif;line-height:1;color:#eac88a}
+.site-footer__year{font-size:16px;font-weight:600;color:#eac88a}
+.site-footer__author{display:inline-flex;align-items:center;gap:8px;font-size:clamp(17px,2.1vw,22px);font-weight:700;letter-spacing:.5px;color:#f2dcb3;text-decoration:underline;text-underline-offset:5px;text-decoration-color:rgba(233,207,152,.38)}
+.site-footer__author:hover,.site-footer__author:focus-visible{color:#fff1d4;text-decoration-color:currentColor;outline-offset:4px}
+.site-footer__author span{color:#d9b67b}
+@media(max-width:550px){.site-footer{padding:34px 16px 42px}.site-footer__place{font-size:10px;letter-spacing:1px}.site-footer__place span{margin:0 5px}.site-footer__legal{font-size:11px}.site-footer__credit{padding:20px 12px;gap:9px}.site-footer__credit-label{font-size:11px;letter-spacing:1px}.site-footer__signature{gap:4px 6px}.site-footer__copyright{font-size:24px}.site-footer__year{font-size:14px}.site-footer__author{font-size:17px;letter-spacing:0}}
+
+  /* SOLICITAR RESERVA: acceso público, sin mostrar datos internos */
+.public-reserve-feature{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:850px;margin:15px auto 20px;padding:20px 23px;background:linear-gradient(110deg,#171715,#29251d);border:1px solid #cbb07f;border-radius:14px;color:#f7e7cc}
+.public-reserve-feature__text{display:flex;flex-direction:column;gap:5px}
+.public-reserve-feature__text strong{font:500 clamp(26px,4vw,37px)/1 'Cormorant Garamond',Georgia,serif}
+.public-reserve-feature__text span{font-size:11px;color:#d7c9b2;line-height:1.6}
+.public-reserve-feature__btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:12px 20px;background:#e2bf81;border-radius:9px;color:#201910;font-size:12px;font-weight:700;text-decoration:none;text-align:center;white-space:nowrap}
+.public-reserve-feature__btn:hover{background:#f5d9a9}
+.contact-reserve-link{display:inline-flex;min-height:53px;align-items:center;justify-content:center;padding:13px 23px;margin:28px auto 0;background:#dfbd80;color:#171512!important;border-radius:9px;font-weight:700;text-decoration:none;font-size:12px;letter-spacing:.4px}
+.contact-reserve-link:hover{background:#f5d9a9}
+@media(max-width:630px){.public-reserve-feature{flex-direction:column;align-items:stretch;padding:17px 16px;gap:15px;text-align:center}.public-reserve-feature__btn{width:100%}}
+
+</style>
+
+<style>
+/* Vista previa 2.0: identidad original, menos ruido */
+.v2-top{position:sticky;top:0;z-index:1000;background:rgba(9,9,9,.96);border-bottom:1px solid rgba(201,169,107,.28);backdrop-filter:blur(15px);display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px max(18px,calc((100vw - 1180px)/2));font:500 12px Montserrat,sans-serif}
+.v2-top strong{font:500 25px 'Cormorant Garamond',serif;letter-spacing:2px}
+.v2-top a,.v2-top button{color:#f4efe8;background:none;border:0;cursor:pointer}
+.v2-book{border:1px solid #c9a96b!important;border-radius:7px!important;padding:12px 14px!important;white-space:nowrap}
+.v2-menu{position:relative}.v2-menu summary{list-style:none;cursor:pointer;border:1px solid #5e513a;border-radius:7px;padding:11px 14px}.v2-menu summary::-webkit-details-marker{display:none}
+.v2-menu[open] .v2-dropdown{position:absolute;right:0;top:48px;min-width:220px;background:#151310;border:1px solid #5e513a;border-radius:10px;padding:8px;box-shadow:0 12px 40px #000b}
+.v2-dropdown a{display:block;padding:12px;border-bottom:1px solid #ffffff12}.v2-dropdown a:last-child{border:0}
+.home-quick-access,.order-feature,.floor-guide,.intro,.tripadvisor{display:none!important}
+.hero{min-height:75vh!important}.hero-scroll{display:none}
+.v2-choices{max-width:1050px;margin:0 auto;padding:45px 16px;text-align:center}
+.v2-choices h2{font:500 clamp(38px,6vw,58px) 'Cormorant Garamond',serif}
+.v2-choices p{color:#c9c1b7;margin:12px 0 25px}
+.v2-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.v2-actions a{padding:14px 22px;border:1px solid #c9a96b;border-radius:8px;font-size:12px;letter-spacing:1px}
+.v2-actions a:first-child{background:#c9a96b;color:#0b0b0b;font-weight:700}
+.v2-accordion{max-width:1100px;margin:20px auto 65px;padding:0 16px}
+.v2-accordion details{border-bottom:1px solid #c9a96b55}
+.v2-accordion summary{padding:22px 8px;cursor:pointer;font:500 clamp(25px,4vw,35px) 'Cormorant Garamond',serif;list-style:none;display:flex;justify-content:space-between}
+.v2-accordion summary::after{content:'+';color:#c9a96b}.v2-accordion details[open] summary::after{content:'−'}
+.v2-accordion details>section{margin:0!important;padding-top:20px!important;padding-bottom:35px!important}
+.v2-accordion .gallery,.v2-accordion .wineries{max-width:100%}
+@media(max-width:600px){.v2-top strong{font-size:19px}.v2-top{gap:7px;padding:10px 12px}.v2-book{padding:11px 9px!important;font-size:10px}.v2-menu summary{padding:10px;font-size:11px}.hero{min-height:64vh!important}.v2-choices{padding:34px 14px}.v2-actions a{flex:1 1 130px}}
+</style></head>
+
+
+<body>
+<nav class="v2-top" aria-label="Navegación principal"><strong>LA TASCA · SANTORI</strong><div style="display:flex;align-items:center;gap:8px"><a class="v2-book" href="reservas.html">RESERVAR MESA</a><details class="v2-menu"><summary>☰ MENÚ</summary><div class="v2-dropdown"><a href="cartas.html?restaurante=tasca">Carta La Tasca</a><a href="cartas.html?restaurante=santori">Carta Santori</a><a href="pedidos.html">Armar pedido</a><a href="#musica-en-vivo">Música en vivo</a><a href="#opiniones">Opiniones</a><a href="#ubicacion">Cómo llegar</a></div></details></div></nav>
+
+
+  <!-- PORTADA -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="hero-logos">
+
+        <div class="hero-logo-wrap">
+
+          <img
+            src="LATASCAOH.png"
+            alt="La Tasca"
+            class="hero-logo"
+          >
+
+        </div>
+
+
+        <div class="hero-logo-wrap">
+
+          <img
+            src="SONTORILOGOH.png"
+            alt="Santori"
+            class="hero-logo"
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-subtitle">
+
+        Gastronomía y encuentros en la Patagonia
+
+      </div>
+
+
+      <div class="hero-location">
+
+        Av. Arrayanes 6155 · Villa La Angostura · Neuquén
+
+      </div>
+
+
+      <div class="hero-scroll">
+
+        Descubrí nuestras propuestas ↓
+
+      </div>
+
+
+
+
+    </div>
+
+  </section>
+
+
+
+<div class="v2-choices"><div class="section-label">DOS EXPERIENCIAS · UN MISMO LUGAR</div><h2>La Patagonia se disfruta en la mesa.</h2><p>Elegí tu experiencia. Nosotros nos ocupamos del resto.</p><div class="v2-actions"><a href="reservas.html">RESERVAR MESA</a><a href="cartas.html?restaurante=tasca">CARTA LA TASCA</a><a href="cartas.html?restaurante=santori">CARTA SANTORI</a></div></div>
+  <!-- ACCESOS FUERA DE LA FOTO: HERO DESPEJADO -->
+  <section class="home-quick-access">
+    <div class="container">
+      <div class="home-directions"><a class="home-directions__main" href="https://www.google.com/maps/search/?api=1&query=Av.+Arrayanes+6155,+Villa+La+Angostura,+Neuqu%C3%A9n,+Argentina" target="_blank" rel="noopener noreferrer" aria-label="Cómo llegar a La Tasca y Santori con Google Maps"><span class="home-directions__pin" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="home-directions__copy"><strong>Cómo llegar</strong><small>Av. Arrayanes 6155 · Villa La Angostura</small></span><span class="home-directions__arrow" aria-hidden="true">↗</span></a><a href="#ubicacion" class="home-directions__secondary">Ver mapa y horarios más abajo ↓</a></div>
+      <nav class="hero-menu-access" aria-label="Acceso directo a las cartas completas">
+        <a href="cartas.html?restaurante=tasca" class="hero-menu-access__link">VER CARTA LA TASCA <span aria-hidden="true">↗</span></a>
+        <a href="cartas.html?restaurante=santori" class="hero-menu-access__link">VER CARTA SANTORI <span aria-hidden="true">↗</span></a>
+      </nav>
+
+      <div class="public-reserve-feature" aria-label="Reservar una mesa en La Tasca o Santori">
+        <div class="public-reserve-feature__text"><strong>¿Reservamos tu mesa?</strong><span>Elegí fecha y horario. Si hay lugar, tu reserva se confirma online; si no, podés entrar a lista de espera.</span></div>
+        <a href="reservas.html" class="public-reserve-feature__btn">RESERVÁ TU MESA ↗</a>
+      </div>
+
+      <div class="hero-floor-sign" aria-label="Dónde se encuentra cada restaurante">
+        <a href="#en-que-piso"><span class="floor-arrow" aria-hidden="true">↑</span> Santori · Arriba, en la cabaña</a>
+        <a href="#en-que-piso"><span class="floor-arrow" aria-hidden="true">↓</span> La Tasca · Planta baja</a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- PEDIDO: ACCIÓN PRINCIPAL DESPUÉS DE LA PORTADA -->
+  <section class="order-feature" id="armar-pedido" aria-labelledby="order-feature-title">
+    <div class="container order-feature__inner">
+      <div class="order-feature__content">
+        <div class="order-feature__eyebrow">LA TASCA + SANTORI · TAKE AWAY</div>
+        <h2 id="order-feature-title">Tus favoritos, <em>a tu manera.</em></h2>
+        <p>Explorá las propuestas de ambos restaurantes, elegí tus platos y armá tu pedido para enviarlo por WhatsApp.</p>
+      </div>
+      <a class="order-feature__cta" href="pedidos.html" aria-label="Armá tu pedido Take Away de La Tasca y Santori"><span class="order-feature__cta-icon" aria-hidden="true">✦</span><span>ARMÁ TU PEDIDO</span><span class="order-feature__cta-arrow" aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
+<style>
+.live-tasca{padding:44px 16px;background:#080808;text-align:center;color:#f4eadb}
+.live-tasca__inner{max-width:900px;margin:auto;padding:42px 24px;border:1px solid rgba(201,169,107,.45);border-radius:16px;background:radial-gradient(ellipse at top,#17130e 0%,#090909 72%)}
+.live-tasca__eyebrow{font:500 11px Montserrat,sans-serif;letter-spacing:4px;color:#c9a96b;text-transform:uppercase}
+.live-tasca__title{font:500 clamp(42px,7vw,70px)/1.1 'Cormorant Garamond',serif;margin:15px 0;color:#f5e9d8}
+.live-tasca__line{width:80px;height:1px;background:#c9a96b;margin:20px auto}
+.live-tasca__date{font-size:13px;letter-spacing:1.2px;color:#d8c5a5}
+.live-tasca__names{font:500 clamp(30px,5vw,48px)/1.15 'Cormorant Garamond',serif;margin:24px 0 14px}
+.live-tasca__names small{display:block;font:400 16px Montserrat,sans-serif;color:#c9a96b;margin:8px 0}
+.live-tasca__desc{font-size:14px;line-height:1.7;color:#d6cfc5;margin-bottom:24px}
+.live-tasca__button{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:12px 30px;border:1px solid #c9a96b;border-radius:7px;color:#f6e9d3;font:600 12px Montserrat,sans-serif;letter-spacing:2px;text-transform:uppercase;transition:background .2s}
+.live-tasca__button:hover,.live-tasca__button:focus-visible{background:#3a2d19}
+@media(max-width:520px){.live-tasca{padding:22px 12px}.live-tasca__inner{padding:32px 15px}.live-tasca__date{font-size:12px}.live-tasca__names{font-size:35px}}
+</style>
+<section class="live-tasca" id="musica-en-vivo" aria-labelledby="live-tasca-title" data-event-end="2026-11-15">
+ <div class="live-tasca__inner">
+  <div class="live-tasca__eyebrow">La Tasca · Una noche especial</div>
+  <svg aria-hidden="true" width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="#c9a96b" stroke-width="1.5" style="margin:18px auto 0;display:block"><rect x="19" y="5" width="10" height="25" rx="5"/><path d="M13 22a11 11 0 0 0 22 0M24 33v9m-8 0h16"/><path d="M20 12h8m-8 6h8m-8 6h8"/></svg>
+  <h2 class="live-tasca__title" id="live-tasca-title">Música en vivo</h2>
+  <div class="live-tasca__date">SÁBADO 14 DE NOVIEMBRE · 22:00 HS</div>
+  <div class="live-tasca__line"></div>
+  <div class="live-tasca__names">Gustavo Vereda <small>“El Ruso”</small> &amp; Mariel Masson <small>“La Rusa”</small></div>
+  <p class="live-tasca__desc">Una noche para disfrutar de buena música y gastronomía.<br>Reservá tu mesa y no te lo pierdas.</p>
+  <a class="live-tasca__button" href="reservas.html">Reservar mesa</a>
+ </div>
+</section>
+<script>if(new Date().toLocaleDateString('en-CA',{timeZone:'America/Argentina/Buenos_Aires'})>='2026-11-15'){document.getElementById('musica-en-vivo').remove()}</script>
+
+  <!-- MISMA DIRECCIÓN: ORIENTACIÓN DE LOS DOS RESTAURANTES -->
+  <section class="floor-guide" id="en-que-piso" aria-labelledby="floor-guide-title">
+    <div class="container">
+      <div class="floor-guide__intro">
+        <div class="section-label">Un mismo lugar · Dos experiencias</div>
+        <h2 id="floor-guide-title">¿Dónde está cada uno?</h2>
+        <p>Nos encontrás en la misma dirección. <strong>Santori está arriba, en la cabaña.</strong> <strong>La Tasca está abajo, en planta baja.</strong> Elegí el restaurante que buscás y descubrí su carta.</p>
+      </div>
+      <div class="floor-guide__stack" aria-label="Santori arriba y La Tasca en planta baja">
+        <article class="floor-guide__place floor-guide__place--up">
+          <div class="floor-guide__number" aria-hidden="true"><b>↑</b><small>ARRIBA</small></div>
+          <div>
+            <div class="floor-guide__where">En la cabaña · Nivel superior</div>
+            <h3>Santori</h3>
+            <p>Sushi Nikkei. Para disfrutar de Santori, subí a la cabaña.</p>
+          </div>
+          <a class="floor-guide__link" href="cartas.html?restaurante=santori">VER CARTA ↗</a>
+        </article>
+        <div class="floor-guide__landing">MISMO EDIFICIO · AV. ARRAYANES 6155</div>
+        <article class="floor-guide__place floor-guide__place--down">
+          <div class="floor-guide__number" aria-hidden="true"><b>↓</b><small>ABAJO</small></div>
+          <div>
+            <div class="floor-guide__where">PB · Planta baja</div>
+            <h3>La Tasca</h3>
+            <p>Cocina, vinos y Patagonia. La Tasca te recibe en planta baja.</p>
+          </div>
+          <a class="floor-guide__link" href="cartas.html?restaurante=tasca">VER CARTA ↗</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- INTRO -->
+
+  <section class="intro">
+
+    <div class="container">
+
+      <div class="section-label">
+
+        La Tasca · Santori
+
+      </div>
+
+
+      <h2 class="section-title">
+
+        Dos experiencias
+
+      </h2>
+
+
+      <p class="section-text">
+
+        Cocina, producto y experiencia gastronómica
+        en Villa La Angostura.
+        Descubrí nuestras cartas y contactanos directamente
+        para reservas, pedidos y consultas.
+
+      </p>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- LA TASCA / SANTORI -->
+
+  <section class="brands">
+
+    <div class="container">
+
+      <div class="brand-grid">
+
+
+        <!-- LA TASCA -->
+
+        <article class="brand-card tasca">
+
+          <div class="brand-content">
+
+            <div class="brand-kicker">
+
+              Cocina · Vinos · Patagonia
+
+            </div>
+
+
+            <h3 class="brand-title">
+
+              La Tasca
+
+            </h3>
+
+
+            <div class="brand-subtitle">
+
+              Planta baja · Villa La Angostura
+
+            </div>
+
+
+            <p class="brand-description">
+
+              Una propuesta gastronómica para disfrutar,
+              compartir y descubrir sabores en un entorno cálido,
+              con identidad patagónica y una vista única.
+
+            </p>
+
+
+            <div class="actions">
+
+              <a
+                href="cartas.html?restaurante=tasca"
+                target="_blank"
+                rel="noopener"
+                class="action-btn btn-menu"
+                aria-label="Ver carta de La Tasca"
+              >
+                <span class="btn-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3.5 5.5A2.5 2.5 0 0 1 6 3h4a2 2 0 0 1 2 2v15a2.5 2.5 0 0 0-2.5-2.5h-6V5.5Z"/>
+                    <path d="M20.5 5.5A2.5 2.5 0 0 0 18 3h-4a2 2 0 0 0-2 2v15a2.5 2.5 0 0 1 2.5-2.5h6V5.5Z"/>
+                  </svg>
+                </span>
+                <span class="btn-copy">
+                  <span class="btn-label">Ver carta</span>
+                  <span class="btn-meta">Menú completo de La Tasca</span>
+                </span>
+              </a>
+              <a href="pedidos.html" class="action-btn btn-order" aria-label="Armar pedido Take Away de La Tasca">
+                <span class="btn-icon" aria-hidden="true">🛍</span>
+                <span class="btn-copy"><span class="btn-label">Armar pedido Take Away</span><span class="btn-meta">Elegí tus platos y envialos por WhatsApp</span></span>
+              </a>
+
+
+              <a
+                href="https://wa.me/5492944788994"
+                target="_blank"
+                rel="noopener"
+                class="action-btn btn-whatsapp"
+                aria-label="Contactar La Tasca por WhatsApp"
+              >
+                <span class="btn-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.496.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.693.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.981.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.447 4.434-9.879 9.885-9.879a9.82 9.82 0 0 1 7.022 2.91 9.825 9.825 0 0 1 2.9 7.027c-.003 5.447-4.435 9.878-9.883 9.878m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.465 3.49"/>
+                  </svg>
+                </span>
+                <span class="btn-copy">
+                  <span class="btn-label">WhatsApp</span>
+                  <span class="btn-meta">Reservas y pedidos</span>
+                </span>
+              </a>
+
+              <a
+                href="https://www.instagram.com/latascavla/"
+                target="_blank"
+                rel="noopener"
+                class="action-btn btn-instagram"
+                aria-label="Ver Instagram de La Tasca"
+              >
+                <span class="btn-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="3" y="3" width="18" height="18" rx="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/>
+                  </svg>
+                </span>
+                <span class="btn-copy">
+                  <span class="btn-label">Instagram</span>
+                  <span class="btn-meta">Seguinos en @latascavla</span>
+                </span>
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- SANTORI -->
+
+        <article class="brand-card santori">
+
+          <div class="brand-content">
+
+            <div class="brand-kicker">
+
+              Sushi Nikkei
+
+            </div>
+
+
+            <h3 class="brand-title">
+
+              Santori
+
+            </h3>
+
+
+            <div class="brand-subtitle">
+
+              Arriba, en la cabaña · Villa La Angostura
+
+            </div>
+
+
+            <p class="brand-description">
+
+              Sushi Nikkei en una propuesta donde
+              producto, técnica y presentación se encuentran
+              para ofrecer una experiencia fresca,
+              atractiva y con identidad.
+
+            </p>
+
+
+            <div class="actions">
+
+              <a
+                href="cartas.html?restaurante=santori"
+                target="_blank"
+                rel="noopener"
+                class="action-btn btn-menu"
+                aria-label="Ver carta de Santori"
+              >
+                <span class="btn-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3.5 5.5A2.5 2.5 0 0 1 6 3h4a2 2 0 0 1 2 2v15a2.5 2.5 0 0 0-2.5-2.5h-6V5.5Z"/>
+                    <path d="M20.5 5.5A2.5 2.5 0 0 0 18 3h-4a2 2 0 0 0-2 2v15a2.5 2.5 0 0 1 2.5-2.5h6V5.5Z"/>
+                  </svg>
+                </span>
+                <span class="btn-copy">
+                  <span class="btn-label">Ver carta</span>
+                  <span class="btn-meta">Menú completo de Santori</span>
+                </span>
+              </a>
+              <a href="pedidos.html" class="action-btn btn-order" aria-label="Armar pedido Take Away de Santori">
+                <span class="btn-icon" aria-hidden="true">🛍</span>
+                <span class="btn-copy"><span class="btn-label">Armar pedido Take Away</span><span class="btn-meta">Elegí tus platos y envialos por WhatsApp</span></span>
+              </a>
+
+
+              <a
+                href="https://wa.me/5492944555129"
+                target="_blank"
+                rel="noopener"
+                class="action-btn btn-whatsapp"
+                aria-label="Contactar Santori por WhatsApp"
+              >
+                <span class="btn-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.496.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.693.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.981.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.447 4.434-9.879 9.885-9.879a9.82 9.82 0 0 1 7.022 2.91 9.825 9.825 0 0 1 2.9 7.027c-.003 5.447-4.435 9.878-9.883 9.878m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.465 3.49"/>
+                  </svg>
+                </span>
+                <span class="btn-copy">
+                  <span class="btn-label">WhatsApp</span>
+                  <span class="btn-meta">Reservas y pedidos</span>
+                </span>
+              </a>
+
+              <a
+                href="https://www.instagram.com/santoriangostura/"
+                target="_blank"
+                rel="noopener"
+                class="action-btn btn-instagram"
+                aria-label="Ver Instagram de Santori"
+              >
+                <span class="btn-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="3" y="3" width="18" height="18" rx="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"/>
+                  </svg>
+                </span>
+                <span class="btn-copy">
+                  <span class="btn-label">Instagram</span>
+                  <span class="btn-meta">Seguinos en @santoriangostura</span>
+                </span>
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- DECK / VERANO PATAGÓNICO 2026-27 -->
+  <section class="summer-deck" id="verano" aria-labelledby="summer-deck-title">
+    <figure class="summer-deck__photo-wrap">
+      <picture>
+        <img
+          class="summer-deck__photo"
+          src="deck-stella-real-2026.webp?v=2"
+          alt="Deck real de La Tasca, con sombrillas, mesas y sillas Stella Artois"
+          width="1448" height="1086"
+          loading="eager" decoding="async"
+          onerror="this.onerror=null;this.src='TASCA%20HORI.png';"
+        >
+      </picture>
+    </figure>
+    <div class="container summer-deck__inner">
+      <div class="summer-deck__eyebrow">TEMPORADA DE VERANO · NOVIEMBRE 2026 — FEBRERO 2027</div>
+      <h2 id="summer-deck-title">El verano se vive <em>al aire libre.</em></h2>
+      <p>Nos estamos preparando para una nueva temporada en Villa La Angostura. Vení a disfrutar de nuestro deck, el paisaje patagónico y una buena mesa para compartir.</p>
+      <a class="summer-deck__cta" href="https://wa.me/5492944788994?text=Hola%2C%20quisiera%20consultar%20por%20el%20deck%20para%20la%20temporada%20de%20verano." target="_blank" rel="noopener noreferrer">Consultá por el deck <span aria-hidden="true">↗</span></a>
+      
+    </div>
+  </section>
+
+  <!-- BODEGAS Y ETIQUETAS CONFIRMADAS EN LA CARTA DE LA TASCA, OCTUBRE 2026 -->
+  <section class="wineries" id="bodegas" aria-labelledby="wineries-title">
+    <div class="container wineries__head">
+      <p class="wineries__eyebrow">LA TASCA · NUESTRA SELECCIÓN DE VINOS</p>
+      <h2 id="wineries-title">Bodegas para <em>descubrir.</em></h2>
+      <p class="wineries__description">Etiquetas de la Patagonia, Mendoza y otras regiones argentinas que forman parte de nuestra carta.</p>
+    </div>
+    <div class="winery-marquee" aria-label="Bodegas y etiquetas presentes en nuestra carta">
+      <div class="winery-marquee__track">
+      <div class="winery-marquee__group" role="list">
+        <span class="winery-marquee__item" role="listitem">Malma<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Catena Zapata<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Zuccardi<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Patritti<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">El Enemigo<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Rosell Boher<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Rutini<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Las Perdices<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Susana Balbo<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Bodega Chacra<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Atamisque<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Luca<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Viña Cobos<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Escorihuela<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Cuvelier Los Andes<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Bressia<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Mantra<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Monteviejo<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Bira Wines<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Bodega Desierto<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Rolland<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Aniello<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Ernesto Catena<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item" role="listitem">Bodega Caro<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+      </div>
+      <div class="winery-marquee__group" aria-hidden="true">
+        <span class="winery-marquee__item">Malma<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Catena Zapata<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Zuccardi<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Patritti<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">El Enemigo<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Rosell Boher<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Rutini<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Las Perdices<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Susana Balbo<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Bodega Chacra<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Atamisque<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Luca<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Viña Cobos<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Escorihuela<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Cuvelier Los Andes<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Bressia<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Mantra<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Monteviejo<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Bira Wines<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Bodega Desierto<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Rolland<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Aniello<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Ernesto Catena<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+        <span class="winery-marquee__item">Bodega Caro<span class="winery-marquee__star" aria-hidden="true">✦</span></span>
+      </div>
+      </div>
+    </div>
+    <div class="wineries__footer">
+      <a class="wineries__link" href="cartas.html?restaurante=tasca" aria-label="Ver carta completa de La Tasca, incluidos los vinos">Explorá nuestra carta <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
+  <!-- GALERÍA AUTÉNTICA: SALÓN Y COCINA DE AMBAS EXPERIENCIAS -->
+  <section class="gallery" id="nuestros-espacios" aria-labelledby="gallery-ambience-title">
+    <div class="container">
+      <div class="salon-gallery-header">
+        <div class="section-label">La Tasca · Santori</div>
+        <h2 id="gallery-ambience-title">La calidez de nuestros espacios</h2>
+        <p>Descubrí el salón de La Tasca y la atmósfera de Santori: madera, luz cálida y sabores de la Patagonia.</p>
+      </div>
+      <div class="gallery-grid">
+        <article class="gallery-card tasca-interior gallery-card--feature">
+          <div class="gallery-content"><div class="gallery-tag">La Tasca</div><h3 class="gallery-title">Un salón para quedarse</h3><p class="gallery-text">La calidez de la madera y el espíritu de Villa La Angostura.</p></div>
+        </article>
+        <article class="gallery-card santori-ambiente">
+          <div class="gallery-content"><div class="gallery-tag">Santori</div><h3 class="gallery-title">Un ambiente diferente</h3><p class="gallery-text">La experiencia Nikkei, arriba en la cabaña.</p></div>
+        </article>
+        <article class="gallery-card tasca-plato">
+          <div class="gallery-content"><div class="gallery-tag">La Tasca</div><h3 class="gallery-title">Sabores patagónicos</h3><p class="gallery-text">Nuestra cocina, en cada detalle.</p></div>
+        </article>
+        <article class="gallery-card tasca-vino">
+          <div class="gallery-content"><div class="gallery-tag">La Tasca</div><h3 class="gallery-title">Vinos y encuentros</h3><p class="gallery-text">Una mesa para compartir.</p></div>
+        </article>
+        <article class="gallery-card santori-tabla">
+          <div class="gallery-content"><div class="gallery-tag">Santori</div><h3 class="gallery-title">Sushi Nikkei</h3><p class="gallery-text">Sabor y presentación.</p></div>
+        </article>
+      </div>
+      <nav class="salon-gallery-instagram" aria-label="Más fotografías en Instagram">
+        <span>Más fotografías de nuestros espacios:</span>
+        <a href="https://www.instagram.com/latascavla/" target="_blank" rel="noopener noreferrer">Instagram La Tasca ↗</a>
+        <a href="https://www.instagram.com/santoriangostura/" target="_blank" rel="noopener noreferrer">Instagram Santori ↗</a>
+      </nav>
+    </div>
+  </section>
+
+
+  <!-- OPINIONES REALES: RESÚMENES DEL INFORME DE REPUTACIÓN 15/09/2026 -->
+  <section class="guest-reviews" id="opiniones" aria-labelledby="guest-reviews-title">
+    <div class="container" id="guest-reviews">
+      <div class="guest-reviews__heading">
+        <div class="section-label">La Tasca · Santori · Google Maps · Tripadvisor</div>
+        <h2 id="guest-reviews-title">La experiencia, contada por quienes nos visitan</h2>
+        <p>Sabores que se recuerdan, momentos para compartir y personas que nos eligen. Conocé algunas experiencias de nuestros visitantes.</p>
+      </div>
+      <div class="guest-reviews__frame">
+        <article class="guest-review" id="guest-review" aria-label="Opinión de un visitante" aria-live="off">
+          <div class="guest-review__meta">
+            <span class="guest-review__place" id="guest-review-venue">Santori</span>
+            <span class="guest-review__source" id="guest-review-source">Google Maps</span>
+          </div>
+          <div class="guest-review__stars" id="guest-review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
+          <p class="guest-review__text" id="guest-review-text">Destaca la atención a su familia, el menú infantil, la frescura del sushi y el ceviche, y el ambiente cálido.</p>
+          <span class="guest-review__attribution" id="guest-review-author">Belén Musladini</span>
+          <span class="guest-review__date" id="guest-review-date">Septiembre de 2026</span>
+        </article>
+        <nav class="guest-reviews__controls" aria-label="Controles de opiniones">
+          <button class="guest-reviews__arrow" id="guest-review-back" type="button" aria-label="Opinión anterior">←</button>
+          <div class="guest-reviews__dots" id="guest-review-dots" aria-label="Seleccionar opinión"></div>
+          <button class="guest-reviews__arrow" id="guest-review-next" type="button" aria-label="Siguiente opinión">→</button>
+        </nav>
+        <div class="guest-reviews__below">
+          <span class="guest-reviews__counter" id="guest-review-progress">1 / 10</span>
+          <a class="guest-reviews__source-link" id="guest-review-link" href="https://es.restaurantguru.com/Santori-Villa-La-Angostura" target="_blank" rel="noopener">VER MÁS OPINIONES ↗</a>
+        </div>
+      </div>
+      <p class="guest-reviews__footnote">Opiniones resumidas · Google Maps y Tripadvisor · Julio–noviembre 2026</p>
+    </div>
+  </section>
+
+
+  <!-- TRIPADVISOR -->
+
+  <section class="tripadvisor">
+
+    <div class="container">
+
+      <div class="section-label">
+        Reconocimiento
+      </div>
+
+      <h2 class="section-title">
+        Un reconocimiento a nuestra experiencia
+      </h2>
+
+      <p class="section-text">
+        El reconocimiento de quienes nos visitan
+        forma parte de la historia de La Tasca.
+      </p>
+
+
+      <div class="trip-card">
+
+        <div class="trip-small">
+          Tripadvisor
+        </div>
+
+        <h3 class="trip-title">
+          Travelers’ Choice 2026
+        </h3>
+
+        <p class="trip-text">
+          Un reconocimiento que celebra
+          las experiencias y opiniones
+          compartidas por nuestros visitantes.
+        </p>
+
+
+        <div class="trip-widget">
+
+
+          <div
+            id="TA_certificateOfExcellence508"
+            class="TA_certificateOfExcellence"
+          >
+
+            <ul
+              id="Nr6YlvB"
+              class="TA_links LMUDtACO"
+            >
+
+              <li
+                id="PLuYPNcnV"
+                class="DOIy3UKctH"
+              >
+
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://www.tripadvisor.com.ar/Restaurant_Review-g312844-d4762076-Reviews-La_Tasca-Villa_La_Angostura_Province_of_Neuquen_Patagonia.html"
+                >
+
+                  <img
+                    src="https://static.tacdn.com/img2/travelers_choice/widgets/tchotel_2026_L.png"
+                    alt="Tripadvisor Travelers' Choice 2026"
+                    class="widCOEImg"
+                    id="CDSWIDCOELOGO"
+                  >
+
+                </a>
+
+              </li>
+
+            </ul>
+
+          </div>
+
+
+          <script
+            async
+            src="https://www.jscache.com/wejs?wtype=certificateOfExcellence&amp;uniq=508&amp;locationId=4762076&amp;lang=es_AR&amp;year=2026&amp;display_version=2"
+            data-loadtrk
+            onload="this.loadtrk=true">
+          </script>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- VISITANOS -->
+
+  <section class="visit" id="ubicacion">
+
+    <div class="container">
+
+      <div class="section-label">
+
+        Ubicación · Horarios
+
+      </div>
+
+
+      <h2 class="section-title">
+
+        Visitanos
+
+      </h2>
+
+
+      <p class="section-text">
+
+        La Tasca y Santori comparten dirección.
+        <strong>La Tasca está en planta baja</strong> y
+        <strong>Santori, arriba en la cabaña.</strong>
+        Consultanos por WhatsApp para tu reserva.
+
+      </p>
+
+
+      <div class="visit-box">
+
+        <div class="visit-address">
+
+          Av. Arrayanes 6155
+
+          <br>
+
+          Q8407 Villa La Angostura
+
+          <br>
+
+          Neuquén · Argentina
+
+        </div>
+
+
+        <div class="schedule-label">
+
+          Horarios
+
+        </div>
+
+
+        <div class="schedule-card">
+
+          <strong>
+
+            Todos los días
+
+          </strong>
+
+
+          <span>
+
+            12:00 a 16:00 hs
+
+          </span>
+
+
+          <span>
+
+            20:00 a 00:00 hs
+
+          </span>
+
+        </div>
+
+
+        <div class="visit-map" aria-label="Mapa de ubicación de La Tasca y Santori">
+          <h3>Encontranos en el mapa</h3>
+          <iframe class="visit-map__frame" src="https://www.google.com/maps?q=Av.%20Arrayanes%206155%2C%20Villa%20La%20Angostura%2C%20Neuqu%C3%A9n&output=embed" title="Mapa de La Tasca y Santori, Av. Arrayanes 6155, Villa La Angostura" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="map-wrap">
+
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Av.+Arrayanes+6155,+Villa+La+Angostura,+Neuquén,+Argentina"
+            target="_blank"
+            rel="noopener"
+            class="icon-btn"
+            aria-label="Cómo llegar a La Tasca y Santori"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/>
+              <circle cx="12" cy="10" r="2.5"/>
+            </svg>
+            Cómo llegar
+          </a>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- CERRO BAYO -->
+
+  <section class="scenic">
+
+    <div class="scenic-content">
+
+      <div class="scenic-inner">
+
+
+        <div class="section-label">
+
+          Villa La Angostura
+
+        </div>
+
+
+        <h2 class="scenic-title">
+
+          Entre lagos, bosques y sabores
+
+        </h2>
+
+
+        <p class="scenic-text">
+
+          Entre paisaje, producto y encuentros,
+          La Tasca y Santori proponen
+          una experiencia para disfrutar
+          Villa La Angostura desde la mesa.
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- CONTACTO -->
+
+  <section class="contact">
+
+    <div class="container">
+
+      <div class="section-label">
+
+        Reservas · Take Away
+
+      </div>
+
+
+      <h2 class="section-title">
+
+        Contactanos
+
+      </h2>
+
+
+      <p class="section-text">
+
+        Reservá online en La Tasca o Santori.
+        También podés escribirnos para consultas
+        y pedidos Take Away.
+
+      </p>
+
+
+      <a class="contact-reserve-link" href="reservas.html">SOLICITAR RESERVA EN LA WEB ↗</a>
+
+      <div class="contact-links">
+
+        <a
+          href="https://wa.me/5492944788994"
+          target="_blank"
+          rel="noopener"
+          class="contact-choice"
+          aria-label="Reservas y pedidos de La Tasca por WhatsApp"
+        >
+          <span class="btn-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.496.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.693.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.981.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.447 4.434-9.879 9.885-9.879a9.82 9.82 0 0 1 7.022 2.91 9.825 9.825 0 0 1 2.9 7.027c-.003 5.447-4.435 9.878-9.883 9.878m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.465 3.49"/>
+            </svg>
+          </span>
+          <span class="btn-copy">
+            <strong>La Tasca</strong>
+            <span>Reservas y pedidos por WhatsApp</span>
+          </span>
+        </a>
+
+        <a
+          href="https://wa.me/5492944555129"
+          target="_blank"
+          rel="noopener"
+          class="contact-choice"
+          aria-label="Reservas y pedidos de Santori por WhatsApp"
+        >
+          <span class="btn-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.496.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.372-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.693.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.981.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.447 4.434-9.879 9.885-9.879a9.82 9.82 0 0 1 7.022 2.91 9.825 9.825 0 0 1 2.9 7.027c-.003 5.447-4.435 9.878-9.883 9.878m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 20.465 3.49"/>
+            </svg>
+          </span>
+          <span class="btn-copy">
+            <strong>Santori</strong>
+            <span>Reservas y pedidos por WhatsApp</span>
+          </span>
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <footer class="site-footer" aria-label="Créditos del sitio">
+  <div class="site-footer__place">La Tasca <span aria-hidden="true">✦</span> Santori <span aria-hidden="true">✦</span> Villa La Angostura</div>
+  <div class="site-footer__divider" aria-hidden="true"></div>
+  <p class="site-footer__legal">© 2026 La Tasca &amp; Santori · Todos los derechos reservados.</p>
+  <div class="site-footer__credit" aria-label="Crédito de diseño y desarrollo web">
+    <span class="site-footer__credit-label">Diseño y desarrollo web</span>
+    <div class="site-footer__signature">
+      <span class="site-footer__copyright" aria-hidden="true">©</span>
+      <span class="site-footer__year">2026</span>
+      <a class="site-footer__author" href="https://www.instagram.com/caye2400/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Cayetano, @caye2400"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>CAYETANO</a>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="booking-pause-banner.js?v=2" defer></script>
+  <script src="i18n.js?v=9" defer></script>
+  <script src="reviews.js?v=3" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+ const groups=[['wineries','Bodegas y vinos'],['gallery','Galería de imágenes'],['summer-deck','Nuestro deck'],['scenic','El entorno'],['contact','Contacto y más información']];
+ const wrap=document.createElement('div');wrap.className='v2-accordion';
+ const footer=document.querySelector('footer.site-footer');if(!footer)return;
+ footer.before(wrap);
+ groups.forEach(([cls,label])=>{const el=document.querySelector('section.'+cls);if(!el)return;const d=document.createElement('details');const summary=document.createElement('summary');summary.textContent=label;d.append(summary,el);wrap.append(d)});
+ document.querySelectorAll('.v2-dropdown a').forEach(a=>a.addEventListener('click',()=>a.closest('details').open=false));
+});
+</script>
+</body>
+
+</html>
