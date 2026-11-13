@@ -1698,6 +1698,34 @@
     </div>
   </section>
 
+<style>
+.live-tasca{padding:44px 16px;background:#080808;text-align:center;color:#f4eadb}
+.live-tasca__inner{max-width:900px;margin:auto;padding:42px 24px;border:1px solid rgba(201,169,107,.45);border-radius:16px;background:radial-gradient(ellipse at top,#17130e 0%,#090909 72%)}
+.live-tasca__eyebrow{font:500 11px Montserrat,sans-serif;letter-spacing:4px;color:#c9a96b;text-transform:uppercase}
+.live-tasca__title{font:500 clamp(42px,7vw,70px)/1.1 'Cormorant Garamond',serif;margin:15px 0;color:#f5e9d8}
+.live-tasca__line{width:80px;height:1px;background:#c9a96b;margin:20px auto}
+.live-tasca__date{font-size:13px;letter-spacing:1.2px;color:#d8c5a5}
+.live-tasca__names{font:500 clamp(30px,5vw,48px)/1.15 'Cormorant Garamond',serif;margin:24px 0 14px}
+.live-tasca__names small{display:block;font:400 16px Montserrat,sans-serif;color:#c9a96b;margin:8px 0}
+.live-tasca__desc{font-size:14px;line-height:1.7;color:#d6cfc5;margin-bottom:24px}
+.live-tasca__button{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:12px 30px;border:1px solid #c9a96b;border-radius:7px;color:#f6e9d3;font:600 12px Montserrat,sans-serif;letter-spacing:2px;text-transform:uppercase;transition:background .2s}
+.live-tasca__button:hover,.live-tasca__button:focus-visible{background:#3a2d19}
+@media(max-width:520px){.live-tasca{padding:22px 12px}.live-tasca__inner{padding:32px 15px}.live-tasca__date{font-size:12px}.live-tasca__names{font-size:35px}}
+</style>
+<section class="live-tasca" id="musica-en-vivo" aria-labelledby="live-tasca-title" data-event-end="2026-11-15">
+ <div class="live-tasca__inner">
+  <div class="live-tasca__eyebrow">La Tasca · Una noche especial</div>
+  <svg aria-hidden="true" width="44" height="44" viewBox="0 0 48 48" fill="none" stroke="#c9a96b" stroke-width="1.5" style="margin:18px auto 0;display:block"><rect x="19" y="5" width="10" height="25" rx="5"/><path d="M13 22a11 11 0 0 0 22 0M24 33v9m-8 0h16"/><path d="M20 12h8m-8 6h8m-8 6h8"/></svg>
+  <h2 class="live-tasca__title" id="live-tasca-title">Música en vivo</h2>
+  <div class="live-tasca__date">SÁBADO 14 DE NOVIEMBRE · 22:00 HS</div>
+  <div class="live-tasca__line"></div>
+  <div class="live-tasca__names">Gustavo Vereda <small>“El Ruso”</small> &amp; Mariel Masson <small>“La Rusa”</small></div>
+  <p class="live-tasca__desc">Una noche para disfrutar de buena música y gastronomía.<br>Reservá tu mesa y no te lo pierdas.</p>
+  <a class="live-tasca__button" href="reservas.html">Reservar mesa</a>
+ </div>
+</section>
+<script>if(new Date().toLocaleDateString('en-CA',{timeZone:'America/Argentina/Buenos_Aires'})>='2026-11-15'){document.getElementById('musica-en-vivo').remove()}</script>
+
   <!-- MISMA DIRECCIÓN: ORIENTACIÓN DE LOS DOS RESTAURANTES -->
   <section class="floor-guide" id="en-que-piso" aria-labelledby="floor-guide-title">
     <div class="container">
