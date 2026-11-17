@@ -131,6 +131,25 @@
 .site-footer__author span{color:#977d59;margin:0 3px}
 @media(max-width:550px){.site-footer{padding:28px 16px 36px}.site-footer__place{font-size:9px;letter-spacing:1.15px}.site-footer__place span{margin:0 5px}.site-footer__credit{gap:6px 8px}.site-footer__credit-label{font-size:10px}.site-footer__author{font-size:10px;letter-spacing:.7px}}
 
+
+.restaurant-choice{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:8px;margin-bottom:18px}
+.restaurant-choice button{border:1px solid #796246;border-radius:9px;background:#181713;color:#e5d3b8;padding:13px 7px;font-size:11px;font-weight:700}
+.restaurant-choice button[aria-pressed=true]{background:linear-gradient(120deg,#ecd4a4,#c6a269);border-color:#e2c58e;color:#1c170f}
+.product .product-options{display:grid;gap:10px;padding:12px 0 0;border-top:1px solid rgba(229,195,140,.2);margin-top:auto}
+.variant-label{display:block;font-size:10px;color:#edcca0;margin:0;line-height:1.4;letter-spacing:.1px;text-transform:none}
+.variant-select,.basket-choice select{width:100%;min-height:43px;margin-top:5px;border:1px solid #806c50;border-radius:8px;background:#11120f;color:#fcf5ea;padding:9px 10px;font:500 11px/1.3 Montserrat,Arial,sans-serif}
+.product-bundle{flex:none!important;color:#e4c692!important;background:rgba(223,189,129,.09);padding:8px 10px;border-radius:7px}
+.basket-item{align-items:flex-start}.basket-item-main{flex:1;min-width:0}
+.basket-choices{display:grid;gap:8px;margin-top:9px}
+.basket-choice{font:600 10px/1.3 Montserrat,Arial,sans-serif;color:#e4c99e;letter-spacing:0;text-transform:none;margin:0}
+.basket-choice select{min-height:35px;padding:6px;font-size:10px}
+.basket-item .stepper{padding-top:6px;flex:none}
+.sushi-choice{display:flex;align-items:center;gap:10px;font-size:11px;text-transform:none;letter-spacing:0}
+.sushi-choice input{width:18px;height:18px;accent-color:#dfbd81}
+.sushi-extras small{display:block}
+.sushi-extras #sushiCountField[hidden]{display:none}
+@media(max-width:650px){.restaurant-choice{gap:5px}.restaurant-choice button{font-size:10px;padding:10px 4px}.variant-select{min-height:46px}}
+
 </style>
 </head>
 <body>
@@ -150,12 +169,17 @@
       <div><h2 id="catalogTitle">Elegí tus platos</h2><p class="catalog-subtitle">La Tasca + Santori · Catálogo unificado</p></div>
       <a class="pdf-link" href="cartas.html" aria-label="Ver cartas completas de La Tasca y Santori">VER CARTAS COMPLETAS ↗</a>
     </div>
-    <p class="note">Platos y precios sujetos a confirmación por WhatsApp. Sin cobros online.</p>
+    <p class="note">Elegí tus platos y sus opciones. Recibimos el pedido por WhatsApp; disponibilidad y precios a confirmar. No se cobra online.</p>
+    <div class="restaurant-choice" id="restaurantChoice" role="group" aria-label="Filtrar por restaurante">
+      <button type="button" data-restaurant="both" aria-pressed="true">Ambos restaurantes</button>
+      <button type="button" data-restaurant="tasca" aria-pressed="false">La Tasca</button>
+      <button type="button" data-restaurant="santori" aria-pressed="false">Santori</button>
+    </div>
     <div class="filter">
       <input id="search" class="search" type="search" placeholder="Buscar en ambos restaurantes (ej.: acevichado)" aria-label="Buscar platos de La Tasca y Santori">
       <select id="categoryFilter" class="category-select" aria-label="Filtrar por categoría"></select>
     </div>
-    <p id="searchHelp" class="search-help">Buscá en ambas cartas. Cada plato indica su restaurante.</p>
+    <p id="searchHelp" class="search-help">Elegí un restaurante o buscá por nombre. Cada plato indica de qué cocina sale.</p>
     <button class="checkout-jump" id="goCheckout" type="button">Ver mi pedido (<span id="jumpQuantity">0</span>) ↓</button>
     <div id="products" class="product-grid"></div>
   </section>
@@ -171,9 +195,11 @@
     <label for="pickup">Horario de retiro deseado</label>
     <input type="text" id="pickup" maxlength="80" placeholder="Ej.: 21:00 / A coordinar">
     <div class="sushi-extras" id="sushiExtras" hidden>
-      <label for="sushiPeople">Palitos y salsas: ¿para cuántas personas? *</label>
-      <input type="number" id="sushiPeople" min="0" max="50" step="1" inputmode="numeric" placeholder="Ej.: 2">
-      <small>Indicá 0 si no necesitás palitos ni salsas.</small>
+      <label class="sushi-choice" for="sushiNeedExtras"><input type="checkbox" id="sushiNeedExtras"> ¿Necesitás palitos y salsa de soja?</label>
+      <small>Opcional y solo para sushi de Santori. Si no los pedís, no se agregan.</small>
+      <div id="sushiCountField" hidden><label for="sushiPeople">¿Para cuántas personas?</label>
+        <input type="number" id="sushiPeople" min="1" max="50" step="1" inputmode="numeric" placeholder="Ej.: 2">
+      </div>
     </div>
     <label for="notes">Observaciones del pedido</label>
     <textarea id="notes" maxlength="900" placeholder="Ej.: sin picante, indicaciones de preparación, alergias (confirmar con el local)"></textarea>
@@ -280,145 +306,254 @@ const catalog={
   ]
  }
 };
-let category='Todos',query='',carts={tasca:{},santori:{}};
-const WHATSAPP_TAKEAWAY='5492944555129';
-const $=x=>document.getElementById(x);
-const escapeHTML=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const normalize=v=>v.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-const brands=['tasca','santori'];
-const rows=key=>catalog[key].products.map((p,i)=>({brand:key,id:i,category:p[0],name:p[1],desc:p[2]}));
-const allRows=()=>brands.flatMap(key=>rows(key));
-const piecesPerUnit=p=>p.category==='Furai · 5 piezas'?5:p.category==='Rolls · 10 piezas'?10:p.category==='Tiraditos · 12 piezas'?12:0;
-function portionLabel(p,amount=1){
-  const pcs=piecesPerUnit(p);
-  if(!pcs)return '';
-  const lang=window.siteI18n?.language?.()||'es';
-  const total=pcs*amount;
-  if(lang==='en')return amount===1?'1 unit = '+pcs+' pieces':amount+' units × '+pcs+' pieces = '+total+' pieces';
-  if(lang==='pt')return amount===1?'1 unidade = '+pcs+' peças':amount+' unidades × '+pcs+' peças = '+total+' peças';
-  return amount===1?'1 unidad = '+pcs+' piezas':amount+' unidades × '+pcs+' piezas = '+total+' piezas';
-}
-function portionHint(p){
-  if(p.category!=='Furai · 5 piezas')return '';
-  const lang=window.siteI18n?.language?.()||'es';
-  return lang==='en'?'For 10 pieces, select 2 units':lang==='pt'?'Para 10 peças, selecione 2 unidades':'Para 10 piezas, seleccioná 2 unidades';
-}
 
-const qty=(key,id)=>carts[key][id]||0;
-const chosen=key=>rows(key).filter(p=>qty(key,p.id)>0);
-const allChosen=()=>brands.flatMap(key=>chosen(key));
-const hasSushi=()=>chosen('santori').length>0;
-const countAll=()=>allChosen().reduce((sum,p)=>sum+qty(p.brand,p.id),0);
-
-function renderCategories(){
- const kinds=['Todos',...new Set(allRows().map(x=>x.category))];
- const dropdown=$('categoryFilter');
- dropdown.innerHTML=kinds.map(v=>'<option value="'+escapeHTML(v)+'">'+(v==='Todos'?'Todas las categorías':escapeHTML(v))+'</option>').join('');
- dropdown.value=category;
-}
-function renderProducts(){
- const matches=allRows().filter(p=>{
-   if(category!=='Todos'&&p.category!==category)return false;
-   const t=window.siteI18n;
-   const bilingual=[p.name,p.desc,p.category,catalog[p.brand].name];
-   if(t)bilingual.push(...[p.name,p.desc,p.category].flatMap(x=>[t.toEnglish(x),t.toPortuguese(x)]));
-   return normalize(bilingual.join(' ')).includes(normalize(query));
- });
- $('searchHelp').textContent=query.trim()?matches.length+' resultado'+(matches.length===1?'':'s')+' en ambas cartas.':'Buscá en ambas cartas. Cada plato indica su restaurante.';
- $('products').innerHTML=matches.length?matches.map(p=>'<article class="product"><div><span class="brand-tag '+p.brand+'">'+escapeHTML(catalog[p.brand].name)+'</span><span class="cat">'+escapeHTML(p.category)+'</span><h3>'+escapeHTML(p.name)+'</h3></div><p>'+escapeHTML(p.desc||'Plato a consultar con el restaurante')+'</p>'+(piecesPerUnit(p)?'<p class="portion-note">'+escapeHTML(portionLabel(p))+'</p>':'')+(portionHint(p)?'<p class="portion-hint">'+escapeHTML(portionHint(p))+'</p>':'')+'<div class="product-bottom"><span class="price-note">Precio a confirmar</span><div class="stepper"><button type="button" data-step="-1" data-id="'+p.id+'" data-item-brand="'+p.brand+'" aria-label="Quitar '+escapeHTML(p.name)+'">−</button><span class="qty">'+qty(p.brand,p.id)+'</span><button type="button" data-step="1" data-id="'+p.id+'" data-item-brand="'+p.brand+'" aria-label="Agregar '+escapeHTML(p.name)+'">+</button></div></div></article>').join(''):'<p style="color:#c7af89">No encontramos platos con ese término en las dos cartas. Podés indicarnos tu consulta en observaciones.</p>';
-}
-function groupHTML(key){
- const products=chosen(key);
- if(!products.length)return '';
- const label=key==='tasca'?'La Tasca':'Santori';
- return '<div class="basket-group"><div class="basket-group-title">'+label+'</div>'+
-   products.map(p=>'<div class="basket-item"><div><div class="basket-item-title">'+escapeHTML(p.name)+'</div><small>'+escapeHTML(p.category)+'</small>'+(piecesPerUnit(p)?'<small class="portion-basket">'+escapeHTML(portionLabel(p,qty(key,p.id)))+'</small>':'')+'</div><div class="stepper"><button type="button" data-step="-1" data-id="'+p.id+'" data-item-brand="'+key+'" aria-label="Quitar '+escapeHTML(p.name)+'">−</button><span class="qty">'+qty(key,p.id)+'</span><button type="button" data-step="1" data-id="'+p.id+'" data-item-brand="'+key+'" aria-label="Agregar '+escapeHTML(p.name)+'">+</button></div></div>').join('')+'</div>';
-}
-function renderBasket(){
- const total=countAll();
- $('basketItems').innerHTML=total?brands.map(groupHTML).join(''):'<div class="empty">Tu carrito está vacío. Agregá platos de La Tasca, Santori o ambos.</div>';
- $('qtyTotal').textContent=total;
- $('mobileQuantity').textContent=total;
- $('jumpQuantity').textContent=total;
- $('basketPlace').textContent='La Tasca + Santori · Pedido único';
- $('sushiExtras').hidden=!hasSushi();
- $('send').setAttribute('aria-disabled',String(total===0));
- $('send').style.opacity=total?'1':'.55';
- refreshWhatsApp();
-}
-function sushiPeopleValid(){
- if(!hasSushi())return true;
- const raw=$('sushiPeople').value.trim();
- if(raw==='')return false;
- const n=Number(raw);
- return Number.isInteger(n)&&n>=0&&n<=50;
-}
-function refreshWhatsApp(){
- const name=$('customerName').value.trim();
- const time=$('pickup').value.trim();
- const notes=$('notes').value.trim();
- const all=allChosen();
- if(!name||!all.length||!sushiPeopleValid()){
-   $('send').href='#';
-   return;
- }
- const lines=[
-   'Hola, les envío mi pedido.',
-   'Mi nombre es '+name+'.',
-   'Retiro a las '+(time||'horario a coordinar')+'.'
+ // Catálogo de cocina y bebidas sin alcohol cotejado con las cartas publicadas.
+ const replaceProduct=(brand,name,nextName,desc)=>{
+   const p=catalog[brand].products.find(p=>p[1]===name);
+   if(p){p[1]=nextName;if(desc!==undefined)p[2]=desc;}
+ };
+ replaceProduct('tasca','Filet de trucha','Filet de trucha','Con vegetales grillados');
+ replaceProduct('tasca','Cordero La Tasca a 120°','Cordero La Tasca a 120°','Desmenuzado con papines de la chacra y salsa del cordero');
+ replaceProduct('tasca','Papas al horno','Papas al horno','Bravas o alioli, a elección');
+ replaceProduct('tasca','Menú infantil de pollo con puré','Menú infantil · Milanesa de pollo con puré','Incluye una bebida y una bocha de helado a elección');
+ replaceProduct('tasca','Menú infantil de spaghetti fileto / rosa','Menú infantil · Spaghetti','Incluye salsa a elección, bebida y una bocha de helado');
+ replaceProduct('santori','Furai de langostinos','Furai de langostinos','5 piezas. Langostinos rebozados en panko, Philadelphia y palta');
+ replaceProduct('santori','Furai de salmón','Furai de salmón','5 piezas. Salmón con panko, Philadelphia y palta');
+ replaceProduct('santori','Acevichado','Acevichado','Langostino rebozado, palta, pesca blanca, salsa acevichada y furikake');
+ replaceProduct('santori','Tropical','Tropical','Langostino rebozado, queso Philadelphia, mango, maracuyá y crocante de batata');
+ replaceProduct('santori','Avocado','Avocado','Langostino rebozado, Philadelphia, palta y teriyaki');
+ const desserts=[
+ ['Postres','Brownie con helado de americana',''],['Postres','Flan con dulce de leche',''],
+ ['Postres','Mousse de chocolate Bien Suizo',''],['Postres','Crumble de manzana',''],
+ ['Postres','Tiramisú',''],['Postres','Banana split',''],
+ ['Postres','Bocha de helado','Elegí el sabor'],['Postres','Cheesecake',''],
+ ['Postres','Don Pedro','Helado de americana, nueces y whisky'],
+ ['Postres','Don Tasca','Chocolate, Baileys, frutos secos y whisky'],
+ ['Postres','Postre de estación','Consultar'],['Postres','Crème brûlée',''],
+ ['Postres','Volcán de chocolate','Con helado de americana y frutos rojos']
  ];
- for(const key of brands){
-   const group=chosen(key);
-   if(group.length){
-     lines.push('',''+catalog[key].name+':');
-     group.forEach(p=>lines.push(qty(key,p.id)+' x '+p.name));
+ const drinks=[
+ ['Bebidas sin alcohol','Agua mineral sin gas',''],
+ ['Bebidas sin alcohol','Agua mineral con gas',''],
+ ['Bebidas sin alcohol','Agua saborizada','Consultar sabor'],
+ ['Bebidas sin alcohol','Gaseosa de la carta','Indicar sabor o marca en observaciones'],
+ ['Bebidas sin alcohol','Limonada con menta y jengibre','Vaso o jarra'],
+ ['Bebidas sin alcohol','Limonada de frutos rojos','Vaso o jarra'],
+ ['Bebidas sin alcohol','Limonada de maracuyá','Vaso o jarra']
+ ];
+ catalog.tasca.products.push(
+ ['Especiales del salón','Langostinos rebozados','Especial informado por salón. Disponibilidad a confirmar'],
+ ['Especiales del salón','Rabas panko','Especial informado por salón. Disponibilidad a confirmar'],
+ ['Sugerencias del chef','Pulpo','Consultar presentación y disponibilidad'],
+ ['Sugerencias del chef','Merluza negra','Consultar presentación y disponibilidad'],
+ ...desserts.map(x=>x.slice()),...drinks.map(x=>x.slice())
+ );
+ catalog.santori.products.push(
+ ['Entradas','Vieiras','Manteca oriental y parmesano gratinado'],
+ ['Entradas','Mariscos al fuego','Calamar, langostinos y pulpo con manteca oriental'],
+ ['Tiraditos · 12 piezas','Tiradito shiromi','Lenguado con salsa nikkei y cilantro'],
+ ['Tiraditos · 12 piezas','Tiradito de atún rojo','Salsa nikkei, shiso y ciboulette'],
+ ['Tiraditos · 12 piezas','Tiradito de pulpo español','Emulsión de oliva, palta y chalaquita'],
+ ...desserts.map(x=>x.slice()),...drinks.map(x=>x.slice())
+ );
+ const orders={
+ tasca:['Entradas','Especiales del salón','Ensaladas','Pescados y mariscos','Carnes','Risottos','Pastas','Guarniciones','Infantil','Sugerencias del chef','Postres','Bebidas sin alcohol'],
+ santori:['Entradas','Ceviches','Tiraditos · 12 piezas','Rolls · 10 piezas','Furai · 5 piezas','Combinados','Sashimis','Nigiris · 2 piezas','Postres','Bebidas sin alcohol']
+ };
+ ['tasca','santori'].forEach(brand=>catalog[brand].products.sort((a,b)=>orders[brand].indexOf(a[0])-orders[brand].indexOf(b[0])));
+ let category='Todos',query='',restaurant='both',lines=[],nextUid=1;
+ const draft={};
+ const WA='5492944555129';
+ const $=x=>document.getElementById(x);
+ const escapeHTML=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
+ const normalize=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+ const brands=['tasca','santori'];
+ const rows=brand=>catalog[brand].products.map((p,id)=>({brand,id,category:p[0],name:p[1],desc:p[2]}));
+ const allRows=()=>brands.flatMap(rows);
+ const findRow=(brand,id)=>rows(brand)[id];
+ const garnishes=['Arroz blanco','Puré de papas','Papas al horno','Papines','Vegetales grillados'];
+ const sauces=['Fileto','Crema','Rosa','Crema de hongos','Crema de queso azul','Crema de verdeo','Bolognesa'];
+ const icecreams=['Americana','Chocolate','Dulce de leche','Frutilla'];
+ function modifiers(p){
+   if(p.brand==='tasca'){
+     if(p.category==='Carnes')return [{id:'guarnicion',title:'Guarnición',values:garnishes,def:p.name.startsWith('Cordero')?'Papines':''}];
+     if(p.category==='Infantil')return [
+       ...(p.name.includes('Spaghetti')?[{id:'salsa',title:'Salsa',values:['Fileto','Rosa']}]:[]),
+       {id:'bebida',title:'Bebida incluida',values:['Agua sin gas','Agua con gas','Gaseosa de la carta']},
+       {id:'helado',title:'Bocha de helado incluida',values:icecreams}
+     ];
+     if(p.category==='Pastas'&&(p.name.startsWith('Sorrentinos')||p.name==='Spaghetti'||p.name==='Ñoquis'))return [{id:'salsa',title:'Salsa a elección',values:sauces}];
+     if(p.category==='Entradas'&&p.name==='Papas al horno')return [{id:'preparacion',title:'Preparación',values:['Bravas','Alioli']}];
    }
+   if(p.name==='Bocha de helado')return [{id:'helado',title:'Sabor del helado',values:icecreams}];
+   if(p.category==='Bebidas sin alcohol'&&p.name.startsWith('Limonada'))return [{id:'tamano',title:'Presentación',values:['Vaso','Jarra']}];
+   return [];
  }
- if(hasSushi())lines.push('','Palitos y salsas para '+$('sushiPeople').value.trim()+' personas.');
- if(notes)lines.push('','Observaciones: '+notes);
- $('send').href='https://wa.me/'+WHATSAPP_TAKEAWAY+'?text='+encodeURIComponent(lines.join('\n'));
-}
+ const pieces=p=>p.category==='Rolls · 10 piezas'?10:p.category==='Furai · 5 piezas'?5:p.category==='Tiraditos · 12 piezas'?12:p.category==='Sashimis'?4:p.category==='Nigiris · 2 piezas'?2:0;
+ function portions(p,n=1){return pieces(p)?n+' × '+pieces(p)+' piezas = '+(n*pieces(p))+' piezas':''}
+ function countItem(brand,id){return lines.filter(l=>l.brand===brand&&l.id===id).reduce((n,l)=>n+l.qty,0)}
+ const countAll=()=>lines.reduce((n,l)=>n+l.qty,0);
+ const hasSushi=()=>lines.some(l=>l.brand==='santori'&&/^(Rolls|Furai|Tiraditos|Sashimis|Nigiris|Combinados)/.test(findRow(l.brand,l.id).category));
+ function renderSelect(p,mod,selected,uid){
+   const control=uid===null?'data-card-opt="'+mod.id+'" data-brand="'+p.brand+'" data-id="'+p.id+'"':'data-line-opt="'+mod.id+'" data-uid="'+uid+'"';
+   return '<label class="'+(uid===null?'variant-label':'basket-choice')+'">'+escapeHTML(mod.title)+
+    '<select class="'+(uid===null?'variant-select':'basket-choice-select')+'" '+control+' aria-label="'+escapeHTML(mod.title+' para '+p.name)+'">'+
+    '<option value="">Elegir opción…</option>'+
+    mod.values.map(v=>'<option value="'+escapeHTML(v)+'"'+(selected===v?' selected':'')+'>'+escapeHTML(v)+'</option>').join('')+'</select></label>';
+ }
+ function renderCategories(){
+   const values=['Todos',...new Set(allRows().filter(p=>restaurant==='both'||p.brand===restaurant).map(p=>p.category))];
+   const select=$('categoryFilter');
+   select.innerHTML=values.map(v=>'<option value="'+escapeHTML(v)+'">'+(v==='Todos'?'Todas las categorías':escapeHTML(v))+'</option>').join('');
+   if(!values.includes(category))category='Todos';
+   select.value=category;
+ }
+ function renderProducts(){
+   const found=allRows().filter(p=>{
+     if(restaurant!=='both'&&p.brand!==restaurant)return false;
+     if(category!=='Todos'&&p.category!==category)return false;
+     const tr=window.siteI18n,parts=[p.name,p.desc,p.category,catalog[p.brand].name];
+     if(tr)parts.push(...[p.name,p.desc,p.category].flatMap(s=>[tr.toEnglish(s),tr.toPortuguese(s)]));
+     return normalize(parts.join(' ')).includes(normalize(query));
+   });
+   $('searchHelp').textContent=(query.trim()?found.length+' resultado(s) para tu búsqueda.':found.length+' opciones del menú.')+' Cada plato indica su restaurante.';
+   $('products').innerHTML=found.length?found.map(p=>{
+     const mods=modifiers(p),values=draft[p.brand+'-'+p.id]||{};
+     const controls=mods.length?'<div class="product-options">'+mods.map(m=>renderSelect(p,m,values[m.id]||m.def||'',null)).join('')+'</div>':'';
+     const inclusion=p.category==='Infantil'?'<p class="product-bundle">✓ Incluye bebida y bocha de helado (elegí las opciones)</p>':'';
+     const piece=pieces(p)?'<p class="portion-note">'+escapeHTML(portions(p))+'</p>':'';
+     return '<article class="product" data-brand="'+p.brand+'" data-id="'+p.id+'"><div><span class="brand-tag '+p.brand+'">'+escapeHTML(catalog[p.brand].name)+'</span><span class="cat">'+escapeHTML(p.category)+'</span><h3>'+escapeHTML(p.name)+'</h3></div>'+
+       '<p>'+escapeHTML(p.desc||'Plato a consultar')+'</p>'+inclusion+piece+controls+
+       '<div class="product-bottom"><span class="price-note">Precio a confirmar</span><div class="stepper"><button type="button" data-card-step="-1" data-brand="'+p.brand+'" data-id="'+p.id+'" aria-label="Quitar '+escapeHTML(p.name)+'">−</button>'+
+       '<span class="qty">'+countItem(p.brand,p.id)+'</span><button type="button" data-card-step="1" data-brand="'+p.brand+'" data-id="'+p.id+'" aria-label="Agregar '+escapeHTML(p.name)+'">+</button></div></div></article>';
+   }).join(''):'<p class="empty">No encontramos ese producto. Probá otra búsqueda o consultanos por WhatsApp.</p>';
+ }
+ function groupHTML(brand){
+   const subset=lines.filter(l=>l.brand===brand);
+   if(!subset.length)return '';
+   return '<div class="basket-group"><div class="basket-group-title">'+escapeHTML(catalog[brand].name)+'</div>'+subset.map(l=>{
+     const p=findRow(l.brand,l.id),mods=modifiers(p);
+     return '<div class="basket-item"><div class="basket-item-main"><div class="basket-item-title">'+escapeHTML(p.name)+'</div><small>'+escapeHTML(p.category)+'</small>'+
+       (pieces(p)?'<small class="portion-basket">'+escapeHTML(portions(p,l.qty))+'</small>':'')+
+       (mods.length?'<div class="basket-choices">'+mods.map(m=>renderSelect(p,m,l.choices[m.id],l.uid)).join('')+'</div>':'')+
+       '</div><div class="stepper"><button type="button" data-line-step="-1" data-uid="'+l.uid+'">−</button><span class="qty">'+l.qty+'</span><button type="button" data-line-step="1" data-uid="'+l.uid+'">+</button></div></div>';
+   }).join('')+'</div>';
+ }
+ function renderBasket(){
+   const total=countAll();
+   $('basketItems').innerHTML=total?brands.map(groupHTML).join(''):'<div class="empty">Tu carrito está vacío. Agregá platos de La Tasca, Santori o ambos.</div>';
+   $('qtyTotal').textContent=total;$('jumpQuantity').textContent=total;$('mobileQuantity').textContent=total;
+   const selected=brands.filter(k=>lines.some(l=>l.brand===k));
+   $('basketPlace').textContent=selected.length===2?'Pedido combinado · La Tasca + Santori':selected.length===1?'Pedido de '+catalog[selected[0]].name:'Un solo carrito · La Tasca + Santori';
+   $('sushiExtras').hidden=!hasSushi();
+   $('sushiCountField').hidden=!hasSushi()||!$('sushiNeedExtras').checked;
+   $('send').setAttribute('aria-disabled',String(!total));$('send').style.opacity=total?'1':'.55';
+   refreshWhatsApp();
+ }
+ function validSushi(){
+   if(!hasSushi()||!$('sushiNeedExtras').checked)return true;
+   const text=$('sushiPeople').value.trim(),num=Number(text);
+   return text!==''&&Number.isInteger(num)&&num>=1&&num<=50;
+ }
+ function refreshWhatsApp(){
+   const name=$('customerName').value.trim(),time=$('pickup').value.trim(),notes=$('notes').value.trim();
+   if(!name||!countAll()||!validSushi()){$('send').href='#';return;}
+   const msg=['Hola, les envío mi pedido Take Away.','Nombre: '+name,'Retiro: '+(time||'a coordinar')+'.'];
+   for(const brand of brands){
+     const group=lines.filter(l=>l.brand===brand);
+     if(!group.length)continue;
+     msg.push('','*'+catalog[brand].name+'*');
+     group.forEach(l=>{
+       const p=findRow(l.brand,l.id);
+       msg.push(l.qty+' x '+p.name+(pieces(p)?' ('+portions(p,l.qty)+')':''));
+       modifiers(p).forEach(m=>msg.push('   · '+m.title+': '+l.choices[m.id]));
+     });
+   }
+   if(hasSushi())msg.push('', $('sushiNeedExtras').checked?'Palitos y soja para '+$('sushiPeople').value.trim()+' persona(s).':'No solicitamos palitos ni salsa de soja.');
+   if(notes)msg.push('','Observaciones: '+notes);
+   msg.push('','El restaurante confirmará disponibilidad y precios.');
+   $('send').href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg.join('\n'));
+ }
+ function addProduct(brand,id){
+   const p=findRow(brand,id),card=$('products').querySelector('.product[data-brand="'+brand+'"][data-id="'+id+'"]');
+   if(!p||!card)return;
+   const choice={};
+   for(const m of modifiers(p)){
+     const el=card.querySelector('select[data-card-opt="'+m.id+'"]');
+     const value=el?.value||'';
+     if(!value){$('validation').textContent='Elegí '+m.title.toLowerCase()+' para '+p.name+'.';el?.focus();return;}
+     choice[m.id]=value;
+   }
+   let line=lines.find(l=>l.brand===brand&&l.id===id&&JSON.stringify(l.choices)===JSON.stringify(choice));
+   if(line)line.qty=Math.min(50,line.qty+1);
+   else lines.push({uid:nextUid++,brand,id,qty:1,choices:choice});
+   $('validation').textContent='';
+   renderProducts();renderBasket();
+ }
+ function modifyLine(uid,change){
+   const line=lines.find(l=>l.uid===uid);if(!line)return;
+   line.qty=Math.max(0,Math.min(50,line.qty+change));
+   if(!line.qty)lines=lines.filter(l=>l.uid!==uid);
+   $('validation').textContent='';
+   renderProducts();renderBasket();
+ }
+ function removeProduct(brand,id){
+   const matches=lines.filter(l=>l.brand===brand&&l.id===id);
+   if(matches.length)modifyLine(matches[matches.length-1].uid,-1);
+ }
+ $('products').addEventListener('change',e=>{
+   const el=e.target.closest('select[data-card-opt]');if(!el)return;
+   const key=el.dataset.brand+'-'+el.dataset.id;
+   draft[key]=draft[key]||{};
+   draft[key][el.dataset.cardOpt]=el.value;
+   $('validation').textContent='';
+ });
+ $('products').addEventListener('click',e=>{
+   const btn=e.target.closest('button[data-card-step]');if(!btn)return;
+   if(Number(btn.dataset.cardStep)>0)addProduct(btn.dataset.brand,Number(btn.dataset.id));
+   else removeProduct(btn.dataset.brand,Number(btn.dataset.id));
+ });
+ $('basketItems').addEventListener('click',e=>{
+   const btn=e.target.closest('button[data-line-step]');
+   if(btn)modifyLine(Number(btn.dataset.uid),Number(btn.dataset.lineStep));
+ });
+ $('basketItems').addEventListener('change',e=>{
+   const el=e.target.closest('select[data-line-opt]');if(!el||!el.value)return;
+   const line=lines.find(l=>l.uid===Number(el.dataset.uid));if(!line)return;
+   line.choices[el.dataset.lineOpt]=el.value;
+   const equal=lines.find(l=>l!==line&&l.id===line.id&&l.brand===line.brand&&JSON.stringify(l.choices)===JSON.stringify(line.choices));
+   if(equal){equal.qty+=line.qty;lines=lines.filter(l=>l!==line)}
+   renderBasket();
+ });
+ $('restaurantChoice').addEventListener('click',e=>{
+   const btn=e.target.closest('button[data-restaurant]');if(!btn)return;
+   restaurant=btn.dataset.restaurant;category='Todos';
+   $('restaurantChoice').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===btn)));
+   renderCategories();renderProducts();
+ });
+ $('categoryFilter').addEventListener('change',e=>{category=e.target.value;renderProducts()});
+ $('search').addEventListener('input',e=>{query=e.target.value;renderProducts()});
+ window.addEventListener('site:languagechange',()=>{renderCategories();renderProducts();renderBasket()});
+ ['customerName','pickup','notes','sushiPeople'].forEach(id=>$(id).addEventListener('input',()=>{$('validation').textContent='';refreshWhatsApp()}));
+ $('sushiNeedExtras').addEventListener('change',()=>{
+   $('sushiCountField').hidden=!$('sushiNeedExtras').checked||!hasSushi();
+   $('validation').textContent='';refreshWhatsApp();
+ });
+ $('send').addEventListener('click',e=>{
+   if(!countAll()){e.preventDefault();$('validation').textContent='Primero elegí al menos un plato.';return}
+   if(!$('customerName').value.trim()){e.preventDefault();$('validation').textContent='Escribí tu nombre.';$('customerName').focus();return}
+   if(!validSushi()){e.preventDefault();$('validation').textContent='Indicá para cuántas personas querés palitos y salsa de soja.';$('sushiPeople').focus();return}
+   refreshWhatsApp();
+ });
+ function goCheckout(){
+   const target=$('checkoutFields'),container=$('basket');
+   if(window.matchMedia('(max-width:830px)').matches)target.scrollIntoView({behavior:'smooth',block:'start'});
+   else{const y=target.getBoundingClientRect().top-container.getBoundingClientRect().top+container.scrollTop-18;container.scrollTo({top:Math.max(0,y),behavior:'smooth'})}
+ }
+ $('goCheckout').addEventListener('click',goCheckout);
+ $('openBasket').addEventListener('click',goCheckout);
+ renderCategories();renderProducts();renderBasket();
 
-function increment(key,id,step){
- if(!catalog[key]||!Number.isInteger(id)||id<0||id>=catalog[key].products.length)return;
- carts[key][id]=Math.max(0,Math.min(50,qty(key,id)+step));
- $('validation').textContent='';
- renderProducts();renderBasket();
-}
-$('products').addEventListener('click',e=>{
- const btn=e.target.closest('button[data-step]');
- if(btn)increment(btn.dataset.itemBrand,Number(btn.dataset.id),Number(btn.dataset.step));
-});
-$('basketItems').addEventListener('click',e=>{
- const btn=e.target.closest('button[data-step]');
- if(btn)increment(btn.dataset.itemBrand,Number(btn.dataset.id),Number(btn.dataset.step));
-});
-$('categoryFilter').addEventListener('change',e=>{category=e.target.value;renderProducts();});
-$('search').addEventListener('input',e=>{query=e.target.value;renderProducts()});
-window.addEventListener('site:languagechange',()=>{renderCategories();renderProducts();renderBasket();});
-['customerName','pickup','notes','sushiPeople'].forEach(id=>$(id).addEventListener('input',()=>{$('validation').textContent='';refreshWhatsApp();}));
-$('send').addEventListener('click',e=>{
- if(!countAll()){e.preventDefault();$('validation').textContent='Primero elegí al menos un plato.';return;}
- if(!$('customerName').value.trim()){e.preventDefault();$('validation').textContent='Escribí tu nombre.';$('customerName').focus();return;}
- if(!sushiPeopleValid()){
-   e.preventDefault();
-   $('validation').textContent='Indicá para cuántas personas querés palitos y salsas (0 si no necesitás).';
-   $('sushiPeople').focus();return;
- }
- refreshWhatsApp();
-});
-function goCheckout(){
- const target=$('checkoutFields'),container=$('basket');
- if(window.matchMedia('(max-width:830px)').matches){
-   target.scrollIntoView({behavior:'smooth',block:'start'});
- }else{
-   const offset=target.getBoundingClientRect().top-container.getBoundingClientRect().top+container.scrollTop-18;
-   container.scrollTo({top:Math.max(0,offset),behavior:'smooth'});
- }
-}
-$('goCheckout').addEventListener('click',goCheckout);
-$('openBasket').addEventListener('click',goCheckout);
-renderCategories();renderProducts();renderBasket();
 })();
 </script>
   <script src="i18n.js?v=9" defer></script>
