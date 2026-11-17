@@ -346,8 +346,11 @@
  };
  const day=today(),max=new Date(day+"T12:00:00Z");max.setUTCDate(max.getUTCDate()+60);
  dateInput.min=day;dateInput.max=max.toISOString().slice(0,10);
- const requestedDate=new URLSearchParams(location.search).get("fecha");
+ const requestedBooking=new URLSearchParams(location.search);
+ const requestedDate=requestedBooking.get("fecha");
  dateInput.value=requestedDate&&/^\d{4}-\d{2}-\d{2}$/.test(requestedDate)&&requestedDate>=day&&requestedDate<=dateInput.max?requestedDate:day;
+ const requestedVenue=requestedBooking.get("restaurante");
+ if(["La Tasca","Santori"].includes(requestedVenue))form.elements.venue.value=requestedVenue;
  const formatTime=minutes=>String(Math.floor(minutes/60)).padStart(2,"0")+":"+String(minutes%60).padStart(2,"0");
  const quickLabels={
   es:{today:"Hoy",tomorrow:"Mañana",lunch:"Almuerzo",dinner:"Cena",passed:"Pasó"},
@@ -357,8 +360,8 @@
  // Al abrir la página, usar el turno que todavía admite reservas en la fecha elegida.
  // Nunca elegir Cena por defecto si todavía quedan horarios de Almuerzo disponibles.
  const defaultQuickShift=()=>dateInput.value===today()&&nowClock()>="15:15"?"dinner":"lunch";
- let quickShift=defaultQuickShift();
- let quickShiftUserChosen=false;
+ let quickShift=requestedBooking.get("turno")==="cena"?"dinner":defaultQuickShift();
+ let quickShiftUserChosen=requestedBooking.get("turno")==="cena";
  const quickDays=(date,count)=>{
   const d=new Date(date+"T12:00:00Z");d.setUTCDate(d.getUTCDate()+count);
   return d.toISOString().slice(0,10);
