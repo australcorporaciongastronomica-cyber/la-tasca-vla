@@ -2,6 +2,15 @@
 (function () {
   "use strict";
   const PAIRS = [
+    // Anuncio musical de La Tasca, sábado 21/11
+    ["LA TASCA · UNA NOCHE ESPECIAL","LA TASCA · A SPECIAL EVENING"],
+    ["Música en vivo","Live music"],
+    ["Una noche para encontrarnos, brindar y disfrutar de buena música en el salón de La Tasca. Te esperamos para compartir la mesa y el show.","An evening to meet, raise a glass and enjoy live music at La Tasca. Join us for dinner and the show."],
+    ["SÁBADO 21 DE NOVIEMBRE","SATURDAY, NOVEMBER 21"],
+    ["22:00 HS","10:00 PM"],
+    ["RESERVAR MESA","BOOK A TABLE"],
+    ["Maru La Rusa y El Ruso, los músicos de la noche en La Tasca","Maru La Rusa and El Ruso, our live performers at La Tasca"],
+    ["Reservar mesa en La Tasca para el sábado 21 de noviembre","Book a table at La Tasca for Saturday, November 21"],
     // Bodegas y vinos
     ["LA TASCA · NUESTRA SELECCIÓN DE VINOS","LA TASCA · OUR WINE SELECTION"],
     ["Bodegas para","Wineries to"],
@@ -300,6 +309,15 @@
 
   const dictionary = new Map(PAIRS.map(([es,en])=>[normalize(es),en]));
   const DICTIONARY_PT = new Map([
+    // Música ao vivo no La Tasca, sábado 21/11
+    ["LA TASCA · UNA NOCHE ESPECIAL","LA TASCA · UMA NOITE ESPECIAL"],
+    ["Música en vivo","Música ao vivo"],
+    ["Una noche para encontrarnos, brindar y disfrutar de buena música en el salón de La Tasca. Te esperamos para compartir la mesa y el show.","Uma noite para nos encontrar, brindar e aproveitar boa música no salão do La Tasca. Esperamos você para jantar e curtir o show."],
+    ["SÁBADO 21 DE NOVIEMBRE","SÁBADO, 21 DE NOVEMBRO"],
+    ["22:00 HS","22H"],
+    ["RESERVAR MESA","RESERVAR MESA"],
+    ["Maru La Rusa y El Ruso, los músicos de la noche en La Tasca","Maru La Rusa e El Ruso, os músicos da noite no La Tasca"],
+    ["Reservar mesa en La Tasca para el sábado 21 de noviembre","Reservar mesa no La Tasca para sábado, 21 de novembro"],
     // Bodegas y vinos
     ["LA TASCA · NUESTRA SELECCIÓN DE VINOS","LA TASCA · NOSSA SELEÇÃO DE VINHOS"],
     ["Bodegas para","Vinícolas para"],
