@@ -1609,6 +1609,40 @@
 .contact-reserve-link:hover{background:#f5d9a9}
 @media(max-width:630px){.public-reserve-feature{flex-direction:column;align-items:stretch;padding:17px 16px;gap:15px;text-align:center}.public-reserve-feature__btn{width:100%}}
 
+
+/* Presentación editorial · show en vivo La Tasca · 21/11/2026 */
+.live-saturday[hidden]{display:none!important}
+.live-saturday{padding:clamp(30px,6vw,72px) 16px;background:radial-gradient(ellipse at 76% 12%,rgba(168,113,61,.13),transparent 60%),linear-gradient(180deg,#0d0d0c,#1a1713 52%,#0e0e0d);border-bottom:1px solid rgba(218,188,137,.30)}
+.live-saturday__frame{max-width:1080px;margin:auto;display:grid;grid-template-columns:minmax(260px,36%) minmax(0,1fr);border:1px solid rgba(217,183,125,.47);background:linear-gradient(120deg,#211b16,#161715 70%);box-shadow:0 26px 70px rgba(0,0,0,.38);overflow:hidden}
+.live-saturday__photo{min-height:370px;position:relative;overflow:hidden;background:#1a0f0e}
+.live-saturday__photo img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;filter:grayscale(.32) sepia(.16) saturate(.76) contrast(1.15)}
+.live-saturday__photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,rgba(19,17,15,.40)),linear-gradient(0deg,rgba(17,16,14,.34),transparent 58%);pointer-events:none}
+.live-saturday__body{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:clamp(27px,5vw,62px) clamp(24px,5vw,58px)}
+.live-saturday__eyebrow{color:#dec28c;font-size:10px;letter-spacing:2.8px;text-transform:uppercase;font-weight:700;margin:0 0 13px}
+.live-saturday__body h2{font:500 clamp(48px,5.8vw,79px)/.97 'Cormorant Garamond',Georgia,serif;letter-spacing:-.02em;color:#fff2df;margin:0 0 17px}
+.live-saturday__names{font:500 clamp(28px,3.4vw,42px)/1.07 'Cormorant Garamond',Georgia,serif;color:#e9c98e;margin:0 0 19px}
+.live-saturday__line{display:block;width:58px;height:1px;background:#cfab72;margin:0 0 22px}
+.live-saturday__description{color:#d2c5b2;font-size:13px;line-height:1.9;max-width:520px;margin:0 0 22px}
+.live-saturday__meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:#f3dbac;font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin:0 0 23px}
+.live-saturday__dot{width:4px;height:4px;border-radius:50%;background:#d6b47f}
+.live-saturday__cta{display:inline-flex;align-items:center;justify-content:center;gap:13px;background:#d8b67e;border:1px solid #f2d9a9;color:#17130e!important;font-weight:800;letter-spacing:1px;font-size:11px;min-height:54px;padding:13px 24px;text-align:center;transition:background .2s,transform .2s}
+.live-saturday__cta:hover{background:#f3d6a5;transform:translateY(-2px)}
+.live-saturday__address{color:#aaa090;font-size:11px;line-height:1.65;margin:16px 0 0}
+.live-saturday__cta:focus-visible{outline:3px solid #fff;outline-offset:3px}
+@media(max-width:760px){
+ .live-saturday{padding:25px 13px 41px}
+ .live-saturday__frame{grid-template-columns:1fr}
+ .live-saturday__photo{min-height:235px;max-height:310px}
+ .live-saturday__photo img{object-position:center 35%}
+ .live-saturday__photo:after{background:linear-gradient(0deg,rgba(19,17,15,.46),transparent 66%)}
+ .live-saturday__body{padding:28px 23px 33px}
+ .live-saturday__body h2{font-size:clamp(48px,12vw,66px)}
+ .live-saturday__names{font-size:34px}
+ .live-saturday__meta{font-size:10px;gap:8px}
+ .live-saturday__cta{width:100%}
+}
+@media(prefers-reduced-motion:reduce){.live-saturday__cta{transition:none}}
+
 </style>
 
 </head>
@@ -1707,6 +1741,38 @@
     </div>
   </section>
 
+
+  <!-- MÚSICA EN VIVO: anuncio temporal que se retira al terminar el sábado -->
+  <section class="live-saturday" id="liveMusicTasca" aria-labelledby="liveMusicTitle">
+    <div class="live-saturday__frame">
+      <div class="live-saturday__photo">
+        <img src="assets/maru-la-rusa-el-ruso-show.svg" alt="Maru La Rusa y El Ruso, los músicos de la noche en La Tasca" width="400" height="400" loading="lazy">
+      </div>
+      <div class="live-saturday__body">
+        <div class="live-saturday__eyebrow">LA TASCA · UNA NOCHE ESPECIAL</div>
+        <h2 id="liveMusicTitle">Música en vivo</h2>
+        <p class="live-saturday__names">Maru «La Rusa» &amp; El Ruso</p>
+        <span class="live-saturday__line" aria-hidden="true"></span>
+        <p class="live-saturday__description">Una noche para encontrarnos, brindar y disfrutar de buena música en el salón de La Tasca. Te esperamos para compartir la mesa y el show.</p>
+        <p class="live-saturday__meta"><span>SÁBADO 21 DE NOVIEMBRE</span><span class="live-saturday__dot" aria-hidden="true"></span><span>22:00 HS</span></p>
+        <a class="live-saturday__cta" href="reservas.html?fecha=2026-11-21&amp;restaurante=La%20Tasca&amp;turno=cena#requestForm" aria-label="Reservar mesa en La Tasca para el sábado 21 de noviembre">
+          RESERVAR MESA <span aria-hidden="true">↗</span>
+        </a>
+        <p class="live-saturday__address">La Tasca · Av. Arrayanes 6155 · Puerto Manzano, Villa La Angostura</p>
+      </div>
+    </div>
+  </section>
+  <script>
+  (() => {
+    const notice=document.getElementById("liveMusicTasca");
+    if(!notice)return;
+    const currentLocalDay=()=>new Intl.DateTimeFormat("en-CA",{timeZone:"America/Argentina/Buenos_Aires",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date());
+    const syncShow=()=>{notice.hidden=currentLocalDay()>"2026-11-21"};
+    syncShow();
+    window.setInterval(syncShow,60000);
+    document.addEventListener("visibilitychange",()=>{if(!document.hidden)syncShow()});
+  })();
+  </script>
 
   <!-- PEDIDO: ACCIÓN PRINCIPAL DESPUÉS DE LA PORTADA -->
   <section class="order-feature" id="armar-pedido" aria-labelledby="order-feature-title">
