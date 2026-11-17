@@ -2,6 +2,13 @@
 (function () {
   "use strict";
   const PAIRS = [
+    // Métodos de pago y tarjetas
+    ["MEDIOS DE PAGO · LA TASCA & SANTORI","PAYMENT METHODS · LA TASCA & SANTORI"],
+    ["Pagá como","Pay however"],
+    ["prefieras.","you prefer."],
+    ["Tarjetas de crédito y débito · QR · Transferencias · Efectivo","Credit and debit cards · QR · Bank transfers · Cash"],
+    ["Medios de pago disponibles en ambos restaurantes","Payment methods available at both restaurants"],
+
     // Anuncio musical de La Tasca, sábado 21/11
     ["LA TASCA · UNA NOCHE ESPECIAL","LA TASCA · A SPECIAL EVENING"],
     ["Música en vivo","Live music"],
@@ -309,6 +316,13 @@
 
   const dictionary = new Map(PAIRS.map(([es,en])=>[normalize(es),en]));
   const DICTIONARY_PT = new Map([
+    // Métodos de pagamento
+    ["MEDIOS DE PAGO · LA TASCA & SANTORI","FORMAS DE PAGAMENTO · LA TASCA & SANTORI"],
+    ["Pagá como","Pague como"],
+    ["prefieras.","preferir."],
+    ["Tarjetas de crédito y débito · QR · Transferencias · Efectivo","Cartões de crédito e débito · QR · Transferências · Dinheiro"],
+    ["Medios de pago disponibles en ambos restaurantes","Formas de pagamento disponíveis nos dois restaurantes"],
+
     // Música ao vivo no La Tasca, sábado 21/11
     ["LA TASCA · UNA NOCHE ESPECIAL","LA TASCA · UMA NOITE ESPECIAL"],
     ["Música en vivo","Música ao vivo"],
