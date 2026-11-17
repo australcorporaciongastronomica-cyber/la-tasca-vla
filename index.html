@@ -1643,6 +1643,41 @@
 }
 @media(prefers-reduced-motion:reduce){.live-saturday__cta{transition:none}}
 
+
+/* Medios de pago — marquesina de marcas, sin scripts ni dependencias externas */
+.payment-methods{position:relative;overflow:hidden;padding:59px 0 52px;color:#f6eee2;background:radial-gradient(ellipse at 25% 0%,rgba(177,132,73,.105),transparent 58%),linear-gradient(110deg,#0e0d0d,#1a1514 51%,#0b0b0c);border-top:1px solid rgba(214,178,118,.27);border-bottom:1px solid rgba(214,178,118,.23)}
+.payment-methods__head{max-width:910px;margin:0 auto;text-align:center;padding:0 18px}
+.payment-methods__eyebrow{font:700 10px/1.6 Montserrat,Arial,sans-serif;letter-spacing:2.1px;color:#cba770;margin:0}
+.payment-methods__head h2{font:500 clamp(43px,5vw,65px)/1.08 'Cormorant Garamond',Georgia,serif;color:#f7f0e5;margin:10px 0 12px}
+.payment-methods__head h2 em{font-weight:400;color:#d8b783}
+.payment-methods__description{font:400 13px/1.9 Montserrat,Arial,sans-serif;color:#c6b9aa;margin:0}
+.payment-methods__marquee{position:relative;overflow:hidden;width:100%;margin-top:33px;padding:12px 0}
+.payment-methods__marquee::before,.payment-methods__marquee::after{content:"";pointer-events:none;position:absolute;z-index:2;top:0;bottom:0;width:min(11vw,125px)}
+.payment-methods__marquee::before{left:0;background:linear-gradient(90deg,#100e0e,transparent)}
+.payment-methods__marquee::after{right:0;background:linear-gradient(270deg,#0d0c0d,transparent)}
+.payment-methods__track{display:flex;align-items:stretch;width:max-content;animation:payment-methods-scroll 45s linear infinite;will-change:transform}
+.payment-methods__group{display:flex;flex:none;align-items:stretch}
+.payment-methods__item{display:flex;align-items:center;justify-content:center;flex:none;width:178px;height:83px;margin-right:14px;padding:10px;border:1px solid rgba(219,185,132,.23);border-radius:13px;background:linear-gradient(160deg,rgba(255,255,255,.065),rgba(255,255,255,.018));box-shadow:inset 0 1px rgba(255,255,255,.045)}
+.pay-brand{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;min-width:0;color:#f3ebdf;font-family:Montserrat,Arial,sans-serif;font-weight:700}
+.pay-brand__visa{font-size:31px;letter-spacing:-2px;font-weight:900;font-style:italic;color:#ede6d7}
+.pay-brand__mc-symbol,.pay-brand__maestro-symbol{position:relative;display:inline-flex;align-items:center;justify-content:center;width:59px;height:35px;flex:none}
+.pay-brand__mc-symbol i,.pay-brand__maestro-symbol i{position:absolute;width:35px;height:35px;border-radius:50%;display:block}
+.pay-brand__mc-symbol i:first-child{background:#e44937;left:3px}.pay-brand__mc-symbol i:last-child{background:rgba(245,162,43,.87);right:3px}
+.pay-brand__mc-label{font-size:12px;letter-spacing:-.6px;font-weight:700}
+.pay-brand__amex{background:#2472bd;color:white;border:1px solid rgba(255,255,255,.48);border-radius:3px;padding:5px 9px;text-align:center;font-size:14px;font-weight:900;line-height:1.02;letter-spacing:.05px;text-shadow:0 1px 1px rgba(0,0,0,.3)}
+.pay-brand__mp-symbol{display:grid;place-items:center;background:#00a5db;color:white;border-radius:50%;font-size:15px;font-weight:900;letter-spacing:-2px;width:43px;height:43px;text-transform:uppercase;transform:rotate(-6deg)}
+.pay-brand__mp-label{font-size:15px;line-height:1.02;text-transform:lowercase;letter-spacing:-.7px}
+.pay-brand__modo{font-size:26px;letter-spacing:-1px;font-weight:900;color:#f3eef7}.pay-brand__modo span{color:#aa7cef}
+.pay-brand__cabal{font-size:31px;letter-spacing:-1.5px;font-weight:800;font-style:italic;color:#e1f6ff}
+.pay-brand__maestro-symbol i:first-child{background:#e64c50;left:3px}.pay-brand__maestro-symbol i:last-child{background:rgba(53,117,201,.86);right:3px}
+.pay-brand__small{font-size:13px;letter-spacing:-.5px}
+.pay-brand__pictogram{display:grid;place-items:center;width:33px;height:33px;flex:none;border:1px solid rgba(222,184,126,.8);border-radius:50%;color:#f1d39f;font-size:22px;font-weight:500}
+.pay-brand__text{font-size:12px;font-weight:600;letter-spacing:.1px}
+.payment-methods__marquee:hover .payment-methods__track,.payment-methods__marquee:focus-within .payment-methods__track{animation-play-state:paused}
+@keyframes payment-methods-scroll{to{transform:translateX(-50%)}}
+@media(max-width:760px){.payment-methods{padding:48px 0 41px}.payment-methods__eyebrow{font-size:9px;letter-spacing:1.4px}.payment-methods__head h2{font-size:clamp(43px,10vw,58px)}.payment-methods__description{font-size:11px;line-height:1.85}.payment-methods__marquee{margin-top:23px}.payment-methods__item{width:153px;height:74px;margin-right:10px}.payment-methods__marquee::before,.payment-methods__marquee::after{width:20px}.payment-methods__track{animation-duration:42s}.pay-brand__mc-label{font-size:11px}.pay-brand__text{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.payment-methods__track{animation:none}.payment-methods__marquee{overflow-x:auto;scrollbar-width:thin}.payment-methods__group[aria-hidden="true"]{display:none}}
+
 </style>
 
 </head>
@@ -2176,6 +2211,22 @@
     </div>
     <div class="wineries__footer">
       <a class="wineries__link" href="cartas.html?restaurante=tasca" aria-label="Ver carta completa de La Tasca, incluidos los vinos">Explorá nuestra carta <span aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+
+
+  <!-- MEDIOS DE PAGO · IDENTIDAD VISUAL BASADA EN LOS COMPROBANTES FISERV -->
+  <section class="payment-methods" id="medios-de-pago" aria-labelledby="payment-methods-title">
+    <div class="container payment-methods__head">
+      <p class="payment-methods__eyebrow">MEDIOS DE PAGO · LA TASCA &amp; SANTORI</p>
+      <h2 id="payment-methods-title">Pagá como <em>prefieras.</em></h2>
+      <p class="payment-methods__description">Tarjetas de crédito y débito · QR · Transferencias · Efectivo</p>
+    </div>
+    <div class="payment-methods__marquee" role="region" aria-label="Medios de pago disponibles en ambos restaurantes">
+      <div class="payment-methods__track">
+        <div class="payment-methods__group" role="list"><span class="payment-methods__item" role="listitem" aria-label="Visa"><span class="pay-brand pay-brand--visa" data-no-translate="true"><span class="pay-brand__visa">VISA</span></span></span><span class="payment-methods__item" role="listitem" aria-label="Mastercard"><span class="pay-brand pay-brand--mastercard" data-no-translate="true"><span class="pay-brand__mc-symbol" aria-hidden="true"><i></i><i></i></span><span class="pay-brand__mc-label">mastercard</span></span></span><span class="payment-methods__item" role="listitem" aria-label="American Express"><span class="pay-brand pay-brand--amex" data-no-translate="true"><span class="pay-brand__amex">AMERICAN<br>EXPRESS</span></span></span><span class="payment-methods__item" role="listitem" aria-label="Mercado Pago"><span class="pay-brand pay-brand--mp" data-no-translate="true"><span class="pay-brand__mp-symbol" aria-hidden="true">mp</span><span class="pay-brand__mp-label">mercado<br>pago</span></span></span><span class="payment-methods__item" role="listitem" aria-label="MODO"><span class="pay-brand pay-brand--modo" data-no-translate="true"><span class="pay-brand__modo">MODO<span>.</span></span></span></span><span class="payment-methods__item" role="listitem" aria-label="Cabal"><span class="pay-brand pay-brand--cabal" data-no-translate="true"><span class="pay-brand__cabal">cabal</span></span></span><span class="payment-methods__item" role="listitem" aria-label="Maestro"><span class="pay-brand pay-brand--maestro" data-no-translate="true"><span class="pay-brand__maestro-symbol" aria-hidden="true"><i></i><i></i></span><span class="pay-brand__small">maestro</span></span></span><span class="payment-methods__item" role="listitem" aria-label="Transferencias bancarias"><span class="pay-brand pay-brand--transfer" data-no-translate="true"><span class="pay-brand__pictogram" aria-hidden="true">⇄</span><span class="pay-brand__text">Transferencias</span></span></span><span class="payment-methods__item" role="listitem" aria-label="Efectivo"><span class="pay-brand pay-brand--cash" data-no-translate="true"><span class="pay-brand__pictogram" aria-hidden="true">$</span><span class="pay-brand__text">Efectivo</span></span></span></div>
+        <div class="payment-methods__group" aria-hidden="true"><span class="payment-methods__item" ><span class="pay-brand pay-brand--visa" data-no-translate="true"><span class="pay-brand__visa">VISA</span></span></span><span class="payment-methods__item" ><span class="pay-brand pay-brand--mastercard" data-no-translate="true"><span class="pay-brand__mc-symbol" aria-hidden="true"><i></i><i></i></span><span class="pay-brand__mc-label">mastercard</span></span></span><span class="payment-methods__item" ><span class="pay-brand pay-brand--amex" data-no-translate="true"><span class="pay-brand__amex">AMERICAN<br>EXPRESS</span></span></span><span class="payment-methods__item" ><span class="pay-brand pay-brand--mp" data-no-translate="true"><span class="pay-brand__mp-symbol" aria-hidden="true">mp</span><span class="pay-brand__mp-label">mercado<br>pago</span></span></span><span class="payment-methods__item" ><span class="pay-brand pay-brand--modo" data-no-translate="true"><span class="pay-brand__modo">MODO<span>.</span></span></span></span><span class="payment-methods__item" ><span class="pay-brand pay-brand--cabal" data-no-translate="true"><span class="pay-brand__cabal">cabal</span></span></span><span class="payment-methods__item" ><span class="pay-brand pay-brand--maestro" data-no-translate="true"><span class="pay-brand__maestro-symbol" aria-hidden="true"><i></i><i></i></span><span class="pay-brand__small">maestro</span></span></span><span class="payment-methods__item" ><span class="pay-brand pay-brand--transfer" data-no-translate="true"><span class="pay-brand__pictogram" aria-hidden="true">⇄</span><span class="pay-brand__text">Transferencias</span></span></span><span class="payment-methods__item" ><span class="pay-brand pay-brand--cash" data-no-translate="true"><span class="pay-brand__pictogram" aria-hidden="true">$</span><span class="pay-brand__text">Efectivo</span></span></span></div>
+      </div>
     </div>
   </section>
 
